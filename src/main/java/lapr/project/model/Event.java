@@ -16,22 +16,22 @@ public class Event {
   //  private Date submissionEndDate;
     private int acceptanceRate;
     
-   // private FAEList faeList;
+    private FAEList faeList;
     private ApplicationsList applicationsList;
-   // private AssignmentList assignmentList;
+    private AssignmentsList assignmentList;
 
 
-public Event(String title, String description, String local, Date beginDate, Date endDate, Date submissionBeginDate, Date submissionEndDate, int acceptanceRate,FAEList faeList, ApplicationsList applicationsList, AssignmentList assignmentList) {
+public Event(String title, String description, String local, Date beginDate, Date endDate, Date submissionBeginDate, Date submissionEndDate, int acceptanceRate,FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList) {
         this.title =  title;
         this.description = description;
         this.local = local;
-        this.beginDate = beginDate;
-        this.endDate = endDate;
-        this.submissionBeginDate = submissionBeginDate;
-        this.submissionEndDate = submissionEndDate;
+//        this.beginDate = beginDate;
+//        this.endDate = endDate;
+//        this.submissionBeginDate = submissionBeginDate;
+//        this.submissionEndDate = submissionEndDate;
         
-     //   this.listaAtribuicao = new ListaAtribuicao();
-     //   this.listaFAE = new ListaFAE();
+        this.assignmentsList = new AssignmentsList();
+        this.faeList = new FAEList();
         this.applicationsList = new ApplicationsList();
 
     }
@@ -96,39 +96,39 @@ public Event(String title, String description, String local, Date beginDate, Dat
      * Returns the Event´s FAE list
      * @return Event´s faeList
      */
-   // public FAEList getFAEList(){
-   //     return faeList;
-   // }
+    public FAEList getFAEList(){
+        return faeList;
+    }
     
      /**DEVOLVE LISTA DE CANDIDATURAS
      * 
      * @return 
      */
-    //public ApplicationsList getApplicationsList(){
-    //    return applicationsList;
-    //}
+    public ApplicationsList getApplicationsList(){
+        return applicationsList;
+    }
     
      /**DEVOLVE LISTA DE CANDIDATURAS
      * 
      * @return 
      */
-//    public AssignmentList getAssignmentList(){
-//        return assignmentList;
-//    }
+    public AssignmentsList getAssignmentsList(){
+        return assignmentsList;
+    }
     
-//    
-//     public void setAssignmentList(AssignmentList assignmentList){
-//        this.assignmentList = assignmentList;
-//    }
-//    
-//    public void setFAEList(FAEList faeList){
-//        this.faeList = faeList;
-//    }
-//    
-//    public void setApplicationsList(ApplicationsList applicationsList){
-//        this.listaCandidaturas = applicationsList;
-//    }
-//
+    
+     public void setAssignmentsList(AssignmentsList assignmentsList){
+        this.assignmentsList = assignmentsList;
+    }
+    
+    public void setFAEList(FAEList faeList){
+        this.faeList = faeList;
+    }
+    
+    public void setApplicationsList(ApplicationsList applicationsList){
+        this.applicationsList = applicationsList;
+    }
+
 
   @Override
     public String toString() {
