@@ -17,7 +17,7 @@ public class Event {
     private int acceptanceRate;
     
    // private FAEList faeList;
-   // private ApplicationsList applicationsList;
+    private ApplicationsList applicationsList;
    // private AssignmentList assignmentList;
 
 
@@ -32,7 +32,7 @@ public Event(String title, String description, String local, Date beginDate, Dat
         
      //   this.listaAtribuicao = new ListaAtribuicao();
      //   this.listaFAE = new ListaFAE();
-     //   this.listaCandidaturas = new ListaCandidaturas();
+        this.applicationsList = new ApplicationsList();
 
     }
 
