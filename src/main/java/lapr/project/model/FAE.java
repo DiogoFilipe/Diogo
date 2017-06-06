@@ -14,6 +14,16 @@ import java.io.Serializable;
 public class FAE extends User implements Serializable{
     
     /**
+     * utilizador
+     */
+    private User u;
+    
+    /**
+     * experiência profissional em organização de eventos
+     */
+    private int professionalexperience;
+    
+    /**
      * constructor
      * @param name is the name of the FAE
      * @param username is the FAE's name in the platform
@@ -22,6 +32,16 @@ public class FAE extends User implements Serializable{
      */
     public FAE(String name,String username,String email,String password){
         super(name,username,email,password);
+    }
+    
+     /**
+     * Construtor
+     * @param u
+     * @param exp 
+     */
+    public FAE(User u, int exp) {
+        this.u = u;
+        this.professionalexperience=exp;
     }
 
     /**
@@ -60,5 +80,13 @@ public class FAE extends User implements Serializable{
     @Override
     public String toString() {
         return super.toString();
+    }
+    
+    /**
+     * Method that allows to obtain the username of a certain Fae
+     * @return 
+     */
+    public String getFaeUsername(){
+        return u.getUsername();
     }
 }

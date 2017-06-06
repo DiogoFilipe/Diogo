@@ -7,6 +7,16 @@ import lapr.project.utils.Date;
  * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class Event {
+   
+    /**
+     * Identification number of an event
+     */
+    private int eventID;
+    
+    /**
+     * Event id by default
+     */
+    private static final int EVENT_ID_DEFAULT=0;
     
       
     private String title;
@@ -21,7 +31,13 @@ public class Event {
     private FAEList faeList;
     private ApplicationsList applicationsList;
     private AssignmentsList assignmentsList;
-
+    
+    /**
+     * @return the eventoID
+     */
+    public int getEventID() {
+        return eventID;
+    }
 
 public Event(String title, String description, String local, Date beginDate, Date endDate, Date submissionBeginDate, Date submissionEndDate, int acceptanceRate,FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList) {
         this.title =  title;
