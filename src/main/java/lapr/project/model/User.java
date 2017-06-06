@@ -13,6 +13,13 @@ public class User implements Serializable{
     private String email;
     private String password;
     
+    /**
+     * constructor of the user
+     * @param name is the name of the user
+     * @param username is the user name in the platform
+     * @param email is the user's e-mail
+     * @param password is the user's password
+     */
     public User(String name,String username,String email,String password){
         this.name = name;
         this.username = username;
