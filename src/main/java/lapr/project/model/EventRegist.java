@@ -6,6 +6,7 @@ import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.FAE;
 import lapr.project.model.User;
+import lapr.project.utils.Date;
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
@@ -67,7 +68,7 @@ public class EventRegist implements Serializable{
     public List<Event> getEventosProntosParaSubmissao(){
         List<Event> ReadyEvents= new ArrayList<>();
         for (Event e : EventsList) {
-            if ((Data.dataAtual().diferenca(e.getDataInicial()))>=0 && (Data.dataAtual().diferenca(e.getDataFinal()))<=0 ) {
+            if ((Date.currentDate().difference(e.getStartDate()))>=0 && (Date.currentDate().difference(e.getStartDate()))<=0 ) {
                 ReadyEvents.add(e);
             }
         }

@@ -22,30 +22,24 @@ public class Event {
     private String title;
     private String description;
     private String local;
-    private Date beginDate;
+    private Date startDate;
     private Date endDate;
-    private Date submissionBeginDate;
+    private Date submissionStartDate;
     private Date submissionEndDate;
     private int acceptanceRate;
     
     private FAEList faeList;
     private ApplicationsList applicationsList;
     private AssignmentsList assignmentsList;
-    
-    /**
-     * @return the eventoID
-     */
-    public int getEventID() {
-        return eventID;
-    }
+      
 
-public Event(String title, String description, String local, Date beginDate, Date endDate, Date submissionBeginDate, Date submissionEndDate, int acceptanceRate,FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList) {
+public Event(String title, String description, String local, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate,FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList) {
         this.title =  title;
         this.description = description;
         this.local = local;
-        this.beginDate = beginDate;
+        this.startDate = startDate;
         this.endDate = endDate;
-        this.submissionBeginDate = submissionBeginDate;
+        this.submissionStartDate = submissionStartDate;
         this.submissionEndDate = submissionEndDate;
         
         this.assignmentsList = new AssignmentsList();
@@ -53,6 +47,21 @@ public Event(String title, String description, String local, Date beginDate, Dat
         this.applicationsList = new ApplicationsList();
 
     }
+
+ /**
+     * @return the eventoID
+     */
+    public int getEventID() {
+        return eventID;
+    }
+    
+    /**
+     * @return the StartDate
+     */
+    public Date getStartDate() {
+        return startDate;
+    }
+
 
     /**
      * Returns the Event's title
@@ -152,7 +161,7 @@ public Event(String title, String description, String local, Date beginDate, Dat
     public String toString() {
         
         String text = String.format("#EVENT# %nTitle: %s %nDescription: %s %nLocal de realização: %s %nBegins: %d %nEnds: %s %nApplication Submission opens: %d %nApplication Submission closes: %d",
-                title, description, local, beginDate, endDate, submissionBeginDate, submissionEndDate,acceptanceRate );
+                title, description, local, startDate, endDate, submissionStartDate, submissionEndDate,acceptanceRate );
                 
         return text;
     }
