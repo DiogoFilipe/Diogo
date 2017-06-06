@@ -56,6 +56,18 @@ public class User implements Serializable{
         return String.format("Name: %s %nUsername: %s %nEmail: %s%n", name, username, email);
     }
     
+    /**
+     * Verifies if the username equals 
+     * @param username
+     * @return 
+     */
+     public boolean hasTheUsername(String username){
+        if(username == null){
+            return false;
+        }
+        return (this.getUsername()).equalsIgnoreCase(username);
+    }
+    
     //Password related methods
     
 }
