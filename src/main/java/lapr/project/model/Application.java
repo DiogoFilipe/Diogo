@@ -22,8 +22,12 @@ public class Application implements Importable<Application>, Exportable {
 	private static final String ROOT_ELEMENT_NAME = "application";
 	private static final String DESCRIPTION_ELEMENT_NAME = "description";
 	private static final String KEYWORDS_ELEMENT_NAME = "keywords";
+        
 	private final List<Keyword> keywordList = new ArrayList<>();
 	private String description = "";
+        private final int faeKnowledge;
+        private final int adequacy;
+        private final int invitationAdequacy;
 
 	/**
 	 * Constructor for Application
@@ -31,26 +35,54 @@ public class Application implements Importable<Application>, Exportable {
 	 * @param description CandidaturaDescription
 	 * @param keywordList Keyword List
 	 */
-	public Application(String description, List<Keyword> keywordList) {
+	public Application(String description, List<Keyword> keywordList, int faeKnowledge,int adequacy,int invitationAdequacy) {
 		this.description = description;
 		this.keywordList.addAll(keywordList);
+                this.faeKnowledge = faeKnowledge;
+                this.adequacy = adequacy;
+                this.invitationAdequacy=invitationAdequacy;
+                
 	}
 
-	/**
-	 * Default public constructor.
-	 */
-	public Application() {
-
-	}
+//	/**
+//	 * Default public constructor.
+//	 */
+//	public Application() {
+//
+//	}
 
 	/**
 	 * Obtain Candidatura's description.
 	 *
 	 * @return Candidatura description
 	 */
-	private String getDescription() {
+	public String getDescription() {
 		return description;
 	}
+        
+       /**
+        * Returns the fae´s avaliation about the application adequacy
+        * @return fae´s opinion,from 0 to 5, about the application adequacy
+        */
+        public int getAdequacy(){
+        return adequacy;
+        }
+        
+        /**
+         * Returns the fae´s self avaliation over his knowledge about the Event theme
+         * @return fae´s self avaliation over his knowledge about the Event theme
+         */
+        public int getFaeKnowledge(){
+        return faeKnowledge;}
+        
+        /**
+         * Returns the maximum of applications that coul be accepted for a position
+         * @return the number of applications that could be accepted for that position
+         */
+        public int getInvitationAdequacy(){
+        return invitationAdequacy;}
+        
+       
 
 	/**
 	 * Add a keyword to Candidatura.
