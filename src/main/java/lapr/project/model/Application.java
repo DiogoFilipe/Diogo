@@ -72,7 +72,7 @@ public class Application implements Importable<Application>, Exportable {
          * Returns the fae´s self avaliation over his knowledge about the Event theme
          * @return fae´s self avaliation over his knowledge about the Event theme
          */
-        public int getFaeKnowledge(){
+        public int getFAEKnowledge(){
         return faeKnowledge;}
         
         /**
@@ -204,4 +204,17 @@ public class Application implements Importable<Application>, Exportable {
 		return getKeywordList().equals(that.getKeywordList());
 
 	}
+        
+        /**
+         * Returns the overall recommendation of the application
+         * @return overall recommendation
+         */
+        public int overallRecommendation(){
+           int a = this.getAdequacy();
+           int k = this.getFAEKnowledge();
+           int i = this.getInvitationAdequacy();
+           int overallRecommendation = (a+k+i)/3;
+        
+        return overallRecommendation;
+        }
 }
