@@ -20,7 +20,7 @@ public class Event {
     
     private FAEList faeList;
     private ApplicationsList applicationsList;
-    private AssignmentsList assignmentList;
+    private AssignmentsList assignmentsList;
 
 
 public Event(String title, String description, String local, Date beginDate, Date endDate, Date submissionBeginDate, Date submissionEndDate, int acceptanceRate,FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList) {
@@ -140,4 +140,4 @@ public Event(String title, String description, String local, Date beginDate, Dat
                 
         return text;
     }
-}
+    }
