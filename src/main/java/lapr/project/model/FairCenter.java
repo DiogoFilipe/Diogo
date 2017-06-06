@@ -19,7 +19,7 @@ public class FairCenter implements Serializable{
     /**
      * Users regist
      */
-    private UsersRegist usersRegist;
+    private UserRegist usersRegist;
     
     /**
      * Constructor
@@ -27,13 +27,13 @@ public class FairCenter implements Serializable{
     public FairCenter(){
         algorithmsRegist=new AlgorithmsRegist();
         eventRegist= new EventRegist();
-        usersRegist=new UsersRegist(); 
+        usersRegist=new UserRegist(); 
     }
     
         /**
      * @return the Users regist
      */
-    public UsersRegist getUsersRegist() {
+    public UserRegist getUsersRegist() {
         return usersRegist;
     }
 
