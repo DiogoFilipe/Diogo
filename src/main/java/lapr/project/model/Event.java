@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import lapr.project.utils.Date;
+
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
@@ -10,10 +12,10 @@ public class Event {
     private String title;
     private String description;
     private String local;
-  //  private Date beginDate;
-  //  private Date endDate;
-  //  private Date submissionBeginDate;
-  //  private Date submissionEndDate;
+    private Date beginDate;
+    private Date endDate;
+    private Date submissionBeginDate;
+    private Date submissionEndDate;
     private int acceptanceRate;
     
     private FAEList faeList;
@@ -25,10 +27,10 @@ public Event(String title, String description, String local, Date beginDate, Dat
         this.title =  title;
         this.description = description;
         this.local = local;
-//        this.beginDate = beginDate;
-//        this.endDate = endDate;
-//        this.submissionBeginDate = submissionBeginDate;
-//        this.submissionEndDate = submissionEndDate;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
+        this.submissionBeginDate = submissionBeginDate;
+        this.submissionEndDate = submissionEndDate;
         
         this.assignmentsList = new AssignmentsList();
         this.faeList = new FAEList();
