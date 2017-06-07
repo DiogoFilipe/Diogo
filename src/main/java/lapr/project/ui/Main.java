@@ -24,9 +24,7 @@ class Main {
 		//System.out.println(calculatorExample.sum(3, 5));
                 FairCenter fc;
             LogInWindow logInWindow = new LogInWindow();
-                logInWindow.setVisible(true);
-                
-                
+                logInWindow.setVisible(true);  
 	}
 
 }
