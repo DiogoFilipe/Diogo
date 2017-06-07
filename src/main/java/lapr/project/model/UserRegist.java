@@ -43,9 +43,10 @@ public class UserRegist {
      * @param user - user to be verified 
      * @return 
      */
-    public boolean validatesUser(User user){
-        return !userList.contains(user);
+    public boolean isUser(User user){
+        return userList.contains(user);
     }
+    
     
     /**
      * Returns the user of the username
