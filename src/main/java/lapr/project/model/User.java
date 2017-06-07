@@ -14,6 +14,24 @@ public class User implements Serializable{
     private String password;
     
     /**
+     * DEFAULT NAME
+     */
+    private static final String NAME_DEFAULT= "no name";
+    /**
+     * DEFAULT EMAIL
+     */
+    private static final String EMAIL_DEFAULT= "no email";
+    /**
+     * DEFAULT USERNAME
+     */
+    private static final String USERNAME_DEFAULT= "no username";
+    /**
+     * DEFAULT PASSWORD
+     */
+    private static final String PASSWORD_DEFAULT= "no password";
+    
+    
+    /**
      * constructor of the user
      * @param name is the name of the user
      * @param username is the user name in the platform
@@ -25,6 +43,12 @@ public class User implements Serializable{
         this.username = username;
         this.email = email;
         //this.password = password; - Password needs to be stored encrypted
+    }
+    public User(){
+         name=NAME_DEFAULT;
+        email=EMAIL_DEFAULT;
+        username=USERNAME_DEFAULT;
+        password=PASSWORD_DEFAULT;   
     }
 
     /**
