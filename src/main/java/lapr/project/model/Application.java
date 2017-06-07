@@ -20,14 +20,28 @@ import java.util.List;
  */
 public class Application implements Importable<Application>, Exportable {
 	private static final String ROOT_ELEMENT_NAME = "application";
-	private static final String DESCRIPTION_ELEMENT_NAME = "description";
+	private static final String DESCRIPTION_BY_OMISSION = "no description";
 	private static final String KEYWORDS_ELEMENT_NAME = "keywords";
+        private static final String COMPANYNAME_BY_OMISSION = "no company name";
+        private static final String ADDRESS_BY_OMISSION = "no address";
+        private static final String CONTACT_BY_OMISSION = "no contact";
+        private static final int FAEKNOWLEDGE_BY_OMISSION = 0;
+        private static final int ADEQUACY_BY_OMISSION = 0;
+        private static final int INVITATIONADEQUACY_BY_OMISSION = 0;
+        private static final int OVERALLRECOMMENDATION_BY_OMISSION = 0;
         
+        
+        
+        
+        private String companyName;
+        private String address;
+        private String contact;
 	private final List<Keyword> keywordList = new ArrayList<>();
 	private String description = "";
-        private final int faeKnowledge;
-        private final int adequacy;
-        private final int invitationAdequacy;
+        private int faeKnowledge;
+        private int adequacy;
+        private int invitationAdequacy;
+        private int overallRecommendation;
 
 	/**
 	 * Constructor for Application
@@ -35,14 +49,33 @@ public class Application implements Importable<Application>, Exportable {
 	 * @param description CandidaturaDescription
 	 * @param keywordList Keyword List
 	 */
-	public Application(String description, List<Keyword> keywordList, int faeKnowledge,int adequacy,int invitationAdequacy) {
+	public Application(String companyName,String address,String contact,String description, List<Keyword> keywordList, int faeKnowledge,int adequacy,int invitationAdequacy,int overallRecommendation) {
+            
+                this.companyName = companyName;
+                this.address = address;
+                this.contact = contact;
 		this.description = description;
 		this.keywordList.addAll(keywordList);
                 this.faeKnowledge = faeKnowledge;
                 this.adequacy = adequacy;
                 this.invitationAdequacy=invitationAdequacy;
+                this.overallRecommendation = overallRecommendation;
                 
 	}
+
+         public Application() {
+                this.companyName = COMPANYNAME_BY_OMISSION;
+                this.address = ADDRESS_BY_OMISSION;
+                this.contact = CONTACT_BY_OMISSION;
+		this.description = DESCRIPTION_BY_OMISSION;
+                this.faeKnowledge = FAEKNOWLEDGE_BY_OMISSION;
+                this.adequacy = ADEQUACY_BY_OMISSION;
+                this.invitationAdequacy=INVITATIONADEQUACY_BY_OMISSION;
+                this.overallRecommendation = OVERALLRECOMMENDATION_BY_OMISSION;
+         }
+        
+        
+        
 
 //	/**
 //	 * Default public constructor.
@@ -51,6 +84,33 @@ public class Application implements Importable<Application>, Exportable {
 //
 //	}
 
+        /**
+         * Returns the company name
+         * @return companies name
+         */
+        public String getCompanyName() {
+           return companyName;
+        }
+
+  
+        /**
+         * Returns the representative´s address
+         * @return representative´s address
+         */
+        public String getAddress() {
+           return address;
+        }
+
+        /**
+         * Returns the representative´s contact
+         * @return representatives´s contact
+         */
+        public String getContact() {
+           return contact;
+        }
+
+        
+        
 	/**
 	 * Obtain Candidatura's description.
 	 *
@@ -69,21 +129,112 @@ public class Application implements Importable<Application>, Exportable {
         }
         
         /**
-         * Returns the fae´s self avaliation over his knowledge about the Event theme
-         * @return fae´s self avaliation over his knowledge about the Event theme
+         * Returns the fae´s self avaliation over his knowledge about the application´s theme
+         * @return Fae´s self avaliation over his knowledge about the application´s theme
          */
         public int getFAEKnowledge(){
         return faeKnowledge;}
         
         /**
-         * Returns the maximum of applications that coul be accepted for a position
-         * @return the number of applications that could be accepted for that position
+         * Returns the application´s invitation adequacy
+         * @return The application´s invitation adequacy
          */
         public int getInvitationAdequacy(){
         return invitationAdequacy;}
-        
-       
 
+        /**
+         * Returns the fae Knowledge over the the application´s theme
+         * @return The fae Knowledge over the the application´s theme
+         */
+        public int getFaeKnowledge() {
+        return faeKnowledge;
+        }
+
+        /**
+         * Returns tbe overall recommendation of the application
+         * @return overall recommendation of the application
+         */
+        public int getOverallRecommendation() {
+        return overallRecommendation;
+        }
+
+        /**
+         * Defines the fae´s knowledge over the application theme
+         * @param faeKnowledge defined
+         */
+        public void setFaeKnowledge(int faeKnowledge) {
+        this.faeKnowledge = faeKnowledge;
+        }
+
+        /**
+         * Defines the application´s overall recommendation
+         * @param overallRecommendation defined
+         */
+        public void setOverallRecommendation(int overallRecommendation) {
+         this.overallRecommendation = overallRecommendation;
+        }
+        
+        
+
+        /**
+         * Defines the application´s companyName
+         * @param companyName defined
+         */
+        public void setCompanyName(String companyName) {
+          this.companyName = companyName;
+        }
+
+        /**
+         * Defines the company´s address
+         * @param address defined
+         */
+        public void setAddress(String address) {
+          this.address = address;
+        }
+
+        /**
+         * Defines the representative´s contact
+         * @param contact defined
+         */
+        public void setContact(String contact) {
+          this.contact = contact;
+        }
+
+        /**
+         * Defines the application´s description
+         * @param description defined
+         */
+        public void setDescription(String description) {
+          this.description = description;
+        }
+        
+        /**
+         * Defines the faeKnowledge
+         * @param faeKnowledge defined
+         */
+        public void setFAEKnowledge(int faeKnowledge){
+          this.faeKnowledge = faeKnowledge;
+        }
+
+        /**
+         * Defines the adequacy of the application
+         * @param adequacy defined
+         */
+        public void setAdequacy(int adequacy) {
+          this.adequacy = adequacy;
+        }
+
+        /**
+         * Defines the invitationAdequacy of the application
+         * @param invitationAdequacy defined
+         */
+        public void setInvitationAdequacy(int invitationAdequacy) {
+          this.invitationAdequacy = invitationAdequacy;
+        }
+        
+        
+
+        
 	/**
 	 * Add a keyword to Candidatura.
 	 *
@@ -119,7 +270,7 @@ public class Application implements Importable<Application>, Exportable {
 		Element elementCandidatura = document.createElement(ROOT_ELEMENT_NAME);
 
 		//Create a sub-element
-		Element elementDescription = document.createElement(DESCRIPTION_ELEMENT_NAME);
+		Element elementDescription = document.createElement(DESCRIPTION_BY_OMISSION);
 
 		//Set the sub-element value
 		elementDescription.setTextContent(getDescription());
@@ -205,16 +356,4 @@ public class Application implements Importable<Application>, Exportable {
 
 	}
         
-        /**
-         * Returns the overall recommendation of the application
-         * @return overall recommendation
-         */
-        public int overallRecommendation(){
-           int a = this.getAdequacy();
-           int k = this.getFAEKnowledge();
-           int i = this.getInvitationAdequacy();
-           int overallRecommendation = (a+k+i)/3;
-        
-        return overallRecommendation;
-        }
-}
+       }
