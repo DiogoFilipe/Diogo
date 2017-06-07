@@ -1,6 +1,7 @@
 package lapr.project.ui;
 
 import lapr.project.model.CalculatorExample;
+import lapr.project.model.FairCenter;
 
 /**
  * @author Nuno Bettencourt <nmb@isep.ipp.pt> on 24/05/16.
@@ -19,8 +20,13 @@ class Main {
 	 */
 	public static void main(String[] args) {
 
-		CalculatorExample calculatorExample = new CalculatorExample();
-		System.out.println(calculatorExample.sum(3, 5));
+		//CalculatorExample calculatorExample = new CalculatorExample();
+		//System.out.println(calculatorExample.sum(3, 5));
+                FairCenter fc;
+            LogInWindow logInWindow = new LogInWindow();
+                logInWindow.setVisible(true);
+                
+                
 	}
 
 }
