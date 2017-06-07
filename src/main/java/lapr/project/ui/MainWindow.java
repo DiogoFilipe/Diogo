@@ -7,6 +7,7 @@ package lapr.project.ui;
 
 import lapr.project.model.FairCenter;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
  *
@@ -98,6 +99,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton4.setText("Review Application");
 
         jButton5.setText("Submit Application");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Register User");
 
@@ -296,6 +302,12 @@ public class MainWindow extends javax.swing.JFrame {
         defineFAEUI.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        SubmitApplicationMainUI submitApplicationMain = new SubmitApplicationMainUI();
+        submitApplicationMain.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
