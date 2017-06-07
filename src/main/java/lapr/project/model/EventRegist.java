@@ -15,13 +15,13 @@ public class EventRegist implements Serializable{
     /**
      * Event list
      */
-    private final List<Event> EventsList;
+    private final List<Event> eventsList;
     
     /**
      * Constructor
      */
     public EventRegist(){
-        EventsList=new ArrayList<>();
+        eventsList=new ArrayList<>();
     }
     
     /**
@@ -32,10 +32,10 @@ public class EventRegist implements Serializable{
     */
     public List<Event> getFAEEventsRegist (FAE fae) {
         List<Event> FaeList = new ArrayList<>();
-        for (int i = 0; i < EventsList.size(); i++) {
-            for (int j = 0; j < EventsList.get(i).getFAEList().size(); j++) {
-                if (EventsList.get(i).getFAEList().get(j).getFaeUsername().equals(fae.getFaeUsername())) {
-                    FaeList.add(EventsList.get(i));
+        for (int i = 0; i < eventsList.size(); i++) {
+            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
+                if (eventsList.get(i).getFAEList().get(j).getFaeUsername().equals(fae.getFaeUsername())) {
+                    FaeList.add(eventsList.get(i));
                 }
             }
 
@@ -50,10 +50,10 @@ public class EventRegist implements Serializable{
      */
     public List<Event> getFAEEventsRegist (User user) {
         List<Event> FaeList = new ArrayList<>();
-        for (int i = 0; i < EventsList.size(); i++) {
-            for (int j = 0; j < EventsList.get(i).getFAEList().size(); j++) {
-                if (EventsList.get(i).getFAEList().get(j).getFaeUsername().equals(user.getUsername())) {
-                    FaeList.add(EventsList.get(i));
+        for (int i = 0; i < eventsList.size(); i++) {
+            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
+                if (eventsList.get(i).getFAEList().get(j).getFaeUsername().equals(user.getUsername())) {
+                    FaeList.add(eventsList.get(i));
                 }
             }
 
@@ -65,9 +65,9 @@ public class EventRegist implements Serializable{
      * Lets get the Events List ready for submission
      * @return Events List
      */
-    public List<Event> getEventosProntosParaSubmissao(){
+    public List<Event> getEventsReadyForSubmission(){
         List<Event> ReadyEvents= new ArrayList<>();
-        for (Event e : EventsList) {
+        for (Event e : eventsList) {
             if ((Date.currentDate().difference(e.getStartDate()))>=0 && (Date.currentDate().difference(e.getStartDate()))<=0 ) {
                 ReadyEvents.add(e);
             }
@@ -82,12 +82,12 @@ public class EventRegist implements Serializable{
      */
     public Event getEvent (int eventID){
         int pos=-1;
-        for (Event e : EventsList) {
+        for (Event e : eventsList) {
             if(e.getEventID()== eventID){
-                pos=EventsList.indexOf(e);
+                pos=eventsList.indexOf(e);
             }
         }
-    return EventsList.get(pos);
+    return eventsList.get(pos);
     }
     /**
      * Allows you to add an event to the regists
@@ -95,8 +95,8 @@ public class EventRegist implements Serializable{
      * @return boolean depending on the success of the operation
      */
     public boolean addEvent(Event event){
-        if (!EventsList.contains(event)) {
-            return EventsList.add(event);
+        if (!eventsList.contains(event)) {
+            return eventsList.add(event);
         }
         return false;
     }
@@ -105,8 +105,8 @@ public class EventRegist implements Serializable{
      * Gets the list of events
      * @return Events List
      */
-    public List<Event> getEvent() {
-        return EventsList;
+    public List<Event> getEventList() {
+        return eventsList;
     }
     
     /**
@@ -114,7 +114,7 @@ public class EventRegist implements Serializable{
      * @return int With the size of the event list
      */
     public int Size(){
-        return EventsList.size();
+        return eventsList.size();
     }
 
     /**
@@ -123,7 +123,7 @@ public class EventRegist implements Serializable{
      * @return event
      */
     public Event GetEvent(int i){
-        return EventsList.get(i);
+        return eventsList.get(i);
     }
 
     /**
@@ -132,7 +132,7 @@ public class EventRegist implements Serializable{
      * @return int With the position of the event
      */
     public int INDEXOF(Event event) {
-        return EventsList.indexOf(event);
+        return eventsList.indexOf(event);
     }
     
     /**
@@ -141,7 +141,7 @@ public class EventRegist implements Serializable{
      * @return boolean depending on the success of the operation
      */
     public boolean removeEvent(Event event){
-        return EventsList.remove(event);
+        return eventsList.remove(event);
     }
     
     /**
@@ -150,6 +150,6 @@ public class EventRegist implements Serializable{
      * @return true or false
      */
     public boolean CONTAINS(Event event){
-        return EventsList.contains(event);
+        return eventsList.contains(event);
     }
 }

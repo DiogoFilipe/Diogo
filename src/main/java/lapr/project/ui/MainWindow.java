@@ -6,6 +6,7 @@
 package lapr.project.ui;
 
 import lapr.project.model.FairCenter;
+import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 
 /**
  *
@@ -86,6 +87,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButton2.setText("Define FAE");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Assign Application");
 
@@ -284,6 +290,12 @@ public class MainWindow extends javax.swing.JFrame {
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         DefineFAEMainUI defineFAEUI = new DefineFAEMainUI();
+        defineFAEUI.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
