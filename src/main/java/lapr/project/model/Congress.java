@@ -134,7 +134,7 @@ public class Congress extends Event implements Serializable{
      */
     @Override
     public String getTitle() {
-        return getTitle(); 
+        return super.getTitle(); 
     }
 
     /**
