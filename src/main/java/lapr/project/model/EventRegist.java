@@ -34,7 +34,7 @@ public class EventRegist implements Serializable{
         List<Event> FaeList = new ArrayList<>();
         for (int i = 0; i < eventsList.size(); i++) {
             for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-                if (eventsList.get(i).getFAEList().get(j).getFaeUsername().equals(fae.getFaeUsername())) {
+                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(fae.getUsername())) {
                     FaeList.add(eventsList.get(i));
                 }
             }
@@ -52,7 +52,7 @@ public class EventRegist implements Serializable{
         List<Event> FaeList = new ArrayList<>();
         for (int i = 0; i < eventsList.size(); i++) {
             for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-                if (eventsList.get(i).getFAEList().get(j).getFaeUsername().equals(user.getUsername())) {
+                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(user.getUsername())) {
                     FaeList.add(eventsList.get(i));
                 }
             }

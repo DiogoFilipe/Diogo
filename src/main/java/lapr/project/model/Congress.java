@@ -6,6 +6,7 @@
 package lapr.project.model;
 
 import java.io.Serializable;
+import java.util.List;
 import lapr.project.utils.Date;
 
 /**
@@ -79,7 +80,7 @@ public class Congress extends Event implements Serializable{
  * @return the fae list
  */
     @Override
-    public FAEList getFAEList() {
+    public List<FAE> getFAEList() {
         return super.getFAEList(); 
     }
 

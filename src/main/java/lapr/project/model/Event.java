@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.util.List;
 import lapr.project.utils.Date;
 
 /**
@@ -18,6 +19,7 @@ public class Event {
      */
     private static final int EVENT_ID_DEFAULT = 0;
 
+    
     private String title;
     private String description;
     private String local;
@@ -27,7 +29,7 @@ public class Event {
     private Date submissionEndDate;
     private int acceptanceRate;
 
-    private FAEList faeList;
+    private FAEList FAEsList;
     private ApplicationsList applicationsList;
     private AssignmentsList assignmentsList;
     private OrganizersList organizersList;
@@ -40,8 +42,9 @@ public class Event {
         this.endDate = endDate;
         this.submissionStartDate = submissionStartDate;
         this.submissionEndDate = submissionEndDate;
+        
         this.assignmentsList = new AssignmentsList();
-        this.faeList = new FAEList();
+        this.FAEsList = new FAEList();
         this.applicationsList = new ApplicationsList();
         this.organizersList = organizersList;
     }
@@ -59,7 +62,8 @@ public class Event {
     public Date getStartDate() {
         return startDate;
     }
-
+    
+    
     /**
      * Returns the Event's title
      *
@@ -96,6 +100,7 @@ public class Event {
     public Date getEndDate() {
         return endDate;
      }
+
     /**
      * Returns the Event´s date for the beginning of the submission of
      * applications
@@ -105,22 +110,25 @@ public class Event {
     public Date getSubmissionStartDate() {
         return submissionStartDate;
     }
+
     /**
-     * Returns the Event´s date for the ending of the submission of applications
-     *
-     * @return Event´s date for the ending of the submission of applications
-     */
-    public Date getSubmissionEndDate() {
-        return submissionEndDate;
-    }
-    /**
-     * Returns the Event´s FAE list
+     * Returns the Event´s FAEs list
      *
      * @return Event´s faeList
      */
-    public FAEList getFAEList() {
-        return getFaeList();
+
+    public FAEList getFAEsRegist() {
+        return FAEsList;
     }
+    
+    /**
+     * Allows you to get the Faes list of an event
+     * @return Faes List
+     */
+    public List<FAE> getFAEList(){
+        return getFAEsRegist().getFAEList();
+    }
+
 
     /**
      * @return the applicationsList
@@ -143,13 +151,12 @@ public class Event {
     public void setAssignmentsList(AssignmentsList assignmentsList) {
         this.assignmentsList = assignmentsList;
     }
-
     /**
-     * change the FAEsList
-     * @param faeList the faeList to set
+     * change the FAEs List
+     * @param FAEsList 
      */
-    public void setFAEList(FAEList faeList) {
-        this.setFaeList(faeList);
+    public void setFAEList(FAEList FAEsList){
+        this.FAEsList = FAEsList;
     }
 /**
  * Change the applications list
@@ -158,6 +165,7 @@ public class Event {
     public void setApplicationsList(ApplicationsList applicationsList) {
         this.applicationsList = applicationsList;
     }
+    
 
     @Override
     public String toString() {
@@ -242,14 +250,7 @@ public class Event {
      * @return the faeList
      */
     public FAEList getFaeList() {
-        return faeList;
-    }
-
-    /**
-     * @param faeList the faeList to set
-     */
-    public void setFaeList(FAEList faeList) {
-        this.faeList = faeList;
+        return FAEsList;
     }
 
     /**
@@ -264,5 +265,13 @@ public class Event {
      */
     public void setOrganizersList(OrganizersList organizersList) {
         this.organizersList = organizersList;
+    }
+
+    /**
+     * 
+     * @return submission end date
+     */
+    public Date getSubmissionEndDate() {
+        return submissionEndDate;
     }
 }
