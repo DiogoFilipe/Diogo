@@ -35,6 +35,11 @@ public class OrganizersList implements Serializable {
         this.organizersList = organizersList;
     }
 
+    /**
+     * adds the organizer to the organizersList
+     * @param organizer the organizer that will be added to the list
+     * @return true if the organizers was add to the list
+     */
     public boolean addOrganizer(Organizer organizer){
         if(organizersList.contains(organizer)){
             return false;
@@ -42,10 +47,19 @@ public class OrganizersList implements Serializable {
         return organizersList.add(organizer);
     }
     
+    /**
+     * check if the list is empty
+     * @return true if the list is empty
+     */
     public boolean isEmpty() {
         return organizersList.isEmpty();
     }
     
+    /**
+     * check if the list contains the organizer
+     * @param organizer the organizer that will be checked
+     * @return true if the list contains the organizer
+     */
     public boolean containsOrganizer(Organizer organizer)
     {
         return organizersList.contains(organizer);
