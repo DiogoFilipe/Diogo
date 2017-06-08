@@ -17,6 +17,21 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -45,7 +60,7 @@
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -82,8 +97,34 @@
         <Component class="javax.swing.JList" name="jList1">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="24">
+                <StringItem index="0" value="adfasdfsdfasf"/>
+                <StringItem index="1" value="dsfsdf"/>
+                <StringItem index="2" value="asdfasdf"/>
+                <StringItem index="3" value="adfasdf"/>
+                <StringItem index="4" value="dfasdfadsfa"/>
+                <StringItem index="5" value="fasdfasdfasdf"/>
+                <StringItem index="6" value="asdfsadfsadfasdfasdfdfa"/>
+                <StringItem index="7" value="asdfasdf"/>
+                <StringItem index="8" value="fadsfsdf"/>
+                <StringItem index="9" value="asdfasdf"/>
+                <StringItem index="10" value="adfsfasdf"/>
+                <StringItem index="11" value="adfsasdf"/>
+                <StringItem index="12" value=" "/>
+                <StringItem index="13" value="adsfasafsdf"/>
+                <StringItem index="14" value="fasdfasdf"/>
+                <StringItem index="15" value="asfasdf"/>
+                <StringItem index="16" value="fadsfasdf"/>
+                <StringItem index="17" value="fasdfasdf"/>
+                <StringItem index="18" value="dfasdfa"/>
+                <StringItem index="19" value="afdsfasdf"/>
+                <StringItem index="20" value="asdfasdf"/>
+                <StringItem index="21" value="adsfasdfsaf"/>
+                <StringItem index="22" value="asdfasdf"/>
+                <StringItem index="23" value="asdfdsfasdf"/>
+              </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
       </SubComponents>

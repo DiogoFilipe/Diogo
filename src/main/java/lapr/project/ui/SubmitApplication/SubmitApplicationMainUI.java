@@ -30,6 +30,7 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
@@ -47,8 +48,25 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "adfasdfsdfasf", "dsfsdf", "asdfasdf", "adfasdf", "dfasdfadsfa", "fasdfasdfasdf", "asdfsadfsadfasdfasdfdfa", "asdfasdf", "fadsfsdf", "asdfasdf", "adfsfasdf", "adfsasdf", " ", "adsfasafsdf", "fasdfasdf", "asfasdf", "fadsfasdf", "fasdfasdf", "dfasdfa", "afdsfasdf", "asdfasdf", "adsfasdfsaf", "asdfasdf", "asdfdsfasdf" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jList1.setToolTipText("");
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -77,7 +95,7 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
                 .addComponent(jButton1)
@@ -155,6 +173,7 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList jList1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
