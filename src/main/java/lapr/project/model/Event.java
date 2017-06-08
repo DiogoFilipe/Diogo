@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.util.List;
 import lapr.project.utils.Date;
 
 /**
@@ -28,7 +29,7 @@ public class Event {
     private Date submissionEndDate;
     private int acceptanceRate;
     
-    private FAEList faeList;
+    private FAEList FAEsList;
     private ApplicationsList applicationsList;
     private AssignmentsList assignmentsList;
       
@@ -43,7 +44,7 @@ public Event(String title, String description, String local, Date startDate, Dat
         this.submissionEndDate = submissionEndDate;
         
         this.assignmentsList = new AssignmentsList();
-        this.faeList = new FAEList();
+        this.FAEsList = new FAEList();
         this.applicationsList = new ApplicationsList();
 
     }
@@ -119,13 +120,21 @@ public Event(String title, String description, String local, Date startDate, Dat
     //    return submissionEndingDate;
     //}
     
-     /**    
-     * Returns the Event´s FAE list
-     * @return Event´s faeList
+     /**
+     * @return the Faes List
      */
-    public FAEList getFAEList(){
-        return faeList;
+    public FAEList getFAEsRegist() {
+        return FAEsList;
     }
+    
+    /**
+     * Allows you to get the Faes list of an event
+     * @return Faes List
+     */
+    public List<FAE> getFAEList(){
+        return getFAEsRegist().getFAEList();
+    }
+
     
      /**DEVOLVE LISTA DE CANDIDATURAS
      * 
@@ -148,8 +157,8 @@ public Event(String title, String description, String local, Date startDate, Dat
         this.assignmentsList = assignmentsList;
     }
     
-    public void setFAEList(FAEList faeList){
-        this.faeList = faeList;
+    public void setFAEList(FAEList FAEsList){
+        this.FAEsList = FAEsList;
     }
     
     public void setApplicationsList(ApplicationsList applicationsList){
