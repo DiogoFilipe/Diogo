@@ -20,7 +20,7 @@ public class Event {
 
     private String title;
     private String description;
-    private String local;
+    private String place;
     private Date startDate;
     private Date endDate;
     private Date submissionStartDate;
@@ -35,7 +35,7 @@ public class Event {
     public Event(String title, String description, String local, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate, FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList, OrganizersList organizersList) {
         this.title = title;
         this.description = description;
-        this.local = local;
+        this.place = local;
         this.startDate = startDate;
         this.endDate = endDate;
         this.submissionStartDate = submissionStartDate;
@@ -84,7 +84,7 @@ public class Event {
      * @return Event´s local
      */
     public String getLocal() {
-        return local;
+        return place;
     }
 
     /**
@@ -170,7 +170,7 @@ public class Event {
     public String toString() {
 
         String text = String.format("#EVENT# %nTitle: %s %nDescription: %s %nLocal de realização: %s %nBegins: %d %nEnds: %s %nApplication Submission opens: %d %nApplication Submission closes: %d",
-                title, description, local, startDate, getEndDate(), getSubmissionStartDate(), getSubmissionEndDate(), getAcceptanceRate());
+                title, description, place, startDate, getEndDate(), getSubmissionStartDate(), getSubmissionEndDate(), getAcceptanceRate());
 
         return text;
     }
@@ -197,10 +197,10 @@ public class Event {
     }
 
     /**
-     * @param local the local to set
+     * @param place the local to set
      */
-    public void setLocal(String local) {
-        this.local = local;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     /**

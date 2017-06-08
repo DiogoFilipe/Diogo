@@ -299,6 +299,11 @@ public class Date implements Comparable<Date>,Serializable{
         return new Date(year, month, day);
     }
     
+    /**
+     * Returns the date in to string
+     * @param dat - date that comes as String
+     * @return the date as a Date object
+     */
     public static Date StringToDate(String dat) {
         String [] date = dat.trim().split("-");
         if (date.length != 3) {
