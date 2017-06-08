@@ -20,7 +20,7 @@ public class Event {
 
     private String title;
     private String description;
-    private String place;
+    private String local;
     private Date startDate;
     private Date endDate;
     private Date submissionStartDate;
@@ -35,7 +35,7 @@ public class Event {
     public Event(String title, String description, String local, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate, FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList, OrganizersList organizersList) {
         this.title = title;
         this.description = description;
-        this.place = local;
+        this.local = local;
         this.startDate = startDate;
         this.endDate = endDate;
         this.submissionStartDate = submissionStartDate;
@@ -84,42 +84,35 @@ public class Event {
      * @return Event´s local
      */
     public String getLocal() {
-        return place;
+        return local;
     }
 
-    /**
-     * Returns the Event´s beginning date
-     *
-     * @return Event´s beginning date
-     */
-    // public Date getBeginDate() {
-    //     return beginDate;
-    // }
+
     /**
      * Returns the Event´s ending date
      *
      * @return Event´s ending date
      */
-    //public Date getEndDate() {
-    //    return endDate;
-    // }
+    public Date getEndDate() {
+        return endDate;
+     }
     /**
      * Returns the Event´s date for the beginning of the submission of
      * applications
      *
      * @return Event´s date for the beginning of the submission of applications
      */
-    //public Date getSubmissionBeginningDate() {
-    //    return submissionBeginningDate;
-    //}
+    public Date getSubmissionStartDate() {
+        return submissionStartDate;
+    }
     /**
      * Returns the Event´s date for the ending of the submission of applications
      *
      * @return Event´s date for the ending of the submission of applications
      */
-    //public Date getSubmissionEndingDate() {
-    //    return submissionEndingDate;
-    //}
+    public Date getSubmissionEndDate() {
+        return submissionEndDate;
+    }
     /**
      * Returns the Event´s FAE list
      *
@@ -170,7 +163,7 @@ public class Event {
     public String toString() {
 
         String text = String.format("#EVENT# %nTitle: %s %nDescription: %s %nLocal de realização: %s %nBegins: %d %nEnds: %s %nApplication Submission opens: %d %nApplication Submission closes: %d",
-                title, description, place, startDate, getEndDate(), getSubmissionStartDate(), getSubmissionEndDate(), getAcceptanceRate());
+                title, description, local, startDate, getEndDate(), getSubmissionStartDate(), getSubmissionEndDate(), getAcceptanceRate());
 
         return text;
     }
@@ -197,10 +190,10 @@ public class Event {
     }
 
     /**
-     * @param place the local to set
+     * @param local to set
      */
-    public void setPlace(String place) {
-        this.place = place;
+    public void setLocal(String local) {
+        this.local = local;
     }
 
     /**
@@ -209,14 +202,7 @@ public class Event {
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
-
-    /**
-     * @return the endDate
-     */
-    public Date getEndDate() {
-        return endDate;
-    }
-
+    
     /**
      * @param endDate the endDate to set
      */
@@ -225,24 +211,10 @@ public class Event {
     }
 
     /**
-     * @return the submissionStartDate
-     */
-    public Date getSubmissionStartDate() {
-        return submissionStartDate;
-    }
-
-    /**
      * @param submissionStartDate the submissionStartDate to set
      */
     public void setSubmissionStartDate(Date submissionStartDate) {
         this.submissionStartDate = submissionStartDate;
-    }
-
-    /**
-     * @return the submissionEndDate
-     */
-    public Date getSubmissionEndDate() {
-        return submissionEndDate;
     }
 
     /**
