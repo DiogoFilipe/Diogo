@@ -38,11 +38,11 @@ public class FAEList {
      * @param fae - FAE to be added to the FAE List
      * @return The FAE List
      */
-    public boolean registFAE(FAE fae){
+    public boolean addFAE(FAE fae){
         if(FAEList.contains(fae)){
             return false;
         }
-        return this.FAEList.add(fae);
+        return FAEList.add(fae);
     }
     /**
      * Verefies if there is any FAE
@@ -51,5 +51,14 @@ public class FAEList {
      public boolean isEmpty() {
         return FAEList.isEmpty();
     }
+     
+    /**
+     * check if the list already contains the fae
+     * @param fae fae that will check if is on the list
+     * @return true if the fae already is on the list
+     */
+     public boolean containsFAE(FAE fae){
+         return FAEList.contains(fae);
+     }
     
 }

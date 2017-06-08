@@ -20,7 +20,7 @@ public class Date implements Comparable<Date>,Serializable{
      * Date's day
      */
     private int day;
-    
+       
     /**
      * Default year
      */
@@ -297,6 +297,20 @@ public class Date implements Comparable<Date>,Serializable{
         int month = today.get(Calendar.MONTH) + 1;    // janeiro é representado por 0.
         int day = today.get(Calendar.DAY_OF_MONTH);
         return new Date(year, month, day);
+    }
+    
+    public static Date StringToDate(String dat) {
+        String [] date = dat.trim().split("-");
+        if (date.length != 3) {
+            throw new IllegalArgumentException("Invalid Format");
+        }
+
+        int day = Integer.parseInt(date[0]);
+        int month = Integer.parseInt(date[1]);
+        int year = Integer.parseInt(date[2]);
+
+      Date newDate = new Date(day, month, year);
+       return newDate;
     }
 
     /**
