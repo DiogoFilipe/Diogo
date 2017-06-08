@@ -52,6 +52,11 @@ public class FAEList {
         return FAEList.isEmpty();
     }
      
+    /**
+     * check if the list already contains the fae
+     * @param fae fae that will check if is on the list
+     * @return true if the fae already is on the list
+     */
      public boolean containsFAE(FAE fae){
          return FAEList.contains(fae);
      }
