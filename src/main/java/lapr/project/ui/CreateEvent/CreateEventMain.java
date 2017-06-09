@@ -6,7 +6,6 @@
 package lapr.project.ui.CreateEvent;
 
 import lapr.project.model.Event;
-import lapr.project.model.EventRegist;
 import lapr.project.model.FairCenter;
 import lapr.project.ui.MainWindow;
 import lapr.project.utils.Date;
@@ -325,8 +324,8 @@ public class CreateEventMain extends javax.swing.JFrame {
     }//GEN-LAST:event_okbuttonActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-         String place = jTextField9.getText();
-           event.setPlace(place);
+         String local = jTextField9.getText();
+           event.setLocal(local);
     }//GEN-LAST:event_jTextField9ActionPerformed
 
 public void addTextFieldActionListener(){
