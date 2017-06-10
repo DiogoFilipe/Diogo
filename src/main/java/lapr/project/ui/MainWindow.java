@@ -10,6 +10,7 @@ import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
+import lapr.project.ui.ShowEvenAcceptanceRate.ShowEventAcceptanceRateMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
@@ -150,6 +151,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButton21.setText("Event acceptance rate");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         jButton22.setText("Global acceptance rate");
 
@@ -335,6 +341,12 @@ public class MainWindow extends javax.swing.JFrame {
         exportData.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        ShowEventAcceptanceRateMainUI acceptanceRate = new ShowEventAcceptanceRateMainUI();
+        acceptanceRate.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton21ActionPerformed
 
     /**
      * @param args the command line arguments
