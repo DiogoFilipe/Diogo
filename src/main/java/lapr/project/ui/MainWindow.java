@@ -8,6 +8,7 @@ package lapr.project.ui;
 import lapr.project.model.FairCenter;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
@@ -117,6 +118,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton12.setText("Change Workshop");
 
         jButton13.setText("Change/Remove Application");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("Create Stands");
 
@@ -311,6 +317,12 @@ public class MainWindow extends javax.swing.JFrame {
         submitApplicationMain.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        EditApplicationMainUI editApplication = new EditApplicationMainUI();
+        editApplication.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments
