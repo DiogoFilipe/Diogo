@@ -9,6 +9,7 @@ import lapr.project.model.FairCenter;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
+import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
@@ -131,6 +132,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton16.setText("List Applications");
 
         jButton17.setText("Export all data");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setText("Import all data from a file");
 
@@ -323,6 +329,12 @@ public class MainWindow extends javax.swing.JFrame {
         editApplication.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+       ExportAllDataMainUI exportData = new ExportAllDataMainUI();
+        exportData.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton17ActionPerformed
 
     /**
      * @param args the command line arguments
