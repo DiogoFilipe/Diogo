@@ -6,6 +6,7 @@
 package lapr.project.ui;
 
 import lapr.project.model.FairCenter;
+import lapr.project.ui.UserRegist.UserRegistMainWindow;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
@@ -110,6 +111,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButton6.setText("Register User");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Confirm User Registration");
 
@@ -347,6 +353,12 @@ public class MainWindow extends javax.swing.JFrame {
         acceptanceRate.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        UserRegistMainWindow userRegist = new UserRegistMainWindow();
+        userRegist.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
