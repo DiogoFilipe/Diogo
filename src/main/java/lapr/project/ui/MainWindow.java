@@ -11,6 +11,7 @@ import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
+import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.ShowEvenAcceptanceRate.ShowEventAcceptanceRateMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
@@ -137,6 +138,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton15.setText("Assign Stand to Application");
 
         jButton16.setText("List Applications");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setText("Export all data");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +299,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton15)
                     .addComponent(jButton28))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -359,6 +365,12 @@ public class MainWindow extends javax.swing.JFrame {
         userRegist.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow();
+        listApplications.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
      * @param args the command line arguments
