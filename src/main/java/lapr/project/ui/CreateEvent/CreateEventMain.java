@@ -41,28 +41,28 @@ public class CreateEventMain extends javax.swing.JFrame {
         TypeLabel = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         TitleLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TitleInputTextField = new javax.swing.JTextField();
         DescriptionLabel = new javax.swing.JLabel();
         StartDateLabel = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        StartDateInputTextField = new javax.swing.JTextField();
         EndDateLabel = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        EndDateInputTextField = new javax.swing.JTextField();
         StartSubDateLabel = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        StartSubDateInputTextField = new javax.swing.JTextField();
         EndSubDateLabel = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        EndSubDateInputTextField = new javax.swing.JTextField();
         OkButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
+        DescriptionInputTextField = new javax.swing.JTextField();
         PlaceLabel = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        PlaceInputTextField = new javax.swing.JTextField();
         DataFormatNoteLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        OrganizerList = new javax.swing.JList<>();
         AddOrganizerButton = new javax.swing.JButton();
         RemoveOrganizer = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        ChosenOrganizerList = new javax.swing.JList<>();
         OrganizerNoteLabel = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -89,9 +89,9 @@ public class CreateEventMain extends javax.swing.JFrame {
 
         TitleLabel.setText("Title");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TitleInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TitleInputTextFieldActionPerformed(evt);
             }
         });
 
@@ -99,33 +99,33 @@ public class CreateEventMain extends javax.swing.JFrame {
 
         StartDateLabel.setText("Start Date");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        StartDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                StartDateInputTextFieldActionPerformed(evt);
             }
         });
 
         EndDateLabel.setText("End Date");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        EndDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                EndDateInputTextFieldActionPerformed(evt);
             }
         });
 
         StartSubDateLabel.setText("Start Submission Date");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        StartSubDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                StartSubDateInputTextFieldActionPerformed(evt);
             }
         });
 
         EndSubDateLabel.setText("End Submission Date ");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        EndSubDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                EndSubDateInputTextFieldActionPerformed(evt);
             }
         });
 
@@ -143,29 +143,29 @@ public class CreateEventMain extends javax.swing.JFrame {
             }
         });
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        DescriptionInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                DescriptionInputTextFieldActionPerformed(evt);
             }
         });
 
         PlaceLabel.setText("Place");
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        PlaceInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                PlaceInputTextFieldActionPerformed(evt);
             }
         });
 
         DataFormatNoteLabel.setText("Insert all date's in the dd/mm/yyyy format.");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(OrganizerList);
 
         AddOrganizerButton.setText("Add ->");
 
         RemoveOrganizer.setText("<- Remove");
 
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(ChosenOrganizerList);
 
         OrganizerNoteLabel.setText("Select two or more organizers.");
 
@@ -194,13 +194,13 @@ public class CreateEventMain extends javax.swing.JFrame {
                                     .addComponent(StartDateLabel))
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(StartDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EndDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(StartSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EndSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PlaceInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DescriptionInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TitleInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(50, 50, 50)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,34 +233,34 @@ public class CreateEventMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TitleInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TitleLabel))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DescriptionInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(DescriptionLabel))
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PlaceInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(PlaceLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(StartDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(StartDateLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(EndDateLabel)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(EndDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(StartSubDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(StartSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(EndSubDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(EndSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(81, 81, 81)
                                 .addComponent(AddOrganizerButton)
@@ -297,9 +297,9 @@ public class CreateEventMain extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void EndSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndSubDateInputTextFieldActionPerformed
        
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_EndSubDateInputTextFieldActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         MainWindow mainWindow = new MainWindow(fc);
@@ -307,45 +307,45 @@ public class CreateEventMain extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        String title = jTextField1.getText();
+    private void TitleInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TitleInputTextFieldActionPerformed
+        String title = TitleInputTextField.getText();
         event.setTitle(title);
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TitleInputTextFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        String start = jTextField2.getText();
+    private void StartDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartDateInputTextFieldActionPerformed
+        String start = StartDateInputTextField.getText();
         Date startDate = Date.StringToDate(start);
         event.setStartDate(startDate);
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_StartDateInputTextFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        String end = jTextField3.getText();
+    private void EndDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateInputTextFieldActionPerformed
+        String end = EndDateInputTextField.getText();
         Date endDate = Date.StringToDate(end);
         event.setEndDate(endDate);
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_EndDateInputTextFieldActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        String description = jTextField8.getText();
+    private void DescriptionInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescriptionInputTextFieldActionPerformed
+        String description = DescriptionInputTextField.getText();
         event.setDescription(description);
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_DescriptionInputTextFieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        String submissionStart = jTextField4.getText();
+    private void StartSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartSubDateInputTextFieldActionPerformed
+        String submissionStart = StartSubDateInputTextField.getText();
         Date submissionStartDate = Date.StringToDate(submissionStart);
         event.setSubmissionStartDate(submissionStartDate);
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_StartSubDateInputTextFieldActionPerformed
 
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
        
     }//GEN-LAST:event_OkButtonActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-         String local = jTextField9.getText();
+    private void PlaceInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceInputTextFieldActionPerformed
+         String local = PlaceInputTextField.getText();
            event.setLocal(local);
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_PlaceInputTextFieldActionPerformed
 
 public void addTextFieldActionListener(){
-    jTextField8.addActionListener(new java.awt.event.ActionListener() {
+    DescriptionInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
             }
@@ -395,31 +395,31 @@ public void addTextFieldActionListener(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddOrganizerButton;
     private javax.swing.JButton BackButton;
+    private javax.swing.JList<String> ChosenOrganizerList;
     private javax.swing.JLabel DataFormatNoteLabel;
+    private javax.swing.JTextField DescriptionInputTextField;
     private javax.swing.JLabel DescriptionLabel;
+    private javax.swing.JTextField EndDateInputTextField;
     private javax.swing.JLabel EndDateLabel;
+    private javax.swing.JTextField EndSubDateInputTextField;
     private javax.swing.JLabel EndSubDateLabel;
     private javax.swing.JButton OkButton;
+    private javax.swing.JList<String> OrganizerList;
     private javax.swing.JLabel OrganizerNoteLabel;
+    private javax.swing.JTextField PlaceInputTextField;
     private javax.swing.JLabel PlaceLabel;
     private javax.swing.JButton RemoveOrganizer;
+    private javax.swing.JTextField StartDateInputTextField;
     private javax.swing.JLabel StartDateLabel;
+    private javax.swing.JTextField StartSubDateInputTextField;
     private javax.swing.JLabel StartSubDateLabel;
+    private javax.swing.JTextField TitleInputTextField;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JLabel TypeLabel;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
