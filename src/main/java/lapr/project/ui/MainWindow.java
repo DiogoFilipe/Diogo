@@ -13,6 +13,7 @@ import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.ShowEvenAcceptanceRate.ShowEventAcceptanceRateMainUI;
+import lapr.project.ui.ShowEventKeywords.ShowEventKeywordsWindow;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
@@ -154,6 +155,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton18.setText("Import all data from a file");
 
         jButton19.setText("Event Keywords");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButton20.setText("Event Stands Info");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
@@ -371,6 +377,12 @@ public class MainWindow extends javax.swing.JFrame {
         listApplications.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        ShowEventKeywordsWindow showKeywords = new ShowEventKeywordsWindow();
+        showKeywords.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton19ActionPerformed
 
     /**
      * @param args the command line arguments
