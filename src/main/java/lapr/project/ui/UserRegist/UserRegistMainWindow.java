@@ -6,7 +6,8 @@
 package lapr.project.ui.UserRegist;
 
 import lapr.project.model.FairCenter;
-import lapr.project.ui.MainWindow;
+import lapr.project.ui.LogInWindow;
+
 
 /**
  *
@@ -152,8 +153,8 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc);
-        mainWindow.setVisible(true);
+        LogInWindow logInWindow = new LogInWindow();
+        logInWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
