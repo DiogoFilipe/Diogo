@@ -6,6 +6,7 @@
 package lapr.project.ui;
 
 import lapr.project.model.FairCenter;
+import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
@@ -170,6 +171,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton22.setText("Global acceptance rate");
 
         jButton23.setText("Event acceptance rate is over 50%?");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setText("Compare 2 Events acceptance rate");
 
@@ -364,6 +370,12 @@ public class MainWindow extends javax.swing.JFrame {
         showKeywords.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        AcceptanceRateOver50 acceptanceRateOver50 = new AcceptanceRateOver50();
+        acceptanceRateOver50.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton23ActionPerformed
 
     /**
      * @param args the command line arguments
