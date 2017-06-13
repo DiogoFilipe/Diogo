@@ -10,6 +10,20 @@ import lapr.project.utils.Date;
 public class Event {
 
     /**
+     * @return the FAEsList
+     */
+    public FAEList getFAEsList() {
+        return FAEsList;
+    }
+
+    /**
+     * @param FAEsList the FAEsList to set
+     */
+    public void setFAEsList(FAEList FAEsList) {
+        this.FAEsList = FAEsList;
+    }
+
+    /**
      * Identification number of an event
      */
     private int eventID;
@@ -47,6 +61,13 @@ public class Event {
         this.FAEsList = new FAEList();
         this.applicationsList = new ApplicationsList();
         this.organizersList = organizersList;
+    }
+    
+    public Event(){
+        this.assignmentsList = new AssignmentsList();
+        this.FAEsList = new FAEList();
+        this.applicationsList = new ApplicationsList();
+        this.organizersList = new OrganizersList();
     }
 
     /**
@@ -118,7 +139,7 @@ public class Event {
      */
 
     public FAEList getFAEsRegist() {
-        return FAEsList;
+        return getFAEsList();
     }
     
     /**
@@ -156,7 +177,7 @@ public class Event {
      * @param FAEsList 
      */
     public void setFAEList(FAEList FAEsList){
-        this.FAEsList = FAEsList;
+        this.setFAEsList(FAEsList);
     }
 /**
  * Change the applications list
@@ -250,7 +271,7 @@ public class Event {
      * @return the faeList
      */
     public FAEList getFaeList() {
-        return FAEsList;
+        return getFAEsList();
     }
 
     /**
