@@ -10,6 +10,7 @@ import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.DifferenceTwoFAEDeviation.DifferenceTwoFAEDeviation;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
@@ -184,6 +185,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton26.setText("Mean deviation between FAEs average rating and global mean rating");
 
         jButton28.setText("Difference between two FAEs mean ratings");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         jButton27.setText("Dif between mean deviation/value  FAE avg rating");
 
@@ -376,6 +382,12 @@ public class MainWindow extends javax.swing.JFrame {
         acceptanceRateOver50.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+       DifferenceTwoFAEDeviation FAEDeviation = new DifferenceTwoFAEDeviation();
+       FAEDeviation.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton28ActionPerformed
 
     /**
      * @param args the command line arguments
