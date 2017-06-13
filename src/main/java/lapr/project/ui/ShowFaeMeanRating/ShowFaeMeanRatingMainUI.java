@@ -5,6 +5,8 @@
  */
 package lapr.project.ui.ShowFaeMeanRating;
 
+import lapr.project.ui.MainWindow;
+
 /**
  *
  * @author João Domingues
@@ -50,6 +52,11 @@ public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
         jButton1.setText("Confirm");
 
         jButton2.setText("Return");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("FAE Mean Rating:");
@@ -94,6 +101,12 @@ public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

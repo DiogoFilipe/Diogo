@@ -5,6 +5,10 @@
  */
 package lapr.project.ui.DecideApplication;
 
+import java.util.List;
+import lapr.project.model.Event;
+import lapr.project.ui.MainWindow;
+
 /**
  *
  * @author João Domingues
@@ -14,6 +18,7 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
     /**
      * Creates new form DecideApplicationMainUI
      */
+    List <Event> eventsList;
     public DecideApplicationMainUI() {
         initComponents();
     }
@@ -111,11 +116,15 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       SelectApplicationUI selectApplication = new SelectApplicationUI();
+       selectApplication.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       MainWindow mainWindow = new MainWindow();
+       mainWindow.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
