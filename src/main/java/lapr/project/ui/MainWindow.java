@@ -9,6 +9,7 @@ import lapr.project.model.FairCenter;
 import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 
 import lapr.project.ui.CreateEvent.CreateEventMain;
+import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 import lapr.project.ui.DifferenceTwoFAEDeviation.DifferenceTwoFAEDeviation;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
@@ -104,7 +105,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         jButton3.setText("Assign Application");
 
-        jButton4.setText("Review Application");
+        jButton4.setText("Decide Application");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Submit Application");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -388,6 +394,12 @@ public class MainWindow extends javax.swing.JFrame {
        FAEDeviation.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DecideApplicationMainUI decideApplication = new DecideApplicationMainUI();
+        decideApplication.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
