@@ -11,4 +11,8 @@ package lapr.project.model;
  */
 public interface EventState {
     
+    public enum State{
+        Created , FAESet , OpenForApplications , ClosedForApplications , AssignedApplications , ApplicationsBeingDecided , EventReady 
+    }
+    
 }
