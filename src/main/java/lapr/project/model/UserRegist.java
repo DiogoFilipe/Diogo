@@ -29,7 +29,7 @@ public class UserRegist {
     public boolean addUser(User user) {
       return userList.add(user);
     }
-
+    
     /**
      * Returns the user list
      * @return the user list
@@ -61,5 +61,5 @@ public class UserRegist {
         }
         return null;
     }
-        
+    
 }

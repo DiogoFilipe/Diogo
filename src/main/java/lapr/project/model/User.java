@@ -42,8 +42,10 @@ public class User implements Serializable{
         this.name = name;
         this.username = username;
         this.email = email;
-        //this.password = password; - Password needs to be stored encrypted
+        this.password = password;  //Password needs to be stored encrypted
     }
+    
+    
     public User(){
          name=NAME_DEFAULT;
         email=EMAIL_DEFAULT;

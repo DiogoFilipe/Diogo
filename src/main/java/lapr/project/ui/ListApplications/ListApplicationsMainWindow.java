@@ -5,6 +5,7 @@
  */
 package lapr.project.ui.ListApplications;
 
+import lapr.project.model.Event;
 import lapr.project.model.FairCenter;
 import lapr.project.ui.MainWindow;
 
@@ -15,6 +16,7 @@ import lapr.project.ui.MainWindow;
 public class ListApplicationsMainWindow extends javax.swing.JFrame {
     
     FairCenter fc;
+    
 
     /**
      * Creates new form ListApplicationsMainWindow
@@ -44,6 +46,15 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
 
         jLabel1.setText("Select one event of the list");
 
+        jList1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jList1AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane2.setViewportView(jList1);
 
         jLabel2.setText("List of applications of this event");
@@ -99,6 +110,10 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jList1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jList1AncestorAdded
+       
+    }//GEN-LAST:event_jList1AncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -138,7 +153,7 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<Event> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
