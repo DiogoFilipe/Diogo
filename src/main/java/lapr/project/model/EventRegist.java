@@ -28,63 +28,62 @@ public class EventRegist implements Serializable {
         eventsList = new ArrayList<>();
     }
 
-    /**
-     * Method that returns the event list of a given fae
-     *
-     * @param fae
-     * @return events list of fae
-     *
-     */
-    public List<Event> getFAEEventsRegist(FAE fae) {
-        List<Event> FaeList = new ArrayList<>();
-        for (int i = 0; i < eventsList.size(); i++) {
-            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(fae.getUsername())) {
-                    FaeList.add(eventsList.get(i));
-                }
-            }
-
-        }
-        return FaeList;
-    }
-
-    /**
-     * Method that returns the event list of a given fae, through a User object
-     * @param user
-     * @return events list of fae
-     */
-    public List<Event> getFAEEventsRegist(User user) {
-        List<Event> FaeList = new ArrayList<>();
-        for (int i = 0; i < eventsList.size(); i++) {
-            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(user.getUsername())) {
-                    FaeList.add(eventsList.get(i));
-                }
-            }
-
-        }
-        return FaeList;
-    }
-
-    /**
-     * Method that returns the event list of a given organizer
-     *
-     * @param o is the organizer
-     * @return events list of an organizer
-     */
-    public List<Event> getOrganizerEventsRegist(Organizer o) {
-        List<Event> OrganizersList = new ArrayList<>();
-        for (int i = 0; i < eventsList.size(); i++) {
-            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(o.getUsername())) {
-                    OrganizersList.add(eventsList.get(i));
-                }
-            }
-
-        }
-        return OrganizersList;
-    }
-
+//    /**
+//     * Method that returns the event list of a given organizer
+//     *
+//     * @param o is the organizer
+//     * @return events list of an organizer
+//     */
+//    public List<Event> getOrganizerEventsRegist(Organizer o) {
+//        List<Event> OrganizersList = new ArrayList<>();
+//        for (int i = 0; i < eventsList.size(); i++) {
+//            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
+//                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(o.getUsername())) {
+//                    OrganizersList.add(eventsList.get(i));
+//                }
+//            }
+//
+//        }
+//        return OrganizersList;
+//    }
+//    
+//    /**
+//     * Method that returns the event list of a given fae
+//     * @param fae
+//     * @return events list of fae
+//     * 
+//    */
+//    public List<Event> getFAEEventsRegist (FAE fae) {
+//        List<Event> fl = new ArrayList<>();
+//        for (int i = 0; i < eventsList.size(); i++) {
+//            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
+//                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(fae.getUsername())) {
+//                    fl.add(eventsList.get(i));
+//                }
+//            }
+//
+//        }
+//        return fl;    
+//    }
+//    
+//    /**
+//     * Method that returns the event list of a given fae, through a User object
+//     * @param user
+//     * @return events list of fae
+//     */
+//    public List<Event> getFAEEventsRegist (User user) {
+//        List<Event> fl = new ArrayList<>();
+//        for (int i = 0; i < eventsList.size(); i++) {
+//            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
+//                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(user.getUsername())) {
+//                    fl.add(eventsList.get(i));
+//                }
+//            }
+//
+//        }
+//        return fl;    
+//    } 
+    
     /**
      * Lets get the Events List ready for submission
      *
@@ -99,23 +98,7 @@ public class EventRegist implements Serializable {
         }
         return ReadyEvents;
     }
-
-    /**
-     * Lets you get an event through your id
-     *
-     * @param eventID
-     * @return Event corresponding to id
-     */
-    public Event getEvent(int eventID) {
-        int pos = -1;
-        for (Event e : eventsList) {
-            if (e.getEventID() == eventID) {
-                pos = eventsList.indexOf(e);
-            }
-        }
-        return eventsList.get(pos);
-    }
-
+    
     /**
      * Allows you to add an event to the regists
      *
@@ -186,4 +169,49 @@ public class EventRegist implements Serializable {
     public boolean CONTAINS(Event event) {
         return eventsList.contains(event);
     }
+    
+    /**
+     * Verifies if an Event with the title introduced as been already created
+     * @param title title introduced
+     * @return false if there is no Event with such title / true if there is an Event already created with the given title
+     */
+    public boolean validateEvent(String title) {
+        for (Event event : eventsList) {
+            if (event.getTitle().equalsIgnoreCase(title)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Sets the data of the new event
+     * @param e Event in the initial state
+     * @param title Event's title
+     * @param description Event's title
+     * @param place Event's place of occurrence 
+     * @param startDate Event's start date
+     * @param endDate Event's end date
+     * @param submissionStartDate Event's submission start date
+     * @param submissionEndDate Event's submission end date
+     */
+    public void setData(Event e, /*type,*/ String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate) {
+        /*type*/
+        e.setTitle(title);
+        e.setDescription(description);
+        e.setPlace(place);
+        e.setStartDate(startDate);
+        e.setEndDate(endDate);
+        e.setSubmissionStartDate(submissionStartDate);
+        e.setSubmissionEndDate(submissionEndDate);
+    }
+    
+    /**
+     * Adds the created Event to the list of Events
+     * @param e created Event
+     */
+    public void registerEvent(Event e) {
+        eventsList.add(e);
+    }
+    
 }
