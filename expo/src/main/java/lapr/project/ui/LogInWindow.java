@@ -1,25 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lapr.project.ui;
 
 import java.util.List;
+import lapr.project.controller.LogInController;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
 import lapr.project.model.UserRegist;
 import lapr.project.ui.UserRegist.UserRegistMainWindow;
+import lapr.project.utils.LogInException;
 
 /**
  *
- * @author Diogo
+ * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class LogInWindow extends javax.swing.JFrame {
 
     FairCenter fc;
+    LogInController controller;
 
     public LogInWindow() {
+        
         initComponents();
     }
 
@@ -172,9 +172,30 @@ public class LogInWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String username = jTextField1.getText();
+        String password = jPasswordField1.getText();
+        User user;
+        List <User> users;
+        users = controller.getUsers();
+
+        try{
+        user = controller.getUser(username);
+        
+            for(User u : users){
+              if(u.getUsername().equals(username)){
+                  if((controller.cipherPasswordDecript(u.getPassword(),controller.getShift(user))).equals(password)){
         MainWindow mainWindow = new MainWindow(fc);
         mainWindow.setVisible(true);
         dispose();
+                      
+                  }
+                      }
+            }}catch(LogInException e){
+                e.getMessage();
+            }
+        
+        
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
