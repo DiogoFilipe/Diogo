@@ -18,12 +18,12 @@ public class CreateEventMain extends javax.swing.JFrame {
 
     FairCenter fc;
     private Event event;
-      
+
     /**
      * Creates new form CreateEventMain
      */
     public CreateEventMain() {
-       
+
         initComponents();
     }
 
@@ -298,7 +298,7 @@ public class CreateEventMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void EndSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndSubDateInputTextFieldActionPerformed
-       
+
     }//GEN-LAST:event_EndSubDateInputTextFieldActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -336,16 +336,16 @@ public class CreateEventMain extends javax.swing.JFrame {
     }//GEN-LAST:event_StartSubDateInputTextFieldActionPerformed
 
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
-       
+
     }//GEN-LAST:event_OkButtonActionPerformed
 
     private void PlaceInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceInputTextFieldActionPerformed
-         String local = PlaceInputTextField.getText();
-           event.setLocal(local);
+        String place = PlaceInputTextField.getText();
+        event.setPlace(place);
     }//GEN-LAST:event_PlaceInputTextFieldActionPerformed
 
     /**
-     * 
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
