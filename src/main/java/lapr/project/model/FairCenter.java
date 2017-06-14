@@ -6,12 +6,12 @@ import java.io.Serializable;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class FairCenter implements Serializable{
-    
-     /**
-     * Algoritms regist
-     */
-    private AlgorithmsRegist algorithmsRegist;
+public class FairCenter implements Serializable {
+
+    ///**
+    // * Algoritms regist
+    // */
+    //private AlgorithmsRegist algorithmRegist;
     /**
      * Events regist
      */
@@ -19,30 +19,30 @@ public class FairCenter implements Serializable{
     /**
      * Users regist
      */
-    private UserRegist usersRegist;
-    
+    private UserRegist userRegist;
+
     /**
      * Constructor
      */
-    public FairCenter(){
-        algorithmsRegist=new AlgorithmsRegist();
-        eventRegist= new EventRegist();
-        usersRegist=new UserRegist(); 
-    }
-    
-        /**
-     * @return the Users regist
-     */
-    public UserRegist getUsersRegist() {
-        return usersRegist;
+    public FairCenter() {
+    //    algorithmRegist = new AlgorithmsRegist();
+        eventRegist = new EventRegist();
+        userRegist = new UserRegist();
     }
 
     /**
-     * @return the Algorithms regist
+     * @return the User regist
      */
-    public AlgorithmsRegist getAlgorithmsRegist() {
-        return algorithmsRegist;
+    public UserRegist getUserRegist() {
+        return userRegist;
     }
+
+    ///**
+    // * @return the Algorithms regist
+    // */
+    //public AlgorithmsRegist getAlgorithmsRegist() {
+    //    return algorithmRegist;
+    //}
 
     /**
      * @return the event regist
@@ -50,23 +50,23 @@ public class FairCenter implements Serializable{
     public EventRegist getEventRegist() {
         return eventRegist;
     }
-    
+
     /**
      * Allows you to add a new user to the user regist
-     * @param utilizador 
+     *
+     * @param user
      */
-    public void newUser(User user){
-        usersRegist.addUser(user);
+    public void newUser(User user) {
+        userRegist.addUser(user);
     }
 
     /**
      * Allows you to add a new event to the event regist
-     * @param evento 
+     *
+     * @param event
      */
-    public void newEvent(Event event){
+    public void newEvent(Event event) {
         eventRegist.addEvent(event);
     }
 
-
-    
 }
