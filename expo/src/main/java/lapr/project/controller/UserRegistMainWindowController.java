@@ -1,4 +1,3 @@
-
 package lapr.project.controller;
 
 import java.util.List;
@@ -188,8 +187,6 @@ public class UserRegistMainWindowController {
          clone [i]  = letters[i];
   
        }   
-         
-                   
          
          for (int j = 0; j < letters.length-(shift+1); j++) {
              
