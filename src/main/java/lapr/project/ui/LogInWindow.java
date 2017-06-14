@@ -6,10 +6,13 @@
 package lapr.project.ui;
 
 import java.util.List;
+import javax.swing.JOptionPane;
+import lapr.project.controller.LogInController;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
 import lapr.project.model.UserRegist;
 import lapr.project.ui.UserRegist.UserRegistMainWindow;
+import lapr.project.utils.LogInException;
 
 /**
  *
@@ -18,6 +21,7 @@ import lapr.project.ui.UserRegist.UserRegistMainWindow;
 public class LogInWindow extends javax.swing.JFrame {
 
     FairCenter fc;
+    LogInController controller;
 
     public LogInWindow() {
         initComponents();
@@ -33,6 +37,7 @@ public class LogInWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
+        jOptionPane1 = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -149,9 +154,33 @@ public class LogInWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc);
-        mainWindow.setVisible(true);
-        dispose();
+       String username = jTextField1.getText();
+        String password = jPasswordField1.getText();
+        List <User> users = controller.getUsers();
+        
+        try{
+        for (int i = 0; i < 16; i++) {
+          String ciphredPassword = controller.decipherPassword(password,i);  
+        
+            for (User u : users) {
+                if(u.getPassword().equals(ciphredPassword)){
+                 User user = controller.getUser(u.getUsername());
+                 String kw =controller.verifyEncryptionUserGetKeyword(user);
+                 int shift =controller.verifyEncryptionUserGetShift(user);
+                 String cipheredUsername = controller.cipherAttributes(username,shift, kw);
+                 
+                 if(u.getUsername().equals(cipheredUsername)){
+                      MainWindow mainWindow = new MainWindow(fc);
+                      mainWindow.setVisible(true);
+                      dispose();
+                  
+                 }
+                }      
+            } 
+        }
+        }catch(LogInException e)
+        {  JOptionPane.showMessageDialog(null,"Error:",e.getMessage(),jOptionPane1.PLAIN_MESSAGE);}
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -202,6 +231,7 @@ public class LogInWindow extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;

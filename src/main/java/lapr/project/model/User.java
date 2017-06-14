@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -12,6 +13,7 @@ public class User implements Serializable{
     private String username;
     private String email;
     private String password;
+    List <User> userList;
     
     /**
      * DEFAULT NAME
@@ -42,7 +44,7 @@ public class User implements Serializable{
         this.name = name;
         this.username = username;
         this.email = email;
-        this.password = password;  //Password needs to be stored encrypted
+        this.password = password;
     }
     
     
@@ -52,6 +54,12 @@ public class User implements Serializable{
         username=USERNAME_DEFAULT;
         password=PASSWORD_DEFAULT;   
     }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    
 
     /**
      * Returns the User's name
@@ -76,7 +84,24 @@ public class User implements Serializable{
     public String getEmail() {
         return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
        
+    
     @Override
     public String toString() {
         return String.format("Name: %s %nUsername: %s %nEmail: %s%n", name, username, email);
@@ -94,6 +119,85 @@ public class User implements Serializable{
         return (this.getUsername()).equalsIgnoreCase(username);
     }
     
-    //Password related methods
     
-}
+    /**
+     * verifys if username already exists
+     * @param username - username to verify if it exists
+     * @return 
+     */
+    public boolean verifyUsername(String username){
+    
+        for(User u : userList){
+         if(u.getUsername().equals(username))
+             return false;
+             }
+        return true;
+    }
+    
+    /**
+     * Verifys if the name only has letters
+     * @param name - name to be tested
+     * @return 
+     */
+    public boolean verifyName(String name){
+        char[] chars = name.toCharArray();
+
+    for (char c : chars) {
+        if(!Character.isLetter(c)) {
+            return false;
+        }
+    }
+    return true;
+    }
+    
+    public boolean verifyEmail(String email){
+        boolean arroba=false;
+        boolean ponto = false;
+        char[] chars = email.toCharArray();
+         for (char c : chars) {
+            if(c == '@'){
+            arroba = true; }
+            if(c == '.'){
+            ponto = true; }
+         }
+         if(arroba==true & ponto==true){
+         return true;
+         }else{
+         return false;
+         }
+    }
+    
+     /**
+     * Verifys the password 
+     * @param password - password to be verified
+     * @return 
+     */
+    public boolean verifyPassword(String password) {
+    boolean sinal=false;
+    boolean lowerCase=false;
+    boolean upperCase=false;
+    boolean number=false;
+    boolean verify=false;
+    
+    char [] ch = password.toCharArray();
+    for(char c : ch){
+    if(c==';'|| c==',' || c=='.' || c==':' || c=='-'){
+        sinal = true;
+    
+    }
+    if(Character.isLowerCase(c)){
+    lowerCase=true;}
+    
+    if(Character.isUpperCase(c)){
+    upperCase=true;}
+    
+    if(Character.isDigit(c)){
+    number = true;}
+    }
+    if(sinal==true & lowerCase==true & upperCase==true & number==true){
+    verify=true;}
+    return verify; 
+    }
+    }
+
+
