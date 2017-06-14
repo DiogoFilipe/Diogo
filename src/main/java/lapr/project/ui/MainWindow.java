@@ -6,14 +6,22 @@
 package lapr.project.ui;
 
 import lapr.project.model.FairCenter;
+import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 
 import lapr.project.ui.CreateEvent.CreateEventMain;
+import lapr.project.ui.CreateStand.CreateStandMainUI;
+import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
+import lapr.project.ui.DefineEventManager.DefineEventManagerMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.DifferenceTwoFAEDeviation.DifferenceTwoFAEDeviation;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
+import lapr.project.ui.ImportFile.ImportFileMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.ShowEvenAcceptanceRate.ShowEventAcceptanceRateMainUI;
 import lapr.project.ui.ShowEventKeywords.ShowEventKeywordsWindow;
+import lapr.project.ui.ShowFaeMeanRating.ShowFaeMeanRatingMainUI;
+import lapr.project.ui.ShowGlobalAcceptanceRate.ShowGlobalAcceptanceRateMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
@@ -102,7 +110,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         jButton3.setText("Assign Application");
 
-        jButton4.setText("Review Application");
+        jButton4.setText("Decide Application");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Submit Application");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +129,11 @@ public class MainWindow extends javax.swing.JFrame {
         jButton9.setText("Create Workshop");
 
         jButton11.setText("Define Event Manager");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("Change Workshop");
 
@@ -127,6 +145,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButton14.setText("Create Stands");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setText("Assign Stand to Application");
 
@@ -145,6 +168,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButton18.setText("Import all data from a file");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jButton19.setText("Event Keywords");
         jButton19.addActionListener(new java.awt.event.ActionListener() {
@@ -168,16 +196,36 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButton22.setText("Global acceptance rate");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         jButton23.setText("Event acceptance rate is over 50%?");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setText("Compare 2 Events acceptance rate");
 
         jButton25.setText("FAE mean rating");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         jButton26.setText("Mean deviation between FAEs average rating and global mean rating");
 
         jButton28.setText("Difference between two FAEs mean ratings");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         jButton27.setText("Dif between mean deviation/value  FAE avg rating");
 
@@ -364,6 +412,54 @@ public class MainWindow extends javax.swing.JFrame {
         showKeywords.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        AcceptanceRateOver50 acceptanceRateOver50 = new AcceptanceRateOver50();
+        acceptanceRateOver50.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+       DifferenceTwoFAEDeviation FAEDeviation = new DifferenceTwoFAEDeviation();
+       FAEDeviation.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DecideApplicationMainUI decideApplication = new DecideApplicationMainUI();
+        decideApplication.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        DefineEventManagerMainUI eventManager = new DefineEventManagerMainUI();
+        eventManager.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        CreateStandMainUI createStand = new CreateStandMainUI();
+        createStand.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        ImportFileMainUI importFile = new ImportFileMainUI();
+        importFile.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        ShowFaeMeanRatingMainUI faeMeanRating = new ShowFaeMeanRatingMainUI();
+        faeMeanRating.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        ShowGlobalAcceptanceRateMainUI globalAcceptanceRate = new ShowGlobalAcceptanceRateMainUI();
+        globalAcceptanceRate.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton22ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,23 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lapr.project.ui.DecideApplication;
+package lapr.project.ui.ShowFaeMeanRating;
 
-import java.util.List;
-import lapr.project.model.Event;
 import lapr.project.ui.MainWindow;
 
 /**
  *
  * @author João Domingues
  */
-public class DecideApplicationMainUI extends javax.swing.JFrame {
+public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form DecideApplicationMainUI
+     * Creates new form ShowFaeMeanRatingMainUI
      */
-    List <Event> eventsList;
-    public DecideApplicationMainUI() {
+    public ShowFaeMeanRatingMainUI() {
         initComponents();
     }
 
@@ -33,13 +30,11 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -52,26 +47,9 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jList2);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setText("  SELECT EVENT");
-
         jButton1.setText("Confirm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Return");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -80,51 +58,54 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel1.setText("FAE Mean Rating:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(37, 37, 37))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(119, 119, 119))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       SelectApplicationUI selectApplication = new SelectApplicationUI();
-       selectApplication.setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       MainWindow mainWindow = new MainWindow();
-       mainWindow.setVisible(true);
-       dispose();
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -144,20 +125,20 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DecideApplicationMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DecideApplicationMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DecideApplicationMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DecideApplicationMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DecideApplicationMainUI().setVisible(true);
+                new ShowFaeMeanRatingMainUI().setVisible(true);
             }
         });
     }
@@ -167,9 +148,7 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
