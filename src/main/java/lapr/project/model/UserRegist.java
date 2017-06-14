@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author João Domingues
+ * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class UserRegist {
     
@@ -29,13 +29,13 @@ public class UserRegist {
     public boolean addUser(User user) {
       return userList.add(user);
     }
-    
+
     /**
      * Returns the user list
      * @return the user list
      */
     public List<User> getUserList() {
-        return new ArrayList<>(this.userList);
+        return userList;
     }
     
     /**
@@ -61,5 +61,5 @@ public class UserRegist {
         }
         return null;
     }
-    
+        
 }
