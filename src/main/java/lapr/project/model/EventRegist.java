@@ -3,9 +3,6 @@ package lapr.project.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import lapr.project.model.Event;
-import lapr.project.model.FAE;
-import lapr.project.model.User;
 import lapr.project.utils.Date;
 
 /**
@@ -28,24 +25,20 @@ public class EventRegist implements Serializable {
         eventsList = new ArrayList<>();
     }
 
-//    /**
-//     * Method that returns the event list of a given organizer
-//     *
-//     * @param o is the organizer
-//     * @return events list of an organizer
-//     */
-//    public List<Event> getOrganizerEventsRegist(Organizer o) {
-//        List<Event> OrganizersList = new ArrayList<>();
-//        for (int i = 0; i < eventsList.size(); i++) {
-//            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-//                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(o.getUsername())) {
-//                    OrganizersList.add(eventsList.get(i));
-//                }
-//            }
-//
-//        }
-//        return OrganizersList;
-//    }
+    /**
+     * Method that returns the event list of a given organizer
+     *
+     * @param o is the organizer
+     * @param eventsList
+     * @return events list of an organizer
+     */
+    public List<Event> getOrganizerEventsRegist(Organizer o, List<Event> eventsList) {
+        List<Event> organizersList = new ArrayList<>();
+        eventsList.stream().filter((e) -> (e.getOrganizerList().containsOrganizer(o))).forEachOrdered((e) -> {
+            organizersList.add(e);
+        });
+        return organizersList;
+    }
 //    
 //    /**
 //     * Method that returns the event list of a given fae
@@ -83,13 +76,13 @@ public class EventRegist implements Serializable {
 //        }
 //        return fl;    
 //    } 
-    
-    /**
-     * Lets get the Events List ready for submission
-     *
-     * @return Events List
-     */
-    public List<Event> getEventsReadyForSubmission() {
+
+/**
+ * Lets get the Events List ready for submission
+ *
+ * @return Events List
+ */
+public List<Event> getEventsReadyForSubmission() {
         List<Event> ReadyEvents = new ArrayList<>();
         for (Event e : eventsList) {
             if ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0) {
@@ -153,7 +146,7 @@ public class EventRegist implements Serializable {
     /**
      * Remove an event from the list
      *
-     * @param evento
+     * @param event the event to remove
      * @return boolean depending on the success of the operation
      */
     public boolean removeEvent(Event event) {
@@ -163,7 +156,7 @@ public class EventRegist implements Serializable {
     /**
      * Checks whether the list contains a certain event
      *
-     * @param evento
+     * @param event to check if its on the list
      * @return true or false
      */
     public boolean CONTAINS(Event event) {
