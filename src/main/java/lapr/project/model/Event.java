@@ -9,201 +9,132 @@ import lapr.project.utils.Date;
  */
 public class Event {
 
-    /**
-     * @return the FAEsList
-     */
-    public FAEList getFAEsList() {
-        return FAEsList;
-    }
-
-    /**
-     * @param FAEsList the FAEsList to set
-     */
-    public void setFAEsList(FAEList FAEsList) {
-        this.FAEsList = FAEsList;
-    }
-
-    /**
-     * Identification number of an event
-     */
-    private int eventID;
-
-    /**
-     * Event id by default
-     */
-    private static final int EVENT_ID_DEFAULT = 0;
-
-    
     private String title;
     private String description;
-    private String local;
+    private String place;
     private Date startDate;
     private Date endDate;
     private Date submissionStartDate;
     private Date submissionEndDate;
     private int acceptanceRate;
 
-    private FAEList FAEsList;
-    private ApplicationsList applicationsList;
-    private AssignmentsList assignmentsList;
-    private OrganizersList organizersList;
+    private List<FAE> faeList;
+    private List<Application> applicationList;
+    private List<Assignment> assignmentList;
+    private List<Organizer> organizerList;
 
-    public Event(String title, String description, String local, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate, FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList, OrganizersList organizersList) {
+    public Event() {
+
+    }
+
+    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate, List<FAE> faeList, List<Application> applicationList, List<Assignment> assignmentList, List<Organizer> organizerList) {
         this.title = title;
         this.description = description;
-        this.local = local;
+        this.place = place;
         this.startDate = startDate;
         this.endDate = endDate;
         this.submissionStartDate = submissionStartDate;
         this.submissionEndDate = submissionEndDate;
-        
-        this.assignmentsList = new AssignmentsList();
-        this.FAEsList = new FAEList();
-        this.applicationsList = new ApplicationsList();
-        this.organizersList = organizersList;
+        this.assignmentList = assignmentList;
+        this.faeList = faeList;
+        this.applicationList = applicationList;
+        this.organizerList = organizerList;
     }
-    
-    public Event(){
-        this.assignmentsList = new AssignmentsList();
-        this.FAEsList = new FAEList();
-        this.applicationsList = new ApplicationsList();
-        this.organizersList = new OrganizersList();
-    }
-
-    /**
-     * @return the eventoID
-     */
-    public int getEventID() {
-        return eventID;
-    }
-
-    /**
-     * @return the StartDate
-     */
-    public Date getStartDate() {
-        return startDate;
-    }
-    
     
     /**
      * Returns the Event's title
-     *
-     * @return User's title
+     * @return Event's title
      */
     public String getTitle() {
         return title;
     }
-
+    
     /**
-     * Returns the Event´s description
-     *
-     * @return Event´s description
+     * Returns the Event's description
+     * @return Event's description
      */
     public String getDescription() {
         return description;
     }
+    
+    /**
+     * Returns the Event's place
+     * @return Event's place
+     */
+    public String getPlace() {
+        return place;
+    } 
 
     /**
-     * Returns the Event´s local
-     *
-     * @return Event´s local
+     * Returns the Event's start date
+     * @return Event's start date
      */
-    public String getLocal() {
-        return local;
+    public Date getStartDate() {
+        return startDate;
     }
 
-
     /**
-     * Returns the Event´s ending date
-     *
-     * @return Event´s ending date
+     * Returns the Event's end date
+     * @return Event's end date
      */
     public Date getEndDate() {
         return endDate;
-     }
+    }
 
     /**
-     * Returns the Event´s date for the beginning of the submission of
+     * Returns the Event's date for the beginning of the submission of
      * applications
-     *
-     * @return Event´s date for the beginning of the submission of applications
+     * @return Event's date for the beginning of the submission of applications
      */
     public Date getSubmissionStartDate() {
         return submissionStartDate;
     }
 
     /**
-     * Returns the Event´s FAEs list
-     *
-     * @return Event´s faeList
+     * Returns the Event's FAE list
+     * @return Event's FAE list
      */
-
-    public FAEList getFAEsRegist() {
-        return getFAEsList();
-    }
-    
-    /**
-     * Allows you to get the Faes list of an event
-     * @return Faes List
-     */
-    public List<FAE> getFAEList(){
-        return getFAEsRegist().getFAEList();
-    }
-
-
-    /**
-     * @return the applicationsList
-     */
-    public ApplicationsList getApplicationsList() {
-        return applicationsList;
+    public List<FAE> getFAEList() {
+        return faeList;
     }
 
     /**
-     * @return the assignmentsList
+     * Returns the Event's Application list
+     * @return Event's Application list
      */
-    public AssignmentsList getAssignmentsList() {
-        return assignmentsList;
+    public List<Application> getApplicationList() {
+        return applicationList;
     }
 
-   /**
-    * change the assignmentsList
-    * @param assignmentsList the assignmentsList to set 
-    */
-    public void setAssignmentsList(AssignmentsList assignmentsList) {
-        this.assignmentsList = assignmentsList;
-    }
     /**
-     * change the FAEs List
-     * @param FAEsList 
+     * Modify the Assignments List
+     * @param assignmentList the list of assignments to be set
      */
-    public void setFAEList(FAEList FAEsList){
-        this.setFAEsList(FAEsList);
+    public void setAssignmentList(List<Assignment> assignmentList) {
+        this.assignmentList = assignmentList;
     }
-/**
- * Change the applications list
- * @param applicationsList the applicationsList to set
- */
-    public void setApplicationsList(ApplicationsList applicationsList) {
-        this.applicationsList = applicationsList;
+
+    /**
+     * Modify the FAEs List
+     * @param faeList the list of FAEs to be set
+     */
+    public void setFAEList(List<FAE> faeList) {
+        this.faeList = faeList;
     }
-    
+
+    /**
+     * Modify the applications list
+     * @param applicationsList the applicationsList to set
+     */
+    public void setApplicationsList(List<Application> applicationList) {
+        this.applicationList = applicationList;
+    }
 
     @Override
     public String toString() {
-
-        String text = String.format("#EVENT# %nTitle: %s %nDescription: %s %nLocal de realização: %s %nBegins: %d %nEnds: %s %nApplication Submission opens: %d %nApplication Submission closes: %d",
-                title, description, local, startDate, getEndDate(), getSubmissionStartDate(), getSubmissionEndDate(), getAcceptanceRate());
-
-        return text;
+        return String.format("#EVENT# %nTitle: %s %nDescription: %s %nPlace of occurence: %s %nStart Date: %s %nEnd Date: %s %nApplication Submission Start Date: %s %nApplication Submission End Date: %s", title, description, place, getStartDate().toYearMonthDayString(), getEndDate().toYearMonthDayString(), getSubmissionStartDate().toYearMonthDayString(), getSubmissionEndDate().toYearMonthDayString());
     }
-
-    /**
-     * @param eventID the eventID to set
-     */
-    public void setEventID(int eventID) {
-        this.eventID = eventID;
-    }
-
+    
     /**
      * @param title the title to set
      */
@@ -221,8 +152,8 @@ public class Event {
     /**
      * @param local to set
      */
-    public void setLocal(String local) {
-        this.local = local;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     /**
@@ -231,7 +162,7 @@ public class Event {
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
-    
+
     /**
      * @param endDate the endDate to set
      */
@@ -270,29 +201,39 @@ public class Event {
     /**
      * @return the faeList
      */
-    public FAEList getFaeList() {
-        return getFAEsList();
+    public List<FAE> getFaeList() {
+        return faeList;
     }
 
     /**
      * @return the organizersList
      */
-    public OrganizersList getOrganizersList() {
-        return organizersList;
+    public List<Organizer> getOrganizersList() {
+        return organizerList;
     }
 
     /**
      * @param organizersList the organizersList to set
      */
-    public void setOrganizersList(OrganizersList organizersList) {
-        this.organizersList = organizersList;
+    public void setOrganizersList(List<Organizer> organizerList) {
+        this.organizerList = organizerList;
     }
 
     /**
-     * 
+     *
      * @return submission end date
      */
     public Date getSubmissionEndDate() {
         return submissionEndDate;
     }
+
+    public void addOrganizer(User u) {
+        Organizer o = new Organizer(u);
+        organizerList.add(o);
+    }
+    
+    public void setCreated() {
+        /*set Event's state to created*/
+    }
+
 }
