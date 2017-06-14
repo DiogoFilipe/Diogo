@@ -344,18 +344,6 @@ public class CreateEventMain extends javax.swing.JFrame {
            event.setLocal(local);
     }//GEN-LAST:event_PlaceInputTextFieldActionPerformed
 
-public void addTextFieldActionListener(){
-    DescriptionInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-}
-
-
- 
- 
- 
     /**
      * 
      * @param args the command line arguments
