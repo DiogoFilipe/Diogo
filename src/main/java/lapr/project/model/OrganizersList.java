@@ -8,6 +8,7 @@ package lapr.project.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JList;
 
 /**
  *
@@ -63,5 +64,11 @@ public class OrganizersList implements Serializable {
     public boolean containsOrganizer(Organizer organizer)
     {
         return organizersList.contains(organizer);
+    }
+
+    public void addOrganizersList(List<Organizer> organizerList) {
+        organizerList.forEach((Organizer) -> {
+            organizersList.add(Organizer);
+        });
     }
 }
