@@ -77,21 +77,19 @@ public class EventRegist implements Serializable {
 //        return fl;    
 //    } 
 
-/**
- * Lets get the Events List ready for submission
- *
- * @return Events List
- */
-public List<Event> getEventsReadyForSubmission() {
+    /**
+     * Lets get the Events List ready for submission
+     *
+     * @return Events List
+     */
+    public List<Event> getEventsReadyForSubmission() {
         List<Event> ReadyEvents = new ArrayList<>();
-        for (Event e : eventsList) {
-            if ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0) {
-                ReadyEvents.add(e);
-            }
-        }
+        eventsList.stream().filter((e) -> ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0)).forEachOrdered((e) -> {
+            ReadyEvents.add(e);
+        });
         return ReadyEvents;
     }
-    
+
     /**
      * Allows you to add an event to the regists
      *
@@ -162,27 +160,25 @@ public List<Event> getEventsReadyForSubmission() {
     public boolean CONTAINS(Event event) {
         return eventsList.contains(event);
     }
-    
+
     /**
      * Verifies if an Event with the title introduced as been already created
+     *
      * @param title title introduced
-     * @return false if there is no Event with such title / true if there is an Event already created with the given title
+     * @return false if there is no Event with such title / true if there is an
+     * Event already created with the given title
      */
     public boolean validateEvent(String title) {
-        for (Event event : eventsList) {
-            if (event.getTitle().equalsIgnoreCase(title)) {
-                return true;
-            }
-        }
-        return false;
+        return eventsList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
     }
-    
+
     /**
      * Sets the data of the new event
+     *
      * @param e Event in the initial state
      * @param title Event's title
      * @param description Event's title
-     * @param place Event's place of occurrence 
+     * @param place Event's place of occurrence
      * @param startDate Event's start date
      * @param endDate Event's end date
      * @param submissionStartDate Event's submission start date
@@ -198,13 +194,14 @@ public List<Event> getEventsReadyForSubmission() {
         e.setSubmissionStartDate(submissionStartDate);
         e.setSubmissionEndDate(submissionEndDate);
     }
-    
+
     /**
      * Adds the created Event to the list of Events
+     *
      * @param e created Event
      */
     public void registerEvent(Event e) {
         eventsList.add(e);
     }
-    
+
 }
