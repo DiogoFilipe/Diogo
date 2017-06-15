@@ -50,12 +50,12 @@ public class UserRegist {
     
     /**
      * Returns the user of the username
-     * @param username - username of the pretended user
+     * @param usernameOrEmail the what he puts on log in
      * @return the user of the username
      */
-    public User getUser(String username){
+    public User getUser(String usernameOrEmail){
         for(User user : this.userList){
-            if(user.hasTheUsername(username)){
+            if(user.hasTheUsername(usernameOrEmail)|| user.verifyEmail(usernameOrEmail)){
                 return user;
             }
         }
