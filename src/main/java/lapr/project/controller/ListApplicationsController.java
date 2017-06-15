@@ -32,6 +32,4 @@ public class ListApplicationsController {
     public List<Application> getApplicationsList(Event e){
         return e.getApplicationList().getApplicationList();
     }    
-    
-    
 }
