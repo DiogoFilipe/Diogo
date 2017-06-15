@@ -17,10 +17,11 @@ public class ListApplicationsController {
     /**
      *
      * @param o the organizer
+     * @param eventList the list of events
      * @return the list of events of this organizer
      */
-    public List<Event>  getOrganizerEventList(Organizer o){
-        return  eventRegist.getOrganizerEventsRegist(o);
+    public List<Event>  getOrganizerEventsList(Organizer o,List<Event> eventList){
+        return  eventRegist.getOrganizerEventsRegist(o,eventList);
     }
     
     /**
@@ -29,7 +30,7 @@ public class ListApplicationsController {
      * @return the list of applications
      */
     public List<Application> getApplicationsList(Event e){
-        return e.getApplicationList();
+        return e.getApplicationList().getApplicationList();
     }    
     
     
