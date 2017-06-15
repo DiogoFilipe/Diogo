@@ -120,7 +120,7 @@ public class Event implements EventState {
      * @return list of FAEs of the Event
      */
     public FAEList getFAEList() {
-        return faeList;
+        return getFaeList();
     }
 
     /**
@@ -198,8 +198,7 @@ public class Event implements EventState {
     /**
      * Modifies the Event's date for the start of the submission of applications
      *
-     * @param submissionEndDate Event's date for the start of the submission of
-     * applications
+     * @param submissionStartDate inicial date to submit applications
      */
     public void setSubmissionStartDate(Date submissionStartDate) {
         this.submissionStartDate = submissionStartDate;
@@ -230,7 +229,7 @@ public class Event implements EventState {
      * @param faeList Event's FAE list
      */
     public void setFAEList(FAEList faeList) {
-        this.faeList = faeList;
+        this.setFaeList(faeList);
     }
 
     /**
@@ -284,5 +283,19 @@ public class Event implements EventState {
     //public void setCreated() {
     //    /*set Event's state to created*/
     //}
+
+    /**
+     * @return the faeList
+     */
+    public FAEList getFaeList() {
+        return faeList;
+    }
+
+    /**
+     * @param faeList the faeList to set
+     */
+    public void setFaeList(FAEList faeList) {
+        this.faeList = faeList;
+    }
 
 }
