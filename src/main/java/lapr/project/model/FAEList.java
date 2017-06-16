@@ -60,5 +60,30 @@ public class FAEList {
      public boolean containsFAE(FAE fae){
          return FAEList.contains(fae);
      }
+     
+    /**
+     *
+     * @param u
+     * @return
+     */
+    public boolean FAEregist(User u) {
+        FAE f = new FAE(u);
+        if (valid(f)) {
+            return addFAE(f);
+        }
+        return false;
+    }
     
+    /**
+     *
+     * @param f
+     * @return
+     */
+    public boolean valid(FAE f) {
+        if (f.valid()) {
+            return !FAEList.contains(f);
+        } else {
+            return false;
+        }
+    }
 }

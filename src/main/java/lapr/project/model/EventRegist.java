@@ -80,15 +80,15 @@ public class EventRegist implements Serializable{
      * @param eventID
      * @return Event corresponding to id
      */
-    public Event getEvent (int eventID){
-        int pos=-1;
-        for (Event e : eventsList) {
-            if(e.getEventID()== eventID){
-                pos=eventsList.indexOf(e);
-            }
-        }
-    return eventsList.get(pos);
-    }
+//    public Event getEvent (int eventID){
+//        int pos=-1;
+//        for (Event e : eventsList) {
+//            if(e.getEventID()== eventID){
+//                pos=eventsList.indexOf(e);
+//            }
+//        }
+//    return eventsList.get(pos);
+//    }
     /**
      * Allows you to add an event to the regists
      * @param event

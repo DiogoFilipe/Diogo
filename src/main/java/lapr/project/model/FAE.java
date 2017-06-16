@@ -17,6 +17,7 @@ public class FAE extends User implements Serializable {
      * experiência profissional em organização de eventos
      */
     private int professionalExperience;
+    private User user;
 
     /**
      * constructor
@@ -30,6 +31,13 @@ public class FAE extends User implements Serializable {
     public FAE(String name, String username, String email, String password, int professionalExperience) {
         super(name, username, email, password);
         this.professionalExperience = professionalExperience;
+    }
+    /**
+     *
+     * @param u
+     */
+    public FAE(User u) {
+        user = u;
     }
 
     public FAE() {
@@ -70,5 +78,13 @@ public class FAE extends User implements Serializable {
     @Override
     public String toString() {
         return super.toString();
+    }
+    /**
+     *
+     * @return
+     */
+    public boolean valid() {
+        // Introduzir as validações aqui
+        return true;
     }
 }
