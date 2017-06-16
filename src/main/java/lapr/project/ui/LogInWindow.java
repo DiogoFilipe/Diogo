@@ -20,8 +20,8 @@ import lapr.project.utils.LogInException;
  */
 public class LogInWindow extends javax.swing.JFrame {
 
-    FairCenter fc;
-    LogInController controller;
+    private FairCenter fc;
+    private LogInController controller;
 
     public LogInWindow() {
         initComponents();
@@ -154,22 +154,24 @@ public class LogInWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String username = jTextField1.getText();
+        controller = new LogInController();
+        String id = jTextField1.getText();
         String password = jPasswordField1.getText();
         List <User> users = controller.getUsers();
         
         try{
+             for (User u : users) {
         for (int i = 0; i < 16; i++) {
-          String ciphredPassword = controller.decipherPassword(password,i);  
+          String ciphredPassword = controller.cipherPassword(password,i);  
         
-            for (User u : users) {
+           
                 if(u.getPassword().equals(ciphredPassword)){
                  User user = controller.getUser(u.getUsername());
                  String kw =controller.verifyEncryptionUserGetKeyword(user);
                  int shift =controller.verifyEncryptionUserGetShift(user);
-                 String cipheredUsername = controller.cipherAttributes(username,shift, kw);
+                 String cipheredID = controller.cipherAttributes(id,shift, kw);
                  
-                 if(u.getUsername().equals(cipheredUsername)){
+                 if(u.getUsername().equals(cipheredID) || u.getEmail().equals(cipheredID)){
                       MainWindow mainWindow = new MainWindow(fc);
                       mainWindow.setVisible(true);
                       dispose();
@@ -179,7 +181,7 @@ public class LogInWindow extends javax.swing.JFrame {
             } 
         }
         }catch(LogInException e)
-        {  JOptionPane.showMessageDialog(null,"Error:",e.getMessage(),jOptionPane1.PLAIN_MESSAGE);}
+        { jOptionPane1.showMessageDialog(null,"Error:",e.getMessage(),jOptionPane1.PLAIN_MESSAGE);}
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -15,10 +15,11 @@ import java.util.List;
 public class UserRegist {
     
     private List<User> userList;
+    private static UserRegist ur = new UserRegist();
     
    
     public UserRegist(){
-        userList = new ArrayList<>();
+        this.userList = new ArrayList<>();
     }
 
     /**
@@ -29,6 +30,13 @@ public class UserRegist {
     public boolean addUser(User user) {
       return userList.add(user);
     }
+    
+    public static boolean registUser(User user){
+        boolean check=false;
+     if(ur.addUser(user)){
+     check = true;}
+     return check;
+    }
 
     /**
      * Returns the user list
@@ -38,6 +46,12 @@ public class UserRegist {
         return userList;
     }
     
+    
+    
+    public static List<User> getUsers(){
+    List <User> users = ur.getUserList();
+    return users;
+    }
     /**
      * Verifies if the user is in the list
      * @param user - user to be verified 

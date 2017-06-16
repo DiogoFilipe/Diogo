@@ -13,7 +13,9 @@ public class User implements Serializable{
     private String username;
     private String email;
     private String password;
-    List <User> userList;
+    private UserRegist ur;
+    private List <User> userList;
+    private static User user = new User();
     
     /**
      * DEFAULT NAME
@@ -112,12 +114,15 @@ public class User implements Serializable{
      * @param username
      * @return 
      */
-     public boolean hasTheUsername(String username){
+     public boolean hasTheUsername(String username,User user){
         if(username == null){
             return false;
         }
-        return (this.getUsername()).equalsIgnoreCase(username);
+        return (user.getUsername()).equalsIgnoreCase(username);
     }
+     
+     public static boolean checkHasUsername(String username,User user){
+     return user.hasTheUsername(username,user);}
     
     
     /**
@@ -125,9 +130,9 @@ public class User implements Serializable{
      * @param username - username to verify if it exists
      * @return 
      */
-    public boolean verifyUsername(String username){
-    
-        for(User u : userList){
+    public static boolean verifyUsername(String username){
+        
+        for(User u : UserRegist.getUsers()){
          if(u.getUsername().equals(username))
              return false;
              }
@@ -139,21 +144,34 @@ public class User implements Serializable{
      * @param name - name to be tested
      * @return 
      */
-    public boolean verifyName(String name){
+    public static boolean verifyName(String name){
+        boolean check=true;
         char[] chars = name.toCharArray();
+        if (chars.length<1) {
+            check = false;     
+        }
 
     for (char c : chars) {
         if(!Character.isLetter(c)) {
-            return false;
+            check = false;
         }
     }
-    return true;
+    return check;
     }
     
-    public boolean verifyEmail(String email){
+    public static boolean verifyEmail(String email){
         boolean arroba=false;
         boolean ponto = false;
         char[] chars = email.toCharArray();
+       
+        for(User u : UserRegist.getUsers()){
+         if(u.getEmail().equals(email))
+             return false;
+             }
+       
+        if (chars.length<1) {
+            return false;     
+        }
          for (char c : chars) {
             if(c == '@'){
             arroba = true; }
@@ -172,7 +190,7 @@ public class User implements Serializable{
      * @param password - password to be verified
      * @return 
      */
-    public boolean verifyPassword(String password) {
+    public static boolean verifyPassword(String password) {
     boolean sinal=false;
     boolean lowerCase=false;
     boolean upperCase=false;
@@ -180,6 +198,9 @@ public class User implements Serializable{
     boolean verify=false;
     
     char [] ch = password.toCharArray();
+    if (ch.length<1) {
+            return false;     
+        }
     for(char c : ch){
     if(c==';'|| c==',' || c=='.' || c==':' || c=='-'){
         sinal = true;

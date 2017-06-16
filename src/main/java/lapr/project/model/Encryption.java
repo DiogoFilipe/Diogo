@@ -1,6 +1,8 @@
 
 package lapr.project.model;
 
+import java.util.Random;
+
 
 
 /**
@@ -13,6 +15,7 @@ public class Encryption {
     private User user;
     private int shift;
     private EncryptionList el;
+    Random rn = new Random();
     /**
      * Constructor
      * @param user - of the encryption
@@ -81,8 +84,8 @@ public class Encryption {
      * return shift
      * @return shift
      */
-    public int gerateShift(){
-    int shift = (int)Math.random();
+    public static int gerateShift(){
+    int shift = (int) (Math.random() * 10) ;
     return shift;
     }
     
@@ -286,7 +289,7 @@ public static String cipherAttribute(String keyword,String atribute, int shift){
      * @param shift - number of deslocations
      * @return - returns the encripted password
      */
-    public String cipherPassword(String password, int shift){
+    public static String cipherPassword(String password, int shift){
     String encripted = "";
     int pass = password.length();
     for(int i = 0; i < pass; i++){
@@ -299,7 +302,7 @@ public static String cipherAttribute(String keyword,String atribute, int shift){
     return encripted;
 }
     
-    public String decipherPassword(String password, int shift){
+    public static String decipherPassword(String password, int shift){
     String encripted = "";
     int pass = password.length();
     for(int i = 0; i < pass; i++){
@@ -318,7 +321,7 @@ public static String cipherAttribute(String keyword,String atribute, int shift){
         * @param keyword - keyword to verify size
         * @return
         */
-       public boolean verifyKeyword(String keyword){
+       public static boolean verifyKeyword(String keyword){
              char[] chars = keyword.toCharArray();
              if(chars.length>15 || chars.length<0){
                  return false;
@@ -336,9 +339,9 @@ public static String cipherAttribute(String keyword,String atribute, int shift){
        return true;
        }
        
-    public String verifyEncryptionUserGetKeyword(User user){
+    public static String verifyEncryptionUserGetKeyword(User user){
         String kw="";
-        for(Encryption e : el.getEncryptionsList() ){
+        for(Encryption e : EncryptionList.getEncryptions() ){
                  if(e.getUser().equals(user)){
                      kw = e.getKeyword();
                     }
@@ -346,9 +349,9 @@ public static String cipherAttribute(String keyword,String atribute, int shift){
         return kw;
     }
     
-    public int verifyEncryptionUserGetShift(User user){
+    public static int verifyEncryptionUserGetShift(User user){
         int shift=0;
-        for(Encryption e : el.getEncryptionsList() ){
+        for(Encryption e : EncryptionList.getEncryptions() ){
                  if(e.getUser().equals(user)){
                      shift = e.getShift();
                     }

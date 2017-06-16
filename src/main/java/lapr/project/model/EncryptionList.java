@@ -12,7 +12,7 @@ public class EncryptionList {
    
     
     private List<Encryption> encryptionsList;
-    
+    private static EncryptionList el = new EncryptionList();
     
    
     /**
@@ -30,6 +30,10 @@ public class EncryptionList {
         return encryptionsList;
     }
     
+    public static List<Encryption> getEncryptions(){
+    List <Encryption> encryptions = el.getEncryptionsList();
+    return encryptions;
+    }
     /**
      * Defines the Encryptions List
      * @param Encryptions List 
@@ -48,6 +52,14 @@ public class EncryptionList {
             return false;
         }
         return encryptionsList.add(encryption);
+    }
+    
+       public static boolean  registEncryption(Encryption encryption){
+        boolean check = false;
+        if(el.addEncryption(encryption));{
+        check = true;
+        }
+        return check;
     }
     /**
      * Verefies if there is any encryption

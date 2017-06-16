@@ -18,16 +18,16 @@ import lapr.project.utils.UserRegistException;
  */
 public class UserRegistMainWindow extends javax.swing.JFrame {
     
+    private UserRegistMainWindowController controller;
+    private FairCenter fc;
     
-    FairCenter fc;
-    UserRegistMainWindowController controller;
     
     /**
      * Creates new form UserRegistMainWindow
      */
     public UserRegistMainWindow() {
         initComponents();
-    }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +40,7 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jOptionPane1 = new javax.swing.JOptionPane();
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -62,6 +63,17 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -183,46 +195,49 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String name = jTextField1.getText();
+        controller = new UserRegistMainWindowController(); 
+        int shift = controller.gerateShift(); 
+        String name = jTextField1.getText();
         String username = jTextField2.getText();
         String email = jTextField3.getText();
         String password = jPasswordField1.getText();
         String keyword = jTextField4.getText();
-        int shift = controller.gerateShift();
+        
         try{
         controller.verifyName(name);
         }catch(UserRegistException e){
-           JOptionPane.showMessageDialog(null,e.getMessage(),"Name doesn´t contain only letters",jOptionPane1.PLAIN_MESSAGE);
-        }
+           JOptionPane.showMessageDialog(UserRegistMainWindow.this,e.getMessage(),"Name doesn´t contain only letters",JOptionPane.INFORMATION_MESSAGE);
+          }
         try{
-        controller.verifyUsername(username);
+        String cipheredUsername = controller.chiperAttributes(username, shift, keyword);    
+        controller.verifyUsername(cipheredUsername);
         }catch(UserRegistException e){
             
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Username already exists",jOptionPane1.PLAIN_MESSAGE);
+          JOptionPane.showMessageDialog(this,e.getMessage(),"Username already exists",JOptionPane.INFORMATION_MESSAGE);
         }
         try{
         controller.verifyEmail(email);
         }catch(UserRegistException e){
             
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Email format incorrect",jOptionPane1.PLAIN_MESSAGE);
+            jOptionPane1.showMessageDialog(null,e.getMessage(),"Email format incorrect or already exists",jOptionPane1.PLAIN_MESSAGE);
             
         }
         try{
             controller.verifyPassword(password);
         }catch(UserRegistException e){
             
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Password must contain a number an UpperCase a LowerCase and symbol",jOptionPane1.PLAIN_MESSAGE);
+            jOptionPane1.showMessageDialog(null,e.getMessage(),"Password must contain a number an UpperCase a LowerCase and symbol",jOptionPane1.PLAIN_MESSAGE);
         }
         try{
         controller.verifyKeyword(keyword);
         }catch(UserRegistException e){
             
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Keyword doesn´t contain only letters",jOptionPane1.PLAIN_MESSAGE);
+            jOptionPane1.showMessageDialog(null,e.getMessage(),"Keyword doesn´t contain only letters",jOptionPane1.PLAIN_MESSAGE);
         }
        
         String cipheredName = controller.chiperAttributes(name, shift, keyword);
-        String cipheredUsername = controller.chiperAttributes(username, shift, keyword);
         String cipheredEmail = controller.chiperAttributes(email, shift, keyword);
+        String cipheredUsername = controller.chiperAttributes(username, shift, keyword);
         String cipheredPassword = controller.cipherPassword(password, shift);
         User user = controller.createUser(cipheredName, cipheredUsername, cipheredPassword, cipheredEmail);
         Encryption encryption = controller.createEncryption(shift,user,keyword);
@@ -265,6 +280,7 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserRegistMainWindow().setVisible(true);
+                
             }
         });
     }
@@ -272,6 +288,7 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

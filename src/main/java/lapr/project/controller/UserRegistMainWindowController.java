@@ -12,7 +12,7 @@ public class UserRegistMainWindowController {
     EncryptionList el;
     FairCenter fc;
     User user;
-    Encryption encryption;
+    private Encryption encryption;
     List <User> userList;
     List <Encryption> encryptionsList;
     private String name;
@@ -37,7 +37,7 @@ public class UserRegistMainWindowController {
      * @return 
      */
     public boolean verifyPassword(String password) {
-   return user.verifyPassword(password);
+   return User.verifyPassword(password);
     }
     
     
@@ -54,18 +54,18 @@ public class UserRegistMainWindowController {
         return user;
     }
     public Encryption createEncryption(int shift,User user,String keyword){
-        Encryption encryption = new Encryption(user,keyword,shift);
+        encryption = new Encryption(user,keyword,shift);
         return encryption;
     
     } 
     
    public String cipherPassword(String password,int shift){
-       String cipheredPassword = encryption.cipherPassword(password,shift);
+       String cipheredPassword = Encryption.cipherPassword(password,shift);
        return cipheredPassword;
    }
     
    public String chiperAttributes(String attribute,int shift,String keyword){
-       String cipheredAttribute = encryption.cipherAttribute(keyword,attribute,shift);
+       String cipheredAttribute = Encryption.cipherAttribute(keyword,attribute,shift);
        return cipheredAttribute;
    }
    
@@ -75,7 +75,7 @@ public class UserRegistMainWindowController {
      * @return userList with the new user
      */
     public boolean addUser(User user) {
-      return ur.addUser(user);
+      return ur.registUser(user);
     }
     
          
@@ -84,7 +84,7 @@ public class UserRegistMainWindowController {
       * @return random number
       */    
      public int gerateShift(){
-         int number = encryption.gerateShift();
+         int number = Encryption.gerateShift();
      
      return number;
      }
@@ -94,7 +94,7 @@ public class UserRegistMainWindowController {
       * @return 
       */
      public boolean verifyKeyword(String keyword){
-     return encryption.verifyKeyword(keyword);
+     return Encryption.verifyKeyword(keyword);
      }
      
      
@@ -103,8 +103,8 @@ public class UserRegistMainWindowController {
      * @param encryption - encryption to be added
      * @return 
      */   
-    public boolean addEncryption(Encryption encryption) {
-      return el.addEncryption(encryption);
+    public  boolean addEncryption(Encryption encryption) {
+      return el.registEncryption(encryption);
     }
      
     /**
@@ -113,7 +113,7 @@ public class UserRegistMainWindowController {
      * @return 
      */
     public boolean verifyName(String name){
-    return user.verifyName(name);
+    return User.verifyName(name);
     }
     
     /**
@@ -122,7 +122,7 @@ public class UserRegistMainWindowController {
      * @return 
      */
     public boolean verifyUsername(String username){
-    return user.verifyUsername(username);
+    return User.verifyUsername(username);
     }
     
     /**
@@ -131,5 +131,5 @@ public class UserRegistMainWindowController {
      * @return
      */
     public boolean verifyEmail(String email){
-    return user.verifyEmail(email);}
+    return User.verifyEmail(email);}
 }
