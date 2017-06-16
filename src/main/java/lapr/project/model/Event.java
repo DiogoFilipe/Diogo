@@ -16,7 +16,7 @@ public class Event implements EventState {
     private Date endDate;
     private Date submissionStartDate;
     private Date submissionEndDate;
-    /*private EventState state;*/
+    private State state;
 
     private FAEList faeList;
     private ApplicationList applicationList;
@@ -27,7 +27,7 @@ public class Event implements EventState {
 
     }
 
-    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList) {
+    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList,State state) {
         this.title = title;
         this.description = description;
         this.place = place;
@@ -39,6 +39,7 @@ public class Event implements EventState {
         this.faeList = faeList;
         this.applicationList = applicationList;
         this.organizerList = organizerList;
+        this.state=EventState.State.Initial;
     }
 
     /**
