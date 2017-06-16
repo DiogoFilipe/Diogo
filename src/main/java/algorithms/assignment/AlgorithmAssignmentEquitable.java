@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lapr.project.model;
+package algorithms.assignment;
 
 /**
  *
  * @author João Domingues
  */
-class AlgorithmsRegist {
+public class AlgorithmAssignmentEquitable {
     
 }

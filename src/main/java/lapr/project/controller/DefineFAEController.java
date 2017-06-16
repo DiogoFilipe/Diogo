@@ -15,7 +15,7 @@ import lapr.project.model.UserRegist;
 
 /**
  *
- * @author João Domingues
+ * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class DefineFAEController {
     /**
