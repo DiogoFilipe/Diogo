@@ -5,11 +5,13 @@
  */
 package lapr.project.utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Diogo
  */
-public class DontHavePermissionException extends Exception {
+public class DontHavePermissionException extends IllegalArgumentException implements Serializable{
 
     /**
      * Creates a new instance of <code>DontHavePermissionException</code>
