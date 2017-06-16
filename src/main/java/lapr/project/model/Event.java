@@ -16,7 +16,7 @@ public class Event implements EventState {
     private Date endDate;
     private Date submissionStartDate;
     private Date submissionEndDate;
-    /*private EventState state;*/
+    private State state;
 
     private FAEList faeList;
     private ApplicationList applicationList;
@@ -39,6 +39,7 @@ public class Event implements EventState {
         this.faeList = faeList;
         this.applicationList = applicationList;
         this.organizerList = organizerList;
+        this.state=EventState.State.Initial;
     }
 
     /**
@@ -110,9 +111,9 @@ public class Event implements EventState {
      *
      * @return Event's state
      */
-    //public EventState getState() {
-    //    return state;
-    //}
+    public State getState() {
+        return state;
+    }
 
     /**
      * Returns the list of FAEs of the Event
@@ -219,9 +220,9 @@ public class Event implements EventState {
      *
      * @param state Event's state
      */
-    //public void setState(EventState state) {
-    //    this.state = state;
-    //}
+    public void setState(State state) {
+        this.state = state;
+    }
 
     /**
      * Modifies the Event's FAE list
@@ -276,13 +277,13 @@ public class Event implements EventState {
         organizerList.addOrganizer(o);
     }
 
-    //public void setInitialState() {
-    //    /*set Event's state to the initial state*/
-    //}
-    //
-    //public void setCreated() {
-    //    /*set Event's state to created*/
-    //}
+    public void setInitialState() {
+        this.state=EventState.State.Initial;
+    }
+    
+    public void setCreated() {
+        this.state=EventState.State.Created;
+    }
 
     /**
      * @return the faeList
@@ -297,5 +298,4 @@ public class Event implements EventState {
     public void setFaeList(FAEList faeList) {
         this.faeList = faeList;
     }
-
 }
