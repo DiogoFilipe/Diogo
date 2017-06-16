@@ -207,7 +207,8 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
         controller.verifyName(name);
         }catch(UserRegistException e){
            JOptionPane.showMessageDialog(UserRegistMainWindow.this,e.getMessage(),"Name doesn´t contain only letters",JOptionPane.INFORMATION_MESSAGE);
-          }
+           
+         }
         try{
         String cipheredUsername = controller.chiperAttributes(username, shift, keyword);    
         controller.verifyUsername(cipheredUsername);

@@ -6,6 +6,7 @@
 package lapr.project.ui;
 
 import lapr.project.model.FairCenter;
+import lapr.project.model.User;
 import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 
 import lapr.project.ui.CreateEvent.CreateEventMain;
@@ -32,12 +33,14 @@ import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 public class MainWindow extends javax.swing.JFrame {
 
     FairCenter fc;
+    User user;
 
     /**
      * Creates new form MainWindow
      * @param fc the fair center
      */
-    public MainWindow(FairCenter fc) {
+    public MainWindow(FairCenter fc, User user) {
+        this.user = user;
         this.fc = fc;
         initComponents();
     }

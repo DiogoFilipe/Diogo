@@ -22,9 +22,9 @@ public class LogInWindow extends javax.swing.JFrame {
 
     private FairCenter fc;
     private LogInController controller;
-
+    
     public LogInWindow() {
-        initComponents();
+         initComponents();
     }
 
     /**
@@ -172,7 +172,7 @@ public class LogInWindow extends javax.swing.JFrame {
                  String cipheredID = controller.cipherAttributes(id,shift, kw);
                  
                  if(u.getUsername().equals(cipheredID) || u.getEmail().equals(cipheredID)){
-                      MainWindow mainWindow = new MainWindow(fc);
+                      MainWindow mainWindow = new MainWindow(fc,user);
                       mainWindow.setVisible(true);
                       dispose();
                   
