@@ -11,21 +11,12 @@ import lapr.project.utils.Date;
 
 /**
  *
- * @author Diogo
+ * @author 1160590_1160795_116844_1161241_1162109
  */
 public class Congress extends Event implements Serializable{
     
-    public Congress(String title, String description, String local, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate, FAEList faeList, ApplicationsList applicationsList, AssignmentsList assignmentsList, OrganizersList organizersList) {
-        super(title, description, local, startDate, endDate, submissionStartDate, submissionEndDate, acceptanceRate, faeList, applicationsList, assignmentsList, organizersList);
-    }
-
-   /**
-    * 
-    * @return the acceptance rate
-    */
-    @Override
-    public int getAcceptanceRate() {
-        return super.getAcceptanceRate();
+    public Congress(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList) {
+        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList);
     }
 
     /**
@@ -33,8 +24,8 @@ public class Congress extends Event implements Serializable{
      * @return the applications list 
      */
     @Override
-    public ApplicationsList getApplicationsList() {
-        return super.getApplicationsList(); 
+    public ApplicationList getApplicationList() {
+        return super.getApplicationList(); 
     }
 
     /**
@@ -42,8 +33,8 @@ public class Congress extends Event implements Serializable{
      * @return the assignment list 
      */
     @Override
-    public AssignmentsList getAssignmentsList() {
-        return super.getAssignmentsList();
+    public AssignmentList getAssignmentList() {
+        return super.getAssignmentList();
     }
 
     /**
@@ -64,23 +55,12 @@ public class Congress extends Event implements Serializable{
         return super.getEndDate(); 
     }
     
-    
-/**
- * 
- * @return the congress id
- */
+    /**
+    * 
+    * @return the fae list
+    */
     @Override
-    public int getEventID() {
-        return super.getEventID();
-    }
-    
-    
-/**
- * 
- * @return the fae list
- */
-    @Override
-    public List<FAE> getFAEList() {
+    public FAEList getFAEList() {
         return super.getFAEList(); 
     }
 
@@ -89,8 +69,8 @@ public class Congress extends Event implements Serializable{
      * @return the local of the congress 
      */
     @Override
-    public String getLocal() {
-        return super.getLocal(); 
+    public String getPlace() {
+        return super.getPlace(); 
     }
 
     /**
@@ -98,8 +78,8 @@ public class Congress extends Event implements Serializable{
      * @return the organizers list
      */
     @Override
-    public OrganizersList getOrganizersList() {
-        return super.getOrganizersList(); 
+    public OrganizerList getOrganizerList() {
+        return super.getOrganizerList(); 
     }
 
     /**
@@ -140,20 +120,11 @@ public class Congress extends Event implements Serializable{
 
     /**
      * 
-     * @param acceptanceRate the congress acceptance rate
-     */
-    @Override
-    public void setAcceptanceRate(int acceptanceRate) {
-        super.setAcceptanceRate(acceptanceRate);
-    }
-
-    /**
-     * 
      * @param applicationsList the applications list 
      */
     @Override
-    public void setApplicationsList(ApplicationsList applicationsList) {
-        super.setApplicationsList(applicationsList);
+    public void setApplicationList(ApplicationList applicationList) {
+        super.setApplicationList(applicationList);
     }
 
     /**
@@ -170,8 +141,8 @@ public class Congress extends Event implements Serializable{
      * @param assignmentsList  the assignment list
      */
     @Override
-    public void setAssignmentsList(AssignmentsList assignmentsList) {
-        super.setAssignmentsList(assignmentsList); 
+    public void setAssignmentList(AssignmentList assignmentList) {
+        super.setAssignmentList(assignmentList); 
     }
 
    /**
@@ -185,15 +156,6 @@ public class Congress extends Event implements Serializable{
 
     /**
      * 
-     * @param eventID event name 
-     */
-    @Override
-    public void setEventID(int eventID) {
-        super.setEventID(eventID);
-    }
-
-    /**
-     * 
      * @param faeList the fae list
      */
     @Override
@@ -201,21 +163,21 @@ public class Congress extends Event implements Serializable{
         super.setFAEList(faeList); 
     }
 
-/**
- * 
- * @param local the local of the congress
- */
+    /**
+     * 
+     * @param local the local of the congress
+     */
     @Override
-    public void setLocal(String local) {
-        super.setLocal(local);
+    public void setPlace(String local) {
+        super.setPlace(local);
     }
-/**
- * 
- * @param organizersList the organizers list
- */
+    /**
+     * 
+    * @param organizersList the organizers list
+    */
     @Override
-    public void setOrganizersList(OrganizersList organizersList) {
-        super.setOrganizersList(organizersList); 
+    public void setOrganizerList(OrganizerList organizerList) {
+        super.setOrganizerList(organizerList); 
     }
 
     /**

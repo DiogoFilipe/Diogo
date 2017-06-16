@@ -7,12 +7,12 @@ package lapr.project.model;
 
 /**
  *
- * @author Diogo
+ * @author 1160590_1160795_1160844_1161241_1162109
  */
 public interface EventState {
     
     public enum State{
-        Created , FAESet , OpenForApplications , ClosedForApplications , AssignedApplications , ApplicationsBeingDecided , EventReady 
+        Initial, Created , FAESet , OpenForApplications , ClosedForApplications , AssignedApplications , ApplicationsBeingDecided , EventReady 
     }
     
 }

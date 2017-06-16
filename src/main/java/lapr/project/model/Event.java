@@ -7,7 +7,7 @@ import lapr.project.utils.Date;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Event {
+public class Event implements EventState {
 
     private String title;
     private String description;
@@ -16,18 +16,18 @@ public class Event {
     private Date endDate;
     private Date submissionStartDate;
     private Date submissionEndDate;
-    private int acceptanceRate;
+    /*private EventState state;*/
 
-    private List<FAE> faeList;
-    private List<Application> applicationList;
-    private List<Assignment> assignmentList;
-    private List<Organizer> organizerList;
+    private FAEList faeList;
+    private ApplicationList applicationList;
+    private AssignmentList assignmentList;
+    private OrganizerList organizerList;
 
     public Event() {
 
     }
 
-    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, int acceptanceRate, List<FAE> faeList, List<Application> applicationList, List<Assignment> assignmentList, List<Organizer> organizerList) {
+    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList) {
         this.title = title;
         this.description = description;
         this.place = place;
@@ -40,33 +40,37 @@ public class Event {
         this.applicationList = applicationList;
         this.organizerList = organizerList;
     }
-    
+
     /**
      * Returns the Event's title
+     *
      * @return Event's title
      */
     public String getTitle() {
         return title;
     }
-    
+
     /**
      * Returns the Event's description
+     *
      * @return Event's description
      */
     public String getDescription() {
         return description;
     }
-    
+
     /**
      * Returns the Event's place
+     *
      * @return Event's place
      */
     public String getPlace() {
         return place;
-    } 
+    }
 
     /**
      * Returns the Event's start date
+     *
      * @return Event's start date
      */
     public Date getStartDate() {
@@ -75,6 +79,7 @@ public class Event {
 
     /**
      * Returns the Event's end date
+     *
      * @return Event's end date
      */
     public Date getEndDate() {
@@ -84,6 +89,7 @@ public class Event {
     /**
      * Returns the Event's date for the beginning of the submission of
      * applications
+     *
      * @return Event's date for the beginning of the submission of applications
      */
     public Date getSubmissionStartDate() {
@@ -91,149 +97,205 @@ public class Event {
     }
 
     /**
-     * Returns the Event's FAE list
-     * @return Event's FAE list
+     * Returns the Event's date for the end of the submission of applications
+     *
+     * @return Event's date for the end of the submission of applications
      */
-    public List<FAE> getFAEList() {
-        return faeList;
+    public Date getSubmissionEndDate() {
+        return submissionEndDate;
     }
 
     /**
-     * Returns the Event's Application list
-     * @return Event's Application list
+     * Returns the Event's state
+     *
+     * @return Event's state
      */
-    public List<Application> getApplicationList() {
+    //public EventState getState() {
+    //    return state;
+    //}
+
+    /**
+     * Returns the list of FAEs of the Event
+     *
+     * @return list of FAEs of the Event
+     */
+    public FAEList getFAEList() {
+        return getFaeList();
+    }
+
+    /**
+     * Returns the list of Applications of the Event
+     *
+     * @return list of Applications of the Event
+     */
+    public ApplicationList getApplicationList() {
         return applicationList;
     }
 
     /**
-     * Modify the Assignments List
-     * @param assignmentList the list of assignments to be set
+     * Returns the list of Assignments of the Event
+     *
+     * @return list of Assignments of the Event
      */
-    public void setAssignmentList(List<Assignment> assignmentList) {
-        this.assignmentList = assignmentList;
+    public AssignmentList getAssignmentList() {
+        return assignmentList;
     }
 
     /**
-     * Modify the FAEs List
-     * @param faeList the list of FAEs to be set
+     * Returns the list of Organizers of the Event
+     *
+     * @return list of Organizers of the Event
      */
-    public void setFAEList(List<FAE> faeList) {
-        this.faeList = faeList;
+    public OrganizerList getOrganizerList() {
+        return organizerList;
     }
 
     /**
-     * Modify the applications list
-     * @param applicationsList the applicationsList to set
-     */
-    public void setApplicationsList(List<Application> applicationList) {
-        this.applicationList = applicationList;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("#EVENT# %nTitle: %s %nDescription: %s %nPlace of occurence: %s %nStart Date: %s %nEnd Date: %s %nApplication Submission Start Date: %s %nApplication Submission End Date: %s", title, description, place, getStartDate().toYearMonthDayString(), getEndDate().toYearMonthDayString(), getSubmissionStartDate().toYearMonthDayString(), getSubmissionEndDate().toYearMonthDayString());
-    }
-    
-    /**
-     * @param title the title to set
+     * Modifies the Event's title
+     *
+     * @param title Event's title
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
     /**
-     * @param description the description to set
+     * Modifies the Event's description
+     *
+     * @param description Event's description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * @param local to set
+     * Modifies the Event's place of occurrence
+     *
+     * @param place Event's place of occurrence
      */
     public void setPlace(String place) {
         this.place = place;
     }
 
     /**
-     * @param startDate the startDate to set
+     * Modifies the Event's start date
+     *
+     * @param startDate Event's start date
      */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
     /**
-     * @param endDate the endDate to set
+     * Modifies the Event's end date
+     *
+     * @param endDate Event's end date
      */
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
     /**
-     * @param submissionStartDate the submissionStartDate to set
+     * Modifies the Event's date for the start of the submission of applications
+     *
+     * @param submissionStartDate inicial date to submit applications
      */
     public void setSubmissionStartDate(Date submissionStartDate) {
         this.submissionStartDate = submissionStartDate;
     }
 
     /**
-     * @param submissionEndDate the submissionEndDate to set
+     * Modifies the Event's date for the end of the submission of applications
+     *
+     * @param submissionEndDate Event's date for the end of the submission of
+     * applications
      */
     public void setSubmissionEndDate(Date submissionEndDate) {
         this.submissionEndDate = submissionEndDate;
     }
 
     /**
-     * @return the acceptanceRate
+     * Modifies the Event's state
+     *
+     * @param state Event's state
      */
-    public int getAcceptanceRate() {
-        return acceptanceRate;
+    //public void setState(EventState state) {
+    //    this.state = state;
+    //}
+
+    /**
+     * Modifies the Event's FAE list
+     *
+     * @param faeList Event's FAE list
+     */
+    public void setFAEList(FAEList faeList) {
+        this.setFaeList(faeList);
     }
 
     /**
-     * @param acceptanceRate the acceptanceRate to set
+     * Modifies the Event's Application list
+     *
+     * @param applicationList Event's Application list
      */
-    public void setAcceptanceRate(int acceptanceRate) {
-        this.acceptanceRate = acceptanceRate;
+    public void setApplicationList(ApplicationList applicationList) {
+        this.applicationList = applicationList;
     }
 
     /**
-     * @return the faeList
+     * Modifies the Event's Assignment list
+     *
+     * @param assignmentList Event's Assignment list
      */
-    public List<FAE> getFaeList() {
-        return faeList;
+    public void setAssignmentList(AssignmentList assignmentList) {
+        this.assignmentList = assignmentList;
     }
-
+    
     /**
-     * @return the organizersList
+     * Modifies the Event's Organizer list
+     * @param organizerList Event's Organizer list
      */
-    public List<Organizer> getOrganizersList() {
-        return organizerList;
-    }
-
-    /**
-     * @param organizersList the organizersList to set
-     */
-    public void setOrganizersList(List<Organizer> organizerList) {
+    public void setOrganizerList(OrganizerList organizerList) {
         this.organizerList = organizerList;
     }
 
     /**
-     *
-     * @return submission end date
+     * Textual representation of the Event
+     * @return textual representation of the Event
      */
-    public Date getSubmissionEndDate() {
-        return submissionEndDate;
-    }
-
-    public void addOrganizer(User u) {
-        Organizer o = new Organizer(u);
-        organizerList.add(o);
+    @Override
+    public String toString() {
+        return String.format("#EVENT# %nTitle: %s %nDescription: %s %nPlace of occurence: %s %nStart Date: %s %nEnd Date: %s %nApplication Submission Start Date: %s %nApplication Submission End Date: %s", title, description, place, getStartDate().toYearMonthDayString(), getEndDate().toYearMonthDayString(), getSubmissionStartDate().toYearMonthDayString(), getSubmissionEndDate().toYearMonthDayString());
     }
     
-    public void setCreated() {
-        /*set Event's state to created*/
+    /**
+     * Adds the user u to the Event's Organizer list
+     * @param u user that is going to become an Organizer of the Event
+     */
+    public void addOrganizer(User u) {
+        Organizer o = new Organizer(u);
+        organizerList.addOrganizer(o);
+    }
+
+    //public void setInitialState() {
+    //    /*set Event's state to the initial state*/
+    //}
+    //
+    //public void setCreated() {
+    //    /*set Event's state to created*/
+    //}
+
+    /**
+     * @return the faeList
+     */
+    public FAEList getFaeList() {
+        return faeList;
+    }
+
+    /**
+     * @param faeList the faeList to set
+     */
+    public void setFaeList(FAEList faeList) {
+        this.faeList = faeList;
     }
 
 }

@@ -10,15 +10,16 @@ import java.util.List;
 
 /**
  *
- * @author João Domingues
+ * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class UserRegist {
     
     private List<User> userList;
+    private static UserRegist ur = new UserRegist();
     
    
     public UserRegist(){
-        userList = new ArrayList<>();
+        this.userList = new ArrayList<>();
     }
 
     /**
@@ -29,15 +30,28 @@ public class UserRegist {
     public boolean addUser(User user) {
       return userList.add(user);
     }
+    
+    public static boolean registUser(User user){
+        boolean check=false;
+     if(ur.addUser(user)){
+     check = true;}
+     return check;
+    }
 
     /**
      * Returns the user list
      * @return the user list
      */
     public List<User> getUserList() {
-        return new ArrayList<>(this.userList);
+        return userList;
     }
     
+    
+    
+    public static List<User> getUsers(){
+    List <User> users = ur.getUserList();
+    return users;
+    }
     /**
      * Verifies if the user is in the list
      * @param user - user to be verified 
@@ -48,18 +62,18 @@ public class UserRegist {
     }
     
     
-    /**
-     * Returns the user of the username
-     * @param username - username of the pretended user
-     * @return the user of the username
-     */
-    public User getUser(String username){
-        for(User user : this.userList){
-            if(user.hasTheUsername(username)){
-                return user;
-            }
-        }
-        return null;
-    }
+//    /**
+//     * Returns the user of the username
+//     * @param usernameOrEmail the what he puts on log in
+//     * @return the user of the username
+//     */
+//    public User getUser(String usernameOrEmail){
+//        for(User user : this.userList){
+//            if(user.hasTheUsername(usernameOrEmail)|| user.verifyEmail(usernameOrEmail)){
+//                return user;
+//            }
+//        }
+//        return null;
+//    }
         
 }
