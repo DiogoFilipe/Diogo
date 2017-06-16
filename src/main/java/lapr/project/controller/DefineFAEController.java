@@ -53,7 +53,7 @@ public class DefineFAEController {
      * @return
      */
     public List<User> getUsersList() {
-        userRegist = fc.getUsersRegist();
+        userRegist = fc.getUserRegist();
         return userRegist.getUserList();
     }
     
@@ -89,14 +89,8 @@ public class DefineFAEController {
         this.event = event;
         FAElist = event.getFAEList();
     }
-
-    /**
-     *
-     */
-    public void setStateEventFAEDefined() {
-        event.
-    }
     
-
-  
+    
+    
+    
 }

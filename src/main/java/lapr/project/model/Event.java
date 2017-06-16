@@ -122,7 +122,7 @@ public class Event implements EventState {
     public FAEList getFAEList() {
         return getFaeList();
     }
-
+    
     /**
      * Returns the list of Applications of the Event
      *

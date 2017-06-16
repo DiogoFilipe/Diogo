@@ -61,6 +61,16 @@ public class UserRegist {
         return userList.contains(user);
     }
     
+    /**
+     *
+     * @param index
+     * @return
+     */
+    public User getUserByIndex(int index) {
+        return userList.get(index);
+
+    }
+    
     
 //    /**
 //     * Returns the user of the username
