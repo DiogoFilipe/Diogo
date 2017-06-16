@@ -1,7 +1,9 @@
 package lapr.project.model;
 
+import edu.emory.mathcs.backport.java.util.Collections;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import lapr.project.utils.Date;
 
@@ -32,12 +34,24 @@ public class EventRegist implements Serializable {
      * @param o is the organizer
      * @return events list of an organizer
      */
-    public List<Event> getOrganizerEventsList(Organizer o) {
-        List<Event> organizersList = new ArrayList<>();
-        eventsList.stream().filter((e) -> (e.getOrganizerList().containsOrganizer(o))).forEachOrdered((e) -> {
-            organizersList.add(e);
+    public List<String> getOrganizerEventsListOrdenedByState(Organizer o) {
+        List<String> organizerEventsList = new ArrayList<>();
+        Collections.sort(eventsList, (Comparator) new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                String ev1 = ((Event) o1).getState().toString();
+                int i1 = ev1.length();
+                String ev2 = ((Event) o2).getState().toString();
+                int i2 = ev2.length();
+                double d1 = Double.valueOf(ev2.substring(0, i1));
+                double d2 = Double.valueOf(ev2.substring(0, i2));
+                return Double.compare(d1, d2);
+            }
         });
-        return organizersList;
+        eventsList.stream().filter((e) -> (e.getOrganizerList().containsOrganizer(o))).forEachOrdered((e) -> {
+            organizerEventsList.add(e.getTitle());
+        });
+        return organizerEventsList;
     }
 //    
 //    /**
@@ -203,5 +217,4 @@ public class EventRegist implements Serializable {
     public void registerEvent(Event e) {
         eventsList.add(e);
     }
-
 }
