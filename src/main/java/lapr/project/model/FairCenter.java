@@ -22,13 +22,28 @@ public class FairCenter implements Serializable {
      * Constructor
      */
     public FairCenter() {
-      this.users = new ArrayList<>();
-      this.events =  new ArrayList<>();
+      eventRegist = new EventRegist();
+      userRegist = new UserRegist();
     }
 
     public List<User> getUsers() {
         return users;
     }
+    
+       /**
+     * @return the registoUtilizadores
+     */
+    public UserRegist getUserRegist() {
+        return userRegist;
+    }
+    
+    /**
+     * @return the eventRegist
+     */
+    public EventRegist getEventRegist() {
+        return eventRegist;
+    }
+    
 
 
     public List<Event> getEvents() {
