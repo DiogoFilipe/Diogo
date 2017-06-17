@@ -22,12 +22,13 @@ public class Event implements EventState {
     private ApplicationList applicationList;
     private AssignmentList assignmentList;
     private OrganizerList organizerList;
+    private List<Stand> standList;
 
     public Event() {
-
+        this.state = EventStae.State.Initial;
     }
 
-    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList) {
+    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, List<Stand> standList) {
         this.title = title;
         this.description = description;
         this.place = place;
@@ -39,7 +40,7 @@ public class Event implements EventState {
         this.faeList = faeList;
         this.applicationList = applicationList;
         this.organizerList = organizerList;
-        this.state=EventState.State.Initial;
+        this.state = EventState.State.FAESet;
     }
 
     /**
@@ -121,9 +122,9 @@ public class Event implements EventState {
      * @return list of FAEs of the Event
      */
     public FAEList getFAEList() {
-        return getFaeList();
+        return faeList;
     }
-    
+
     /**
      * Returns the list of Applications of the Event
      *
@@ -149,6 +150,15 @@ public class Event implements EventState {
      */
     public OrganizerList getOrganizerList() {
         return organizerList;
+    }
+
+    /**
+     * Returns the list of Stands of the Event
+     *
+     * @return list of Stands of the Event
+     */
+    public List<Stand> getStandList() {
+        return standList;
     }
 
     /**
@@ -250,9 +260,10 @@ public class Event implements EventState {
     public void setAssignmentList(AssignmentList assignmentList) {
         this.assignmentList = assignmentList;
     }
-    
+
     /**
      * Modifies the Event's Organizer list
+     *
      * @param organizerList Event's Organizer list
      */
     public void setOrganizerList(OrganizerList organizerList) {
@@ -260,42 +271,31 @@ public class Event implements EventState {
     }
 
     /**
+     * Modifies the Event's Stand list
+     *
+     * @param standList Event's Stand list
+     */
+    public void setStandList(List<Stand> standList) {
+        this.standList = standList;
+    }
+
+    /**
      * Textual representation of the Event
+     *
      * @return textual representation of the Event
      */
     @Override
     public String toString() {
         return String.format("#EVENT# %nTitle: %s %nDescription: %s %nPlace of occurence: %s %nStart Date: %s %nEnd Date: %s %nApplication Submission Start Date: %s %nApplication Submission End Date: %s", title, description, place, getStartDate().toYearMonthDayString(), getEndDate().toYearMonthDayString(), getSubmissionStartDate().toYearMonthDayString(), getSubmissionEndDate().toYearMonthDayString());
     }
-    
+
     /**
      * Adds the user u to the Event's Organizer list
+     *
      * @param u user that is going to become an Organizer of the Event
      */
     public void addOrganizer(User u) {
         Organizer o = new Organizer(u);
         organizerList.addOrganizer(o);
-    }
-
-    public void setInitialState() {
-        this.state=EventState.State.Initial;
-    }
-    
-    public void setCreated() {
-        this.state=EventState.State.Created;
-    }
-
-    /**
-     * @return the faeList
-     */
-    public FAEList getFaeList() {
-        return faeList;
-    }
-
-    /**
-     * @param faeList the faeList to set
-     */
-    public void setFaeList(FAEList faeList) {
-        this.faeList = faeList;
     }
 }
