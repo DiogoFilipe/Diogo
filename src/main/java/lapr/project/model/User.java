@@ -1,7 +1,6 @@
 package lapr.project.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -13,9 +12,6 @@ public class User implements Serializable{
     private String username;
     private String email;
     private String password;
-    private UserRegist ur;
-    private List <User> userList;
-    private static User user = new User();
     
     /**
      * DEFAULT NAME
@@ -112,6 +108,7 @@ public class User implements Serializable{
     /**
      * Verifies if the username equals 
      * @param username
+     * @param user
      * @return 
      */
      public boolean hasTheUsername(String username,User user){
@@ -178,11 +175,7 @@ public class User implements Serializable{
             if(c == '.'){
             ponto = true; }
          }
-         if(arroba==true & ponto==true){
-         return true;
-         }else{
-         return false;
-         }
+        return arroba==true & ponto==true;
     }
     
      /**
