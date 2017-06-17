@@ -10,12 +10,10 @@ import java.util.List;
  */
 public class FairCenter implements Serializable {
 
-    
     private EventRegist eventRegist;
     private static FairCenter fc = new FairCenter();
     private UserRegist userRegist;
     private List<User> users;
-    private List<User> notRegisteredUsers;
     private List<Event> events;
 
     /**
@@ -45,26 +43,22 @@ public class FairCenter implements Serializable {
     }
     
 
-
     public List<Event> getEvents() {
         return events;
     }
-    
-    public static List<Event> getEventList(){
-    return fc.getEvents();}
+
+    public static List<Event> getEventList() {
+        return fc.getEvents();
+    }
 
     public void setUsers(List<User> users) {
         this.users = users;
     }
-  
-    
+
     public void setEvents(List<Event> events) {
         this.events = events;
     }
 
- 
-    
-    
     /**
      * Allows you to add a new user to the user regist
      *
@@ -83,10 +77,12 @@ public class FairCenter implements Serializable {
         eventRegist.addEvent(event);
     }
 
-    public static Event getEvent(String title){
-    for(Event event : fc.getEvents()){
-    if(event.getTitle().equals(title)){
-    return event;}}
-    return null;
+    public Event getEvent(String title) {
+        for (Event event : fc.getEvents()) {
+            if (event.getTitle().equals(title)) {
+                return event;
+            }
+        }
+        return null;
     }
 }

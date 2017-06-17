@@ -48,9 +48,9 @@ public class EventRegist implements Serializable {
                 return Double.compare(d1, d2);
             }
         });
-        eventsList.stream().filter((e) -> (e.getOrganizerList().containsOrganizer(o))).forEachOrdered((e) -> {
+        for(Event e: eventsList){
             organizerEventsList.add(e.getTitle());
-        });
+        }
         return organizerEventsList;
     }
 //    
