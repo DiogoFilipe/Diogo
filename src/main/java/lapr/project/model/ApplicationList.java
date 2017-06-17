@@ -24,7 +24,7 @@ public class ApplicationList implements Serializable {
         List<String> applications = new ArrayList<>();
         for (Application a : applicationList) {
             applications.add(a.getCompanyName());
-        }
+        }   
         return applications;
     }
 
