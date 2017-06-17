@@ -5,16 +5,13 @@
  */
 package lapr.project.ui.ListApplications;
 
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+import javax.swing.AbstractListModel;
 import lapr.project.controller.ListApplicationsController;
-import lapr.project.model.Event;
 import lapr.project.model.FairCenter;
 import lapr.project.model.Organizer;
 import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
-import lapr.project.utils.DontHavePermissionException;
 
 /**
  *
@@ -39,11 +36,20 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
 
         initComponents();
 
-        jList3.removeAllElements();
-        List<String> ok = controller.getOrganizerEventsList((Organizer) u);
-        for (String e : ok) {
-            jList3.addElement(e);
-        }
+        AbstractListModel model = new javax.swing.AbstractListModel() {
+
+            @Override
+            public int getSize() {
+                return controller.getOrganizerEventsList((Organizer)u).size();
+            }
+
+            @Override
+            public Object getElementAt(int j) {
+                return controller.getOrganizerEventsList((Organizer)u).get(j);
+            }
+        };
+        jList3.setModel(model);
+        jScrollPane1.setViewportView(jList3);
     }
 
     /**
@@ -140,15 +146,11 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListApplicationsMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListApplicationsMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListApplicationsMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ListApplicationsMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         
