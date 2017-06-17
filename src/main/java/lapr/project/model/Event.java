@@ -235,15 +235,6 @@ public class Event implements EventState {
     }
 
     /**
-     * Modifies the Event's FAE list
-     *
-     * @param faeList Event's FAE list
-     */
-    public void setFAEList(FAEList faeList) {
-        this.setFaeList(faeList);
-    }
-
-    /**
      * Modifies the Event's Application list
      *
      * @param applicationList Event's Application list
