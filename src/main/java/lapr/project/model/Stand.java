@@ -9,8 +9,8 @@ public class Stand {
     private String id;
     private double area;
     
-    private static final int totalStands = 0;
-    private static final String ID_PREFIX = "Stand";
+    private static int totalStands = 0;
+    private static String ID_PREFIX = "Stand";
     
     /**
      * Constructor for Stand
@@ -62,4 +62,13 @@ public class Stand {
         return "The stand " + id + " has an area of " + area + "square meters";
     }
     
+    public static boolean verifyArea(String area){        
+    
+    for (int i = 0; i < area.length(); i++) {
+      if (!Character.isDigit(area.charAt(i)))
+        return false;
+    }
+    return true;
+} 
+
 }

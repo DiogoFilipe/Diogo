@@ -25,7 +25,7 @@ public class Event implements EventState {
     private List<Stand> standList;
 
     public Event() {
-        this.state = EventStae.State.Initial;
+        this.state = EventState.State.Initial;
     }
 
     public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, List<Stand> standList) {
@@ -277,6 +277,10 @@ public class Event implements EventState {
      */
     public void setStandList(List<Stand> standList) {
         this.standList = standList;
+    }
+    
+    public boolean addStand(Stand stand){
+        return this.standList.add(stand);
     }
 
     /**

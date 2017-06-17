@@ -1,6 +1,8 @@
 package lapr.project.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -8,49 +10,46 @@ import java.io.Serializable;
  */
 public class FairCenter implements Serializable {
 
-    ///**
-    // * Algoritms regist
-    // */
-    //private AlgorithmsRegist algorithmRegist;
-    /**
-     * Events regist
-     */
+    
     private EventRegist eventRegist;
-    /**
-     * Users regist
-     */
+    private static FairCenter fc = new FairCenter();
     private UserRegist userRegist;
+    private List<User> users;
+    private List<User> notRegisteredUsers;
+    private List<Event> events;
 
     /**
      * Constructor
      */
     public FairCenter() {
-    //    algorithmRegist = new AlgorithmsRegist();
-        eventRegist = new EventRegist();
-        userRegist = new UserRegist();
+      this.users = new ArrayList<>();
+      this.events =  new ArrayList<>();
     }
 
-    /**
-     * @return the User regist
-     */
-    public UserRegist getUserRegist() {
-        return userRegist;
+    public List<User> getUsers() {
+        return users;
     }
 
-    ///**
-    // * @return the Algorithms regist
-    // */
-    //public AlgorithmsRegist getAlgorithmsRegist() {
-    //    return algorithmRegist;
-    //}
 
-    /**
-     * @return the event regist
-     */
-    public EventRegist getEventRegist() {
-        return eventRegist;
+    public List<Event> getEvents() {
+        return events;
+    }
+    
+    public static List<Event> getEventList(){
+    return fc.getEvents();}
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+  
+    
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
+ 
+    
+    
     /**
      * Allows you to add a new user to the user regist
      *
@@ -69,4 +68,10 @@ public class FairCenter implements Serializable {
         eventRegist.addEvent(event);
     }
 
+    public static Event getEvent(String title){
+    for(Event event : fc.getEvents()){
+    if(event.getTitle().equals(title)){
+    return event;}}
+    return null;
+    }
 }

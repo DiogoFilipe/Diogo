@@ -5,12 +5,18 @@
  */
 package lapr.project.ui.CreateStand;
 
+import java.util.List;
+import javax.swing.AbstractListModel;
+import lapr.project.controller.CreateStandController;
+import lapr.project.model.Event;
 import lapr.project.ui.MainWindow;
 /**
  *
  * @author João Domingues
  */
 public class CreateStandMainUI extends javax.swing.JFrame {
+    
+    CreateStandController controller;
 
     /**
      * Creates new form CreateStandMainUI
@@ -30,7 +36,7 @@ public class CreateStandMainUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList2 = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -39,7 +45,7 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Select an Event");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jList2);
 
         jButton1.setText("Confirm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -59,21 +65,20 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1)))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,8 +86,8 @@ public class CreateStandMainUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -93,9 +98,18 @@ public class CreateStandMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       StandDataUI standData = new StandDataUI();
-       standData.setVisible(true);
-       dispose();
+       String title = null;
+
+    int[] selectedIx = this.jList2.getSelectedIndices();      
+
+    for (int i = 0; i < selectedIx.length; i++) {
+        title = (String) jList2.getModel().getElementAt(selectedIx[i]);
+    }
+    Event event = CreateStandController.getEvent(title);
+    StandDataUI standData = new StandDataUI(event);
+    standData.setVisible(true);
+    dispose();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -134,7 +148,33 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                {
                 new CreateStandMainUI().setVisible(true);
+                  
+        
+        int i=0;
+        final List<Event> events = CreateStandController.getEventList();
+        final String [] titles = new String[events.size()];
+        for(Event event : events){
+            titles[i] = event.getTitle();
+        
+        }
+             
+        AbstractListModel model = new javax.swing.AbstractListModel() {
+
+            @Override
+            public int getSize() {
+                return titles.length;
+            }
+
+            @Override
+            public Object getElementAt(int j) {
+                return titles[j];
+            }
+        };
+        jList2.setModel(model);
+        jScrollPane1.setViewportView(jList2);
+            }
             }
         });
     }
@@ -143,8 +183,8 @@ public class CreateStandMainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JList jList2;
+    private static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }
