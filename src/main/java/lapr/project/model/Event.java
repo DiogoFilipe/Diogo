@@ -148,8 +148,8 @@ public class Event implements EventState {
      *
      * @return list of Organizers of the Event
      */
-    public OrganizerList getOrganizerList() {
-        return organizerList;
+    public List<Organizer> getOrganizerList() {
+        return organizerList.getOrganizerList();
     }
 
     /**

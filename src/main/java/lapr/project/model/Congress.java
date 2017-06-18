@@ -15,8 +15,8 @@ import lapr.project.utils.Date;
  */
 public class Congress extends Event implements Serializable{
     
-    public Congress(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList) {
-        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList);
+    public Congress(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList,List<Stand> standList) {
+        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList,standList);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Congress extends Event implements Serializable{
      * @return the organizers list
      */
     @Override
-    public OrganizerList getOrganizerList() {
+    public List<Organizer> getOrganizerList() {
         return super.getOrganizerList(); 
     }
 
@@ -120,7 +120,6 @@ public class Congress extends Event implements Serializable{
 
     /**
      * 
-     * @param applicationsList the applications list 
      */
     @Override
     public void setApplicationList(ApplicationList applicationList) {
@@ -138,7 +137,6 @@ public class Congress extends Event implements Serializable{
 
     /**
      * 
-     * @param assignmentsList  the assignment list
      */
     @Override
     public void setAssignmentList(AssignmentList assignmentList) {
@@ -153,16 +151,7 @@ public class Congress extends Event implements Serializable{
     public void setEndDate(Date endDate) {
         super.setEndDate(endDate); 
     }
-
-    /**
-     * 
-     * @param faeList the fae list
-     */
-    @Override
-    public void setFAEList(FAEList faeList) {
-        super.setFAEList(faeList); 
-    }
-
+    
     /**
      * 
      * @param local the local of the congress
@@ -173,7 +162,6 @@ public class Congress extends Event implements Serializable{
     }
     /**
      * 
-    * @param organizersList the organizers list
     */
     @Override
     public void setOrganizerList(OrganizerList organizerList) {

@@ -1,8 +1,8 @@
 package lapr.project.model;
 
-import edu.emory.mathcs.backport.java.util.Collections;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import lapr.project.utils.Date;
@@ -11,21 +11,21 @@ import lapr.project.utils.Date;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-
 public class EventRegist implements Serializable {
 
     FairCenter fc;
+    UserRegist ur;
 
     /**
      * Event list
      */
-    private final List<Event> eventsList;
+    private final List<Event> eventList;
 
     /**
      * Constructor
      */
     public EventRegist() {
-        eventsList = new ArrayList<>();
+        eventList = new ArrayList<>();
     }
 
     /**
@@ -36,7 +36,7 @@ public class EventRegist implements Serializable {
      */
     public List<String> getOrganizerEventsListOrdenedByState(Organizer o) {
         List<String> organizerEventsList = new ArrayList<>();
-        Collections.sort(eventsList, (Comparator) new Comparator() {
+        Collections.sort(eventList, (Comparator) new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
                 String ev1 = ((Event) o1).getState().toString();
@@ -48,7 +48,7 @@ public class EventRegist implements Serializable {
                 return Double.compare(d1, d2);
             }
         });
-        for(Event e: eventsList){
+        for (Event e : eventList) {
             organizerEventsList.add(e.getTitle());
         }
         return organizerEventsList;
@@ -62,10 +62,10 @@ public class EventRegist implements Serializable {
 //    */
 //    public List<Event> getFAEEventsRegist (FAE fae) {
 //        List<Event> fl = new ArrayList<>();
-//        for (int i = 0; i < eventsList.size(); i++) {
-//            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-//                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(fae.getUsername())) {
-//                    fl.add(eventsList.get(i));
+//        for (int i = 0; i < eventList.size(); i++) {
+//            for (int j = 0; j < eventList.get(i).getFAEList().size(); j++) {
+//                if (eventList.get(i).getFAEList().get(j).getUsername().equals(fae.getUsername())) {
+//                    fl.add(eventList.get(i));
 //                }
 //            }
 //
@@ -80,10 +80,10 @@ public class EventRegist implements Serializable {
 //     */
 //    public List<Event> getFAEEventsRegist (User user) {
 //        List<Event> fl = new ArrayList<>();
-//        for (int i = 0; i < eventsList.size(); i++) {
-//            for (int j = 0; j < eventsList.get(i).getFAEList().size(); j++) {
-//                if (eventsList.get(i).getFAEList().get(j).getUsername().equals(user.getUsername())) {
-//                    fl.add(eventsList.get(i));
+//        for (int i = 0; i < eventList.size(); i++) {
+//            for (int j = 0; j < eventList.get(i).getFAEList().size(); j++) {
+//                if (eventList.get(i).getFAEList().get(j).getUsername().equals(user.getUsername())) {
+//                    fl.add(eventList.get(i));
 //                }
 //            }
 //
@@ -98,7 +98,7 @@ public class EventRegist implements Serializable {
      */
     public List<Event> getEventsReadyForSubmission() {
         List<Event> ReadyEvents = new ArrayList<>();
-        eventsList.stream().filter((e) -> ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0)).forEachOrdered((e) -> {
+        eventList.stream().filter((e) -> ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0)).forEachOrdered((e) -> {
             ReadyEvents.add(e);
         });
         return ReadyEvents;
@@ -111,8 +111,8 @@ public class EventRegist implements Serializable {
      * @return boolean depending on the success of the operation
      */
     public boolean addEvent(Event event) {
-        if (!eventsList.contains(event)) {
-            return eventsList.add(event);
+        if (!eventList.contains(event)) {
+            return eventList.add(event);
         }
         return false;
     }
@@ -123,7 +123,7 @@ public class EventRegist implements Serializable {
      * @return Events List
      */
     public List<Event> getEventList() {
-        return eventsList;
+        return eventList;
     }
 
     /**
@@ -132,7 +132,7 @@ public class EventRegist implements Serializable {
      * @return int With the size of the event list
      */
     public int Size() {
-        return eventsList.size();
+        return eventList.size();
     }
 
     /**
@@ -142,7 +142,7 @@ public class EventRegist implements Serializable {
      * @return event
      */
     public Event GetEvent(int i) {
-        return eventsList.get(i);
+        return eventList.get(i);
     }
 
     /**
@@ -152,7 +152,7 @@ public class EventRegist implements Serializable {
      * @return int With the position of the event
      */
     public int INDEXOF(Event event) {
-        return eventsList.indexOf(event);
+        return eventList.indexOf(event);
     }
 
     /**
@@ -162,7 +162,7 @@ public class EventRegist implements Serializable {
      * @return boolean depending on the success of the operation
      */
     public boolean removeEvent(Event event) {
-        return eventsList.remove(event);
+        return eventList.remove(event);
     }
 
     /**
@@ -172,7 +172,7 @@ public class EventRegist implements Serializable {
      * @return true or false
      */
     public boolean CONTAINS(Event event) {
-        return eventsList.contains(event);
+        return eventList.contains(event);
     }
 
     /**
@@ -183,30 +183,7 @@ public class EventRegist implements Serializable {
      * Event already created with the given title
      */
     public boolean validateEvent(String title) {
-        return eventsList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
-    }
-
-    /**
-     * Sets the data of the new event
-     *
-     * @param e Event in the initial state
-     * @param title Event's title
-     * @param description Event's title
-     * @param place Event's place of occurrence
-     * @param startDate Event's start date
-     * @param endDate Event's end date
-     * @param submissionStartDate Event's submission start date
-     * @param submissionEndDate Event's submission end date
-     */
-    public void setData(Event e, /*type,*/ String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate) {
-        /*type*/
-        e.setTitle(title);
-        e.setDescription(description);
-        e.setPlace(place);
-        e.setStartDate(startDate);
-        e.setEndDate(endDate);
-        e.setSubmissionStartDate(submissionStartDate);
-        e.setSubmissionEndDate(submissionEndDate);
+        return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
     }
 
     /**
@@ -215,6 +192,28 @@ public class EventRegist implements Serializable {
      * @param e created Event
      */
     public void registerEvent(Event e) {
-        eventsList.add(e);
+        eventList.add(e);
+    }
+
+    /**
+     * Returns a list of Events that the user identified by the username given
+     * is an Organizer of
+     *
+     * @param username User's username
+     * @return list of Events that the user identified by the username given is
+     * an Organizer of
+     */
+    public List<Event> getOrganizerEventList(String username) {
+        User u = ur.getUser(username);
+        Organizer o = new Organizer(u);
+        List<Event> organizerEventList = new ArrayList<>();
+        for (Event e : eventList) {
+            List<Organizer> tempList = e.getOrganizerList();
+            boolean flag = tempList.contains(o);
+            if (flag) {
+                organizerEventList.add(e);
+            }
+        }
+        return organizerEventList;
     }
 }
