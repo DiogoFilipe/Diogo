@@ -5,6 +5,7 @@
  */
 package lapr.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.Event;
@@ -46,6 +47,14 @@ public class AssignStandsController {
      */
     public List<Stand> getStandsListAvailable() {
         return fc.getStandReg().getStandsListAvailable();
+    }
+    /**
+     *
+     * @return
+     */
+    public List<Application> getApplicationsListAccepted(Event e) {
+       return fc.getEvent(e).getApplicationListAccepted();
+        
     }
     
 }

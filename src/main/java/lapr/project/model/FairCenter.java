@@ -60,6 +60,11 @@ public class FairCenter implements Serializable {
     public static List<Event> getEventList() {
         return fc.getEvents();
     }
+    
+    
+     public Event getEvent(Event e) {
+        return fc.getEvent(e);
+    }
 
     public void setUsers(List<User> users) {
         this.users = users;

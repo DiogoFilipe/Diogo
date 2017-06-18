@@ -144,6 +144,15 @@ public class Event implements EventState {
     public ApplicationList getApplicationList() {
         return applicationList;
     }
+    
+    /**
+     * Returns the list of Applications accepted
+     *
+     * @return list of Applications accepted of the Event 
+     */
+    public ApplicationList getApplicationListAccepted() {
+        return applicationList;
+    }
 
     /**
      * Returns the list of Assignments of the Event
