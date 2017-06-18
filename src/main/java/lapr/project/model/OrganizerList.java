@@ -20,6 +20,10 @@ public class OrganizerList implements Serializable {
     public OrganizerList() {
         organizerList = new ArrayList<>();
     }
+    
+    public OrganizerList(List<Organizer> organizerList) {
+        this.organizerList = organizerList;
+    }
 
     /**
      * @return the organizerList

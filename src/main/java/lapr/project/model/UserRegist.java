@@ -80,18 +80,18 @@ public class UserRegist {
     }
     
     
-//    /**
-//     * Returns the user of the username
-//     * @param usernameOrEmail the what he puts on log in
-//     * @return the user of the username
-//     */
-//    public User getUser(String usernameOrEmail){
-//        for(User user : this.userList){
-//            if(user.hasTheUsername(usernameOrEmail)|| user.verifyEmail(usernameOrEmail)){
-//                return user;
-//            }
-//        }
-//        return null;
-//    }
+    /**
+     * Returns the user of the username
+     * @param usernameOrEmail the what he puts on log in
+     * @return the user of the username
+     */
+    public User getUser(String usernameOrEmail){
+        for(User user : this.userList){
+            if(user.getUsername().equals(usernameOrEmail) || user.getEmail().equals(usernameOrEmail)){
+                return user;
+            }
+        }
+        return null;
+    }
         
 }
