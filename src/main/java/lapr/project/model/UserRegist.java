@@ -71,6 +71,14 @@ public class UserRegist {
 
     }
     
+    public User getUser(String username){
+    for(User u : userList){
+    if(u.getUsername().equals(username)){
+    return u;}
+    }
+    return null;
+    }
+    
     
     /**
      * Returns the user of the username

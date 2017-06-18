@@ -74,4 +74,5 @@ public class OrganizerList implements Serializable {
             this.organizerList.add(Organizer);
         });
     }
+    
 }

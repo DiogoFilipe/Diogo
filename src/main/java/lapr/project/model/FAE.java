@@ -18,6 +18,7 @@ public class FAE extends User implements Serializable {
      */
     private int professionalExperience;
     private User user;
+    private Decision decision;
 
     /**
      * constructor
@@ -27,10 +28,12 @@ public class FAE extends User implements Serializable {
      * @param email is the e-mail of the FAE
      * @param password is the FAE's password
      * @param professionalExperience
+     * @param decision made by the fae
      */
-    public FAE(String name, String username, String email, String password, int professionalExperience) {
+    public FAE(String name, String username, String email, String password, int professionalExperience,Decision decision) {
         super(name, username, email, password);
         this.professionalExperience = professionalExperience;
+        this.decision = decision;
     }
     /**
      *

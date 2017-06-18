@@ -49,7 +49,7 @@ public class AssignmentList {
       * @param assignment - assignment to be added
       * @return 
       */
-     public boolean registsAssignment(Assignment assignment) {
+     public boolean registAssignment(Assignment assignment) {
         if(!assignmentsList.contains(assignment)){
             assignmentsList.add(assignment);
             return true;

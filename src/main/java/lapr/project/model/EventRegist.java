@@ -216,4 +216,13 @@ public class EventRegist implements Serializable {
         }
         return organizerEventList;
     }
+    
+     public Event getEvent(String title) {
+        for (Event event : fc.getEvents()) {
+            if (event.getTitle().equals(title)) {
+                return event;
+            }
+        }
+        return null;
+    }
 }
