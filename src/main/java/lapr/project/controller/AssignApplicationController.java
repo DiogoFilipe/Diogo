@@ -26,8 +26,8 @@ public class AssignApplicationController {
     
     
     /**
-     * Construtor que recebe como parametro um objecto CentroExposições
-     * @param ce - objecto CentroExposição
+     * Constructor that receives as parameter an object Fair Center
+     * @param fc - object Fair Center
      */
     public AssignApplicationController(FairCenter fc) {
         this.fc = fc;
