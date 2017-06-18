@@ -8,6 +8,7 @@ public class Stand {
     
     private String id;
     private double area;
+     private boolean busy;
     
     private static int totalStands = 0;
     private static String ID_PREFIX = "Stand";
@@ -19,6 +20,7 @@ public class Stand {
     public Stand(double area) {
         this.id = ID_PREFIX + (totalStands++);
         this.area = area;
+        busy = false;
     }
     
     /**
@@ -51,6 +53,18 @@ public class Stand {
      */
     public void setArea(double area) {
         this.area = area;
+    }
+    
+    public void setBusy(boolean busy) {
+        this.busy = busy;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public boolean isBusy() {
+        return busy;
     }
     
     /**

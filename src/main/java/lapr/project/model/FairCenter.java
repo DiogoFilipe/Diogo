@@ -15,6 +15,7 @@ public class FairCenter implements Serializable {
     private UserRegist userRegist;
     private List<User> users;
     private List<Event> events;
+    private StandRegist standRegist;
 
     /**
      * Constructor
@@ -22,6 +23,7 @@ public class FairCenter implements Serializable {
     public FairCenter() {
       eventRegist = new EventRegist();
       userRegist = new UserRegist();
+       standRegist = new StandRegist();
     }
 
     public List<User> getUsers() {
@@ -33,6 +35,14 @@ public class FairCenter implements Serializable {
      */
     public UserRegist getUserRegist() {
         return userRegist;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public StandRegist getStandReg() {
+        return standRegist;
     }
     
     /**
