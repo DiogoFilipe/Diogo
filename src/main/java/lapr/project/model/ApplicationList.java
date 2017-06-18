@@ -77,4 +77,11 @@ public class ApplicationList implements Serializable {
     public boolean isEmpty() {
         return applicationList.isEmpty();
     }
+    
+    public Application getApplication(String description){
+    for(Application a : applicationList){
+    if(a.getDescription().equals(description)){
+    return a;}
+        }return null;
+    }
 }

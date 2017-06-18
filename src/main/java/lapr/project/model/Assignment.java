@@ -11,4 +11,46 @@ package lapr.project.model;
  */
 public class Assignment {
     
+    private FAE fae;
+    private Decision decision;
+    private Organizer organizer;
+    
+    public Assignment(FAE fae, Decision decision){
+       this.fae = fae;
+       this.decision = decision;
+    }
+    
+    public Assignment(Organizer organizer,Decision decision){
+        this.organizer = organizer;
+        this.decision = decision;
+    }
+    
+       
+
+    public Decision getDecision() {
+        return decision;
+    }
+
+    public Organizer getOrganizer() {
+        return organizer;
+    }
+
+    public FAE getFae() {
+        return fae;
+    }
+
+    public void setDecision(Decision decision) {
+        this.decision = decision;
+    }
+
+    public void setFae(FAE fae) {
+        this.fae = fae;
+    }
+
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
+    
+    
+    
 }

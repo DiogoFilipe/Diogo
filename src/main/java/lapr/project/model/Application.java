@@ -25,23 +25,18 @@ public class Application implements Importable<Application>, Exportable {
         private static final String COMPANYNAME_BY_OMISSION = "no company name";
         private static final String ADDRESS_BY_OMISSION = "no address";
         private static final String CONTACT_BY_OMISSION = "no contact";
-        private static final int FAEKNOWLEDGE_BY_OMISSION = 0;
-        private static final int ADEQUACY_BY_OMISSION = 0;
-        private static final int INVITATIONADEQUACY_BY_OMISSION = 0;
-        private static final int OVERALLRECOMMENDATION_BY_OMISSION = 0;
+        private static final Decision decision = new Decision();
+        private static final int INVITES_BY_OMISSION = 0;
+        private static final double BOOTHAREA_BY_OMISSION = 0;
         
-        
-        
-        
+        private int invites; 
+        private double boothArea; 
         private String companyName;
         private String address;
         private String contact;
 	private final List<Keyword> keywordList = new ArrayList<>();
-	private String description = "";
-        private int faeKnowledge;
-        private int adequacy;
-        private int invitationAdequacy;
-        private int overallRecommendation;
+	private String description;
+        private Decision d;
 
 	/**
 	 * Constructor for Application
@@ -49,17 +44,16 @@ public class Application implements Importable<Application>, Exportable {
 	 * @param description CandidaturaDescription
 	 * @param keywordList Keyword List
 	 */
-	public Application(String companyName,String address,String contact,String description, List<Keyword> keywordList, int faeKnowledge,int adequacy,int invitationAdequacy,int overallRecommendation) {
+	public Application(String companyName,String address,String contact,String description, List<Keyword> keywordList,Decision decision,double boothArea,int invites) {
             
                 this.companyName = companyName;
                 this.address = address;
                 this.contact = contact;
 		this.description = description;
 		this.keywordList.addAll(keywordList);
-                this.faeKnowledge = faeKnowledge;
-                this.adequacy = adequacy;
-                this.invitationAdequacy=invitationAdequacy;
-                this.overallRecommendation = overallRecommendation;
+                this.d = decision;
+                this.boothArea = boothArea;
+                this.invites = invites;
                 
 	}
 
@@ -68,11 +62,37 @@ public class Application implements Importable<Application>, Exportable {
                 this.address = ADDRESS_BY_OMISSION;
                 this.contact = CONTACT_BY_OMISSION;
 		this.description = DESCRIPTION_BY_OMISSION;
-                this.faeKnowledge = FAEKNOWLEDGE_BY_OMISSION;
-                this.adequacy = ADEQUACY_BY_OMISSION;
-                this.invitationAdequacy=INVITATIONADEQUACY_BY_OMISSION;
-                this.overallRecommendation = OVERALLRECOMMENDATION_BY_OMISSION;
+                this.keywordList.addAll(keywordList);
+                this.d = decision;
+                this.boothArea = BOOTHAREA_BY_OMISSION;
+                this.invites = INVITES_BY_OMISSION;
          }
+
+         public Application(String companyName, String address, String contact, String description) {
+                this.companyName = companyName;
+                this.address = address;
+                this.contact = contact;
+                this.description = description;
+                this.keywordList.addAll(keywordList);
+        
+        
+    }
+    
+    
+          public Application(String description,double boothArea,int invites){
+                this.description = description;
+                this.boothArea = boothArea;
+                this.invites = invites;
+                this.companyName = COMPANYNAME_BY_OMISSION;
+                this.address = ADDRESS_BY_OMISSION;
+                this.contact = CONTACT_BY_OMISSION;
+                this.keywordList.addAll(keywordList);
+                this.d = decision;
+    }
+    
+    
+         
+         
         
         
         
@@ -119,118 +139,17 @@ public class Application implements Importable<Application>, Exportable {
 	public String getDescription() {
 		return description;
 	}
-        
-       /**
-        * Returns the fae´s avaliation about the application adequacy
-        * @return fae´s opinion,from 0 to 5, about the application adequacy
-        */
-        public int getAdequacy(){
-        return adequacy;
-        }
-        
-        /**
-         * Returns the fae´s self avaliation over his knowledge about the application´s theme
-         * @return Fae´s self avaliation over his knowledge about the application´s theme
-         */
-        public int getFAEKnowledge(){
-        return faeKnowledge;}
-        
-        /**
-         * Returns the application´s invitation adequacy
-         * @return The application´s invitation adequacy
-         */
-        public int getInvitationAdequacy(){
-        return invitationAdequacy;}
-
-        /**
-         * Returns the fae Knowledge over the the application´s theme
-         * @return The fae Knowledge over the the application´s theme
-         */
-        public int getFaeKnowledge() {
-        return faeKnowledge;
+     
+        public Decision getDecision() {
+        return d;
         }
 
-        /**
-         * Returns tbe overall recommendation of the application
-         * @return overall recommendation of the application
-         */
-        public int getOverallRecommendation() {
-        return overallRecommendation;
-        }
 
-        /**
-         * Defines the fae´s knowledge over the application theme
-         * @param faeKnowledge defined
-         */
-        public void setFaeKnowledge(int faeKnowledge) {
-        this.faeKnowledge = faeKnowledge;
-        }
-
-        /**
-         * Defines the application´s overall recommendation
-         * @param overallRecommendation defined
-         */
-        public void setOverallRecommendation(int overallRecommendation) {
-         this.overallRecommendation = overallRecommendation;
+        public void setDecision(Decision decision) {
+          this.d = decision;
         }
         
         
-
-        /**
-         * Defines the application´s companyName
-         * @param companyName defined
-         */
-        public void setCompanyName(String companyName) {
-          this.companyName = companyName;
-        }
-
-        /**
-         * Defines the company´s address
-         * @param address defined
-         */
-        public void setAddress(String address) {
-          this.address = address;
-        }
-
-        /**
-         * Defines the representative´s contact
-         * @param contact defined
-         */
-        public void setContact(String contact) {
-          this.contact = contact;
-        }
-
-        /**
-         * Defines the application´s description
-         * @param description defined
-         */
-        public void setDescription(String description) {
-          this.description = description;
-        }
-        
-        /**
-         * Defines the faeKnowledge
-         * @param faeKnowledge defined
-         */
-        public void setFAEKnowledge(int faeKnowledge){
-          this.faeKnowledge = faeKnowledge;
-        }
-
-        /**
-         * Defines the adequacy of the application
-         * @param adequacy defined
-         */
-        public void setAdequacy(int adequacy) {
-          this.adequacy = adequacy;
-        }
-
-        /**
-         * Defines the invitationAdequacy of the application
-         * @param invitationAdequacy defined
-         */
-        public void setInvitationAdequacy(int invitationAdequacy) {
-          this.invitationAdequacy = invitationAdequacy;
-        }
         
         
 
@@ -355,5 +274,10 @@ public class Application implements Importable<Application>, Exportable {
 		return getKeywordList().equals(that.getKeywordList());
 
 	}
+        
+        
+        public void addDecision(Decision decision){
+        this.setDecision(decision);
+        }
         
        }

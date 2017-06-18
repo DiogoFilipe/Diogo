@@ -217,4 +217,13 @@ public class EventRegist implements Serializable {
     public void registerEvent(Event e) {
         eventsList.add(e);
     }
+    
+     public Event getEvent(String title) {
+        for (Event event : fc.getEvents()) {
+            if (event.getTitle().equals(title)) {
+                return event;
+            }
+        }
+        return null;
+    }
 }

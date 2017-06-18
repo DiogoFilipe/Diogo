@@ -17,12 +17,14 @@ public class Event implements EventState {
     private Date submissionStartDate;
     private Date submissionEndDate;
     private State state;
-
     private FAEList faeList;
     private ApplicationList applicationList;
     private AssignmentList assignmentList;
     private OrganizerList organizerList;
     private List<Stand> standList;
+    
+    private final String DESCRIPTION_BY_OMISSION ="No description";
+    private final String PLACE_BY_OMISSION ="No localization";
 
     public Event() {
         this.state = EventState.State.Initial;
@@ -41,6 +43,15 @@ public class Event implements EventState {
         this.applicationList = applicationList;
         this.organizerList = organizerList;
         this.state = EventState.State.FAESet;
+    }
+    
+    public Event(String title){
+    this.title = title;
+    this.description = DESCRIPTION_BY_OMISSION;
+    this.assignmentList = this.assignmentList;
+    this.faeList = this.faeList;
+    this.applicationList = this.applicationList;
+    this.organizerList = this.organizerList;
     }
 
     /**
@@ -293,4 +304,13 @@ public class Event implements EventState {
         Organizer o = new Organizer(u);
         organizerList.addOrganizer(o);
     }
+
+    public void addApplication(Application application){
+    this.applicationList.registApplication(application);
+    }
+    
+    
+  
+
 }
+

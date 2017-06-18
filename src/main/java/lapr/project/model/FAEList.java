@@ -86,4 +86,13 @@ public class FAEList {
             return false;
         }
     }
+    
+     public FAE getFAE(String username){
+    for(FAE f : FAEList){
+    if(f.getUsername().equals(username)){
+    return f;}
+    }
+    return null;
+    }
+    
 }
