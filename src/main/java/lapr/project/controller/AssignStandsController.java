@@ -38,4 +38,14 @@ public class AssignStandsController {
     public List<Event> getEventsListApplicanionsDecided() {   
         return null;
     }
+    
+    
+    /**
+     *
+     * @return
+     */
+    public List<Stand> getStandsListAvailable() {
+        return fc.getStandReg().getStandsListAvailable();
+    }
+    
 }
