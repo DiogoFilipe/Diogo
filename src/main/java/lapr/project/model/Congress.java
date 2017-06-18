@@ -78,7 +78,7 @@ public class Congress extends Event implements Serializable{
      * @return the organizers list
      */
     @Override
-    public OrganizerList getOrganizerList() {
+    public List<Organizer> getOrganizerList() {
         return super.getOrganizerList(); 
     }
 
