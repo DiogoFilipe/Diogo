@@ -77,5 +77,20 @@ public class UserRegist {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
+    
+        /**
+     * verifys if username already exists
+     *
+     * @param username - username to verify if it exists
+     * @return
+     */
+    public boolean verifyUsername(String username) {
+        for (User u : userList) {
+            if (u.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
