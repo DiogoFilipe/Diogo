@@ -11,11 +11,21 @@ package lapr.project.model;
  */
 public class Representative extends User{
     
+    /**
+     * 
+     * @param user real name
+     * @param username name in the platform
+     * @param email his email
+     * @param password string that protect his account
+     */
     public Representative(String user,String username,String email,String password){
         super(user,username,email,password);
     }
     
-    public Representative(){
+    /**
+     * empty constructor 
+     */
+   public Representative(){
         super();
     }
 
@@ -37,11 +47,6 @@ public class Representative extends User{
     @Override
     public String getName() {
         return super.getName(); 
-    }
-
-    @Override
-    public boolean hasTheUsername(String username, User user) {
-        return super.hasTheUsername(username, user); 
     }
 
     @Override
