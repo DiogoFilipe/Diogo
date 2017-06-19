@@ -1,7 +1,6 @@
 package lapr.project.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,67 +10,48 @@ import java.util.List;
 public class FairCenter implements Serializable {
 
     private EventRegist eventRegist;
-    private static FairCenter fc = new FairCenter();
     private UserRegist userRegist;
-    private List<User> users;
-    private List<Event> events;
+    private OrganizerList organizerList;
     private StandRegist standRegist;
 
     /**
      * Constructor
      */
     public FairCenter() {
-      eventRegist = new EventRegist();
-      userRegist = new UserRegist();
-       standRegist = new StandRegist();
+        eventRegist = new EventRegist();
+        userRegist = new UserRegist();
+        standRegist = new StandRegist();
+        organizerList = new OrganizerList();
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-    
-       /**
+    /**
      * @return the registoUtilizadores
      */
     public UserRegist getUserRegist() {
         return userRegist;
     }
-    
+
     /**
      *
      * @return
      */
     public StandRegist getStandReg() {
-        return standRegist;
+        return getStandRegist();
     }
-    
+
     /**
      * @return the eventRegist
      */
     public EventRegist getEventRegist() {
         return eventRegist;
     }
-    
 
-    public List<Event> getEvents() {
-        return events;
+    public List<Event> getEventList() {
+        return eventRegist.getEventList();
     }
 
-    public static List<Event> getEventList() {
-        return fc.getEvents();
-    }
-    
-    
-     public Event getEvent(Event e) {
-        return fc.getEvent(e);
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public Event getEvent(Event e) {
+        return eventRegist.getEvent(e.getTitle());
     }
 
     /**
@@ -80,7 +60,7 @@ public class FairCenter implements Serializable {
      * @param user
      */
     public void newUser(User user) {
-        userRegist.addUser(user);
+        userRegist.getUserList().add(user);
     }
 
     /**
@@ -93,11 +73,53 @@ public class FairCenter implements Serializable {
     }
 
     public Event getEvent(String title) {
-        for (Event event : fc.getEvents()) {
+        for (Event event : eventRegist.getEventList()) {
             if (event.getTitle().equals(title)) {
                 return event;
             }
         }
         return null;
+    }
+
+    /**
+     * @param eventRegist the eventRegist to set
+     */
+    public void setEventRegist(EventRegist eventRegist) {
+        this.eventRegist = eventRegist;
+    }
+
+    /**
+     * @param userRegist the userRegist to set
+     */
+    public void setUserRegist(UserRegist userRegist) {
+        this.userRegist = userRegist;
+    }
+
+    /**
+     * @return the organizerList
+     */
+    public OrganizerList getOrganizerList() {
+        return organizerList;
+    }
+
+    /**
+     * @param organizerList the organizerList to set
+     */
+    public void setOrganizerList(OrganizerList organizerList) {
+        this.organizerList = organizerList;
+    }
+
+    /**
+     * @return the standRegist
+     */
+    public StandRegist getStandRegist() {
+        return standRegist;
+    }
+
+    /**
+     * @param standRegist the standRegist to set
+     */
+    public void setStandRegist(StandRegist standRegist) {
+        this.standRegist = standRegist;
     }
 }
