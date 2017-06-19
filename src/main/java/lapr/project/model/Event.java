@@ -46,12 +46,12 @@ public class Event implements EventState {
     }
     
     public Event(String title){
-    this.title = title;
-    this.description = DESCRIPTION_BY_OMISSION;
-    this.assignmentList = this.assignmentList;
-    this.faeList = this.faeList;
-    this.applicationList = this.applicationList;
-    this.organizerList = this.organizerList;
+        this.title = title;
+        this.description = DESCRIPTION_BY_OMISSION;
+        this.assignmentList = this.assignmentList;
+        this.faeList = this.faeList;
+        this.applicationList = this.applicationList;
+        this.organizerList = this.organizerList;
     }
 
     /**
@@ -168,8 +168,8 @@ public class Event implements EventState {
      *
      * @return list of Organizers of the Event
      */
-    public List<Organizer> getOrganizerList() {
-        return organizerList.getOrganizerList();
+    public OrganizerList getOrganizerList() {
+        return organizerList;
     }
 
     /**
@@ -315,11 +315,8 @@ public class Event implements EventState {
     }
 
     public void addApplication(Application application){
-    this.applicationList.registApplication(application);
+        this.applicationList.registApplication(application);
     }
-    
-    
-  
 
 }
 
