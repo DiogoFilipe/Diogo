@@ -36,60 +36,23 @@ public class EventRegist implements Serializable {
      */
     public List<String> getOrganizerEventsListOrdenedByState(Organizer o) {
         List<String> organizerEventsList = new ArrayList<>();
-        Collections.sort(eventList, (Comparator) new Comparator() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                String ev1 = ((Event) o1).getState().toString();
-                int i1 = ev1.length();
-                String ev2 = ((Event) o2).getState().toString();
-                int i2 = ev2.length();
-                double d1 = Double.valueOf(ev2.substring(0, i1));
-                double d2 = Double.valueOf(ev2.substring(0, i2));
-                return Double.compare(d1, d2);
-            }
-        });
         for (Event e : eventList) {
-            organizerEventsList.add(e.getTitle());
+            if (e.getOrganizerList().containsOrganizer(o)) {
+                organizerEventsList.add(e.getTitle());
+            }
         }
         return organizerEventsList;
     }
-//    
-//    /**
-//     * Method that returns the event list of a given fae
-//     * @param fae
-//     * @return events list of fae
-//     * 
-//    */
-//    public List<Event> getFAEEventsRegist (FAE fae) {
-//        List<Event> fl = new ArrayList<>();
-//        for (int i = 0; i < eventList.size(); i++) {
-//            for (int j = 0; j < eventList.get(i).getFAEList().size(); j++) {
-//                if (eventList.get(i).getFAEList().get(j).getUsername().equals(fae.getUsername())) {
-//                    fl.add(eventList.get(i));
-//                }
-//            }
-//
-//        }
-//        return fl;    
-//    }
-//    
-//    /**
-//     * Method that returns the event list of a given fae, through a User object
-//     * @param user
-//     * @return events list of fae
-//     */
-//    public List<Event> getFAEEventsRegist (User user) {
-//        List<Event> fl = new ArrayList<>();
-//        for (int i = 0; i < eventList.size(); i++) {
-//            for (int j = 0; j < eventList.get(i).getFAEList().size(); j++) {
-//                if (eventList.get(i).getFAEList().get(j).getUsername().equals(user.getUsername())) {
-//                    fl.add(eventList.get(i));
-//                }
-//            }
-//
-//        }
-//        return fl;    
-//    } 
+
+    public List<String> getFAEEventsList(FAE fae) {
+        List<String> FAEEventsList = new ArrayList<>();
+        for (Event e : eventList) {
+            if (e.getFAEList().containsFAE(fae)) {
+                FAEEventsList.add(e.getTitle());
+            }
+        }
+        return FAEEventsList;
+    }
 
     /**
      * Lets get the Events List ready for submission
@@ -151,7 +114,7 @@ public class EventRegist implements Serializable {
      * @param event
      * @return int With the position of the event
      */
-    public int INDEXOF(Event event) {
+    public int IndexOf(Event event) {
         return eventList.indexOf(event);
     }
 
@@ -171,7 +134,7 @@ public class EventRegist implements Serializable {
      * @param event to check if its on the list
      * @return true or false
      */
-    public boolean CONTAINS(Event event) {
+    public boolean Contains(Event event) {
         return eventList.contains(event);
     }
 
@@ -184,15 +147,6 @@ public class EventRegist implements Serializable {
      */
     public boolean validateEvent(String title) {
         return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
-    }
-
-    /**
-     * Adds the created Event to the list of Events
-     *
-     * @param e created Event
-     */
-    public void registerEvent(Event e) {
-        eventList.add(e);
     }
 
     /**
@@ -216,9 +170,9 @@ public class EventRegist implements Serializable {
         }
         return organizerEventList;
     }
-    
+
     public Event getEvent(String title) {
-        for (Event event : fc.getEvents()) {
+        for (Event event : eventList) {
             if (event.getTitle().equals(title)) {
                 return event;
             }
