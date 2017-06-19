@@ -13,14 +13,24 @@ import lapr.project.utils.Date;
  *
  * @author 1160590_1160795_116844_1161241_1162109
  */
-public class Exhibition extends Event implements Serializable{
+public class Exhibition extends Event implements Serializable,EventState{
+    
+  
+    public State exhibitionState;
     
     public Exhibition(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList,List<Stand> standList) {
         super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList,standList);
+        this.exhibitionState=EventState.State.Created;
     }
     
     public Exhibition(String title){
     super(title);
+    this.exhibitionState=EventState.State.Created;
+    }
+    
+    public Exhibition(){
+        super();
+        this.exhibitionState=EventState.State.Created;
     }
 
     /**
