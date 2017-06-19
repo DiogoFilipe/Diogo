@@ -77,8 +77,8 @@ public class UserRegist {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
-    
-        /**
+
+    /**
      * verifys if username already exists
      *
      * @param username - username to verify if it exists
@@ -91,6 +91,97 @@ public class UserRegist {
             }
         }
         return true;
+    }
+
+    /**
+     * Verifys if the name only has letters
+     *
+     * @param name - name to be tested
+     * @return
+     */
+    public boolean verifyName(String name) {
+        boolean check = true;
+        char[] chars = name.toCharArray();
+        if (chars.length < 1) {
+            check = false;
+        }
+
+        for (char c : chars) {
+            if (!Character.isLetter(c)) {
+                check = false;
+            }
+        }
+        return check;
+    }
+
+    /**
+     *
+     * @param email
+     * @return true if the email has a @ and a point
+     */
+    public boolean verifyEmail(String email) {
+        boolean at = false;
+        boolean point = false;
+        char[] chars = email.toCharArray();
+
+        for (User u : userList) {
+            if (u.getEmail().equals(email)) {
+                return false;
+            }
+        }
+
+        if (chars.length < 1) {
+            return false;
+        }
+        for (char c : chars) {
+            if (c == '@') {
+                at = true;
+            }
+            if (c == '.') {
+                point = true;
+            }
+        }
+        return at == true & point == true;
+    }
+
+    /**
+     * Verifys the password
+     *
+     * @param password - password to be verified
+     * @return
+     */
+    public boolean verifyPassword(String password) {
+        boolean sinal = false;
+        boolean lowerCase = false;
+        boolean upperCase = false;
+        boolean number = false;
+        boolean verify = false;
+
+        char[] ch = password.toCharArray();
+        if (ch.length < 1) {
+            return false;
+        }
+        for (char c : ch) {
+            if (c == ';' || c == ',' || c == '.' || c == ':' || c == '-') {
+                sinal = true;
+
+            }
+            if (Character.isLowerCase(c)) {
+                lowerCase = true;
+            }
+
+            if (Character.isUpperCase(c)) {
+                upperCase = true;
+            }
+
+            if (Character.isDigit(c)) {
+                number = true;
+            }
+        }
+        if (sinal == true & lowerCase == true & upperCase == true & number == true) {
+            verify = true;
+        }
+        return verify;
     }
 
 }
