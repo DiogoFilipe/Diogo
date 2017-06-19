@@ -27,7 +27,7 @@ public class Event implements EventState {
     private final String PLACE_BY_OMISSION ="No localization";
 
     public Event() {
-        this.state = EventState.State.Initial;
+        this.state = EventState.State.Created;
     }
 
     public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, List<Stand> standList) {
@@ -48,10 +48,11 @@ public class Event implements EventState {
     public Event(String title){
         this.title = title;
         this.description = DESCRIPTION_BY_OMISSION;
-        this.assignmentList = this.assignmentList;
-        this.faeList = this.faeList;
-        this.applicationList = this.applicationList;
-        this.organizerList = this.organizerList;
+        this.assignmentList = new AssignmentList();
+        this.faeList = new FAEList();
+        this.applicationList = new ApplicationList();
+        this.organizerList = new OrganizerList();
+        this.state= EventState.State.Created;
     }
 
     /**
