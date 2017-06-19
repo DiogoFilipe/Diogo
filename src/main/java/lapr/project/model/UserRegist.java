@@ -13,54 +13,39 @@ import java.util.List;
  * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class UserRegist {
-    
+
     private List<User> userList;
-    private static UserRegist ur = new UserRegist();
-    
-   
-    public UserRegist(){
+
+    public UserRegist() {
         this.userList = new ArrayList<>();
     }
 
-    /**
-     * Adds an user to the userList
-     * @param user - user to be added to the list
-     * @return returns the user list
-      */
-    public boolean addUser(User user) {
-      return userList.add(user);
-    }
-    
-    public static boolean registUser(User user){
-        boolean check=false;
-     if(ur.addUser(user)){
-     check = true;}
-     return check;
+    public boolean registUser(User user) {
+        if (!userList.contains(user)) {
+            return userList.add(user);
+        }
+        return false;
     }
 
     /**
      * Returns the user list
+     *
      * @return the user list
      */
     public List<User> getUserList() {
         return userList;
     }
-    
-    
-    
-    public static List<User> getUsers(){
-    List <User> users = ur.getUserList();
-    return users;
-    }
+
     /**
      * Verifies if the user is in the list
-     * @param user - user to be verified 
-     * @return 
+     *
+     * @param user - user to be verified
+     * @return
      */
-    public boolean isUser(User user){
+    public boolean isUser(User user) {
         return userList.contains(user);
     }
-    
+
     /**
      *
      * @param index
@@ -70,20 +55,27 @@ public class UserRegist {
         return userList.get(index);
 
     }
-    
-    
+
     /**
      * Returns the user of the username
+     *
      * @param usernameOrEmail the what he puts on log in
      * @return the user of the username
      */
-    public User getUser(String usernameOrEmail){
-        for(User user : this.userList){
-            if(user.getUsername().equals(usernameOrEmail) || user.getEmail().equals(usernameOrEmail)){
+    public User getUser(String usernameOrEmail) {
+        for (User user : this.userList) {
+            if (user.getUsername().equals(usernameOrEmail) || user.getEmail().equals(usernameOrEmail)) {
                 return user;
             }
         }
         return null;
     }
-        
+
+    /**
+     * @param userList the userList to set
+     */
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
 }
