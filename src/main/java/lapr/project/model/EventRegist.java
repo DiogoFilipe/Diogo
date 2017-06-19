@@ -208,7 +208,7 @@ public class EventRegist implements Serializable {
         Organizer o = new Organizer(u);
         List<Event> organizerEventList = new ArrayList<>();
         for (Event e : eventList) {
-            List<Organizer> tempList = e.getOrganizerList();
+            List<Organizer> tempList = e.getOrganizerList().getOrganizerList();
             boolean flag = tempList.contains(o);
             if (flag) {
                 organizerEventList.add(e);
@@ -217,7 +217,7 @@ public class EventRegist implements Serializable {
         return organizerEventList;
     }
     
-     public Event getEvent(String title) {
+    public Event getEvent(String title) {
         for (Event event : fc.getEvents()) {
             if (event.getTitle().equals(title)) {
                 return event;
