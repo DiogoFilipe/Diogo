@@ -78,8 +78,8 @@ public class Congress extends Event implements Serializable{
      * @return the organizers list
      */
     @Override
-    public List<Organizer> getOrganizerList() {
-        return super.getOrganizerList(); 
+    public OrganizerList getOrganizerList() {
+        return getOrganizerList(); 
     }
 
     /**
@@ -202,6 +202,36 @@ public class Congress extends Event implements Serializable{
     @Override
     public void setTitle(String title) {
         super.setTitle(title);
+    }
+
+    @Override
+    public void addOrganizer(User u) {
+        super.addOrganizer(u); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addStand(Stand stand) {
+        return super.addStand(stand); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addApplication(Application application) {
+        super.addApplication(application); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ApplicationList getApplicationListAccepted() {
+        return super.getApplicationListAccepted(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Stand> getStandList() {
+        return super.getStandList(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public State getState() {
+        return super.getState(); //To change body of generated methods, choose Tools | Templates.
     }
     
     
