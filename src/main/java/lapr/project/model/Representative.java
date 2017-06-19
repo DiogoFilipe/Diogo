@@ -93,5 +93,8 @@ public class Representative extends User{
         this.companyName = companyName;
     }
     
+    public boolean hasCompanyName(){
+        return !(companyName == null||companyName.trim().equalsIgnoreCase(" "));
+    }
     
 }
