@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.ui.CreateEvent;
 
-import lapr.project.model.Event;
-import lapr.project.model.FairCenter;
+//import java.util.ArrayList;
+//import java.util.List;
+//import javax.swing.DefaultListModel;
+import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
 import lapr.project.utils.Date;
 
@@ -16,15 +13,24 @@ import lapr.project.utils.Date;
  */
 public class CreateEventMain extends javax.swing.JFrame {
 
-    FairCenter fc;
+    private FairCenter fc;
+    private User u;
+    private UserRegist ur;
     private Event event;
+
+    //private final DefaultListModel userModel = new DefaultListModel();
 
     /**
      * Creates new form CreateEventMain
      */
-    public CreateEventMain() {
-
+    public CreateEventMain(FairCenter fc, User u) {
+        this.fc = fc;
+        this.u = u;
+        this.ur = fc.getUserRegist();
+        
         initComponents();
+        jComboBox1.addItem("Congress");
+        jComboBox1.addItem("Exhibition");
     }
 
     /**
@@ -298,41 +304,33 @@ public class CreateEventMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void EndSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndSubDateInputTextFieldActionPerformed
-
+        String submissionEndDate = EndSubDateInputTextField.getText();
     }//GEN-LAST:event_EndSubDateInputTextFieldActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
-        MainWindow mainWindow = new MainWindow(fc);
+        MainWindow mainWindow = new MainWindow(fc, u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void TitleInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TitleInputTextFieldActionPerformed
         String title = TitleInputTextField.getText();
-        event.setTitle(title);
     }//GEN-LAST:event_TitleInputTextFieldActionPerformed
 
     private void StartDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartDateInputTextFieldActionPerformed
-        String start = StartDateInputTextField.getText();
-        Date startDate = Date.StringToDate(start);
-        event.setStartDate(startDate);
+        String startDate = StartDateInputTextField.getText();
     }//GEN-LAST:event_StartDateInputTextFieldActionPerformed
 
     private void EndDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateInputTextFieldActionPerformed
-        String end = EndDateInputTextField.getText();
-        Date endDate = Date.StringToDate(end);
-        event.setEndDate(endDate);
+        String endDate = EndDateInputTextField.getText();
     }//GEN-LAST:event_EndDateInputTextFieldActionPerformed
 
     private void DescriptionInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescriptionInputTextFieldActionPerformed
         String description = DescriptionInputTextField.getText();
-        event.setDescription(description);
     }//GEN-LAST:event_DescriptionInputTextFieldActionPerformed
 
     private void StartSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartSubDateInputTextFieldActionPerformed
-        String submissionStart = StartSubDateInputTextField.getText();
-        Date submissionStartDate = Date.StringToDate(submissionStart);
-        event.setSubmissionStartDate(submissionStartDate);
+        String submissionStartDate = StartSubDateInputTextField.getText();
     }//GEN-LAST:event_StartSubDateInputTextFieldActionPerformed
 
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
@@ -341,44 +339,7 @@ public class CreateEventMain extends javax.swing.JFrame {
 
     private void PlaceInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceInputTextFieldActionPerformed
         String place = PlaceInputTextField.getText();
-        event.setPlace(place);
     }//GEN-LAST:event_PlaceInputTextFieldActionPerformed
-
-    /**
-     *
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateEventMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateEventMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateEventMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateEventMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreateEventMain().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddOrganizerButton;
