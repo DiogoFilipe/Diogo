@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
-public class Application implements Importable<Application> {
+public class Application implements Importable<Application>, ApplicationState {
 
     private static final String ROOT_ELEMENT_NAME = "application";
     private static final String DESCRIPTION_BY_OMISSION = "no description";
@@ -38,6 +38,7 @@ public class Application implements Importable<Application> {
     private List<Keyword> keywordList = new ArrayList<>();
     private String description;
     private Decision d;
+    private State state;
 
     /**
      * Constructor for Application
@@ -61,7 +62,7 @@ public class Application implements Importable<Application> {
         this.d = decision;
         this.boothArea = boothArea;
         this.invites = invites;
-
+        setState(ApplicationState.State.Created);
     }
 
     public Application() {
@@ -300,6 +301,10 @@ public class Application implements Importable<Application> {
 
     public void setKeywordList(Keyword keyword) {
         this.keywordList.add(keyword);
+    }
+    
+    public void setState(State state) {
+        this.state = state;
     }
     
     
