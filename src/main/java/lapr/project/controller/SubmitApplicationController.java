@@ -12,9 +12,9 @@ public class SubmitApplicationController {
     
     FairCenter fc;
     EventRegist er;
-//    Event e;
-//    Application a;
-//    List<Application> al;
+    Event e;
+    Application a;
+    List<Application> al;
     
     public SubmitApplicationController(FairCenter fc) {
         this.fc = fc;
@@ -32,29 +32,31 @@ public class SubmitApplicationController {
         return eventsOpenForApplicationsListString;
     }
     
-//    public void getApplicationList(String eventTitle) {
-//        List<Event> eventList = er.getEventList();
-//        for (Event event : eventList) {
-//            if (event.getTitle().equals(eventTitle)) {
-//                e = event;
-//            }
-//        }
-//        this.al = e.getApplicationList().getApplicationList();
-//    }
-//    
-//    public void setData(String companyName, String address, String contact, ) {
-//        this.a.setCompanyName(companyName);
-//        this.a.setAddress(address);
-//        this.a.setContact(contact);
-//        
-//    }
-//    
-//    public void addApplication() {
-//        al.add(a);
-//    }
-//    
-//    public void setCreated() {
-//        a.setState(ApplicationState.State.Created);
-//    }
+    public void getApplicationList(String eventTitle) {
+        List<Event> eventList = er.getEventList();
+        for (Event event : eventList) {
+            if (event.getTitle().equals(eventTitle)) {
+                e = event;
+            }
+        }
+        this.al = e.getApplicationList().getApplicationList();
+    }
+    
+    public void setData(String companyName, String address, int contact, String description, double boothArea, int invites, List<String> keywordListString) {
+        List<Keyword> keywordList = new ArrayList<>();
+        for (String word : keywordListString) {
+            Keyword keyword = new Keyword(word);
+            keywordList.add(keyword);
+        }
+        a = new Application(companyName, address, contact, description, boothArea, invites, keywordList);
+    }
+    
+    public void addApplication() {
+        al.add(a);
+    }
+    
+    public void setCreated() {
+        a.setState(ApplicationState.State.Created);
+    }
     
 }
