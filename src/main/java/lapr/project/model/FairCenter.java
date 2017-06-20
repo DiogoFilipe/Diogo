@@ -15,7 +15,6 @@ public class FairCenter implements Serializable {
     private OrganizerList organizerList;
     private StandRegist standRegist;
     private EncryptionList encryptionList;
-    private ApplicationList applicationList;
 
     /**
      * Constructor
@@ -26,7 +25,6 @@ public class FairCenter implements Serializable {
         standRegist = new StandRegist();
         organizerList = new OrganizerList();
         encryptionList = new EncryptionList();
-        applicationList = new ApplicationList();
     }
 
     /**
@@ -141,19 +139,5 @@ public class FairCenter implements Serializable {
 
     public File getSelectedFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     * @return the applicationList
-     */
-    public ApplicationList getApplicationList() {
-        return applicationList;
-    }
-
-    /**
-     * @param applicationList the applicationList to set
-     */
-    public void setApplicationList(ApplicationList applicationList) {
-        this.applicationList = applicationList;
     }
 }
