@@ -92,4 +92,24 @@ public class EncryptionList {
         }
         return -1;
     }
+    
+       public String verifyEncryptionUserGetKeyword(User user) {
+        String kw = "";
+        for (Encryption e : encryptionsList) {
+            if (e.getUser().equals(user)) {
+                kw = e.getKeyword();
+            }
+        }
+        return kw;
+    }
+
+    public int verifyEncryptionUserGetShift(User user) {
+        int shift = 0;
+        for (Encryption e :encryptionsList) {
+            if (e.getUser().equals(user)) {
+                shift = e.getShift();
+            }
+        }
+        return shift;
+    }
 }
