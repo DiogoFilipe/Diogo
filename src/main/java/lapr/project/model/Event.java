@@ -23,9 +23,9 @@ public class Event implements EventState {
     private AssignmentList assignmentList;
     private OrganizerList organizerList;
     private List<Stand> standList;
-    
-    private final String DESCRIPTION_BY_OMISSION ="No description";
-    private final String PLACE_BY_OMISSION ="No localization";
+
+    private final String DESCRIPTION_BY_OMISSION = "No description";
+    private final String PLACE_BY_OMISSION = "No localization";
 
     public Event() {
         this.state = EventState.State.Created;
@@ -45,15 +45,15 @@ public class Event implements EventState {
         this.organizerList = organizerList;
         this.state = EventState.State.FAESet;
     }
-    
-    public Event(String title){
+
+    public Event(String title) {
         this.title = title;
         this.description = DESCRIPTION_BY_OMISSION;
         this.assignmentList = new AssignmentList();
         this.faeList = new FAEList();
         this.applicationList = new ApplicationList();
         this.organizerList = new OrganizerList();
-        this.state= EventState.State.Created;
+        this.state = EventState.State.Created;
     }
 
     /**
@@ -146,11 +146,11 @@ public class Event implements EventState {
     public ApplicationList getApplicationList() {
         return applicationList;
     }
-    
+
     /**
      * Returns the list of Applications accepted
      *
-     * @return list of Applications accepted of the Event 
+     * @return list of Applications accepted of the Event
      */
     public ApplicationList getApplicationListAccepted() {
         return applicationList;
@@ -291,8 +291,14 @@ public class Event implements EventState {
     public void setStandList(List<Stand> standList) {
         this.standList = standList;
     }
-    
-    public boolean addStand(Stand stand){
+
+    /**
+     * Adds a Stand to the Event's Stand list
+     *
+     * @param stand
+     * @return
+     */
+    public boolean addStand(Stand stand) {
         return this.standList.add(stand);
     }
 
@@ -316,28 +322,40 @@ public class Event implements EventState {
         organizerList.addOrganizer(o);
     }
 
-    public void addApplication(Application application){
+    /**
+     * Adds an application to the Application list of the event
+     *
+     * @param application
+     */
+    public void addApplication(Application application) {
         this.applicationList.registApplication(application);
     }
 
-        
-    public List<String> getRepresentativeListApplications(Representative u){
-      List<String> representativeApplications= new ArrayList<>();
-       for(Application a: applicationList.getApplicationList()){
-           if(a.getCompanyName().equalsIgnoreCase(u.getCompanyName())){
-               representativeApplications.add(a.getCompanyName());
-           }
-       }
-       return representativeApplications;
+    /**
+     * Returns a list of Strings that represent the Applications a
+     * representantive has done
+     *
+     * @param u User that corresponds to the representative
+     * @return list of Strings that represent the Applications a representantive
+     * has done
+     */
+    public List<String> getRepresentativeListApplications(Representative u) {
+        List<String> representativeApplications = new ArrayList<>();
+        for (Application a : applicationList.getApplicationList()) {
+            if (a.getCompanyName().equalsIgnoreCase(u.getCompanyName())) {
+                representativeApplications.add(a.getCompanyName());
+            }
+        }
+        return representativeApplications;
     }
-     
-    public boolean valid(User user){
-    for(FAE f : this.faeList.getFAEList()){
-        if(user.getName().equals(f.getName())){
-        return true;}
-        
-    }
-    return false;
+
+    public boolean valid(User user) {
+        for (FAE f : this.faeList.getFAEList()) {
+            if (user.getName().equals(f.getName())) {
+                return true;
+            }
+
+        }
+        return false;
     }
 }
-
