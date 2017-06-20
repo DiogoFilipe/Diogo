@@ -30,7 +30,7 @@ public class LogInController {
      */
    public List <User> getUsers(){
    
-       return UserRegist.getUsers();
+       return fc.getUserRegist().getUserList();
    }
    
    /**
@@ -61,8 +61,8 @@ public class LogInController {
     * @return the user
     */
     public User getUser(String username){
-        for(User u : UserRegist.getUsers()){
-            if(User.checkHasUsername(username,u)){
+        for(User u : fc.getUserRegist().getUserList()){
+            if(fc.getUserRegist().getUser(username).hasTheUsername(u,username)){
                 return u;
             }
         }
@@ -96,19 +96,19 @@ public class LogInController {
        return cipheredAttribute;
    }
    
-    public String decipherPassword(String password,int shift){
+    public static String decipherPassword(String password,int shift){
        String decipheredPassword = Encryption.decipherPassword(password,shift);
        return decipheredPassword;
    }
     
     
     public String verifyEncryptionUserGetKeyword(User user){
-    String kw =encryption.verifyEncryptionUserGetKeyword(user);
+    String kw =Encryption.verifyEncryptionUserGetKeyword(user);
     return kw;
     }
     
     public int verifyEncryptionUserGetShift(User user){
-    int shift =encryption.verifyEncryptionUserGetShift(user);
+    int shift =Encryption.verifyEncryptionUserGetShift(user);
     return shift;
     }
     
