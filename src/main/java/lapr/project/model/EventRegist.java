@@ -171,6 +171,28 @@ public class EventRegist implements Serializable {
         }
         return organizerEventList;
     }
+    
+        /**
+     * Returns a list of Events that the user identified by the username given
+     * is an Organizer of
+     *
+     * @param username User's username
+     * @return list of Events that the user identified by the username given is
+     * an Organizer of
+     */
+    public List<String> getOrganizerEventListString(String username) {
+        User u = ur.getUser(username);
+        Organizer o = new Organizer(u);
+        List<String> organizerEventList = new ArrayList<>();
+        for (Event e : eventList) {
+            List<Organizer> tempList = e.getOrganizerList().getOrganizerList();
+            boolean flag = tempList.contains(o);
+            if (flag) {
+                organizerEventList.add(e.getTitle());
+            }
+        }
+        return organizerEventList;
+    }
 
     public Event getEvent(String title) {
         for (Event event : eventList) {
