@@ -12,7 +12,7 @@ import lapr.project.controller.ChangeApplicationController;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
-import lapr.project.utils.EventoNotFound;
+import lapr.project.utils.EventNotFound;
 
 /**
  *
@@ -35,7 +35,17 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
         controller = new ChangeApplicationController(fc, u);
         this.fc = fc;
         this.u = u;
-
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(ChangeApplicationMainWindow.this, "Do you want to exit?", "ALERT", JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
         initComponents();
 
         AbstractListModel model = new javax.swing.AbstractListModel() {
@@ -70,17 +80,6 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
                 ApplicationsList.setViewportView(ListApplications);
             };
 
-        });
-        this.setVisible(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(ChangeApplicationMainWindow.this, "Do you want to exit?", "ALERT", JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
-                    dispose();
-                }
-            }
         });
     }
 
@@ -215,7 +214,7 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
         String application = ListApplications.getSelectedValue();
         try {
             controller.deleteApplication(event, application);
-        } catch (EventoNotFound e) {
+        } catch (EventNotFound e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Application not found", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -242,13 +241,7 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangeApplicationMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangeApplicationMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangeApplicationMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ChangeApplicationMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
