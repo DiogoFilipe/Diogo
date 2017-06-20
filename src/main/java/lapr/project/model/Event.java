@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.utils.Date;
 
@@ -319,5 +320,15 @@ public class Event implements EventState {
         this.applicationList.registApplication(application);
     }
 
+        
+    public List<String> getRepresentativeListApplications(Representative u){
+      List<String> representativeApplications= new ArrayList<>();
+       for(Application a: applicationList.getApplicationList()){
+           if(a.getCompanyName().equalsIgnoreCase(u.getCompanyName())){
+               representativeApplications.add(a.getCompanyName());
+           }
+       }
+       return representativeApplications;
+    }
 }
 
