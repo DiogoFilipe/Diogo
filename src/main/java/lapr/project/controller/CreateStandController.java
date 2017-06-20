@@ -13,14 +13,14 @@ import lapr.project.model.*;
  * @author HP
  */
 public class CreateStandController {
-    private FairCenter fc;
+    FairCenter fc;
     private Stand stand;
     private EventRegist eventList;
   
     
     
-    public CreateStandController(){
-        this.fc = new FairCenter();
+    public CreateStandController(FairCenter fc){
+        this.fc = fc;
     }
     
     public Stand createStand(double area){
@@ -35,9 +35,9 @@ public class CreateStandController {
     public boolean addStand(Event event,Stand stand){
     return event.addStand(stand);}
     
-    public static List<Event> getEventList(){
-    return FairCenter.getEventList();}
+    public List<Event> getEventList(){
+    return fc.getEventList();}
     
-    public static Event getEvent(String title){
-    return FairCenter.getEvent(title);}
+    public Event getEvent(String title){
+    return fc.getEvent(title);}
 }
