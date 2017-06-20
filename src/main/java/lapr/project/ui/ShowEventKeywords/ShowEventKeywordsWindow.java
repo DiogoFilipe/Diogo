@@ -5,7 +5,13 @@
  */
 package lapr.project.ui.ShowEventKeywords;
 
+import java.util.List;
+import javax.swing.AbstractListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.TableColumn;
+import lapr.project.controller.ShowEventKeywordsController;
 import lapr.project.model.FairCenter;
+import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
 
 /**
@@ -15,12 +21,42 @@ import lapr.project.ui.MainWindow;
 public class ShowEventKeywordsWindow extends javax.swing.JFrame {
 
     FairCenter fc;
-    
+    User user;
+    ShowEventKeywordsController controller;
+
     /**
      * Creates new form ShowEventKeywordsWindow
+     *
+     * @param fc fairCenter
+     * @param user user that has done the log in
      */
-    public ShowEventKeywordsWindow() {
+    public ShowEventKeywordsWindow(FairCenter fc, User user) {
+        this.fc = fc;
+        this.user = user;
+        controller = new ShowEventKeywordsController(fc, user);
         initComponents();
+        AbstractListModel model = new javax.swing.AbstractListModel() {
+
+            @Override
+            public int getSize() {
+                return controller.getEventListOrganizer(user).size();
+            }
+
+            @Override
+            public Object getElementAt(int j) {
+                return controller.getEventListOrganizer(user).get(j);
+            }
+        };
+        jList1.setModel(model);
+        jScrollPane1.setViewportView(jList1);
+        jList1.addListSelectionListener((ListSelectionEvent e) -> {
+            String event = jList1.getSelectedValue();
+            List<String> keywords = controller.getKeywordsListString(event);
+            jTable1.addColumn((TableColumn) keywords);
+            List<Double> freq = controller.getFrequencesList(event);
+            jTable1.addColumn((TableColumn)freq);
+            
+        });
     }
 
     /**
@@ -38,9 +74,9 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -59,9 +95,7 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jList1);
 
-        jLabel2.setText("Keywords of this event");
-
-        jScrollPane2.setViewportView(jList2);
+        jLabel2.setText("Frequency table of the keywords");
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +103,34 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Keywords", "Frequency"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,11 +141,11 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -98,9 +160,9 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -120,7 +182,7 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc);
+        MainWindow mainWindow = new MainWindow(fc, user);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -141,23 +203,9 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShowEventKeywordsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShowEventKeywordsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShowEventKeywordsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ShowEventKeywordsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ShowEventKeywordsWindow().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,9 +214,9 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
