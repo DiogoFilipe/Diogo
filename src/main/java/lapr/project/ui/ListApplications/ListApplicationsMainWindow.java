@@ -40,12 +40,12 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
 
             @Override
             public int getSize() {
-                return controller.getOrganizerEventsList((Organizer) u).size();
+                return controller.getOrganizerEventsList(u).size();
             }
 
             @Override
             public Object getElementAt(int j) {
-                return controller.getOrganizerEventsList((Organizer) u).get(j);
+                return controller.getOrganizerEventsList(u).get(j);
             }
         };
         jList3.setModel(model);
