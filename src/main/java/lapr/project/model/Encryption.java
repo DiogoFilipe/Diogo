@@ -11,7 +11,6 @@ public class Encryption {
     private String keyword;
     private User user;
     private int shift;
-    private EncryptionList el;
     Random rn = new Random();
 
     /**
@@ -87,7 +86,7 @@ public class Encryption {
      *
      * @return shift
      */
-    public int gerateShift() {
+    public static int gerateShift() {
         int shift = (int) (Math.random() * 10);
         return shift;
     }
@@ -99,7 +98,7 @@ public class Encryption {
 //      * @param shift - number of deslocations wanted by the user
 //      * @return returns the encripted atribute
 //      */
-    public String cipherAttribute(String keyword, String atribute, int shift) {
+    public static String cipherAttribute(String keyword, String atribute, int shift) {
         char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
             'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '_', '@', '.', ','};
@@ -108,12 +107,8 @@ public class Encryption {
         char[] key = keyword.toCharArray();
         char[] atrib = atribute.toCharArray();
         char ch;
-        for (int i = 0; i < keyword.length(); i++) {
-            letters[i] = key[i];
-        }
-        for (int i = 0; i < letters.length; i++) {
-            clone[i] = letters[i];
-        }
+        System.arraycopy(key, 0, letters, 0, keyword.length());
+        System.arraycopy(letters, 0, clone, 0, letters.length);
         for (int j = 0; j < letters.length - (shift + 1); j++) {
             letters[j] = letters[j + shift];
         }
@@ -292,7 +287,7 @@ public class Encryption {
      * @param shift - number of deslocations
      * @return - returns the encripted password
      */
-    public String cipherPassword(String password, int shift) {
+    public static String cipherPassword(String password, int shift) {
         String encripted = "";
         int pass = password.length();
         for (int i = 0; i < pass; i++) {
@@ -337,11 +332,7 @@ public class Encryption {
                 return false;
             }
         }
-        if (keyword.length() > 7 || keyword.length() < 5) {
-            return false;
-
-        }
-        return true;
+        return !(keyword.length() > 7 || keyword.length() < 5);
     }
 
     public String verifyEncryptionUserGetKeyword(User user) {
