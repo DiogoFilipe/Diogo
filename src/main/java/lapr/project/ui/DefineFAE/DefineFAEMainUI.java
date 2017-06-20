@@ -6,8 +6,14 @@
 package lapr.project.ui.DefineFAE;
 
 import java.util.List;
+import javax.swing.AbstractListModel;
+import javax.swing.event.ListSelectionEvent;
+import lapr.project.controller.DefineFAEController;
 import lapr.project.model.Event;
 import lapr.project.model.EventRegist;
+import lapr.project.model.FairCenter;
+import lapr.project.model.Organizer;
+import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
 
 /**
@@ -15,13 +21,71 @@ import lapr.project.ui.MainWindow;
  * @author HP
  */
 public class DefineFAEMainUI extends javax.swing.JFrame {
+    
+    FairCenter fc;
+    User u;
+    DefineFAEController controller;
+    
+    public DefineFAEMainUI(){
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new DefineFAEMainUI().setVisible(true);
+            }
+        });
+        
+    }
 
     /**
      * Creates new form DefineFAEMainUI
      */
-     List <Event> eventsList;
-    public DefineFAEMainUI() {
+ 
+    public DefineFAEMainUI(FairCenter fc, User u) {
+        
+        this.fc = fc;
+        this.u = u;
+        controller= new DefineFAEController(fc,u);
+        
         initComponents();
+        
+        AbstractListModel model = new javax.swing.AbstractListModel() {
+
+            @Override
+            public int getSize() {
+                return controller.getOrganizerEventsList((Organizer) u).size();
+            }
+
+            @Override
+            public Object getElementAt(int j) {
+                return controller.getOrganizerEventsList((Organizer) u).get(j);
+            }
+        };
+        jList2.setModel(model);
+        jScrollPane1.setViewportView(jList2);
+        jList2.addListSelectionListener((ListSelectionEvent e) -> {
+            String event = jList2.getSelectedValue();
+            if(event!=null){
+                AbstractListModel model1 = new javax.swing.AbstractListModel(){
+                    @Override
+                    public int getSize() {
+                        return controller.getApplicationsList(event).size();
+                    }
+
+                    @Override
+                    public Object getElementAt(int index) {
+                        return controller.getApplicationsList(event).get(index);
+                    }
+                    
+                };
+                jList2.setModel(model1);
+                jScrollPane3.setViewportView(jList2);
+                 
+            }
+        });
+        
+        
+        
      }
 
     /**

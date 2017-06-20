@@ -8,8 +8,11 @@ package lapr.project.controller;
 import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.EventRegist;
+import lapr.project.model.FAE;
 import lapr.project.model.FAEList;
 import lapr.project.model.FairCenter;
+import lapr.project.model.Organizer;
+import lapr.project.model.OrganizerList;
 import lapr.project.model.User;
 import lapr.project.model.UserRegist;
 
@@ -21,22 +24,22 @@ public class DefineFAEController {
     /**
      * Fair Center
      */
-  private final FairCenter fc;
-  private final EventRegist eventRegist;
+  private FairCenter fc;
+  private EventRegist eventRegist;
   private UserRegist userRegist;
+  private OrganizerList organizerList;
   private FAEList FAElist;
   private Event event;
   private User u;
+  private FAE fae;
   
    /**
      * Class constructor 
      * @param fc DefineFAEController
      */
-    public DefineFAEController (FairCenter fc){
+    public DefineFAEController (FairCenter fc, User u){
         this.fc= fc;
-        this.eventRegist = fc.getEventRegist();
-        this.FAElist = new FAEList();
-        this.event = new Event();
+        this.u = u;
     }   
     
     /**
@@ -55,6 +58,19 @@ public class DefineFAEController {
     public List<User> getUsersList() {
         userRegist = fc.getUserRegist();
         return userRegist.getUserList();
+    }
+    
+    public boolean isOrganizer(Organizer o){
+        return organizerList.containsOrganizer(o);
+    }
+    
+     /**
+     *
+     * @param o the organizer
+     * @return the list of events of this organizer
+     */
+    public List<String>  getOrganizerEventsList(Organizer o){
+        return  eventRegist.getOrganizerEventsListOrdenedByState(o);
     }
     
     /**
@@ -88,6 +104,12 @@ public class DefineFAEController {
     public void setEvent(Event event) {
         this.event = event;
         FAElist = event.getFAEList();
+    }
+    
+    public void addFAE(User user, Event evt) {
+        FAE newFae = new FAE(user);
+        this.fae = newFae;
+        FAElist.addFAE(fae);
     }
     
     
