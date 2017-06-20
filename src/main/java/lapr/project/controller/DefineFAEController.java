@@ -75,10 +75,17 @@ public class DefineFAEController {
     
     /**
      *
-     * @return
+     * @return FAE regist
      */
     public boolean FAEregist() {
         return FAElist.FAEregist(u);
+    }
+    /**
+     * 
+     * @return Fae list
+     */
+    public List<FAE> getFAEList(){
+        return FAElist.getFAEList();
     }
 
     /**

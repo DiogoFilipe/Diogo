@@ -5,17 +5,43 @@
  */
 package lapr.project.ui.DefineFAE;
 
+import lapr.project.controller.DefineFAEController;
+import lapr.project.model.Event;
+import lapr.project.model.FairCenter;
+import lapr.project.model.User;
+
 /**
  *
  * @author HP
  */
 public class ChoseUserUI extends javax.swing.JFrame {
+    
+    DefineFAEController controller;
+    Event e;
+    FairCenter fc;
+    User u;
 
     /**
      * Creates new form Chose
      */
     public ChoseUserUI() {
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new DefineFAEMainUI().setVisible(true);
+            }
+        });
+       
+    }
+    
+    public ChoseUserUI(FairCenter fc, User ){
+        this.fc = fc;
+        this.u = u;
+        controller= new DefineFAEController(fc,u);
+        
         initComponents();
+        
+        
     }
 
     /**
