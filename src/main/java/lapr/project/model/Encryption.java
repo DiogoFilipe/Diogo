@@ -301,7 +301,7 @@ public class Encryption {
         return encripted;
     }
 
-    public String decipherPassword(String password, int shift) {
+    public static String decipherPassword(String password, int shift) {
         String encripted = "";
         int pass = password.length();
         for (int i = 0; i < pass; i++) {
@@ -333,25 +333,5 @@ public class Encryption {
             }
         }
         return !(keyword.length() > 7 || keyword.length() < 5);
-    }
-
-    public String verifyEncryptionUserGetKeyword(User user) {
-        String kw = "";
-        for (Encryption e : EncryptionList.getEncryptions()) {
-            if (e.getUser().equals(user)) {
-                kw = e.getKeyword();
-            }
-        }
-        return kw;
-    }
-
-    public int verifyEncryptionUserGetShift(User user) {
-        int shift = 0;
-        for (Encryption e : EncryptionList.getEncryptions()) {
-            if (e.getUser().equals(user)) {
-                shift = e.getShift();
-            }
-        }
-        return shift;
     }
 }
