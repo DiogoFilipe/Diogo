@@ -5,52 +5,56 @@
  */
 package lapr.project.model;
 
+import java.util.List;
+
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class Assignment {
     
-    private FAE fae;
-    private Decision decision;
-    private Organizer organizer;
+    private List<FAE> faeList;
+    private Application application;
     
-    public Assignment(FAE fae, Decision decision){
-       this.fae = fae;
-       this.decision = decision;
-    }
-    
-    public Assignment(Organizer organizer,Decision decision){
-        this.organizer = organizer;
-        this.decision = decision;
-    }
-    
-       
-
-    public Decision getDecision() {
-        return decision;
+    public Assignment(List<FAE> faeList, Application application){
+       this.faeList = faeList;
+       this.application = application;
     }
 
-    public Organizer getOrganizer() {
-        return organizer;
-    }
-
-    public FAE getFae() {
-        return fae;
-    }
-
-    public void setDecision(Decision decision) {
-        this.decision = decision;
-    }
-
-    public void setFae(FAE fae) {
-        this.fae = fae;
-    }
-
-    public void setOrganizer(Organizer organizer) {
-        this.organizer = organizer;
+    /**
+     * Returns the FAE list an Application has been assigned to
+     * 
+     * @return FAE list an Application has been assigned to
+     */
+    public List<FAE> getFAEList() {
+        return faeList;
     }
     
-    
+    /**
+     * Returns the Application linked to the Assignment
+     * 
+     * @return Application linked to the Assignment
+     */
+    public Application getApplication() {
+        return application;
+    }
+
+    /**
+     * Modifies the FAE list an Application has been assigned to
+     * 
+     * @param faeList FAE list an Application has been assigned to
+     */
+    public void setFAEList(List<FAE> faeList) {
+        this.faeList = faeList;
+    }
+
+    /**
+     * Modifies the Application this Assignment is linked to
+     * 
+     * @param application 
+     */
+    public void setApplication(Application application) {
+        this.application = application;
+    }
     
 }
