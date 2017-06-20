@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-import lapr.project.utils.Exportable;
+//import lapr.project.utils.Exportable;
 import lapr.project.utils.Importable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
-public class Application implements Importable<Application>, Exportable {
+public class Application implements Importable<Application> {
 
     private static final String ROOT_ELEMENT_NAME = "application";
     private static final String DESCRIPTION_BY_OMISSION = "no description";
@@ -86,6 +86,20 @@ public class Application implements Importable<Application>, Exportable {
         this.decision=new Decision();
         }
 
+    public Application(int invites, double boothArea, String description) {
+        this.invites = invites;
+        this.boothArea = boothArea;
+        this.description = description;
+        this.companyName = COMPANYNAME_BY_OMISSION;
+        this.address = ADDRESS_BY_OMISSION;
+        this.contact = CONTACT_BY_OMISSION;
+        this.keywordList.addAll(keywordList);
+        this.d = decision;
+        
+                
+    }
+
+    
     /**
      * Returns the company name
      *
@@ -141,7 +155,7 @@ public class Application implements Importable<Application>, Exportable {
 
     }
 
-    @Override
+//    @Override
     public Node exportContentToXMLNode() throws ParserConfigurationException {
         Node rootNode = null;
 
@@ -283,4 +297,10 @@ public class Application implements Importable<Application>, Exportable {
     public void setD(Decision d) {
         this.d = d;
     }
+
+    public void setKeywordList(Keyword keyword) {
+        this.keywordList.add(keyword);
+    }
+    
+    
 }

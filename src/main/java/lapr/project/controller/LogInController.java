@@ -1,3 +1,4 @@
+
 package lapr.project.controller;
 
 import java.util.List;
@@ -20,9 +21,9 @@ public class LogInController {
     /**
      * Constructor
      */
-    public LogInController() {
-        this.fc = new FairCenter();
-
+    public LogInController(FairCenter fc){
+        this.fc = fc;
+    
     }
 
     /**
@@ -30,46 +31,22 @@ public class LogInController {
      *
      * @return the userList
      */
-    public List<User> getUsers() {
-
-        return fc.getUserRegist().getUserList();
-    }
-
-    /**
-     * Adds an user to the userList
-     *
-     * @param user - user to be added
-     * @return
-     */
-    public boolean addUser(User user) {
-        return userList.add(user);
-    }
-
-    public List<Encryption> getEncryptionsList() {
-        return el.getEncryptionsList();
-    }
-
-    /**
-     * Removes the user
-     *
-     * @param user - user to be removed
-     * @return
-     */
-    public boolean removeUser(User user) {
-        return userList.remove(user);
-    }
-
-    /**
-     * Gets the user using his username
-     *
-     * @param username - username of the wanted user
-     * @return the user
-     */
-    public User getUser(String username) {
-        for (User u : fc.getUserRegist().getUserList()) {
-            if (fc.getUserRegist().getUser(username).hasTheUsername(u, username)) {
+   public List <User> getUsers(){
+   
+       return fc.getUserRegist().getUserList();
+   }
+   
+    
+   
+   /**
+    * Gets the user using his username
+    * @param username - username of the wanted user
+    * @return the user
+    */
+    public User getUser(String username){
+        for(User u : fc.getUserRegist().getUserList()){
+            if(u.getName().equals(username))
                 return u;
-            }
         }
         return null;
     }
@@ -88,30 +65,30 @@ public class LogInController {
         }
         return -1;
     }
-
-    public String cipherPassword(String password, int shift) {
-        String cipheredPassword = Encryption.cipherPassword(password, shift);
-        return cipheredPassword;
+    
+     
+   public String cipherPassword(String password,int shift){
+       String cipheredPassword = Encryption.cipherPassword(password,shift);
+       return cipheredPassword;
+   }
+    
+   public String cipherAttributes(String attribute,int shift,String keyword){
+       String cipheredAttribute = Encryption.cipherAttribute(keyword,attribute,shift);
+       return cipheredAttribute;
+   }
+   
+       
+    
+    public String verifyEncryptionUserGetKeyword(User user){
+    String kw = Encryption.verifyEncryptionUserGetKeyword(user,fc);
+    return kw;
+    }
+    
+    public int verifyEncryptionUserGetShift(User user){
+    int shift = Encryption.verifyEncryptionUserGetShift(user,fc);
+    return shift;
     }
 
-    public String cipherAttributes(String attribute, int shift, String keyword) {
-        String cipheredAttribute = Encryption.cipherAttribute(keyword, attribute, shift);
-        return cipheredAttribute;
-    }
-
-    public static String decipherPassword(String password, int shift) {
-        String decipheredPassword = Encryption.decipherPassword(password, shift);
-        return decipheredPassword;
-    }
-
-    public String verifyEncryptionUserGetKeyword(User user) {
-        String kw = el.verifyEncryptionUserGetKeyword(user);
-        return kw;
-    }
-
-    public int verifyEncryptionUserGetShift(User user) {
-        int shift = el.verifyEncryptionUserGetShift(user);
-        return shift;
-    }
+        
 
 }

@@ -10,7 +10,6 @@ import java.util.List;
 public class EncryptionList {
 
     private List<Encryption> encryptionsList;
-    private EncryptionList el = new EncryptionList();
 
     /**
      * Constructor
@@ -28,10 +27,6 @@ public class EncryptionList {
         return encryptionsList;
     }
 
-    public List<Encryption> getEncryptions() {
-        List<Encryption> encryptions = el.getEncryptionsList();
-        return encryptions;
-    }
 
     /**
      * Defines the Encryptions List
@@ -55,9 +50,6 @@ public class EncryptionList {
         return encryptionsList.add(encryption);
     }
 
-    public boolean registEncryption(Encryption encryption) {
-        return el.addEncryption(encryption);
-    }
 
     /**
      * Verefies if there is any encryption

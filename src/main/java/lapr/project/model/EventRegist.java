@@ -60,13 +60,13 @@ public class EventRegist implements Serializable {
      *
      * @return Events List
      */
-    public List<Event> getEventsReadyForSubmission() {
-        List<Event> ReadyEvents = new ArrayList<>();
-        eventList.stream().filter((e) -> ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0)).forEachOrdered((e) -> {
-            ReadyEvents.add(e);
-        });
-        return ReadyEvents;
-    }
+//    public List<Event> getEventsReadyForSubmission() {
+//        List<Event> ReadyEvents = new ArrayList<>();
+//        eventList.stream().filter((e) -> ((Date.currentDate().difference(e.getStartDate())) >= 0 && (Date.currentDate().difference(e.getStartDate())) <= 0)).forEachOrdered((e) -> {
+//            ReadyEvents.add(e);
+//        });
+//        return ReadyEvents;
+//    }
 
     /**
      * Allows you to add an event to the regists
@@ -146,9 +146,9 @@ public class EventRegist implements Serializable {
      * @return false if there is no Event with such title / true if there is an
      * Event already created with the given title
      */
-    public boolean validateEvent(String title) {
-        return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
-    }
+//    public boolean validateEvent(String title) {
+//        return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
+//    }
 
     /**
      * Returns a list of Events that the user identified by the username given

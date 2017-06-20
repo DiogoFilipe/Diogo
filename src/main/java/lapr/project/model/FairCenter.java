@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class FairCenter implements Serializable {
     private UserRegist userRegist;
     private OrganizerList organizerList;
     private StandRegist standRegist;
+    private EncryptionList encryptionList;
 
     /**
      * Constructor
@@ -22,6 +24,7 @@ public class FairCenter implements Serializable {
         userRegist = new UserRegist();
         standRegist = new StandRegist();
         organizerList = new OrganizerList();
+        encryptionList = new EncryptionList();
     }
 
     /**
@@ -31,6 +34,11 @@ public class FairCenter implements Serializable {
         return userRegist;
     }
 
+    public EncryptionList getEncryptionList() {
+        return encryptionList;
+    }
+
+    
     /**
      *
      * @return
@@ -88,6 +96,12 @@ public class FairCenter implements Serializable {
         this.eventRegist = eventRegist;
     }
 
+    public void setEncryptionList(EncryptionList encryptionList) {
+        this.encryptionList = encryptionList;
+    }
+    
+    
+
     /**
      * @param userRegist the userRegist to set
      */
@@ -121,5 +135,9 @@ public class FairCenter implements Serializable {
      */
     public void setStandRegist(StandRegist standRegist) {
         this.standRegist = standRegist;
+    }
+
+    public File getSelectedFile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

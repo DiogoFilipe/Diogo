@@ -25,7 +25,8 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
     /**
      * Creates new form UserRegistMainWindow
      */
-    public UserRegistMainWindow() {
+    public UserRegistMainWindow(FairCenter fc) {
+        this.fc = fc;
         initComponents();
         }
 
@@ -189,13 +190,13 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LogInWindow logInWindow = new LogInWindow();
+        LogInWindow logInWindow = new LogInWindow(fc);
         logInWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller = new UserRegistMainWindowController(); 
+        controller = new UserRegistMainWindowController(fc); 
         int shift = controller.gerateShift(); 
         String name = jTextField1.getText();
         String username = jTextField2.getText();
@@ -240,51 +241,17 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
         String cipheredEmail = controller.chiperAttributes(email, shift, keyword);
         String cipheredUsername = controller.chiperAttributes(username, shift, keyword);
         String cipheredPassword = controller.cipherPassword(password, shift);
-        User user = controller.createUser(cipheredName, cipheredUsername, cipheredPassword, cipheredEmail);
-        Encryption encryption = controller.createEncryption(shift,user,keyword);
+        User user = new User(cipheredName, cipheredUsername, cipheredEmail,cipheredPassword);
+        Encryption encryption = new Encryption(user,keyword,shift);
         controller.addEncryption(encryption);
         controller.addUser(user);
-        LogInWindow logInWindow = new LogInWindow();
+        LogInWindow logInWindow = new LogInWindow(fc);
         logInWindow.setVisible(true);
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserRegistMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserRegistMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserRegistMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserRegistMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserRegistMainWindow().setVisible(true);
-                
-            }
-        });
-    }
+ 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

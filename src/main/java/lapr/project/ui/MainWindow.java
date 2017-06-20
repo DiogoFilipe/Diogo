@@ -51,6 +51,7 @@ public class MainWindow extends javax.swing.JFrame {
         listApplicationController = new ListApplicationsController(fc, user);
         initComponents();
     }
+    
 
     public MainWindow() {
 
@@ -406,7 +407,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_Diff2FAEDeviationRatingActionPerformed
 
     private void ImportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportAllDataActionPerformed
-        ImportFileMainUI importFile = new ImportFileMainUI();
+        ImportFileMainUI importFile = new ImportFileMainUI(fc,user);
         importFile.setVisible(true);
         dispose();
     }//GEN-LAST:event_ImportAllDataActionPerformed
@@ -424,7 +425,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_GlobalAcceptanceRateActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
-        LogInWindow logIn = new LogInWindow();
+        LogInWindow logIn = new LogInWindow(fc);
         logIn.setVisible(true);
         dispose();
     }//GEN-LAST:event_logOutActionPerformed

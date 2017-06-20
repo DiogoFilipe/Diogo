@@ -35,6 +35,9 @@ public class FAE extends User implements Serializable {
         this.professionalExperience = professionalExperience;
         this.decision = decision;
     }
+    
+       public FAE(String name, String username, String email, String password) {
+        super(name, username, email, password);}
     /**
      *
      * @param u

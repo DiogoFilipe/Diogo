@@ -5,6 +5,7 @@
  */
 package lapr.project.controller;
 
+import java.io.File;
 import lapr.project.model.*;
 
 /**
@@ -12,17 +13,18 @@ import lapr.project.model.*;
  * @author HP
  */
 public class ImportFileController {
-    private String filename;
-    private FairCenter fc;
+    FairCenter fc;
     
-    public ImportFileController(String filename){
-    this.filename = filename;}
-    
+    public ImportFileController(FairCenter fc){
+    this.fc = fc;}
+
+   
     /**
      * Reads the content of the file
      */
-    public void readFile(){
-    ReadFile.readFile(filename, fc);
+    public boolean fileReader(File file){
+
+        return ReadFile.readFile(file, fc);
     }
-    
-}
+
+    }

@@ -321,7 +321,7 @@ public class Encryption {
      * @param keyword - keyword to verify size
      * @return
      */
-    public boolean verifyKeyword(String keyword) {
+    public static boolean verifyKeyword(String keyword) {
         char[] chars = keyword.toCharArray();
         if (chars.length > 15 || chars.length < 0) {
             return false;
@@ -333,5 +333,26 @@ public class Encryption {
             }
         }
         return !(keyword.length() > 7 || keyword.length() < 5);
+    }
+    
+    
+       public static String verifyEncryptionUserGetKeyword(User user,FairCenter fc) {
+        String kw = "";
+        for (Encryption e : fc.getEncryptionList().getEncryptionsList()) {
+            if (e.getUser().equals(user)) {
+                kw = e.getKeyword();
+            }
+        }
+        return kw;
+    }
+
+    public static int verifyEncryptionUserGetShift(User user,FairCenter fc) {
+        int shift = 0;
+        for (Encryption e : fc.getEncryptionList().getEncryptionsList()) {
+            if (e.getUser().equals(user)) {
+                shift = e.getShift();
+            }
+        }
+        return shift;
     }
 }

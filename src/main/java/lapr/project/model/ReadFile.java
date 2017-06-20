@@ -18,8 +18,8 @@ public class ReadFile {
      * @param fc - the fairCenter
      * @return 
      */
-    public static boolean readFile(String fileName, FairCenter fc) {
-        try (Scanner scanner = new Scanner(new File(fileName))) {
+    public static boolean readFile(File file, FairCenter fc) {
+        try (Scanner scanner = new Scanner(file)) {
             String line;
             String[] data;
             while (scanner.hasNext()) {
@@ -43,8 +43,11 @@ public class ReadFile {
     private static void classeInfo(String[] data, FairCenter fc) {
         Event e;
 
-        switch (data[1].toLowerCase().substring(0, 4)) {
+        switch (data[1].toLowerCase()) {
             case "true":
+                e = returnEvent(data[0], fc);
+                registEventInformation(data, e, fc);
+                break;
             case "false":
                 e = returnEvent(data[0], fc);
                 registEventInformation(data, e, fc);
@@ -86,10 +89,16 @@ public class ReadFile {
         application.setD(decision2);
         assignment2 = new Assignment(fae2,decision2);
         event.getAssignmentList().registAssignment(assignment2);
-               
-        for(String key : data[23].split(",") ){
-            application.addKeyword(new Keyword(key));
-        }
+         
+        
+            
+            for (String keys : data[23].split(",")) {
+                
+        application.setKeywordList(new Keyword(keys));
+        } 
+        
+        
+        
         
 
         event.getApplicationList().registApplication(application);
@@ -130,11 +139,12 @@ public class ReadFile {
 
         if (application == null) {
             double boothArea = Double.parseDouble(area);
-            int invites = Integer.parseInt(ninvites);          
-            return new Application(description, boothArea, invites);
-        } else {
+            int invites = Integer.parseInt(ninvites);
+            application = new Application(invites,boothArea,description);
+            
+        } 
             return application;
-        }
+        
     }
 
      /**
@@ -177,20 +187,20 @@ public class ReadFile {
     private static FAE returnFAE(String name, String email, String username, String password, Event event, FairCenter fairCenter) {
         User user = fairCenter.getUserRegist().getUser(username);
 
-        FAEList faeList = event.getFAEList();
+        
         FAE f = null;
        
         if (user == null) {
             user = new User(name,username,email ,password);
             fairCenter.getUserRegist().getUserList().add(user);
-            f = new FAE(user);
-            faeList.getFAEList().add(f);
+            f = new FAE(name,username,email,password);
+            event.getFAEList().getFAEList().add(f);
             return f;
         } else {
-            if (event.getFAEList().valid(f)) {
+            if (event.valid(user)) {
                 return event.getFAEList().getFAE(username);
             } else {
-                f = new FAE(user);
+                f = new FAE(name,username,email,password);
                 event.getFAEList().getFAEList().add(f);
                 return f;
             }

@@ -330,5 +330,14 @@ public class Event implements EventState {
        }
        return representativeApplications;
     }
+     
+    public boolean valid(User user){
+    for(FAE f : this.faeList.getFAEList()){
+        if(user.getName().equals(f.getName())){
+        return true;}
+        
+    }
+    return false;
+    }
 }
 

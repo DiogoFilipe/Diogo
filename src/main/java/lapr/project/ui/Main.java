@@ -20,10 +20,9 @@ class Main {
 	 */
 	public static void main(String[] args) {
 
-		//CalculatorExample calculatorExample = new CalculatorExample();
-		//System.out.println(calculatorExample.sum(3, 5));
-                FairCenter fc;
-            LogInWindow logInWindow = new LogInWindow();
+
+                FairCenter fc = new FairCenter();
+                LogInWindow logInWindow = new LogInWindow(fc);
                 logInWindow.setVisible(true);  
 	}
 

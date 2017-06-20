@@ -26,8 +26,8 @@ public class UserRegistMainWindowController {
     /**
      * Constructor
      */
-    public UserRegistMainWindowController() {
-        this.fc = new FairCenter();
+    public UserRegistMainWindowController(FairCenter fc) {
+        this.fc =fc;
 
     }
 
@@ -41,19 +41,6 @@ public class UserRegistMainWindowController {
         return fc.getUserRegist().verifyPassword(password);
     }
 
-    /**
-     * Return the new user
-     *
-     * @param name - user's name
-     * @param username - user's username
-     * @param password - user's password
-     * @param email - user's email
-     * @return returns user
-     */
-    public User createUser(String name, String username, String password, String email) {
-        User user = new User(name, username, email, password);
-        return user;
-    }
 
     public Encryption createEncryption(int shift, User user, String keyword) {
         encryption = new Encryption(user, keyword, shift);
@@ -78,7 +65,7 @@ public class UserRegistMainWindowController {
      * @return userList with the new user
      */
     public boolean addUser(User user) {
-        return ur.registUser(user);
+        return fc.getUserRegist().registUser(user);
     }
 
     /**
@@ -109,7 +96,7 @@ public class UserRegistMainWindowController {
      * @return
      */
     public boolean addEncryption(Encryption encryption) {
-        return el.registEncryption(encryption);
+        return fc.getEncryptionList().addEncryption(encryption);
     }
 
     /**
