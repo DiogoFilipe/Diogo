@@ -146,9 +146,9 @@ public class EventRegist implements Serializable {
      * @return false if there is no Event with such title / true if there is an
      * Event already created with the given title
      */
-//    public boolean validateEvent(String title) {
-//        return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
-//    }
+    public boolean validateEvent(String title) {
+        return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
+    }
 
     /**
      * Returns a list of Events that the user identified by the username given

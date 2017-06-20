@@ -79,7 +79,7 @@ public class CreateEventController {
      * Adds the created Event to the EventRegist
      */
     public void registerEvent() {
-        er.registerEvent(e);
+        er.addEvent(e);
     }
     
     /**
