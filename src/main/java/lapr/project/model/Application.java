@@ -25,8 +25,8 @@ public class Application implements Importable<Application>, Exportable {
     private static final String KEYWORDS_ELEMENT_NAME = "keywords";
     private static final String COMPANYNAME_BY_OMISSION = "no company name";
     private static final String ADDRESS_BY_OMISSION = "no address";
-    private static final String CONTACT_BY_OMISSION = "no contact";
-    private static final Decision decision = new Decision();
+    private static final int CONTACT_BY_OMISSION = 0;
+    private Decision decision = new Decision();
     private static final int INVITES_BY_OMISSION = 0;
     private static final double BOOTHAREA_BY_OMISSION = 0;
 
@@ -34,8 +34,8 @@ public class Application implements Importable<Application>, Exportable {
     private double boothArea;
     private String companyName;
     private String address;
-    private String contact;
-    private final List<Keyword> keywordList = new ArrayList<>();
+    private int contact;
+    private List<Keyword> keywordList = new ArrayList<>();
     private String description;
     private Decision d;
 
@@ -51,7 +51,7 @@ public class Application implements Importable<Application>, Exportable {
      * @param boothArea
      * @param invites
      */
-    public Application(String companyName, String address, String contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites) {
+    public Application(String companyName, String address, int contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites) {
 
         this.companyName = companyName;
         this.address = address;
@@ -75,32 +75,17 @@ public class Application implements Importable<Application>, Exportable {
         this.invites = INVITES_BY_OMISSION;
     }
 
-    public Application(String companyName, String address, String contact, String description) {
+    public Application(String companyName, String address, int contact, String description, double boothArea, int invites, List<Keyword>keywordList) {
         this.companyName = companyName;
         this.address = address;
         this.contact = contact;
         this.description = description;
         this.keywordList.addAll(keywordList);
+        this.boothArea=boothArea;
+        this.invites=invites;
+        this.decision=new Decision();
+        }
 
-    }
-
-    public Application(String description, double boothArea, int invites) {
-        this.description = description;
-        this.boothArea = boothArea;
-        this.invites = invites;
-        this.companyName = COMPANYNAME_BY_OMISSION;
-        this.address = ADDRESS_BY_OMISSION;
-        this.contact = CONTACT_BY_OMISSION;
-        this.keywordList.addAll(keywordList);
-        this.d = decision;
-    }
-
-//	/**
-//	 * Default public constructor.
-//	 */
-//	public Application() {
-//
-//	}
     /**
      * Returns the company name
      *
@@ -124,7 +109,7 @@ public class Application implements Importable<Application>, Exportable {
      *
      * @return representatives´s contact
      */
-    public String getContact() {
+    public int getContact() {
         return contact;
     }
 
