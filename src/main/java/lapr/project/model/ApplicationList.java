@@ -94,4 +94,24 @@ public class ApplicationList implements Serializable {
         }
         return keywords;
     }
+
+    public List<String> getApplicationListAccepted() {
+        List<String> applicationsAccepted = new ArrayList<>();
+        for (Application a : applicationList) {
+            if (a.getD().getDecision() == true) {
+                applicationsAccepted.add(a.getCompanyName());
+            }
+        }
+        return applicationsAccepted;
+    }
+    
+    public List<String> getApplicationListRejected(){
+        List<String> applicationsRejected = new ArrayList<>();
+        for(Application a : applicationList){
+            if(a.getD().getDecision()==false){
+                applicationsRejected.add(a.getCompanyName());
+            }
+        }
+        return applicationsRejected;
+    }
 }
