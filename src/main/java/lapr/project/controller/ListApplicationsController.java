@@ -24,8 +24,8 @@ public class ListApplicationsController {
         this.u=u;
     }
     
-    public boolean isOrganizer(Organizer o){
-        return organizerList.containsOrganizer(o);
+    public boolean isOrganizer(User u){
+        return organizerList.containsOrganizer((Organizer)u);
     }
     
     /**

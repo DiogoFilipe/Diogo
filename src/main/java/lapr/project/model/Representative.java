@@ -11,15 +11,20 @@ package lapr.project.model;
  */
 public class Representative extends User{
     
+   
+    private String companyName;
+    
     /**
      * 
      * @param user real name
      * @param username name in the platform
      * @param email his email
      * @param password string that protect his account
+     * @param companyName name of the company
      */
-    public Representative(String user,String username,String email,String password){
+    public Representative(String user,String username,String email,String password,String companyName){
         super(user,username,email,password);
+        this.companyName=companyName;
     }
     
     /**
@@ -73,6 +78,23 @@ public class Representative extends User{
     public String toString() {
         return super.toString(); 
     }
+
+    /**
+     * @return the companyName
+     */
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    /**
+     * @param companyName the companyName to set
+     */
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
     
+    public boolean hasCompanyName(){
+        return !(companyName == null||companyName.trim().equalsIgnoreCase(" "));
+    }
     
 }

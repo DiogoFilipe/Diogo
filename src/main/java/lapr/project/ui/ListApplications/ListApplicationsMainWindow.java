@@ -5,10 +5,8 @@
  */
 package lapr.project.ui.ListApplications;
 
-import java.util.List;
 import javax.swing.AbstractListModel;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import lapr.project.controller.ListApplicationsController;
 import lapr.project.model.FairCenter;
 import lapr.project.model.Organizer;
@@ -54,8 +52,8 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList3);
         jList3.addListSelectionListener((ListSelectionEvent e) -> {
             String event = jList3.getSelectedValue();
-            if(event!=null){
-                AbstractListModel model1 = new javax.swing.AbstractListModel(){
+            if (event != null) {
+                AbstractListModel model1 = new javax.swing.AbstractListModel() {
                     @Override
                     public int getSize() {
                         return controller.getApplicationsList(event).size();
@@ -65,14 +63,18 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
                     public Object getElementAt(int index) {
                         return controller.getApplicationsList(event).get(index);
                     }
-                    
+
                 };
                 jList2.setModel(model1);
                 jScrollPane3.setViewportView(jList2);
-                 
+
             }
         });
 
+    }
+
+    public ListApplicationsMainWindow() {
+        initComponents();
     }
 
     /**
@@ -179,9 +181,13 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        //</editor-fold>
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new ListApplicationsMainWindow().setVisible(true);
+            }
+            });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
