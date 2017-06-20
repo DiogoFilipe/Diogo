@@ -86,4 +86,12 @@ public class ApplicationList implements Serializable {
         }
         return null;
     }
+
+    public List<Keyword> getKeywordsList() {
+        List<Keyword> keywords = new ArrayList<>();
+        for (Application a : applicationList) {
+            keywords.addAll(a.getKeywordList());
+        }
+        return keywords;
+    }
 }
