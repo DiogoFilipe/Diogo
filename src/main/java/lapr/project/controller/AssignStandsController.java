@@ -18,10 +18,8 @@ import lapr.project.model.User;
  * @author João Domingues
  */
 public class AssignStandsController {
-    private final FairCenter fc;
-    private Event e;
-    private Application a;
-    private Stand s;
+     FairCenter fc;
+     User u;
     
     /**
      *
@@ -30,6 +28,7 @@ public class AssignStandsController {
      */
     public AssignStandsController(FairCenter fc, User u) {
         this.fc = fc;
+        this.u=u;
     }
     
      /**
@@ -50,10 +49,11 @@ public class AssignStandsController {
     }
     /**
      *
+     * @param e
      * @return
      */
-    public List<Application> getApplicationsListAccepted(Event e) {
-       return fc.getEvent(e).getApplicationListAccepted();
+    public List<Application> getApplicationsListAccepted(String e) {
+       return fc.getEvent(e).getApplicationListAccepted().getApplicationList();
         
     }
     
