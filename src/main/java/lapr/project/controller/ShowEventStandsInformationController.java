@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.*;
 
@@ -11,13 +12,31 @@ public class ShowEventStandsInformationController {
     
     EventRegist er;
     
-//    public List<Event> getOrganizerEventList() {
-//        return er.getOrganizerEventList();
-//    }
+    public List<String> getOrganizerEventList(String username) {
+        List<Event> organizerEventList = er.getOrganizerEventList(username);
+        List<String> organizerEventListString = new ArrayList<>();
+        for (Event event : organizerEventList) {
+            organizerEventListString.add(event.getTitle());
+        }
+        return organizerEventListString;
+    }
     
-    public List<Stand> getEventStandsInformation(Event e) {
+    public List<String> getEventStandsInformation(String title) {
         
-        return e.getStandList();
+        Event e = new Event();
+        List<Event> eventList = er.getEventList();
+        for (Event event : eventList) {
+            if (event.getTitle().equals(title)) {
+                e = event;
+            }
+        }
+        
+        List<Stand> standList = e.getStandList();
+        List<String> standListString = new ArrayList();
+        for (Stand stand : standList) {
+            standListString.add(stand.getID());
+        }
+        return standListString;
         
         /*
         List<Stand> standList = e.getStandList();
