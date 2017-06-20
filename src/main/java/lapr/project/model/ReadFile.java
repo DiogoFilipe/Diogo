@@ -77,13 +77,13 @@ public class ReadFile {
 
         decision1 = makeNewDecision(data[1],data[5], data[6], data[7], data[8], data[9]);
         fae1 = returnFAE(data[10], data[12], data[11], data[13], event, fairCenter);
-        application.addDecision(decision1);
+        application.setD(decision1);
         assignment1 = new Assignment(fae1,decision1);
         event.getAssignmentList().registAssignment(assignment1);
 
         decision2 = makeNewDecision(data[1],data[14], data[15], data[16], data[17], data[18]);
         fae2 = returnFAE(data[19], data[21], data[20], data[22], event, fairCenter);
-        application.addDecision(decision2);
+        application.setD(decision2);
         assignment2 = new Assignment(fae2,decision2);
         event.getAssignmentList().registAssignment(assignment2);
                
@@ -182,7 +182,7 @@ public class ReadFile {
        
         if (user == null) {
             user = new User(name,username,email ,password);
-            fairCenter.getUserRegist().addUser(user);
+            fairCenter.getUserRegist().getUserList().add(user);
             f = new FAE(user);
             faeList.getFAEList().add(f);
             return f;
