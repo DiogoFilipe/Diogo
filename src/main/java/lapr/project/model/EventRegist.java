@@ -53,6 +53,7 @@ public class EventRegist implements Serializable {
         }
         return FAEEventsList;
     }
+ 
 
     /**
      * Lets get the Events List ready for submission
@@ -179,4 +180,13 @@ public class EventRegist implements Serializable {
         }
         return null;
     }
+    
+    public List<String> getEventListString(){
+        List<String> eventListString=new ArrayList<>();
+        for(Event e: eventList){
+            eventListString.add(e.getTitle());
+        }
+        return eventListString;
+    }
+
 }
