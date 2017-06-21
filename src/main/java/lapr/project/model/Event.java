@@ -22,7 +22,8 @@ public class Event implements EventState {
     private ApplicationList applicationList;
     private AssignmentList assignmentList;
     private OrganizerList organizerList;
-    private List<Stand> standList;
+    private StandRegist standList;
+    private AssignmentListStand assignmentListStand;
 
     private final String DESCRIPTION_BY_OMISSION = "No description";
     private final String PLACE_BY_OMISSION = "No localization";
@@ -31,7 +32,7 @@ public class Event implements EventState {
         this.state = EventState.State.Created;
     }
 
-    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, List<Stand> standList) {
+    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmnentListStand) {
         this.title = title;
         this.description = description;
         this.place = place;
@@ -44,6 +45,8 @@ public class Event implements EventState {
         this.applicationList = applicationList;
         this.organizerList = organizerList;
         this.state = EventState.State.FAESet;
+        this.standList = standList;
+        this.assignmentListStand = assignmentListStand;
     }
 
     public Event(String title) {
@@ -54,6 +57,8 @@ public class Event implements EventState {
         this.applicationList = new ApplicationList();
         this.organizerList = new OrganizerList();
         this.state = EventState.State.Created;
+        this.standList = new StandRegist();
+        this.assignmentListStand = new AssignmentListStand();
     }
 
     /**
@@ -179,8 +184,22 @@ public class Event implements EventState {
      *
      * @return list of Stands of the Event
      */
-    public List<Stand> getStandList() {
+    public StandRegist getStandList() {
         return standList;
+    }
+    
+    /**
+     * @return the listAssignedStands
+     */
+    public AssignmentListStand getListAssignedStands() {
+        return assignmentListStand;
+    }
+    
+    /**
+     * @param AssignmentListStand the listAssignedStands to set
+     */
+    public void setListAssignedStands(AssignmentListStand assignmentListStand) {
+        this.assignmentListStand = assignmentListStand;
     }
 
     /**
@@ -288,7 +307,7 @@ public class Event implements EventState {
      *
      * @param standList Event's Stand list
      */
-    public void setStandList(List<Stand> standList) {
+    public void setStandList(StandRegist standList) {
         this.standList = standList;
     }
 
@@ -298,8 +317,8 @@ public class Event implements EventState {
      * @param stand
      * @return
      */
-    public boolean addStand(Stand stand) {
-        return this.standList.add(stand);
+    public void addStand(Stand stand) {
+        this.standList.addStand(stand);
     }
 
     /**

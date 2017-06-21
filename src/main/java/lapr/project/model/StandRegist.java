@@ -65,7 +65,7 @@ public class StandRegist implements Serializable{
         List<Stand> standsNotAssigned = new ArrayList<>();
         int flag = 0;
         for (Stand s : getStandList()) {
-            for (AssignStands as : als.getStandsAssigned) {
+            for (AssignStands as : als.getStandsAssigned()){
 
                 if (as.getStand()==s) {
                     flag = 1;
