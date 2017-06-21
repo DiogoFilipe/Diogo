@@ -29,11 +29,11 @@ public class ShowEventKeywordsController {
     }
 
     public boolean isOrganizer(User u) {
-        return fc.getOrganizerList().containsOrganizer((Organizer) u);
+        return fc.getOrganizerList().getOrganizerList().contains((Organizer) u);
     }
 
     public List<String> getEventListOrganizer(User user) {
-        return fc.getEventRegist().getOrganizerEventListString(((Organizer) user).getUsername());
+        return fc.getEventRegist().getOrganizerEventList((Organizer) user);
     }
 
     public List<Keyword> getKeywordsList(String e) {
