@@ -14,8 +14,14 @@ import java.util.List;
  */
 public class AssignmentList {
 
+    /**
+     * list of assignments
+     */
     private List<Assignment> assignmentList;
 
+    /**
+     * empty constructor
+     */
     public AssignmentList() {
         assignmentList = new ArrayList<>();
     }
@@ -26,48 +32,6 @@ public class AssignmentList {
      * @return Assignment´s list
      */
     public List<Assignment> getAssignmentList() {
-        return new ArrayList<>(this.assignmentList);
+        return assignmentList;
     }
-
-    /**
-     * Returns the number of assignments
-     *
-     * @return number of assignments
-     */
-    public int getSize() {
-        return assignmentList.size();
-    }
-
-    /**
-     * Removes an assignment from the list
-     *
-     * @param assignment - assignment to be removed
-     */
-    public void remove(Assignment assignment) {
-        assignmentList.remove(assignment);
-    }
-
-    /**
-     * Adds an assignment to the assignment List
-     *
-     * @param assignment - assignment to be added
-     * @return
-     */
-    public boolean registAssignment(Assignment assignment) {
-        if (!assignmentList.contains(assignment)) {
-            assignmentList.add(assignment);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Verefies if there are any assignments
-     *
-     * @return
-     */
-    public boolean isEmpty() {
-        return assignmentList.isEmpty();
-    }
-
 }
