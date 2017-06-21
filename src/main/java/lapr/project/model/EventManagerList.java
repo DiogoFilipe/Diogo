@@ -21,12 +21,15 @@ public class EventManagerList {
     
     /**
      * 
-     * @param eventManagerList list of event managersÉ 
+     * @param eventManagerList list of event managers
      */
     public EventManagerList(List<EventManager> eventManagerList){
         this.eventManagerList=eventManagerList;
     }
     
+    /**
+     * empty constructor
+     */
     public EventManagerList(){
         this.eventManagerList= new ArrayList<>();
     }
