@@ -15,19 +15,28 @@ import lapr.project.utils.Date;
  */
 public class Exhibition extends Event implements Serializable,EventState{
     
-  
-    public State exhibitionState;
+    /**
+     * state of the exhibition
+     */
+    private State exhibitionState;
     
-    public Exhibition(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList,List<Stand> standList) {
-        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList,standList);
-        this.exhibitionState=EventState.State.Created;
+    public Exhibition(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmentListStand, WorkshopList workshopList) {
+        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList,standList,assignmentListStand);
+        this.exhibitionState=EventState.State.FAESet;
     }
     
+    /**
+     * 
+     * @param title title of the exhibition 
+     */
     public Exhibition(String title){
     super(title);
     this.exhibitionState=EventState.State.Created;
     }
     
+    /**
+     * empty constructor
+     */
     public Exhibition(){
         super();
         this.exhibitionState=EventState.State.Created;
@@ -132,9 +141,11 @@ public class Exhibition extends Event implements Serializable,EventState{
         return super.getTitle(); 
     }
 
-    /**
-     * 
-     */
+   
+     /**
+      * 
+      * @param applicationList to set 
+      */
     @Override
     public void setApplicationList(ApplicationList applicationList) {
         super.setApplicationList(applicationList);
@@ -151,6 +162,7 @@ public class Exhibition extends Event implements Serializable,EventState{
 
     /**
      * 
+     * @param assignmentList list of assignments 
      */
     @Override
     public void setAssignmentList(AssignmentList assignmentList) {
@@ -176,6 +188,7 @@ public class Exhibition extends Event implements Serializable,EventState{
     }
     /**
      * 
+     * @param organizerList the list of organizers
     */
     @Override
     public void setOrganizerList(OrganizerList organizerList) {
@@ -217,6 +230,18 @@ public class Exhibition extends Event implements Serializable,EventState{
     public void setTitle(String title) {
         super.setTitle(title);
     }
-    
-    
+
+    /**
+     * @return the exhibitionState
+     */
+    public State getExhibitionState() {
+        return exhibitionState;
+    }
+
+    /**
+     * @param exhibitionState the exhibitionState to set
+     */
+    public void setExhibitionState(State exhibitionState) {
+        this.exhibitionState = exhibitionState;
+    }
 }
