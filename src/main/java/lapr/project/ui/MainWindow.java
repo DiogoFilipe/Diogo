@@ -23,7 +23,7 @@ import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.ShowEvenAcceptanceRate.ShowEventAcceptanceRateMainUI;
 import lapr.project.ui.ShowEventKeywords.ShowEventKeywordsWindow;
 import lapr.project.ui.ShowFaeMeanRating.ShowFaeMeanRatingMainUI;
-import lapr.project.ui.ShowGlobalAcceptanceRate.ShowGlobalAcceptanceRateMainUI;
+//import lapr.project.ui.ShowGlobalAcceptanceRate.ShowGlobalAcceptanceRateMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 import lapr.project.utils.DontHavePermissionException;
 
@@ -323,9 +323,9 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateEventActionPerformed
-        CreateEventMain createEvent = new CreateEventMain();
-        createEvent.setVisible(true);
-        dispose();
+//        CreateEventMain createEvent = new CreateEventMain();
+//        createEvent.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_CreateEventActionPerformed
 
     private void Diff2EventsAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diff2EventsAcceptanceRateActionPerformed
@@ -357,7 +357,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ChangeApplicationActionPerformed
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
-        CreateStandMainUI createStand = new CreateStandMainUI();
+        CreateStandMainUI createStand = new CreateStandMainUI(fc,user);
         createStand.setVisible(true);
         dispose();
     }//GEN-LAST:event_createStandActionPerformed
@@ -389,9 +389,9 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ListApplicationsActionPerformed
 
     private void EventSubmissionKeywordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EventSubmissionKeywordsActionPerformed
-        ShowEventKeywordsWindow showKeywords = new ShowEventKeywordsWindow();
-        showKeywords.setVisible(true);
-        dispose();
+//        ShowEventKeywordsWindow showKeywords = new ShowEventKeywordsWindow();
+//        showKeywords.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_EventSubmissionKeywordsActionPerformed
 
     private void EventAcceptance50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EventAcceptance50ActionPerformed
@@ -419,9 +419,9 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_FAEMeanRatingActionPerformed
 
     private void GlobalAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GlobalAcceptanceRateActionPerformed
-        ShowGlobalAcceptanceRateMainUI globalAcceptanceRate = new ShowGlobalAcceptanceRateMainUI();
-        globalAcceptanceRate.setVisible(true);
-        dispose();
+//        ShowGlobalAcceptanceRateMainUI globalAcceptanceRate = new ShowGlobalAcceptanceRateMainUI();
+//        globalAcceptanceRate.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_GlobalAcceptanceRateActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed

@@ -30,6 +30,7 @@ public class Application implements Importable<Application>, ApplicationState {
     private static final int INVITES_BY_OMISSION = 0;
     private static final double BOOTHAREA_BY_OMISSION = 0;
 
+    
     private int invites;
     private double boothArea;
     private String companyName;
@@ -39,7 +40,7 @@ public class Application implements Importable<Application>, ApplicationState {
     private String description;
     private Decision d;
     private State state;
-     private boolean hasStand;
+    private boolean hasStand;
 
     /**
      * Constructor for Application
@@ -91,14 +92,14 @@ public class Application implements Importable<Application>, ApplicationState {
         this.hasStand = false;
         }
 
-    public Application(int invites, double boothArea, String description) {
+    public Application(int invites, double boothArea, String description,List <Keyword> keys) {
         this.invites = invites;
         this.boothArea = boothArea;
         this.description = description;
         this.companyName = COMPANYNAME_BY_OMISSION;
         this.address = ADDRESS_BY_OMISSION;
         this.contact = CONTACT_BY_OMISSION;
-        this.keywordList.addAll(keywordList);
+        this.keywordList = keys;
         this.d = decision;
         this.hasStand = false;
         

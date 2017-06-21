@@ -7,8 +7,7 @@ package lapr.project.ui.CreateStand;
 
 
 import lapr.project.controller.CreateStandController;
-import lapr.project.model.Event;
-import lapr.project.model.Stand;
+import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
 
 /**
@@ -16,15 +15,20 @@ import lapr.project.ui.MainWindow;
  * @author João Domingues
  */
 public class StandDataUI extends javax.swing.JFrame {
-    private final Event event;
+    private Event event;
+    private User user;
+    private FairCenter fc;
     CreateStandController controller;
 
     /**
      * Creates new form StandDataUI
      * @param event selected event
      */
-     public StandDataUI(Event event) {
+     public StandDataUI(Event event,FairCenter fc,User user) {
+        this.user = user;
         this.event = event;
+        this.fc = fc;
+        this.setVisible(true);
         initComponents();
         textArea1.setEditable(false);
         textArea1.setText(event.toString());
@@ -137,63 +141,29 @@ public class StandDataUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        CreateStandMainUI createStandMain = new CreateStandMainUI();
+        CreateStandMainUI createStandMain = new CreateStandMainUI(fc,user);
         createStandMain.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controller = new CreateStandController();
+        controller = new CreateStandController(fc,user);
         Stand stand;
         String area = jTextField3.getText();
         controller.verifyArea(area);
         double ar = Double.parseDouble(area);
-        stand = controller.createStand(ar);
+        stand = new Stand(ar);
         controller.addStand(this.event,stand);
         MainWindow main = new MainWindow();
         main.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StandDataUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StandDataUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StandDataUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StandDataUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            Event event = new Event();
-            public void run() {
-               new StandDataUI(event).setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

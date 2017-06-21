@@ -8,7 +8,8 @@ package lapr.project.ui.CreateStand;
 import java.util.List;
 import javax.swing.AbstractListModel;
 import lapr.project.controller.CreateStandController;
-import lapr.project.model.Event;
+import lapr.project.model.*;
+import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
 /**
  *
@@ -17,13 +18,47 @@ import lapr.project.ui.MainWindow;
 public class CreateStandMainUI extends javax.swing.JFrame {
     
     CreateStandController controller;
+    private FairCenter fc;
+    private User user;
 
     /**
      * Creates new form CreateStandMainUI
      */
-    public CreateStandMainUI() {
+    public CreateStandMainUI(FairCenter fc,User user) {
+        this.fc = fc;
+        this.user = user;
         initComponents();
+        this.setVisible(true);
+        createList();
+      
     }
+    
+    public void createList(){
+        
+     int i=0;
+        controller = new CreateStandController(fc,user);
+        List<Event> events = controller.getEventList();
+        final String [] titles = new String[events.size()];
+        for(Event event : events){
+            titles[i] = event.getTitle();
+        i++;
+        }
+             
+        AbstractListModel model = new javax.swing.AbstractListModel() {
+
+            @Override
+            public int getSize() {
+                return titles.length;
+            }
+
+            @Override
+            public Object getElementAt(int j) {
+                return titles[j];
+            }
+        };
+        jList2.setModel(model);
+        jScrollPane1.setViewportView(jList2);
+       }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,17 +133,18 @@ public class CreateStandMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String title = null;
+   
+        String title = null;
 
-    int[] selectedIx = this.jList2.getSelectedIndices();      
+    int[] selectedIx = jList2.getSelectedIndices();      
 
-    for (int i = 0; i < selectedIx.length; i++) {
-        title = (String) jList2.getModel().getElementAt(selectedIx[i]);
+    for (int j = 0; j < selectedIx.length; j++) {
+        title = (String) jList2.getModel().getElementAt(selectedIx[j]);
     }
-    Event event = CreateStandController.getEvent(title);
-    StandDataUI standData = new StandDataUI(event);
+    Event event = controller.getEvent(title);
+    StandDataUI standData = new StandDataUI(event,fc,user);
     standData.setVisible(true);
-    dispose();
+    this.dispose();
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -118,66 +154,6 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateStandMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateStandMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateStandMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateStandMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                {
-                new CreateStandMainUI().setVisible(true);
-                  
-        
-        int i=0;
-        final List<Event> events = CreateStandController.getEventList();
-        final String [] titles = new String[events.size()];
-        for(Event event : events){
-            titles[i] = event.getTitle();
-        
-        }
-             
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return titles.length;
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return titles[j];
-            }
-        };
-        jList2.setModel(model);
-        jScrollPane1.setViewportView(jList2);
-            }
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
