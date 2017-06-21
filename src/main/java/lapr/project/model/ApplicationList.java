@@ -10,16 +10,38 @@ import java.util.List;
  */
 public class ApplicationList implements Serializable {
 
+    /**
+     * list of applications
+     */
     private List<Application> applicationList;
 
+    /**
+     * 
+     * @param applicationList list of applications
+     */
+    public ApplicationList(List<Application> applicationList){
+        this.applicationList=applicationList;
+    }
+    
+    /**
+     * empty contructor
+     */
     public ApplicationList() {
         applicationList = new ArrayList<>();
     }
 
+    /**
+     * 
+     * @return list of applications 
+     */
     public List<Application> getApplicationList() {
         return applicationList;
     }
 
+   /**
+    * 
+    * @return list of Strings with the company name of applications
+    */
     public List<String> getApplicationsList() {
         List<String> applications = new ArrayList<>();
         for (Application a : applicationList) {
@@ -37,14 +59,6 @@ public class ApplicationList implements Serializable {
         return applicationList.size();
     }
 
-    /**
-     * Defines the applicationsList
-     *
-     * @param applicationList the list of applications
-     */
-    public void setListaCandidatura(List<Application> applicationList) {
-        this.applicationList = applicationList;
-    }
 
     /**
      * Removes an application from the applications list
@@ -52,7 +66,7 @@ public class ApplicationList implements Serializable {
      * @param application - Application to be removed
      * @return
      */
-    public boolean removerCandidatura(Application application) {
+    public boolean removeApplication(Application application) {
         return applicationList.remove(application);
     }
 
@@ -78,6 +92,11 @@ public class ApplicationList implements Serializable {
         return applicationList.isEmpty();
     }
 
+    /**
+     * 
+     * @param description description of the application
+     * @return the application that as that description or null
+     */
     public Application getApplication(String description) {
         for (Application a : applicationList) {
             if (a.getDescription().equals(description)) {
@@ -87,6 +106,10 @@ public class ApplicationList implements Serializable {
         return null;
     }
 
+    /**
+     * 
+     * @return the list of keywords of all applications of one event 
+     */
     public List<Keyword> getKeywordsList() {
         List<Keyword> keywords = new ArrayList<>();
         for (Application a : applicationList) {
@@ -95,6 +118,10 @@ public class ApplicationList implements Serializable {
         return keywords;
     }
 
+    /**
+     * 
+     * @return the list of Applications(String with companyName) that were accepted
+     */
     public List<String> getApplicationListAccepted() {
         List<String> applicationsAccepted = new ArrayList<>();
         for (Application a : applicationList) {
@@ -105,6 +132,10 @@ public class ApplicationList implements Serializable {
         return applicationsAccepted;
     }
     
+    /**
+     * 
+     * @return the list of Applications(String with companyName) that were rejected 
+     */
     public List<String> getApplicationListRejected(){
         List<String> applicationsRejected = new ArrayList<>();
         for(Application a : applicationList){
@@ -113,5 +144,12 @@ public class ApplicationList implements Serializable {
             }
         }
         return applicationsRejected;
+    }
+
+    /**
+     * @param applicationList the applicationList to set
+     */
+    public void setApplicationList(List<Application> applicationList) {
+        this.applicationList = applicationList;
     }
 }
