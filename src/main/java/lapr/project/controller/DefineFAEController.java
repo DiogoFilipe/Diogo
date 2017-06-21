@@ -73,28 +73,12 @@ public class DefineFAEController {
         return organizerList.containsOrganizer(o);
     }
     
-     /**
-     *
-     * @param o the organizer
-     * @return the list of events of this organizer
-     */
-    public List<String>  getOrganizerEventsList(Organizer o){
-        return  eventRegist.getOrganizerEventsListOrdenedByState(o);
-    }
     
     /**
      * @return user selected
      */
     public User getUserSelected() {
         return u;
-    }
-    
-    /**
-     *
-     * @return FAE regist
-     */
-    public boolean FAEregist() {
-        return FAElist.FAEregist(u);
     }
     /**
      * 
@@ -145,7 +129,7 @@ public class DefineFAEController {
     public void addFAE(User u, Event event) {
         FAE newFae = new FAE(u);
         this.fae = newFae;
-        FAElist.addFAE(fae);
+        FAElist.getFAEList().add(fae);
     }
     
     public List<User> generateUsersList(Event e) {
