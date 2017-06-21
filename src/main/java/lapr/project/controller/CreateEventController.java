@@ -11,32 +11,35 @@ import lapr.project.utils.*;
  */
 public class CreateEventController {
 
-    FairCenter fc;
-Event e;
-    
+    /**
+     * fair center
+     */
+    private FairCenter fc;
+
+    private Event e;
+
+    /**
+     *
+     * @param fc fair center
+     */
     public CreateEventController(FairCenter fc) {
         this.fc = fc;
-        this.e=new Event();
+        this.e = new Event();
     }
 
     /**
-     * Returns a list with all the Users' names
+     * Returns a list with all the Users' usernames
      *
-     * @return list with all the Users' names
+     * @return list with all the Users' usernames
      */
     public List<String> getUserList() {
-        List<User> userList = fc.getUserRegist().getUserList();
-        List<String> userListString = new ArrayList<>();
-        //Need to add a try/catch in case the userList is empty
-        for (User user : userList) {
-            userListString.add(user.getName());
-        }
-        return userListString;
+        return fc.getUserRegist().getUserListString();
     }
 
     /**
      * Sets the data of the new event
      *
+     * @param type type of the event
      * @param title Event's title
      * @param description Event's title
      * @param place Event's place of occurrence
@@ -46,9 +49,8 @@ Event e;
      * @param submissionEndDate Event's submission end date
      * @param organizerList Event's Organizer list
      */
-    public void setData(/*type,*/String title, String description, String place, String startDate, String endDate, String submissionStartDate, String submissionEndDate, List<String> organizerList) {
+    public void setData(String type, String title, String description, String place, String startDate, String endDate, String submissionStartDate, String submissionEndDate, List<String> organizerList) {
         if (!fc.getEventRegist().validateEvent(title)) {
-            /*type*/
             e.setTitle(title);
             e.setDescription(description);
             e.setPlace(place);
@@ -58,9 +60,9 @@ Event e;
             e.setSubmissionEndDate(Date.StringToDate(submissionEndDate));
             //Must get a list of strings, and then, convert that list into an Organizer List and set it as the Event's Organizer list
             List<Organizer> eventOrganizerList = new ArrayList<>();
-            for (String name : organizerList) {
+            for (String username : organizerList) {
                 for (User user : fc.getUserRegist().getUserList()) {
-                    if (user.getName().equals(name)) {
+                    if (user.getUsername().equals(username)) {
                         Organizer o = new Organizer(user);
                         eventOrganizerList.add(o);
                     }
@@ -77,12 +79,20 @@ Event e;
     public void registerEvent() {
         fc.getEventRegist().getEventList().add(e);
     }
-    
+
     /**
      * Sets the Event's state as Created
      */
     public void setCreated() {
-       e.setState(EventState.State.Created);
+        e.setState(EventState.State.Created);
+    }
+
+    public List<String> getOrganizerList() {
+        return fc.getOrganizerListString();
+    }
+    
+    public Organizer getOrganizer(String username){
+        return fc.getOrganizerList().getOrganizer(username);
     }
 
 }
