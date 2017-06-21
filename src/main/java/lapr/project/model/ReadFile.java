@@ -213,6 +213,6 @@ public class ReadFile implements Serializable {
 
          Stand s = new Stand(areaFloat);
 
-        event.getStandList().addStand(s);
+        event.getStandList().getStandList().add(s);
     }
 }
