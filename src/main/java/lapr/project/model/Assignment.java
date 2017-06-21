@@ -13,9 +13,21 @@ import java.util.List;
  */
 public class Assignment {
     
+    /**
+     * list of fae
+     */
     private List<FAE> faeList;
+    
+    /**
+     * application
+     */
     private Application application;
     
+    /**
+     * 
+     * @param faeList list of fae 
+     * @param application application 
+     */
     public Assignment(List<FAE> faeList, Application application){
        this.faeList = faeList;
        this.application = application;
