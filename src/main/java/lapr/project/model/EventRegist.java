@@ -13,9 +13,6 @@ import lapr.project.utils.Date;
  */
 public class EventRegist implements Serializable {
 
-    FairCenter fc;
-    UserRegist ur;
-
     /**
      * Event list
      */
@@ -34,7 +31,7 @@ public class EventRegist implements Serializable {
      * @param o is the organizer
      * @return events list of an organizer
      */
-    public List<String> getOrganizerEventsListOrdenedByState(Organizer o) {
+    public List<String> getOrganizerEventsList(Organizer o) {
         List<String> organizerEventsList = new ArrayList<>();
         for (Event e : eventList) {
             if (e.getOrganizerList().containsOrganizer(o)) {
@@ -44,6 +41,11 @@ public class EventRegist implements Serializable {
         return organizerEventsList;
     }
 
+    /**
+     * 
+     * @param fae a fae
+     * @return list of strings with event title of this fae
+     */
     public List<String> getFAEEventsList(FAE fae) {
         List<String> FAEEventsList = new ArrayList<>();
         for (Event e : eventList) {
@@ -69,19 +71,6 @@ public class EventRegist implements Serializable {
 //    }
 
     /**
-     * Allows you to add an event to the regists
-     *
-     * @param event
-     * @return boolean depending on the success of the operation
-     */
-    public boolean addEvent(Event event) {
-        if (!eventList.contains(event)) {
-            return eventList.add(event);
-        }
-        return false;
-    }
-
-    /**
      * Gets the list of events
      *
      * @return Events List
@@ -91,109 +80,26 @@ public class EventRegist implements Serializable {
     }
 
     /**
-     * Event list size
-     *
-     * @return int With the size of the event list
-     */
-    public int Size() {
-        return eventList.size();
-    }
-
-    /**
-     * Get event through your position in the list
-     *
-     * @param i
-     * @return event
-     */
-    public Event GetEvent(int i) {
-        return eventList.get(i);
-    }
-
-    /**
-     * Returns the index of an event in the list
-     *
-     * @param event
-     * @return int With the position of the event
-     */
-    public int IndexOf(Event event) {
-        return eventList.indexOf(event);
-    }
-
-    /**
-     * Remove an event from the list
-     *
-     * @param event the event to remove
-     * @return boolean depending on the success of the operation
-     */
-    public boolean removeEvent(Event event) {
-        return eventList.remove(event);
-    }
-
-    /**
-     * Checks whether the list contains a certain event
-     *
-     * @param event to check if its on the list
-     * @return true or false
-     */
-    public boolean Contains(Event event) {
-        return eventList.contains(event);
-    }
-
-    /**
      * Verifies if an Event with the title introduced as been already created
      *
      * @param title title introduced
      * @return false if there is no Event with such title / true if there is an
      * Event already created with the given title
      */
-//    public boolean validateEvent(String title) {
-//        return eventList.stream().anyMatch((event) -> (event.getTitle().equalsIgnoreCase(title)));
-//    }
-
-    /**
-     * Returns a list of Events that the user identified by the username given
-     * is an Organizer of
-     *
-     * @param username User's username
-     * @return list of Events that the user identified by the username given is
-     * an Organizer of
-     */
-    public List<Event> getOrganizerEventList(String username) {
-        User u = ur.getUser(username);
-        Organizer o = new Organizer(u);
-        List<Event> organizerEventList = new ArrayList<>();
-        for (Event e : eventList) {
-            List<Organizer> tempList = e.getOrganizerList().getOrganizerList();
-            boolean flag = tempList.contains(o);
-            if (flag) {
-                organizerEventList.add(e);
+    public boolean validateEvent(String title) {
+        for(Event e:eventList){
+            if(e.getTitle().equals(title)){
+                return true;
             }
         }
-        return organizerEventList;
+        return false;
     }
     
-        /**
-     * Returns a list of Events that the user identified by the username given
-     * is an Organizer of
-     *
-     * @param username User's username
-     * @return list of Events that the user identified by the username given is
-     * an Organizer of
-     */
-    public List<String> getOrganizerEventListString(String username) {
-        User u = ur.getUser(username);
-        Organizer o = new Organizer(u);
-        List<String> organizerEventList = new ArrayList<>();
-        for (Event e : eventList) {
-            List<Organizer> tempList = e.getOrganizerList().getOrganizerList();
-            boolean flag = tempList.contains(o);
-            if (flag) {
-                organizerEventList.add(e.getTitle());
-            }
-        }
-        return organizerEventList;
-    }
-
+   /**
+    * 
+    * @param title title of the event
+    * @return return the event that has this title
+    */
     public Event getEvent(String title) {
         for (Event event : eventList) {
             if (event.getTitle().equals(title)) {
@@ -203,6 +109,10 @@ public class EventRegist implements Serializable {
         return null;
     }
     
+   /**
+    * 
+    * @return list of strings with event title 
+    */
     public List<String> getEventListString(){
         List<String> eventListString=new ArrayList<>();
         for(Event e: eventList){
@@ -210,5 +120,4 @@ public class EventRegist implements Serializable {
         }
         return eventListString;
     }
-
 }
