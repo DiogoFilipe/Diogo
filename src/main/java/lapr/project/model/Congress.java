@@ -226,15 +226,6 @@ public class Congress extends Event implements Serializable{
         super.setTitle(title);
     }
 
-/**
- * 
- * @return the list of applications 
- */
-    @Override
-    public ApplicationList getApplicationListAccepted() {
-        return super.getApplicationListAccepted();
-    }
-
     /**
      * 
      * @return the list of stands 
