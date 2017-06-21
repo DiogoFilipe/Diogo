@@ -32,6 +32,7 @@ public class DefineFAEController {
   private Event event;
   private User u;
   private FAE fae;
+  private List<User> usersList;
   
    /**
      * Class constructor 
@@ -50,12 +51,20 @@ public class DefineFAEController {
         return fc.getEventRegist().getEventList();
     }
     
+    /**
+     * @return RegistoEventos
+     */
+    public EventRegist getEventsRegist() {
+        return this.fc.getEventRegist();
+    }
+    
     
     /**
      *
      * @return
      */
-    public List<User> getUsersList() {
+    public List<User> getUsersList(Event e) {
+        this.event = event;
         userRegist = fc.getUserRegist();
         return userRegist.getUserList();
     }
@@ -71,6 +80,13 @@ public class DefineFAEController {
      */
     public List<String>  getOrganizerEventsList(Organizer o){
         return  eventRegist.getOrganizerEventsListOrdenedByState(o);
+    }
+    
+    /**
+     * @return user selected
+     */
+    public User getUserSelected() {
+        return u;
     }
     
     /**
@@ -100,26 +116,43 @@ public class DefineFAEController {
      *
      * @return
      */
-    public Event getEvent() {
+    public Event geEventSelect() {
         return event;
+    }
+    
+     /**
+     * @return users list
+     */
+    public List<User> getUsersList() {
+        return usersList;
     }
     
     /**
      *
      * @param event
      */
-    public void setEvent(Event event) {
-        this.event = event;
-        FAElist = event.getFAEList();
+    public void setEventSelect(Event event) {
+        this.event = event;    
+    }
+    /**
+     * 
+     * @param u 
+     */
+    public void setUserSelect(User u){
+        this.u = u;
     }
     
-    public void addFAE(User user, Event evt) {
-        FAE newFae = new FAE(user);
+    public void addFAE(User u, Event event) {
+        FAE newFae = new FAE(u);
         this.fae = newFae;
         FAElist.addFAE(fae);
     }
     
-    
-    
-    
+    public List<User> generateUsersList(Event e) {
+        
+        UserRegist userList = new UserRegist();
+        
+
+        return this.usersList;
+    }
 }

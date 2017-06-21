@@ -14,7 +14,7 @@ import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.CreateStand.CreateStandMainUI;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
-import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.DefineFAE.DefineFAE2MainUI;
 import lapr.project.ui.DifferenceTwoFAEDeviation.DifferenceTwoFAEDeviation;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
@@ -333,7 +333,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_Diff2EventsAcceptanceRateActionPerformed
 
     private void DefineFAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DefineFAEActionPerformed
-        DefineFAEMainUI defineFAEUI = new DefineFAEMainUI();
+        DefineFAE2MainUI defineFAEUI = new DefineFAE2MainUI();
         defineFAEUI.setVisible(true);
         dispose();
     }//GEN-LAST:event_DefineFAEActionPerformed
