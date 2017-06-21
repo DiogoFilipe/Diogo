@@ -51,48 +51,6 @@ public class ApplicationList implements Serializable {
     }
 
     /**
-     * Return´s the size of the applicationsList
-     *
-     * @return List´s size
-     */
-    public int getSize() {
-        return applicationList.size();
-    }
-
-
-    /**
-     * Removes an application from the applications list
-     *
-     * @param application - Application to be removed
-     * @return
-     */
-    public boolean removeApplication(Application application) {
-        return applicationList.remove(application);
-    }
-
-    /**
-     * Adds an application to the applications List
-     *
-     * @param application - Applcation to be added
-     * @return
-     */
-    public boolean registApplication(Application application) {
-        if (!applicationList.contains(application)) {
-            return this.applicationList.add(application);
-        }
-        return false;
-    }
-
-    /**
-     * Verifies there are any existing applications
-     *
-     * @return
-     */
-    public boolean isEmpty() {
-        return applicationList.isEmpty();
-    }
-
-    /**
      * 
      * @param description description of the application
      * @return the application that as that description or null
