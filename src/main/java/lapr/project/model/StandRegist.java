@@ -43,13 +43,6 @@ public class StandRegist implements Serializable{
         getStandList().add(s);
     }
 
-    public void standRegister(Stand s) {
-        if (valid(s)) {
-            addStand(s);
-        }
-    }
-
-
     @Override
     public String toString() {
         String toString = "";
@@ -65,7 +58,7 @@ public class StandRegist implements Serializable{
         List<Stand> standsNotAssigned = new ArrayList<>();
         int flag = 0;
         for (Stand s : getStandList()) {
-            for (AssignStands as : als.getStandsAssigned) {
+            for (AssignStands as : als.getStandsAssigned()) {
 
                 if (as.getStand()==s) {
                     flag = 1;
@@ -85,6 +78,6 @@ public class StandRegist implements Serializable{
      * @param sl the sl to set
      */
     public void setSl(List<Stand> sl) {
-        this.StandList = StandList;
+        this.StandList = sl;
     }
 }
