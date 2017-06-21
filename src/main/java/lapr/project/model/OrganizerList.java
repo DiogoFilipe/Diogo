@@ -15,12 +15,22 @@ import java.util.List;
  */
 public class OrganizerList implements Serializable {
 
+    /**
+     * list of organizers
+     */
     private List<Organizer> organizerList;
 
+    /**
+     * empty constructor
+     */
     public OrganizerList() {
         organizerList = new ArrayList<>();
     }
     
+    /**
+     * 
+     * @param organizerList list of organizers 
+     */
     public OrganizerList(List<Organizer> organizerList) {
         this.organizerList = organizerList;
     }
@@ -49,30 +59,5 @@ public class OrganizerList implements Serializable {
             return false;
         }
         return organizerList.add(organizer);
-    }
-    
-    /**
-     * check if the list is empty
-     * @return true if the list is empty
-     */
-    public boolean isEmpty() {
-        return organizerList.isEmpty();
-    }
-    
-    /**
-     * check if the list contains the organizer
-     * @param organizer the organizer that will be checked
-     * @return true if the list contains the organizer
-     */
-    public boolean containsOrganizer(Organizer organizer)
-    {
-        return organizerList.contains(organizer);
-    }
-
-//    public void addOrganizerList(List<Organizer> organizerList) {
-//        organizerList.forEach((Organizer) -> {
-//            this.organizerList.add(Organizer);
-//        });
-//    }
-    
+    }    
 }
