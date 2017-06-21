@@ -9,74 +9,137 @@ import lapr.project.model.*;
  * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class ShowEventStandsInformationController {
-    
+
+    FairCenter fc;
+    Organizer organizer;
     EventRegist er;
-    
-    public List<String> getOrganizerEventList(String username) {
-        List<Event> organizerEventList = er.getOrganizerEventList(username);
-        List<String> organizerEventListString = new ArrayList<>();
-        for (Event event : organizerEventList) {
-            organizerEventListString.add(event.getTitle());
-        }
-        return organizerEventListString;
+    Event e;
+    List<Stand> standList;
+
+    public ShowEventStandsInformationController(FairCenter fc, User user) {
+        this.fc = fc;
+        this.organizer = new Organizer(user);
     }
-    
-    public List<String> getEventStandsInformation(String title) {
-        
-        Event e = new Event();
+
+    /**
+     * Returns a list with the titles of the Event's the user logged in is an
+     * Organizer of
+     *
+     * @return list with the titles of the Event's the user logged in is an
+     * Organizer of
+     */
+    public List<String> getOrganizerEventList() {
+        return er.getOrganizerEventList(organizer);
+    }
+
+    /**
+     * Returns an array of doubles that represents the classes of the frequency
+     * distribution table for an Event
+     *
+     * @param eventTitle the Event's title
+     * @return array of doubles that represents the classes of the frequency
+     * distribution table
+     */
+    public double[][] getStandAreasClasses(String eventTitle) {
         List<Event> eventList = er.getEventList();
         for (Event event : eventList) {
-            if (event.getTitle().equals(title)) {
-                e = event;
+            if (event.getTitle().equals(eventTitle)) {
+                this.e = event;
             }
         }
-        
-        List<Stand> standList = e.getStandList();
-        List<String> standListString = new ArrayList();
-        for (Stand stand : standList) {
-            standListString.add(stand.getID());
-        }
-        return standListString;
-        
-        /*
-        List<Stand> standList = e.getStandList();
-        List<Double> standsAreaFrom0to10 = new ArrayList<>();
-        List<Double> standsAreaFrom10to20 = new ArrayList<>();
-        List<Double> standsAreaFrom20to30 = new ArrayList<>();
-        List<Double> standsAreaBiggerThan30 = new ArrayList<>();
+        this.standList = e.getStandList().getStandList();
         int nStands = standList.size();
-        double totalArea = 0;
-        double averageArea = 0;
-        
-        //Missing Sturge's rule, still need to do some research on that
-        
+        int k = (int) Math.ceil(1 + 3.322 * Math.log(nStands));
+        double minimum = 9000, maximum = -9000;
         for (Stand stand : standList) {
-            nStands++;
-            totalArea += stand.getArea();
-            if (stand.getArea() < 10) {
-                standsAreaFrom0to10.add(stand.getArea());
+            if (stand.getArea() < minimum) {
+                minimum = stand.getArea();
             }
-            if (stand.getArea() >= 10 && stand.getArea() < 20) {
-                standsAreaFrom10to20.add(stand.getArea());
-            }
-            if (stand.getArea() >= 20 && stand.getArea() < 30) {
-                standsAreaFrom20to30.add(stand.getArea());
-            }
-            if (stand.getArea() >= 30) {
-                standsAreaBiggerThan30.add(stand.getArea());
+            if (stand.getArea() > maximum) {
+                maximum = stand.getArea();
             }
         }
-        
-        averageArea = totalArea / nStands;
-        
+        double range = maximum - minimum;
+        double classWidth = range / k;
+        double[][] classes = new double[k][2];
+        for (int i = 0; i < k; i++) {
+            if (i == 0) {
+                classes[i][0] = minimum;
+                classes[i][1] = minimum + classWidth;
+            } else {
+                classes[i][0] = classes[i - 1][1];
+                classes[i][1] = classes[i][0] + classWidth;
+            }
+        }
+        return classes;
+    }
+
+    /**
+     * Returns an array of integers that represent the absolute frequencies of
+     * each class of the frequency distribution table
+     *
+     * @return array of integers that represent the absolute frequencies of
+     * each class of the frequency distribution table
+     */
+    public int[] absoluteFrequency() {
+        int cont = 0;
+        List<Double> areaList = new ArrayList<>();
+        for (Stand stand : standList) {
+            areaList.add(stand.getArea());
+        }
+        int[] absoluteFrequency = new int[(int) Math.ceil(1 + 3.322 * Math.log(standList.size()))];
+        double[][] classes = getStandAreasClasses(e.getTitle());
+        for (int i = 0; i < classes.length; i++) {
+            for (double area : areaList) {
+                if (area >= classes[i][0] && area < classes[i][1]) {
+                    cont++;
+                }
+            }
+            absoluteFrequency[i] = cont;
+        }
+        return absoluteFrequency;
+    }
+
+    /**
+     * Returns an array of doubles that represent the relative frequencies of
+     * each class of the frequency distribution table
+     * 
+     * @return array of doubles that represent the relative frequencies of
+     * each class of the frequency distribution table
+     */
+    public double[] relativeFrequency() {
+        double[] relativeFrequency = new double[(int) Math.ceil(1 + 3.322 * Math.log(standList.size()))];
+        int[] absoluteFrequency = absoluteFrequency();
+        for (int i = 0; i < relativeFrequency.length - 1; i++) {
+            relativeFrequency[i] = (double) absoluteFrequency[i] / standList.size();
+        }
+        return relativeFrequency;
+    }
+
+    /**
+     * Returns the average area of the Event's Stand list
+     * 
+     * @return average area of the Event's Stand list
+     */
+    public double calcAverageArea() {
+        double totalArea = 0;
+        for (Stand stand : standList) {
+            totalArea += stand.getArea();
+        }
+        return totalArea / standList.size();
+    }
+
+    /**
+     * Returns the mean deviation of the Event's Stand list
+     * 
+     * @return mean deviation of the Event's Stand list
+     */
+    public double calcMeanDeviation() {
         double aux1 = 0, aux2 = 0;
         for (Stand stand : standList) {
-            aux1 = Math.pow(Math.abs(stand.getArea() - averageArea), 2);
-            aux2 += aux1; 
+            aux1 = Math.pow(Math.abs(stand.getArea() - calcAverageArea()), 2);
+            aux2 += aux1;
         }
-        double meanDeviation = Math.sqrt(aux2 / nStands);
-        */
-        
+        return Math.sqrt(aux2 / standList.size());
     }
-    
 }
