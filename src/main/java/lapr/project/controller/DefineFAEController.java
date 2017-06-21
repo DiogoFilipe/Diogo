@@ -83,14 +83,6 @@ public class DefineFAEController {
     public List<FAE> getFAEList(){
         return FAElist.getFAEList();
     }
-
-    /**
-     *
-     * @param index
-     */
-    public void chooseUser(int index) {
-        u = userRegist.getUserByIndex(index);
-    }
     
     /**
      *
