@@ -73,14 +73,6 @@ public class DefineFAEController {
         return organizerList.containsOrganizer(o);
     }
     
-     /**
-     *
-     * @param o the organizer
-     * @return the list of events of this organizer
-     */
-    public List<String>  getOrganizerEventsList(Organizer o){
-        return  eventRegist.getOrganizerEventsListOrdenedByState(o);
-    }
     
     /**
      * @return user selected

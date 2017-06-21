@@ -21,14 +21,15 @@ import lapr.project.model.User;
  * @author João Domingues
  */
 public class AssignStandsController {
-     private Event e;
+    private FairCenter fc;
+    private Event e;
     private Organizer o;
 
     private Application a;
     private AssignStands as;
 
-    public AssignStandsController(Event e, Organizer o) {
-        this.e = e;
+    public AssignStandsController(FairCenter fc, Organizer o) {
+        this.fc = fc;
         this.o = o;
 
     }
@@ -38,9 +39,17 @@ public class AssignStandsController {
 
     }
 
-    public List<Stand> getStands() {
+    public List<Stand> getStands(Event e) {
 
-        return e.getStandList().getNotAssignedStands();
+        return this.e.getStandList().getNotAssignedStands();
+    }
+    
+    /**
+     * Method that returns a events list ready for submission
+     * @return events list active
+     */
+    public List<Event> getEventsList () {
+        return fc.getEventRegist().getEventList();
     }
 
     public AssignStands createAssignment(Stand s, Application a) {
