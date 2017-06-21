@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -139,5 +140,29 @@ public class FairCenter implements Serializable {
 
     public File getSelectedFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<String> getApplicationListAccepted(){
+        List<String> applicationsAccepted=new ArrayList<>();
+        for(Event e: eventRegist.getEventList()){
+            for(Application a: eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()){
+                if(a.getD().getDecision()==true){
+                    applicationsAccepted.add(a.getCompanyName());
+                }
+            }
+        }       
+        return applicationsAccepted;
+    }
+    
+        public List<String> getApplicationListRejected(){
+        List<String> applicationsRejected=new ArrayList<>();
+        for(Event e: eventRegist.getEventList()){
+            for(Application a: eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()){
+                if(a.getD().getDecision()==false){
+                    applicationsRejected.add(a.getCompanyName());
+                }
+            }
+        }       
+        return applicationsRejected;
     }
 }
