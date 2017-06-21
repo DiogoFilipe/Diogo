@@ -34,7 +34,7 @@ public class EventRegist implements Serializable {
     public List<String> getOrganizerEventList(Organizer o) {
         List<String> organizerEventsList = new ArrayList<>();
         for (Event e : eventList) {
-            if (e.getOrganizerList().containsOrganizer(o)) {
+            if (e.getOrganizerList().getOrganizerList().contains(o)) {
                 organizerEventsList.add(e.getTitle());
             }
         }
