@@ -23,6 +23,11 @@ public class Workshop implements Serializable{
      */
     private String description;
     
+    /**
+     * 
+     * @param title title of the workshop
+     * @param description description of the workshop
+     */
     public Workshop(String title,String description){
       this.title=title;
       this.description=description;
