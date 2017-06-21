@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-import lapr.project.utils.Exportable;
+//import lapr.project.utils.Exportable;
 import lapr.project.utils.Importable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,7 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
  *
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
-public class Keyword implements Exportable, Importable<Keyword> {
+public class Keyword {
 
     private static final String ROOT_ELEMENT_NAME = "keyword";
     private static final String VALUE_ELEMENT_NAME = "value";
@@ -51,7 +51,7 @@ public class Keyword implements Exportable, Importable<Keyword> {
         return value;
     }
 
-    @Override
+//    @Override
     public Node exportContentToXMLNode() throws ParserConfigurationException {
         Node node = null;
 
@@ -82,7 +82,7 @@ public class Keyword implements Exportable, Importable<Keyword> {
         return node;
     }
 
-    @Override
+//    @Override
     public Keyword importContentFromXMLNode(Node node) throws ParserConfigurationException {
         DocumentBuilderFactory factory
                 = DocumentBuilderFactory.newInstance();

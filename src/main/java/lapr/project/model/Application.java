@@ -91,14 +91,14 @@ public class Application implements Importable<Application>, ApplicationState {
         this.hasStand = false;
         }
 
-    public Application(int invites, double boothArea, String description) {
+    public Application(int invites, double boothArea, String description,List <Keyword> keys) {
         this.invites = invites;
         this.boothArea = boothArea;
         this.description = description;
         this.companyName = COMPANYNAME_BY_OMISSION;
         this.address = ADDRESS_BY_OMISSION;
         this.contact = CONTACT_BY_OMISSION;
-        this.keywordList.addAll(keywordList);
+        this.keywordList = keys;
         this.d = decision;
         this.hasStand = false;
         

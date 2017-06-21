@@ -16,17 +16,14 @@ public class CreateStandController {
     FairCenter fc;
     private Stand stand;
     private EventRegist eventList;
+    private User user;
   
     
     
-    public CreateStandController(FairCenter fc){
+    public CreateStandController(FairCenter fc,User user){
+        this.user = user;
         this.fc = fc;
     }
-    
-    public Stand createStand(double area){
-       return stand = new Stand(area);
-    }
-    
     
     public boolean verifyArea(String area){
     return Stand.verifyArea(area);}

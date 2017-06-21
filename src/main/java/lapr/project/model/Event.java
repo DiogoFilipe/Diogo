@@ -299,7 +299,7 @@ public class Event implements EventState {
      * @return
      */
     public boolean addStand(Stand stand) {
-        return this.standList.add(stand);
+        return standList.add(stand);
     }
 
     /**

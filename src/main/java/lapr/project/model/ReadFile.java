@@ -68,38 +68,33 @@ public class ReadFile {
      * @param fairCenter - the fairCenter
      */
     private static void registEventInformation(String[] data, Event event, FairCenter fairCenter) {
-        Assignment assignment1;
-        Assignment assignment2;
+        Assignment assignment;
+        List <FAE> decisionFae= new ArrayList<>();
         Application application;
         Decision decision1;
         Decision decision2;
         FAE fae1;
         FAE fae2;
 
-        application = returnApplication(event, data[2], data[3], data[4]);
+        List <Keyword> keywords = new ArrayList<>(data[23].split(",").length);
+        for (String keys : data[23].split(",")) {
+                keywords.add(new Keyword(keys));
+            }
+        application = returnApplication(event, data[2], data[3], data[4],keywords);
 
         decision1 = makeNewDecision(data[1],data[5], data[6], data[7], data[8], data[9]);
         fae1 = returnFAE(data[10], data[12], data[11], data[13], event, fairCenter);
         application.setD(decision1);
-        assignment1 = new Assignment(fae1,decision1);
-        event.getAssignmentList().registAssignment(assignment1);
-
+        
+        decisionFae.add(fae1);
+      
         decision2 = makeNewDecision(data[1],data[14], data[15], data[16], data[17], data[18]);
         fae2 = returnFAE(data[19], data[21], data[20], data[22], event, fairCenter);
         application.setD(decision2);
-        assignment2 = new Assignment(fae2,decision2);
-        event.getAssignmentList().registAssignment(assignment2);
-         
-        
-            
-            for (String keys : data[23].split(",")) {
-                
-        application.setKeywordList(new Keyword(keys));
-        } 
-        
-        
-        
-        
+        decisionFae.add(fae2);
+        assignment = new Assignment(decisionFae,application);
+        event.getAssignmentList().registAssignment(assignment);
+   
 
         event.getApplicationList().registApplication(application);
     }
@@ -134,13 +129,13 @@ public class ReadFile {
      * @param ninvites - applications's invites
      * @return the matching application or the created one
      */
-    private static Application returnApplication(Event event, String description, String area, String ninvites) {
+    private static Application returnApplication(Event event, String description, String area, String ninvites,List <Keyword> keywords) {
         Application application = event.getApplicationList().getApplication(description);
 
         if (application == null) {
             double boothArea = Double.parseDouble(area);
             int invites = Integer.parseInt(ninvites);
-            application = new Application(invites,boothArea,description);
+            application = new Application(invites,boothArea,description,keywords);
             
         } 
             return application;

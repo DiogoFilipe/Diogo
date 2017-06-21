@@ -7,6 +7,7 @@ package lapr.project.ui.ImportFile;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import lapr.project.controller.ImportFileController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
@@ -36,12 +37,13 @@ public class ImportFileMainUI extends javax.swing.JFrame {
      controller = new ImportFileController(fc);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-            if(controller.fileReader(file)){
+            File file = fileChooser.getSelectedFile();
+            if(true == controller.fileReader(file)){
             MainWindow main = new MainWindow(fc,user);
             main.setVisible(true);
             dispose();
-            }
+            } else{
+            JOptionPane.showMessageDialog(fileChooser, "FODEU");}
         }
     }
     /**
