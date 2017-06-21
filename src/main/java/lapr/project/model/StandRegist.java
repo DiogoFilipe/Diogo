@@ -43,6 +43,7 @@ public class StandRegist implements Serializable{
         getStandList().add(s);
     }
 
+    
     @Override
     public String toString() {
         String toString = "";

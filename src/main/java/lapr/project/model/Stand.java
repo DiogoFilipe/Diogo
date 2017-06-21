@@ -1,10 +1,12 @@
 package lapr.project.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Stand {
+public class Stand implements Serializable{
     
     private String id;
     private double area;

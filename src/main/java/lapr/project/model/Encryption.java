@@ -1,12 +1,13 @@
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Encryption {
+public class Encryption implements Serializable{
 
     /**
      * keyword

@@ -5,11 +5,13 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Diogo
  */
-public class EventManager extends User{
+public class EventManager extends User implements Serializable{
     
     /**
      * 

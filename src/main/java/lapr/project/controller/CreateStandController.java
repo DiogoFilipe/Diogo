@@ -30,7 +30,7 @@ public class CreateStandController {
     
    
     public boolean addStand(Event event,Stand stand){
-    return event.addStand(stand);}
+    return event.getStandList().getStandList().add(stand);}
     
     public List<Event> getEventList(){
     return fc.getEventList();}

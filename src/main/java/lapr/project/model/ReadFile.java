@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ import java.util.Scanner;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class ReadFile {
+public class ReadFile implements Serializable {
 
     /**
      * Trys to read the file 
@@ -93,10 +94,10 @@ public class ReadFile {
         application.setD(decision2);
         decisionFae.add(fae2);
         assignment = new Assignment(decisionFae,application);
-        event.getAssignmentList().registAssignment(assignment);
+        event.getAssignmentList().getAssignmentList().add(assignment);
    
 
-        event.getApplicationList().registApplication(application);
+        event.getApplicationList().getApplicationList().add(application);
     }
     
     /**
@@ -192,7 +193,7 @@ public class ReadFile {
             event.getFAEList().getFAEList().add(f);
             return f;
         } else {
-            if (event.valid(user)) {
+            if (event.isFAE(user)) {
                 return event.getFAEList().getFAE(username);
             } else {
                 f = new FAE(name,username,email,password);
@@ -212,6 +213,6 @@ public class ReadFile {
 
          Stand s = new Stand(areaFloat);
 
-        event.addStand(s);
+        event.getStandList().addStand(s);
     }
 }

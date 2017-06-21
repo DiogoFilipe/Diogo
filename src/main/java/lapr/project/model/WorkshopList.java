@@ -5,6 +5,7 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Diogo
  */
-public class WorkshopList {
+public class WorkshopList implements Serializable{
     
     /**
      * list of workshops

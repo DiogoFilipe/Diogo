@@ -5,13 +5,14 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Assignment {
+public class Assignment implements Serializable{
     
     /**
      * list of fae

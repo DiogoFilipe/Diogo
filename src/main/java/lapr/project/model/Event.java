@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.utils.Date;
@@ -8,7 +9,7 @@ import lapr.project.utils.Date;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Event implements EventState {
+public class Event implements EventState,Serializable{
 
     /**
      * title of the event

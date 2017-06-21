@@ -5,6 +5,7 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author HP
  */
-public class DecisionsList {
+public class DecisionsList implements Serializable {
     
     List<Decision> decisionsList;
 

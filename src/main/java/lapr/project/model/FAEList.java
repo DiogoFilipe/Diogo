@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class FAEList {
+public class FAEList implements Serializable{
 
     /**
      * list of faes

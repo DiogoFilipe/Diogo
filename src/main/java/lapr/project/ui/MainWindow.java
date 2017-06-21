@@ -14,7 +14,7 @@ import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.CreateStand.CreateStandMainUI;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
-import lapr.project.ui.DefineFAE.DefineFAE2MainUI;
+//import lapr.project.ui.DefineFAE.DefineFAE2MainUI;
 import lapr.project.ui.DifferenceTwoFAEDeviation.DifferenceTwoFAEDeviation;
 import lapr.project.ui.EditApplication.EditApplicationMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
@@ -333,9 +333,9 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_Diff2EventsAcceptanceRateActionPerformed
 
     private void DefineFAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DefineFAEActionPerformed
-        DefineFAE2MainUI defineFAEUI = new DefineFAE2MainUI();
-        defineFAEUI.setVisible(true);
-        dispose();
+//        DefineFAE2MainUI defineFAEUI = new DefineFAE2MainUI();
+//        defineFAEUI.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_DefineFAEActionPerformed
 
     private void DecideApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DecideApplicationActionPerformed
@@ -367,7 +367,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_AssignStandActionPerformed
 
     private void ExportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportAllDataActionPerformed
-        ExportAllDataMainUI exportData = new ExportAllDataMainUI();
+        ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc,user);
         exportData.setVisible(true);
         dispose();    }//GEN-LAST:event_ExportAllDataActionPerformed
 

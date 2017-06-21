@@ -96,7 +96,7 @@ public class UserRegistMainWindowController {
      * @return
      */
     public boolean addEncryption(Encryption encryption) {
-        return fc.getEncryptionList().addEncryption(encryption);
+        return fc.getEncryptionList().getEncryptionsList().add(encryption);
     }
 
     /**

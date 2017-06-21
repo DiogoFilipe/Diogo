@@ -5,11 +5,13 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Diogo
  */
-public class Workshop {
+public class Workshop implements Serializable{
     
     /**
      * title of the workshop

@@ -5,6 +5,7 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author João Domingues
  */
-public class AssignmentListStand {
+public class AssignmentListStand implements Serializable{
 
     /**
      * list of stands assigned

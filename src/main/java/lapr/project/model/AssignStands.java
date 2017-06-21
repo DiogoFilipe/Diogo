@@ -5,11 +5,13 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author João Domingues
  */
-public class AssignStands {
+public class AssignStands implements Serializable{
 
     /**
      * stand
