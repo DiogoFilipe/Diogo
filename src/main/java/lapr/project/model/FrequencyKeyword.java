@@ -9,8 +9,19 @@ import java.util.List;
  */
 public class FrequencyKeyword {
 
+    /**
+     * title of the event
+     */
     private String e;
+    
+    /**
+     * list of keywords
+     */
     private List<Keyword> keywords;
+    
+    /**
+     * fair center
+     */
     private FairCenter fc;
 
     public FrequencyKeyword(List<Keyword> keywords, String e) {
@@ -46,6 +57,11 @@ public class FrequencyKeyword {
         this.keywords = keywords;
     }
 
+    /**
+     * 
+     * @param e event title
+     * @return a list of doubles with the frequencie of every keyword
+     */
     public List<Double> calcFreq(String e) {
         List<Double> frequencies = new ArrayList<>();
         for (Keyword j : fc.getEventRegist().getEvent(e).getApplicationList().getKeywordsList()) {
