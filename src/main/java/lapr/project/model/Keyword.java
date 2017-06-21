@@ -17,9 +17,16 @@ import javax.xml.parsers.ParserConfigurationException;
  *
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
-public class Keyword implements Serializable{
+public class Keyword implements Serializable {
 
+    /**
+     * root element name
+     */
     private static final String ROOT_ELEMENT_NAME = "keyword";
+
+    /**
+     * value element name
+     */
     private static final String VALUE_ELEMENT_NAME = "value";
 
     /**
@@ -105,6 +112,8 @@ public class Keyword implements Serializable{
         return this;
     }
 
+   /**
+    * 
     @Override
     public int hashCode() {
         return getValue().hashCode();
