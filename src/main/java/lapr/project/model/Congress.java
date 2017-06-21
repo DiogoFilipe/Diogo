@@ -15,8 +15,30 @@ import lapr.project.utils.Date;
  */
 public class Congress extends Event implements Serializable{
     
-    public Congress(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList,List<Stand> standList) {
-        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList,standList);
+    /**
+     * list of workshops
+     */
+    private WorkshopList workshopList;
+    
+    /**
+     * 
+     * @param title title of the congress
+     * @param description description of the congress
+     * @param place place of the congress
+     * @param startDate start date of the congress
+     * @param endDate end date of the congress
+     * @param submissionStartDate submission start date to applicatons
+     * @param submissionEndDate submission end date to applications
+     * @param faeList list of faes
+     * @param applicationList list of applications
+     * @param assignmentList assignment list
+     * @param organizerList list of organizers
+     * @param standList list of stands
+     * @param assignmnentListStand  list of stands assigned
+     */
+    public Congress(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmnentListStand) {
+        super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList,standList,assignmnentListStand);
+        this.workshopList= new WorkshopList();
     }
 
     /**
@@ -79,7 +101,7 @@ public class Congress extends Event implements Serializable{
      */
     @Override
     public OrganizerList getOrganizerList() {
-        return getOrganizerList(); 
+        return super.getOrganizerList(); 
     }
 
     /**
@@ -204,35 +226,44 @@ public class Congress extends Event implements Serializable{
         super.setTitle(title);
     }
 
-    @Override
-    public void addOrganizer(User u) {
-        super.addOrganizer(u); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean addStand(Stand stand) {
-        return super.addStand(stand); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addApplication(Application application) {
-        super.addApplication(application); //To change body of generated methods, choose Tools | Templates.
-    }
-
+/**
+ * 
+ * @return the list of applications 
+ */
     @Override
     public ApplicationList getApplicationListAccepted() {
-        return super.getApplicationListAccepted(); //To change body of generated methods, choose Tools | Templates.
+        return super.getApplicationListAccepted();
     }
 
+    /**
+     * 
+     * @return the list of stands 
+     */
     @Override
-    public List<Stand> getStandList() {
-        return super.getStandList(); //To change body of generated methods, choose Tools | Templates.
+    public StandRegist getStandList() {
+        return super.getStandList(); 
     }
 
+    /**
+     * 
+     * @return the state
+     */
     @Override
     public State getState() {
-        return super.getState(); //To change body of generated methods, choose Tools | Templates.
+        return super.getState();
     }
-    
-    
+
+    /**
+     * @return the workshopList
+     */
+    public WorkshopList getWorkshopList() {
+        return workshopList;
+    }
+
+    /**
+     * @param workshopList the workshopList to set
+     */
+    public void setWorkshopList(WorkshopList workshopList) {
+        this.workshopList = workshopList;
+    } 
 }
