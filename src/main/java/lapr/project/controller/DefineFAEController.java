@@ -69,10 +69,6 @@ public class DefineFAEController {
         return userRegist.getUserList();
     }
     
-    public boolean isOrganizer(Organizer o){
-        return organizerList.containsOrganizer(o);
-    }
-    
     
     /**
      * @return user selected
@@ -100,7 +96,7 @@ public class DefineFAEController {
      *
      * @return
      */
-    public Event geEventSelect() {
+    public Event getEventSelect() {
         return event;
     }
     
