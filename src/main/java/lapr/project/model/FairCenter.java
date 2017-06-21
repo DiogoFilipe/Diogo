@@ -230,4 +230,16 @@ public class FairCenter implements Serializable {
     public void setEventManagerList(EventManagerList eventManagerList) {
         this.eventManagerList = eventManagerList;
     }
+    
+    /**
+     * 
+     * @return list of Strings with the organizers name
+     */
+    public List<String> getOrganizerListString(){
+        List<String> organizerListString = new ArrayList<>();
+        for(Organizer o: organizerList.getOrganizerList()){
+            organizerListString.add(o.getName());
+        }
+        return organizerListString;
+    }
 }
