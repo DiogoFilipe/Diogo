@@ -11,11 +11,40 @@ import java.util.List;
  */
 public class FairCenter implements Serializable {
 
+    /**
+     * class that has the list of events
+     */
     private EventRegist eventRegist;
+
+    /**
+     * class that has the list of users
+     */
     private UserRegist userRegist;
+
+    /**
+     * class that has the list of organizers
+     */
     private OrganizerList organizerList;
+
+    /**
+     * class that has the list of stands
+     */
     private StandRegist standRegist;
+
+    /**
+     * class that has the list of encryptions
+     */
     private EncryptionList encryptionList;
+
+    /**
+     * class that has the list of fae
+     */
+    private FAEList faeList;
+
+    /**
+     * class that has the list of event managers
+     */
+    private EventManagerList eventManagerList;
 
     /**
      * Constructor
@@ -35,17 +64,12 @@ public class FairCenter implements Serializable {
         return userRegist;
     }
 
-    public EncryptionList getEncryptionList() {
-        return encryptionList;
-    }
-
-    
     /**
      *
-     * @return
+     * @return the list of encryptions
      */
-    public StandRegist getStandReg() {
-        return getStandRegist();
+    public EncryptionList getEncryptionList() {
+        return encryptionList;
     }
 
     /**
@@ -55,10 +79,19 @@ public class FairCenter implements Serializable {
         return eventRegist;
     }
 
+    /**
+     *
+     * @return list of events
+     */
     public List<Event> getEventList() {
         return eventRegist.getEventList();
     }
 
+    /**
+     *
+     * @param e event
+     * @return a string with the title of this event
+     */
     public Event getEvent(Event e) {
         return eventRegist.getEvent(e.getTitle());
     }
@@ -73,14 +106,10 @@ public class FairCenter implements Serializable {
     }
 
     /**
-     * Allows you to add a new event to the event regist
      *
-     * @param event
+     * @param title title of an event
+     * @return the event with this title, or null
      */
-    public void newEvent(Event event) {
-        eventRegist.addEvent(event);
-    }
-
     public Event getEvent(String title) {
         for (Event event : eventRegist.getEventList()) {
             if (event.getTitle().equals(title)) {
@@ -100,8 +129,6 @@ public class FairCenter implements Serializable {
     public void setEncryptionList(EncryptionList encryptionList) {
         this.encryptionList = encryptionList;
     }
-    
-    
 
     /**
      * @param userRegist the userRegist to set
@@ -141,28 +168,66 @@ public class FairCenter implements Serializable {
     public File getSelectedFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public List<String> getApplicationListAccepted(){
-        List<String> applicationsAccepted=new ArrayList<>();
-        for(Event e: eventRegist.getEventList()){
-            for(Application a: eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()){
-                if(a.getD().getDecision()==true){
+
+    /**
+     *
+     * @return list of Strings with the company name of the applications that
+     * are accepted
+     */
+    public List<String> getApplicationListAccepted() {
+        List<String> applicationsAccepted = new ArrayList<>();
+        for (Event e : eventRegist.getEventList()) {
+            for (Application a : eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()) {
+                if (a.getD().getDecision() == true) {
                     applicationsAccepted.add(a.getCompanyName());
                 }
             }
-        }       
+        }
         return applicationsAccepted;
     }
-    
-        public List<String> getApplicationListRejected(){
-        List<String> applicationsRejected=new ArrayList<>();
-        for(Event e: eventRegist.getEventList()){
-            for(Application a: eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()){
-                if(a.getD().getDecision()==false){
+
+    /**
+     *
+     * @return list of Strings with the company name of the applications that
+     * are rejected
+     */
+    public List<String> getApplicationListRejected() {
+        List<String> applicationsRejected = new ArrayList<>();
+        for (Event e : eventRegist.getEventList()) {
+            for (Application a : eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()) {
+                if (a.getD().getDecision() == false) {
                     applicationsRejected.add(a.getCompanyName());
                 }
             }
-        }       
+        }
         return applicationsRejected;
+    }
+
+    /**
+     * @return the faeList
+     */
+    public FAEList getFaeList() {
+        return faeList;
+    }
+
+    /**
+     * @param faeList the faeList to set
+     */
+    public void setFaeList(FAEList faeList) {
+        this.faeList = faeList;
+    }
+
+    /**
+     * @return the eventManagerList
+     */
+    public EventManagerList getEventManagerList() {
+        return eventManagerList;
+    }
+
+    /**
+     * @param eventManagerList the eventManagerList to set
+     */
+    public void setEventManagerList(EventManagerList eventManagerList) {
+        this.eventManagerList = eventManagerList;
     }
 }

@@ -17,8 +17,16 @@ public class FAE extends User implements Serializable {
      * experiência profissional em organização de eventos
      */
     private int professionalExperience;
+    
+    /**
+     * user
+     */
     private User user;
-    private Decision decision;
+    
+    /**
+     * decision of the fae
+     */
+    private DecisionList decisionList;
 
     /**
      * constructor
@@ -27,27 +35,42 @@ public class FAE extends User implements Serializable {
      * @param username is the FAE's name in the platform
      * @param email is the e-mail of the FAE
      * @param password is the FAE's password
-     * @param professionalExperience
-     * @param decision made by the fae
+     * @param professionalExperience his professional experience
+     * @param decisionList list of decisions
      */
-    public FAE(String name, String username, String email, String password, int professionalExperience,Decision decision) {
+    public FAE(String name, String username, String email, String password, int professionalExperience, DecisionList decisionList) {
         super(name, username, email, password);
         this.professionalExperience = professionalExperience;
-        this.decision = decision;
+        this.decisionList = decisionList;
     }
-    
-       public FAE(String name, String username, String email, String password) {
-        super(name, username, email, password);}
+
+    /**
+     * 
+     * @param name name of fae
+     * @param username name in platform of fae
+     * @param email email of the fae
+     * @param password his password
+     */
+    public FAE(String name, String username, String email, String password) {
+        super(name, username, email, password);
+        this.decisionList=new DecisionList();
+    }
+
     /**
      *
-     * @param u
+     * @param u an user
      */
     public FAE(User u) {
         this.user = u;
+        this.decisionList=new DecisionList();
     }
 
+    /**
+     * empty constructor
+     */
     public FAE() {
         super();
+        this.decisionList=new DecisionList();
     }
 
     /**
@@ -85,6 +108,7 @@ public class FAE extends User implements Serializable {
     public String toString() {
         return super.toString();
     }
+
     /**
      *
      * @return
@@ -92,5 +116,47 @@ public class FAE extends User implements Serializable {
     public boolean valid() {
         // Introduzir as validações aqui
         return true;
+    }
+
+    /**
+     * @return the professionalExperience
+     */
+    public int getProfessionalExperience() {
+        return professionalExperience;
+    }
+
+    /**
+     * @param professionalExperience the professionalExperience to set
+     */
+    public void setProfessionalExperience(int professionalExperience) {
+        this.professionalExperience = professionalExperience;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the decisionList
+     */
+    public DecisionList getDecisionList() {
+        return decisionList;
+    }
+
+    /**
+     * @param decisionList the decisionList to set
+     */
+    public void setDecisionList(DecisionList decisionList) {
+        this.decisionList = decisionList;
     }
 }
