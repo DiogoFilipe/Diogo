@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,8 +9,10 @@ package lapr.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
+import lapr.project.model.AssignStands;
 import lapr.project.model.Event;
 import lapr.project.model.FairCenter;
+import lapr.project.model.Organizer;
 import lapr.project.model.Stand;
 import lapr.project.model.User;
 
@@ -18,43 +21,43 @@ import lapr.project.model.User;
  * @author João Domingues
  */
 public class AssignStandsController {
-     FairCenter fc;
-     User u;
-    
-    /**
-     *
-     * @param fc
-     * @param u
-     */
-    public AssignStandsController(FairCenter fc, User u) {
-        this.fc = fc;
-        this.u=u;
+     private Event e;
+    private Organizer o;
+
+    private Application a;
+    private AssignStands as;
+
+    public AssignStandsController(Event e, Organizer o) {
+        this.e = e;
+        this.o = o;
+
     }
-    
-     /**
-     *
-     * @return
-     */
-    public List<Event> getEventsListApplicanionsDecided() {   
-        return null;
+
+    public void selectApplication(Application a) {
+        this.a = a;
+
     }
-    
-    
-    /**
-     *
-     * @return
-     */
-    public List<Stand> getStandsListAvailable() {
-        return fc.getStandReg().getStandsListAvailable();
+
+    public List<Stand> getStands() {
+
+        return e.getStandList().getNotAssignedStands();
     }
-    /**
-     *
-     * @param e
-     * @return
-     */
-    public List<Application> getApplicationsListAccepted(String e) {
-       return fc.getEvent(e).getApplicationListAccepted().getApplicationList();
-        
+
+    public AssignStands createAssignment(Stand s, Application a) {
+        return e.getListAssignedStands().newAssignStand(s, a);
+    }
+
+    public boolean validate(AssignStands s) {
+        return e.getListAssignedStands().validate(s);
+
+    }
+
+    public void AssignStand(boolean b, AssignStands sa) {
+        if (b == true) {
+            e.getListAssignedStands().AssignmentStandsRegist(b, sa);
+
+        }
+
     }
     
 }
