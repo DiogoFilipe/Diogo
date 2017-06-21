@@ -9,6 +9,9 @@ import java.util.List;
  */
 public class EncryptionList {
 
+    /**
+     * list of encryptions
+     */
     private List<Encryption> encryptionsList;
 
     /**
@@ -38,39 +41,6 @@ public class EncryptionList {
     }
 
     /**
-     * Adds a new Encryption to the EncryptionsList
-     *
-     * @param encryption
-     * @return The EncryptionsList
-     */
-    public boolean addEncryption(Encryption encryption) {
-        if (encryptionsList.contains(encryption)) {
-            return false;
-        }
-        return encryptionsList.add(encryption);
-    }
-
-
-    /**
-     * Verefies if there is any encryption
-     *
-     * @return
-     */
-    public boolean isEmpty() {
-        return encryptionsList.isEmpty();
-    }
-
-    /**
-     * check if the list already contains encryptions
-     *
-     * @param encryption that will check if is on the list
-     * @return true if the encryption already is on the list
-     */
-    public boolean containsEncryption(Encryption encryption) {
-        return encryptionsList.contains(encryption);
-    }
-
-    /**
      * Returns the shift of a given encryption
      *
      * @param user - user´s encryption
@@ -85,7 +55,12 @@ public class EncryptionList {
         return -1;
     }
     
-       public String verifyEncryptionUserGetKeyword(User user) {
+    /**
+     * 
+     * @param user user
+     * @return the keyword of the user
+     */   
+    public String verifyEncryptionUserGetKeyword(User user) {
         String kw = "";
         for (Encryption e : encryptionsList) {
             if (e.getUser().equals(user)) {
@@ -95,6 +70,11 @@ public class EncryptionList {
         return kw;
     }
 
+    /**
+     * 
+     * @param user user
+     * @return the shift used by this user 
+     */
     public int verifyEncryptionUserGetShift(User user) {
         int shift = 0;
         for (Encryption e :encryptionsList) {

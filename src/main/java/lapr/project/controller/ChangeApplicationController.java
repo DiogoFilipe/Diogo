@@ -48,7 +48,7 @@ public class ChangeApplicationController {
     }
 
     public void addToEvent(String e,Application a) {
-        fc.getEvent(e).addApplication(a);
+        fc.getEvent(e).getApplicationList().getApplicationList().add(a);
     }
 
 }

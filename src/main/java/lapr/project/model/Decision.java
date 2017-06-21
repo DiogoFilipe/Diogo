@@ -8,22 +8,69 @@ import java.io.Serializable;
  */
 public class Decision implements Serializable {
     
+    /**
+     * decision
+     */
     private boolean decision;
+    
+    /**
+     * justification of the decision
+     */
     private String justification;
+    
+    /**
+     * fae knowledge 0-5
+     */
     private int faeKnowledge;
+    
+    /**
+     * invitation adequacy 0-5
+     */
     private int invitationAdequacy;
+    
+    /**
+     * adequacy 0-5
+     */
     private int adequacy;
+    
+    /**
+     * overall recommendation 0-5
+     */
     private int overallRecommendation;
     
-    private static final int FAEKNOWLEDGE_BY_OMISSION = 0;
-    private static final int ADEQUACY_BY_OMISSION = 0;
-    private static final int INVITATIONADEQUACY_BY_OMISSION = 0;
-    private static final int OVERALLRECOMMENDATION_BY_OMISSION = 0;
-    private static final String JUSTIFICATION_BY_OMISSION = "no justification";
+    /**
+     * fae knowledge by omission
+     */
+    private final int FAEKNOWLEDGE_BY_OMISSION = 0;
+    
+    /**
+     * adequacy by omission
+     */
+    private final int ADEQUACY_BY_OMISSION = 0;
+    
+    /**
+     * invitation adequacy by omission
+     */
+    private final int INVITATIONADEQUACY_BY_OMISSION = 0;
+    
+    /**
+     * overal recommendation by omission
+     */
+    private final int OVERALLRECOMMENDATION_BY_OMISSION = 0;
+    
+    /**
+     * justification by omission
+     */
+    private final String JUSTIFICATION_BY_OMISSION = "no justification";
+    
     /**
      * Creats an object of the decision type
      * @param decision - decison made by the fae
      * @param justification - justification made by the fae
+     * @param faeKnowledge fae knowledge 0-5
+     * @param adequacy adequacy 0-5
+     * @param invitationAdequacy invitation adequacy 0-5
+     * @param overallRecommendation overall recommendation 0-5
      */
     public Decision(boolean decision, String justification,int faeKnowledge, int adequacy,int invitationAdequacy,int overallRecommendation){
         this.decision = decision;
@@ -34,11 +81,19 @@ public class Decision implements Serializable {
         this.overallRecommendation = overallRecommendation;
     }
 
+    /**
+     * 
+     * @param decision decision
+     * @param justification justification of the decision
+     */
     public Decision(boolean decision,String justification) {
         this.decision = decision;
         this.justification = justification;
     }
     
+   /**
+    * empty constructor
+    */
     public Decision(){
         this.decision = false;
         this.justification = JUSTIFICATION_BY_OMISSION;
@@ -47,8 +102,6 @@ public class Decision implements Serializable {
         this.invitationAdequacy = INVITATIONADEQUACY_BY_OMISSION;
         this.overallRecommendation = OVERALLRECOMMENDATION_BY_OMISSION;
     }
-    
-    
     
     /**
      * Returns the justification of the decison
@@ -66,18 +119,34 @@ public class Decision implements Serializable {
         return decision;
     }
 
+    /**
+     * 
+     * @return adequacy of the application 
+     */
     public int getAdequacy() {
         return adequacy;
     }
 
+    /**
+     * 
+     * @return fae knowledge about the application 
+     */
     public int getFaeKnowledge() {
         return faeKnowledge;
     }
 
+    /**
+     * 
+     * @return invitation adequacy of the event
+     */
     public int getInvitationAdequacy() {
         return invitationAdequacy;
     }
 
+    /**
+     * 
+     * @return overall recommendation
+     */
     public int getOverallRecommendation() {
         return overallRecommendation;
     }
@@ -96,24 +165,7 @@ public class Decision implements Serializable {
     public void setJustification(String justification) {
         this.justification = justification;
     }
-
-    public void setAdequacy(int adequacy) {
-        this.adequacy = adequacy;
-    }
-
-    public void setFaeKnowledge(int faeKnowledge) {
-        this.faeKnowledge = faeKnowledge;
-    }
-
-    public void setInvitationAdequacy(int invitationAdequacy) {
-        this.invitationAdequacy = invitationAdequacy;
-    }
-
-    public void setOverallRecommendation(int overallRecommendation) {
-        this.overallRecommendation = overallRecommendation;
-    }
-
-    
+  
     /**
      * Returns a decision in textual form
      * @return decison in textual form
@@ -121,6 +173,34 @@ public class Decision implements Serializable {
      @Override
     public String toString(){
         return String.format("%nState: %b %nJustification:", decision ? "Accepted" : "Rejected", justification);
+    }
+
+    /**
+     * @param faeKnowledge the faeKnowledge to set
+     */
+    public void setFaeKnowledge(int faeKnowledge) {
+        this.faeKnowledge = faeKnowledge;
+    }
+
+    /**
+     * @param invitationAdequacy the invitationAdequacy to set
+     */
+    public void setInvitationAdequacy(int invitationAdequacy) {
+        this.invitationAdequacy = invitationAdequacy;
+    }
+
+    /**
+     * @param adequacy the adequacy to set
+     */
+    public void setAdequacy(int adequacy) {
+        this.adequacy = adequacy;
+    }
+
+    /**
+     * @param overallRecommendation the overallRecommendation to set
+     */
+    public void setOverallRecommendation(int overallRecommendation) {
+        this.overallRecommendation = overallRecommendation;
     }
 }
 
