@@ -49,7 +49,7 @@ public class EventRegist implements Serializable {
     public List<String> getFAEEventsList(FAE fae) {
         List<String> FAEEventsList = new ArrayList<>();
         for (Event e : eventList) {
-            if (e.getFAEList().containsFAE(fae)) {
+            if (e.getFAEList().getFAEList().contains(fae)) {
                 FAEEventsList.add(e.getTitle());
             }
         }
