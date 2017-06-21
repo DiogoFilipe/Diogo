@@ -8,9 +8,24 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+    /**
+     * name
+     */
     private String name;
+
+    /**
+     * name on the platform
+     */
     private String username;
+
+    /**
+     * email
+     */
     private String email;
+
+    /**
+     * password
+     */
     private String password;
 
     /**
@@ -45,6 +60,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    /**
+     * empty constructor
+     */
     public User() {
         name = NAME_DEFAULT;
         email = EMAIL_DEFAULT;
@@ -52,6 +70,10 @@ public class User implements Serializable {
         password = PASSWORD_DEFAULT;
     }
 
+    /**
+     *
+     * @return user password
+     */
     public String getPassword() {
         return password;
     }
@@ -83,22 +105,10 @@ public class User implements Serializable {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    /**
+     *
+     * @return all user's data
+     */
     @Override
     public String toString() {
         return String.format("Name: %s %nUsername: %s %nEmail: %s%n", name, username, email);
@@ -107,14 +117,42 @@ public class User implements Serializable {
     /**
      * Verifies if the username equals
      *
-     * @param username
-     * @param user
-     * @return
+     * @param username username
+     * @param user user
+     * @return returns true if the user has the username
      */
-    public boolean hasTheUsername(User user,String username) {
+    public boolean hasTheUsername(User user, String username) {
         if (username == null) {
             return false;
         }
         return (user.getUsername()).equalsIgnoreCase(username);
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
