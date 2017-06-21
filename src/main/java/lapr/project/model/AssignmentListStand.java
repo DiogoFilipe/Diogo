@@ -54,6 +54,15 @@ public class AssignmentListStand {
         }
         return true;
     }
+    
+    /**
+     * 
+     * @param s the stand and a the application
+     * @return new assign stand
+     */
+    public AssignStands newStandAssignment(Stand s, Application a) {
+        return new AssignStands(s, a);
+    }
 
     /**
      * 

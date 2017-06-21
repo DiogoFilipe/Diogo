@@ -44,7 +44,7 @@ public class AssignStandsController {
     }
 
     public AssignStands createAssignment(Stand s, Application a) {
-        return e.getListAssignedStands().newAssignStand(s, a);
+        return e.getListAssignedStands().newStandAssignment(s, a);
     }
 
     public boolean validate(AssignStands as) {
