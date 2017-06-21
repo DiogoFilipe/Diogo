@@ -10,10 +10,22 @@ package lapr.project.model;
  * @author João Domingues
  */
 public class AssignStands {
+
+    /**
+     * stand
+     */
+    private Stand stand;
     
-     private Stand stand;
+    /**
+     * application
+     */
     private Application application;
 
+    /**
+     * 
+     * @param stand stand that will be assigned
+     * @param application application that will have the stand
+     */
     public AssignStands(Stand stand, Application application) {
 
         this.stand = stand;
@@ -48,5 +60,5 @@ public class AssignStands {
     public void setApplication(Application application) {
         this.application = application;
     }
-    
+
 }

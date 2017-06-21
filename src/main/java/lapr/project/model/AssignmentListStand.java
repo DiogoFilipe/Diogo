@@ -13,9 +13,15 @@ import java.util.List;
  * @author João Domingues
  */
 public class AssignmentListStand {
-    
-     private List<AssignStands> assignstands;
 
+    /**
+     * list of stands assigned
+     */
+    private List<AssignStands> assignstands;
+
+    /**
+     * empty constructor
+     */
     public AssignmentListStand() {
         this.assignstands = new ArrayList<>();
 
@@ -32,33 +38,41 @@ public class AssignmentListStand {
      * @param standsAssigned the standsAssigned to set
      */
     public void setStandsAssigned(List<AssignStands> standsAssigned) {
-        this.assignstands = assignstands;
+        this.assignstands = standsAssigned;
     }
 
+    /**
+     * 
+     * @param s the assign stands list
+     * @return true if the stand isn't assigned
+     */
     public boolean validate(AssignStands s) {
-
         for (AssignStands as : getStandsAssigned()) {
-            if (as.getStand().equals(s.getStand())|| as.getApplication().HasStand() == true) {
+            if (as.getStand().equals(s.getStand()) || as.getApplication().HasStand() == true) {
                 return false;
             }
         }
         return true;
     }
 
-    public AssignStands newAssignStand(Stand s, Application a) {
-        return new AssignStands(s, a);
-    }
-
+    /**
+     * 
+     * @param b boolean
+     * @param as assign Stands
+     */
     public void AssignmentStandsRegist(Boolean b, AssignStands as) {
         if (b == true) {
             as.getApplication().setHasStand(true);
             getStandsAssigned().add(as);
 
         }
-
     }
 
-
+    /**
+     * 
+     * @param a application
+     * @return the stand of the application
+     */
     public Stand getStandApplication(Application a) {
 
         for (AssignStands as : assignstands) {
@@ -70,5 +84,5 @@ public class AssignmentListStand {
         }
         return null;
     }
-    
+
 }
