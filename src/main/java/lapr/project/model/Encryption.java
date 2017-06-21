@@ -8,9 +8,24 @@ import java.util.Random;
  */
 public class Encryption {
 
+    /**
+     * keyword
+     */
     private String keyword;
+
+    /**
+     * user
+     */
     private User user;
+
+    /**
+     * shift
+     */
     private int shift;
+
+    /**
+     * random number
+     */
     Random rn = new Random();
 
     /**
@@ -91,13 +106,14 @@ public class Encryption {
         return shift;
     }
 
-//    /**
-//      * Encripts the atribute of the user
-//      * @param keyword - keyword chosen by the user
-//      * @param atribute - atribute to be encripted
-//      * @param shift - number of deslocations wanted by the user
-//      * @return returns the encripted atribute
-//      */
+    /**
+     * Encripts the atribute of the user
+     *
+     * @param keyword - keyword chosen by the user
+     * @param atribute - atribute to be encripted
+     * @param shift - number of deslocations wanted by the user
+     * @return returns the encripted atribute
+     */
     public static String cipherAttribute(String keyword, String atribute, int shift) {
         char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -301,6 +317,12 @@ public class Encryption {
         return encripted;
     }
 
+    /**
+     *
+     * @param password password
+     * @param shift number of deslocations
+     * @return the desencripted password
+     */
     public static String decipherPassword(String password, int shift) {
         String encripted = "";
         int pass = password.length();
@@ -334,9 +356,14 @@ public class Encryption {
         }
         return !(keyword.length() > 7 || keyword.length() < 5);
     }
-    
-    
-       public static String verifyEncryptionUserGetKeyword(User user,FairCenter fc) {
+
+   /**
+    * 
+    * @param user user
+    * @param fc fair center
+    * @return the keyword of the user
+    */
+    public static String verifyEncryptionUserGetKeyword(User user, FairCenter fc) {
         String kw = "";
         for (Encryption e : fc.getEncryptionList().getEncryptionsList()) {
             if (e.getUser().equals(user)) {
@@ -346,7 +373,13 @@ public class Encryption {
         return kw;
     }
 
-    public static int verifyEncryptionUserGetShift(User user,FairCenter fc) {
+    /**
+     * 
+     * @param user user
+     * @param fc fair center
+     * @return the user shift number
+     */
+    public static int verifyEncryptionUserGetShift(User user, FairCenter fc) {
         int shift = 0;
         for (Encryption e : fc.getEncryptionList().getEncryptionsList()) {
             if (e.getUser().equals(user)) {
