@@ -39,6 +39,7 @@ public class Application implements Importable<Application>, ApplicationState {
     private String description;
     private Decision d;
     private State state;
+     private boolean hasStand;
 
     /**
      * Constructor for Application
@@ -62,6 +63,7 @@ public class Application implements Importable<Application>, ApplicationState {
         this.d = decision;
         this.boothArea = boothArea;
         this.invites = invites;
+        this.hasStand = false;
         setState(ApplicationState.State.Created);
     }
 
@@ -74,6 +76,7 @@ public class Application implements Importable<Application>, ApplicationState {
         this.d = decision;
         this.boothArea = BOOTHAREA_BY_OMISSION;
         this.invites = INVITES_BY_OMISSION;
+        this.hasStand = false;
     }
 
     public Application(String companyName, String address, int contact, String description, double boothArea, int invites, List<Keyword>keywordList) {
@@ -85,6 +88,7 @@ public class Application implements Importable<Application>, ApplicationState {
         this.boothArea=boothArea;
         this.invites=invites;
         this.decision=new Decision();
+        this.hasStand = false;
         }
 
     public Application(int invites, double boothArea, String description) {
@@ -96,6 +100,7 @@ public class Application implements Importable<Application>, ApplicationState {
         this.contact = CONTACT_BY_OMISSION;
         this.keywordList.addAll(keywordList);
         this.d = decision;
+        this.hasStand = false;
         
                 
     }
@@ -154,6 +159,20 @@ public class Application implements Importable<Application>, ApplicationState {
     public List<Keyword> getKeywordList() {
         return keywordList;
 
+    }
+    
+     /**
+     * @return the hasStand
+     */
+    public boolean HasStand() {
+        return hasStand;
+    }
+
+    /**
+     * @param hasStand the hasStand to set
+     */
+    public void setHasStand(boolean hasStand) {
+        this.hasStand = hasStand;
     }
 
 //    @Override

@@ -16,6 +16,7 @@ import java.util.List;
 public class StandRegist implements Serializable{
     
     private List<Stand> StandList;
+    private AssignmentListStand als;
 
     /**
      *
@@ -24,13 +25,6 @@ public class StandRegist implements Serializable{
         StandList = new ArrayList<>();
     }
 
-    /**
-     *
-     * @param StandList
-     */
-    public StandRegist(List<Stand> StandList) {
-        this.StandList = StandList;
-    }
 
     /**
      *
@@ -39,124 +33,58 @@ public class StandRegist implements Serializable{
     public List<Stand> getStandList() {
         return StandList;
     }
-
-    /**
-     *
-     * @param StandList
-     * @return
-     */
-    public boolean setStandList(List<Stand> StandList) {
-        this.StandList = StandList;
-        return this.StandList.equals(StandList);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int size() {
-        return StandList.size();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean isEmpty() {
-        return StandList.isEmpty();
-    }
-
-    /**
-     *
-     * @param s
-     * @return
-     */
-    public boolean contains(Stand s) {
-        return StandList.contains(s);
-    }
-
-    /**
-     *
-     * @param s
-     * @return
-     */
-    public boolean add(Stand s) {
-        return StandList.add(s);
-    }
-
-    /**
-     *
-     * @param description
-     * @param area
-     * @return
-     */
-    public Stand newStand(double area) {
-        return new Stand(area);
-    }
-
-    /**
-     *
-     */
-    public void clear() {
-        StandList.clear();
-    }
-
-    /**
-     *
-     * @param index
-     * @return
-     */
-    public Stand getStandByIndex(int index) {
-        return StandList.get(index);
+    
+    public boolean valid(Stand s) {
+        return (!StandList.contains(s));
     }
 
 
-    /**
-     *
-     * @param index
-     * @return
-     */
-    public Stand removeStandByIndex(int index) {
-        return StandList.remove(index);
+    public void addStand(Stand s) {
+        getStandList().add(s);
     }
+
+    public void standRegister(Stand s) {
+        if (valid(s)) {
+            addStand(s);
+        }
+    }
+
 
     @Override
     public String toString() {
-        return "RegistoStand{" + "listaStand=" + StandList + '}';
+        String toString = "";
+        for (Object o : getStandList()) {
+            toString += o.toString();
+        }
+        return toString;
     }
 
-    /**
-     *
-     * @param s
-     * @return
-     */
-    public boolean validStand(Stand s) {
-        // Introduzir as validações aqui
+    
 
-        return true;
-    }
+    public List<Stand> getNotAssignedStands() {
+        List<Stand> standsNotAssigned = new ArrayList<>();
+        int flag = 0;
+        for (Stand s : getStandList()) {
+            for (AssignStands as : als.getStandsAssigned) {
 
-    /**
-     *
-     * @param s
-     * @return
-     */
-    public boolean standRegist(Stand s) {
-        return this.add(s);
-    }
+                if (as.getStand()==s) {
+                    flag = 1;
+                }
 
-    /**
-     *
-     * @return
-     */
-    public List<Stand> getStandsListAvailable() {
-        List<Stand> sl = new ArrayList<>();
-        for (Stand s : StandList) {
-            if (!s.isBusy()) {
-                sl.add(s);
+            }
+            if (flag == 0) {
+                standsNotAssigned.add(s);
             }
         }
-        return sl;
+        return standsNotAssigned;
     }
+
     
+
+    /**
+     * @param sl the sl to set
+     */
+    public void setSl(List<Stand> sl) {
+        this.StandList = StandList;
+    }
 }
