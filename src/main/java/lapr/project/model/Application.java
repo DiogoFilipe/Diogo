@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-//import lapr.project.utils.Exportable;
+import lapr.project.utils.Exportable;
 import lapr.project.utils.Importable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -18,41 +18,111 @@ import java.util.List;
  *
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
-public class Application implements Importable<Application>, ApplicationState {
+public class Application implements ApplicationState {
 
-    private static final String ROOT_ELEMENT_NAME = "application";
-    private static final String DESCRIPTION_BY_OMISSION = "no description";
-    private static final String KEYWORDS_ELEMENT_NAME = "keywords";
-    private static final String COMPANYNAME_BY_OMISSION = "no company name";
-    private static final String ADDRESS_BY_OMISSION = "no address";
-    private static final int CONTACT_BY_OMISSION = 0;
+    /**
+     * name of the root
+     */
+    private final String ROOT_ELEMENT_NAME = "application";
+
+    /**
+     * description by omission
+     */
+    private final String DESCRIPTION_BY_OMISSION = "no description";
+
+    /**
+     * name of the element keywords
+     */
+    private final String KEYWORDS_ELEMENT_NAME = "keywords";
+
+    /**
+     * company name by omission
+     */
+    private final String COMPANYNAME_BY_OMISSION = "no company name";
+
+    /**
+     * adress by omission
+     */
+    private final String ADDRESS_BY_OMISSION = "no address";
+
+    /**
+     * contact by omission
+     */
+    private final int CONTACT_BY_OMISSION = 0;
+
+    /**
+     * decision by omission/at the start
+     */
     private Decision decision = new Decision();
-    private static final int INVITES_BY_OMISSION = 0;
-    private static final double BOOTHAREA_BY_OMISSION = 0;
 
-    
+    /**
+     * number of invites by omission
+     */
+    private final int INVITES_BY_OMISSION = 0;
+
+    /**
+     * area by omission
+     */
+    private final double BOOTHAREA_BY_OMISSION = 0;
+
+    /**
+     * number of invites
+     */
     private int invites;
+
+    /**
+     * area
+     */
     private double boothArea;
+
+    /**
+     * name of the company
+     */
     private String companyName;
+
+    /**
+     * address of the company
+     */
     private String address;
+
+    /**
+     * contact of the company
+     */
     private int contact;
+
+    /**
+     * keywords list
+     */
     private List<Keyword> keywordList = new ArrayList<>();
+
+    /**
+     * description of the application
+     */
     private String description;
+
+    /**
+     * decision of the application
+     */
     private Decision d;
+
+    /**
+     * state of the application
+     */
     private State state;
+
     private boolean hasStand;
 
     /**
      * Constructor for Application
      *
-     * @param companyName
-     * @param address
-     * @param contact
+     * @param companyName name of the company
+     * @param address address of the company
+     * @param contact contact of the company
      * @param description CandidaturaDescription
      * @param keywordList Keyword List
-     * @param decision
-     * @param boothArea
-     * @param invites
+     * @param decision accepted or rejected
+     * @param boothArea area that needs
+     * @param invites number of invites
      */
     public Application(String companyName, String address, int contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites) {
 
@@ -65,9 +135,12 @@ public class Application implements Importable<Application>, ApplicationState {
         this.boothArea = boothArea;
         this.invites = invites;
         this.hasStand = false;
-        setState(ApplicationState.State.Created);
+        this.state = ApplicationState.State.Created;
     }
 
+    /**
+     * constructor empty
+     */
     public Application() {
         this.companyName = COMPANYNAME_BY_OMISSION;
         this.address = ADDRESS_BY_OMISSION;
@@ -80,19 +153,37 @@ public class Application implements Importable<Application>, ApplicationState {
         this.hasStand = false;
     }
 
-    public Application(String companyName, String address, int contact, String description, double boothArea, int invites, List<Keyword>keywordList) {
+    /**
+     * 
+     * @param companyName name of the company
+     * @param address address of the company
+     * @param contact contact of the company
+     * @param description description of the company
+     * @param boothArea area needed 
+     * @param invites number of invites
+     * @param keywordList keywords
+     */
+    public Application(String companyName, String address, int contact, String description, double boothArea, int invites, List<Keyword> keywordList) {
         this.companyName = companyName;
         this.address = address;
         this.contact = contact;
         this.description = description;
         this.keywordList.addAll(keywordList);
-        this.boothArea=boothArea;
-        this.invites=invites;
-        this.decision=new Decision();
+        this.boothArea = boothArea;
+        this.invites = invites;
+        this.decision = new Decision();
         this.hasStand = false;
-        }
+        this.state = ApplicationState.State.Created;
+    }
 
-    public Application(int invites, double boothArea, String description,List <Keyword> keys) {
+    /**
+     * 
+     * @param invites number of invites
+     * @param boothArea area needed
+     * @param description description of the application
+     * @param keys  keywords
+     */
+    public Application(int invites, double boothArea, String description, List<Keyword> keys) {
         this.invites = invites;
         this.boothArea = boothArea;
         this.description = description;
@@ -102,11 +193,9 @@ public class Application implements Importable<Application>, ApplicationState {
         this.keywordList = keys;
         this.d = decision;
         this.hasStand = false;
-        
-                
+        this.state = ApplicationState.State.Created;
     }
 
-    
     /**
      * Returns the company name
      *
@@ -149,7 +238,7 @@ public class Application implements Importable<Application>, ApplicationState {
      * @param keyword Keyword to be added.
      */
     public void addKeyword(Keyword keyword) {
-        getKeywordList().add(keyword);
+        keywordList.add(keyword);
     }
 
     /**
@@ -161,8 +250,8 @@ public class Application implements Importable<Application>, ApplicationState {
         return keywordList;
 
     }
-    
-     /**
+
+    /**
      * @return the hasStand
      */
     public boolean HasStand() {
@@ -219,39 +308,38 @@ public class Application implements Importable<Application>, ApplicationState {
         return rootNode;
     }
 
-    @Override
-    public Application importContentFromXMLNode(Node node) throws ParserConfigurationException {
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-        //Create document builder
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        //Obtain a new document
-        Document document = builder.newDocument();
-        document.appendChild(document.importNode(node, true));
-
-        NodeList elementsCandidatura = document.getElementsByTagName(ROOT_ELEMENT_NAME);
-
-        Node elementCandidatura = elementsCandidatura.item(0);
-
-        //Get description
-        this.description = elementCandidatura.getFirstChild().getFirstChild().getNodeValue();
-
-        NodeList elementsKeywords = document.getElementsByTagName(KEYWORDS_ELEMENT_NAME);
-
-        NodeList keywords = elementsKeywords.item(0).getChildNodes();
-        for (int position = 0; position < keywords.getLength(); position++) {
-            Node keyword = keywords.item(position);
-            Keyword keywordExample = new Keyword();
-
-            keywordExample = keywordExample.importContentFromXMLNode(keyword);
-            addKeyword(keywordExample);
-        }
-
-        return this;
-    }
-
+//    @Override
+//    public Application importContentFromXMLNode(Node node) throws ParserConfigurationException {
+//
+//        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+//
+//        //Create document builder
+//        DocumentBuilder builder = factory.newDocumentBuilder();
+//
+//        //Obtain a new document
+//        Document document = builder.newDocument();
+//        document.appendChild(document.importNode(node, true));
+//
+//        NodeList elementsCandidatura = document.getElementsByTagName(ROOT_ELEMENT_NAME);
+//
+//        Node elementCandidatura = elementsCandidatura.item(0);
+//
+//        //Get description
+//        this.description = elementCandidatura.getFirstChild().getFirstChild().getNodeValue();
+//
+//        NodeList elementsKeywords = document.getElementsByTagName(KEYWORDS_ELEMENT_NAME);
+//
+//        NodeList keywords = elementsKeywords.item(0).getChildNodes();
+//        for (int position = 0; position < keywords.getLength(); position++) {
+//            Node keyword = keywords.item(position);
+//            Keyword keywordExample = new Keyword();
+//
+//            keywordExample = keywordExample.importContentFromXMLNode(keyword);
+//            addKeyword(keywordExample);
+//        }
+//
+//        return this;
+//    }
     @Override
     public int hashCode() {
         int result = getDescription().hashCode();
@@ -318,14 +406,50 @@ public class Application implements Importable<Application>, ApplicationState {
     public void setD(Decision d) {
         this.d = d;
     }
-
-    public void setKeywordList(Keyword keyword) {
-        this.keywordList.add(keyword);
-    }
     
     public void setState(State state) {
         this.state = state;
     }
-    
-    
+
+    /**
+     * @param companyName the companyName to set
+     */
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @param contact the contact to set
+     */
+    public void setContact(int contact) {
+        this.contact = contact;
+    }
+
+    /**
+     * @param keywordList the keywordList to set
+     */
+    public void setKeywordList(List<Keyword> keywordList) {
+        this.keywordList = keywordList;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the state
+     */
+    public State getState() {
+        return state;
+    }
 }
