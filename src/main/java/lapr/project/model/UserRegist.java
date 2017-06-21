@@ -15,12 +15,23 @@ import java.util.List;
  */
 public class UserRegist implements Serializable {
 
+    /**
+     * list of users
+     */
     private List<User> userList;
 
+    /**
+     * empty constructor
+     */
     public UserRegist() {
         this.userList = new ArrayList<>();
     }
 
+    /**
+     * 
+     * @param user user
+     * @return if the list don't contains the user, it adds him
+     */
     public boolean registUser(User user) {
         if (!userList.contains(user)) {
             return userList.add(user);
@@ -37,25 +48,6 @@ public class UserRegist implements Serializable {
         return userList;
     }
 
-    /**
-     * Verifies if the user is in the list
-     *
-     * @param user - user to be verified
-     * @return
-     */
-    public boolean isUser(User user) {
-        return userList.contains(user);
-    }
-
-    /**
-     *
-     * @param index
-     * @return
-     */
-    public User getUserByIndex(int index) {
-        return userList.get(index);
-
-    }
 
     /**
      * Returns the user of the username
