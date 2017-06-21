@@ -12,15 +12,11 @@ import lapr.project.utils.*;
 public class CreateEventController {
 
     FairCenter fc;
-    EventRegist er;
-    UserRegist ur;
-    Event e;
+Event e;
     
     public CreateEventController(FairCenter fc) {
         this.fc = fc;
-        this.er = fc.getEventRegist();
-        this.ur = fc.getUserRegist();
-        this.e = new Event();
+        this.e=new Event();
     }
 
     /**
@@ -29,7 +25,7 @@ public class CreateEventController {
      * @return list with all the Users' names
      */
     public List<String> getUserList() {
-        List<User> userList = ur.getUserList();
+        List<User> userList = fc.getUserRegist().getUserList();
         List<String> userListString = new ArrayList<>();
         //Need to add a try/catch in case the userList is empty
         for (User user : userList) {
@@ -51,7 +47,7 @@ public class CreateEventController {
      * @param organizerList Event's Organizer list
      */
     public void setData(/*type,*/String title, String description, String place, String startDate, String endDate, String submissionStartDate, String submissionEndDate, List<String> organizerList) {
-        if (!er.validateEvent(title)) {
+        if (!fc.getEventRegist().validateEvent(title)) {
             /*type*/
             e.setTitle(title);
             e.setDescription(description);
@@ -63,7 +59,7 @@ public class CreateEventController {
             //Must get a list of strings, and then, convert that list into an Organizer List and set it as the Event's Organizer list
             List<Organizer> eventOrganizerList = new ArrayList<>();
             for (String name : organizerList) {
-                for (User user : ur.getUserList()) {
+                for (User user : fc.getUserRegist().getUserList()) {
                     if (user.getName().equals(name)) {
                         Organizer o = new Organizer(user);
                         eventOrganizerList.add(o);
@@ -79,7 +75,7 @@ public class CreateEventController {
      * Adds the created Event to the EventRegist
      */
     public void registerEvent() {
-        er.addEvent(e);
+        fc.getEventRegist().getEventList().add(e);
     }
     
     /**
