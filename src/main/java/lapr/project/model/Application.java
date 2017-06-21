@@ -30,6 +30,7 @@ public class Application implements Importable<Application>, ApplicationState {
     private static final int INVITES_BY_OMISSION = 0;
     private static final double BOOTHAREA_BY_OMISSION = 0;
 
+    
     private int invites;
     private double boothArea;
     private String companyName;
@@ -39,7 +40,7 @@ public class Application implements Importable<Application>, ApplicationState {
     private String description;
     private Decision d;
     private State state;
-     private boolean hasStand;
+    private boolean hasStand;
 
     /**
      * Constructor for Application
