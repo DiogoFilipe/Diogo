@@ -76,7 +76,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         listFAE = new javax.swing.JList<>();
         confirmEvent = new javax.swing.JButton();
-        btnUSer = new javax.swing.JButton();
+        confirmUser = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
         btnConfirmOperation = new javax.swing.JButton();
 
@@ -115,10 +115,10 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
             }
         });
 
-        btnUSer.setText("Confirm User");
-        btnUSer.addActionListener(new java.awt.event.ActionListener() {
+        confirmUser.setText("Confirm User");
+        confirmUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUSerActionPerformed(evt);
+                confirmUserActionPerformed(evt);
             }
         });
 
@@ -161,7 +161,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUSer)
+                        .addComponent(confirmUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(23, Short.MAX_VALUE))))
@@ -195,7 +195,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                        .addComponent(btnUSer)
+                        .addComponent(confirmUser)
                         .addGap(174, 174, 174)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn)
@@ -227,24 +227,25 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
             confirmEvent.setEnabled(false);
             controller.setEventSelect(controller.getEventsRegist().getEventList().get(selectedindex));
             prepareUsersList();
+        }    
     }//GEN-LAST:event_confirmEventActionPerformed
 
-    private void btnUSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUSerActionPerformed
+    private void confirmUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmUserActionPerformed
         int selectedindex = listUser.getSelectedIndex();
         if (selectedindex != -1) {
             listUser.setEnabled(false);
             controller.setUserSelect(controller.getUsersList().get(selectedindex));
             this.listUser.setEnabled(false);
-            this.btnUSer.setEnabled(false);
+            this.confirmUser.setEnabled(false);
             prepareFAEList();
         }    
-    }//GEN-LAST:event_btnUSerActionPerformed
+    }//GEN-LAST:event_confirmUserActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmOperation;
     private javax.swing.JButton btnReturn;
-    private javax.swing.JButton btnUSer;
     private javax.swing.JButton confirmEvent;
+    private javax.swing.JButton confirmUser;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -274,17 +275,19 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         }
         this.listUser.setModel(modelUsers);
         this.listUser.setEnabled(true);
-        this.btnUSer.setEnabled(true);
+        this.confirmUser.setEnabled(true);
     }
     
      private void prepareFAEList() {
          User u = controller.getUserSelected();
          Event e = controller.geEventSelect();
-
-        List<FAEList> faeslist = controller.addFAE(u, e);
+         
+         controller.addFAE(u, e);
+        
+          List<FAE> faeslist = controller.getFAEList();
 
         modelFaes = new DefaultListModel();
-        for ( FAEList faeist : faeslist) {
+        for ( FAE faelist : faeslist) {
             modelFaes.addElement(faeslist);
         }
         this.listFAE.setModel(modelFaes);

@@ -43,7 +43,7 @@ public class FAE extends User implements Serializable {
      * @param u
      */
     public FAE(User u) {
-        user = u;
+        this.user = u;
     }
 
     public FAE() {
