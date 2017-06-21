@@ -21,7 +21,7 @@ public class ListApplicationsController {
     }
     
     public boolean isOrganizer(User u){
-        return fc.getOrganizerList().containsOrganizer((Organizer)u);
+        return fc.getOrganizerList().getOrganizerList().contains((Organizer)u);
     }
     
     /**
@@ -30,7 +30,7 @@ public class ListApplicationsController {
      * @return the list of events of this organizer
      */
     public List<String>  getOrganizerEventsList(User u){
-        return  fc.getEventRegist().getOrganizerEventsListOrdenedByState((Organizer)u);
+        return  fc.getEventRegist().getOrganizerEventList((Organizer)u);
     }
     
     /**

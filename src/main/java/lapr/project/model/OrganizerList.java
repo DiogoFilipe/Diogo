@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -26,10 +26,10 @@ public class OrganizerList implements Serializable {
     public OrganizerList() {
         organizerList = new ArrayList<>();
     }
-    
+
     /**
-     * 
-     * @param organizerList list of organizers 
+     *
+     * @param organizerList list of organizers
      */
     public OrganizerList(List<Organizer> organizerList) {
         this.organizerList = organizerList;
@@ -51,13 +51,29 @@ public class OrganizerList implements Serializable {
 
     /**
      * adds the organizer to the organizerList
+     *
      * @param organizer the organizer that will be added to the list
      * @return true if the organizers was add to the list
      */
-    public boolean addOrganizer(Organizer organizer){
-        if(organizerList.contains(organizer)){
+    public boolean addOrganizer(Organizer organizer) {
+        if (organizerList.contains(organizer)) {
             return false;
         }
         return organizerList.add(organizer);
-    }    
+    }
+
+    /**
+     * Returns the organizer of the username
+     *
+     * @param usernameOrEmail
+     * @return the organizer with the username
+     */
+    public Organizer getOrganizer(String usernameOrEmail) {
+        for (Organizer organizer : organizerList) {
+            if (organizer.getUsername().equals(usernameOrEmail) || organizer.getEmail().equals(usernameOrEmail)) {
+                return organizer;
+            }
+        }
+        return null;
+    }
 }

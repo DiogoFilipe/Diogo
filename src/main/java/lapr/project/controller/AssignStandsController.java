@@ -51,6 +51,30 @@ public class AssignStandsController {
     public List<Event> getEventsList () {
         return fc.getEventRegist().getEventList();
     }
+    
+    /**
+     *
+     * @return event
+     */
+    public Event getEventSelect() {
+        return e;
+    }
+    
+    /**
+     *
+     * @param event
+     */
+    public void setEventSelect(Event event) {
+        this.e = event;    
+    }
+    
+    public List<Application> generateApplicationsList(Event e) {
+        
+        UserRegist userList = new UserRegist();
+        
+
+        return this.usersList;
+    }
 
     public AssignStands createAssignment(Stand s, Application a) {
         return e.getListAssignedStands().newStandAssignment(s, a);

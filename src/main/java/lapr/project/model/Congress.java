@@ -42,6 +42,14 @@ public class Congress extends Event implements Serializable{
     }
 
     /**
+     * empty constructor
+     */
+    public Congress() {
+        super();
+        this.workshopList= new WorkshopList();
+    } 
+
+    /**
      * 
      * @return the applications list 
      */
