@@ -233,12 +233,12 @@ public class FairCenter implements Serializable {
     
     /**
      * 
-     * @return list of Strings with the organizers name
+     * @return list of Strings with the organizers username
      */
     public List<String> getOrganizerListString(){
         List<String> organizerListString = new ArrayList<>();
         for(Organizer o: organizerList.getOrganizerList()){
-            organizerListString.add(o.getName());
+            organizerListString.add(o.getUsername());
         }
         return organizerListString;
     }
