@@ -80,14 +80,6 @@ public class DefineFAEController {
     public User getUserSelected() {
         return u;
     }
-    
-    /**
-     *
-     * @return FAE regist
-     */
-    public boolean FAEregist() {
-        return FAElist.FAEregist(u);
-    }
     /**
      * 
      * @return Fae list
@@ -137,7 +129,7 @@ public class DefineFAEController {
     public void addFAE(User u, Event event) {
         FAE newFae = new FAE(u);
         this.fae = newFae;
-        FAElist.addFAE(fae);
+        FAElist.getFAEList().add(fae);
     }
     
     public List<User> generateUsersList(Event e) {
