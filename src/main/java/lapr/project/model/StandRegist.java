@@ -15,11 +15,18 @@ import java.util.List;
  */
 public class StandRegist implements Serializable{
     
+    /**
+     * list of stands
+     */
     private List<Stand> StandList;
+    
+    /**
+     * assignment list stand
+     */
     private AssignmentListStand als;
 
     /**
-     *
+     * empty constructor
      */
     public StandRegist() {
         StandList = new ArrayList<>();
@@ -28,22 +35,16 @@ public class StandRegist implements Serializable{
 
     /**
      *
-     * @return
+     * @return list of stands
      */
     public List<Stand> getStandList() {
         return StandList;
     }
     
-    public boolean valid(Stand s) {
-        return (!StandList.contains(s));
-    }
-
-
-    public void addStand(Stand s) {
-        getStandList().add(s);
-    }
-
-    
+    /**
+     * 
+     * @return all the information 
+     */
     @Override
     public String toString() {
         String toString = "";
@@ -53,13 +54,15 @@ public class StandRegist implements Serializable{
         return toString;
     }
 
-    
-
+    /**
+     * 
+     * @return List of stands that are not assigned 
+     */
     public List<Stand> getNotAssignedStands() {
         List<Stand> standsNotAssigned = new ArrayList<>();
         int flag = 0;
         for (Stand s : getStandList()) {
-            for (AssignStands as : als.getStandsAssigned()){
+            for (AssignStands as : getAls().getStandsAssigned()){
 
                 if (as.getStand()==s) {
                     flag = 1;
@@ -73,12 +76,24 @@ public class StandRegist implements Serializable{
         return standsNotAssigned;
     }
 
-    
+    /**
+     * @param StandList the StandList to set
+     */
+    public void setStandList(List<Stand> StandList) {
+        this.StandList = StandList;
+    }
 
     /**
-     * @param sl the sl to set
+     * @return the als
      */
-    public void setSl(List<Stand> sl) {
-        this.StandList = sl;
+    public AssignmentListStand getAls() {
+        return als;
+    }
+
+    /**
+     * @param als the als to set
+     */
+    public void setAls(AssignmentListStand als) {
+        this.als = als;
     }
 }
