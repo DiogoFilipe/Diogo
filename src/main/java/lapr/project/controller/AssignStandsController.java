@@ -47,8 +47,8 @@ public class AssignStandsController {
         return e.getListAssignedStands().newAssignStand(s, a);
     }
 
-    public boolean validate(AssignStands s) {
-        return e.getListAssignedStands().validate(s);
+    public boolean validate(AssignStands as) {
+        return e.getListAssignedStands().validate(as);
 
     }
 
