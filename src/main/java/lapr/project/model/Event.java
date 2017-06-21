@@ -10,29 +10,96 @@ import lapr.project.utils.Date;
  */
 public class Event implements EventState {
 
+    /**
+     * title of the event
+     */
     private String title;
+    
+    /**
+     * description
+     */
     private String description;
+    
+    /**
+     * place of the event
+     */
     private String place;
+    
+    /**
+     * event's start date
+     */
     private Date startDate;
+    
+    /**
+     * event's end date
+     */
     private Date endDate;
+    
+    /**
+     * application's submission start date
+     */
     private Date submissionStartDate;
+    
+    /**
+     * application's submission end date
+     */
     private Date submissionEndDate;
+    
+    /**
+     * event state
+     */
     private State state;
+    
+    /**
+     * list of faes
+     */
     private FAEList faeList;
+ 
+    /**
+     * list of applications
+     */
     private ApplicationList applicationList;
+    
+    /**
+     * list of assignments
+     */
     private AssignmentList assignmentList;
+    
+    /**
+     * list of organizers
+     */
     private OrganizerList organizerList;
+    
+    /**
+     * list of stands
+     */
     private StandRegist standList;
+    
+    /**
+     * list os stands assignments
+     */
     private AssignmentListStand assignmentListStand;
 
+    /**
+     * description by omission
+     */
     private final String DESCRIPTION_BY_OMISSION = "No description";
+    
+    /**
+     * place by omission
+     */
     private final String PLACE_BY_OMISSION = "No localization";
 
+    /**
+     * empty constructor
+     */
     public Event() {
         this.state = EventState.State.Created;
+        this.place=PLACE_BY_OMISSION;
+        this.description=DESCRIPTION_BY_OMISSION;
     }
 
-    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmnentListStand) {
+    public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmentListStand) {
         this.title = title;
         this.description = description;
         this.place = place;
@@ -52,6 +119,7 @@ public class Event implements EventState {
     public Event(String title) {
         this.title = title;
         this.description = DESCRIPTION_BY_OMISSION;
+        this.place=PLACE_BY_OMISSION;
         this.assignmentList = new AssignmentList();
         this.faeList = new FAEList();
         this.applicationList = new ApplicationList();
@@ -153,15 +221,6 @@ public class Event implements EventState {
     }
 
     /**
-     * Returns the list of Applications accepted
-     *
-     * @return list of Applications accepted of the Event
-     */
-    public ApplicationList getApplicationListAccepted() {
-        return applicationList;
-    }
-
-    /**
      * Returns the list of Assignments of the Event
      *
      * @return list of Assignments of the Event
@@ -196,7 +255,7 @@ public class Event implements EventState {
     }
     
     /**
-     * @param AssignmentListStand the listAssignedStands to set
+     * @param assignmentListStand list of stands assigned
      */
     public void setListAssignedStands(AssignmentListStand assignmentListStand) {
         this.assignmentListStand = assignmentListStand;
@@ -312,16 +371,6 @@ public class Event implements EventState {
     }
 
     /**
-     * Adds a Stand to the Event's Stand list
-     *
-     * @param stand
-     * @return
-     */
-    public void addStand(Stand stand) {
-        this.standList.addStand(stand);
-    }
-
-    /**
      * Textual representation of the Event
      *
      * @return textual representation of the Event
@@ -329,25 +378,6 @@ public class Event implements EventState {
     @Override
     public String toString() {
         return String.format("#EVENT# %nTitle: %s %nDescription: %s %nPlace of occurence: %s %nStart Date: %s %nEnd Date: %s %nApplication Submission Start Date: %s %nApplication Submission End Date: %s", title, description, place, getStartDate().toYearMonthDayString(), getEndDate().toYearMonthDayString(), getSubmissionStartDate().toYearMonthDayString(), getSubmissionEndDate().toYearMonthDayString());
-    }
-
-    /**
-     * Adds the user u to the Event's Organizer list
-     *
-     * @param u user that is going to become an Organizer of the Event
-     */
-    public void addOrganizer(User u) {
-        Organizer o = new Organizer(u);
-        organizerList.addOrganizer(o);
-    }
-
-    /**
-     * Adds an application to the Application list of the event
-     *
-     * @param application
-     */
-    public void addApplication(Application application) {
-        this.applicationList.registApplication(application);
     }
 
     /**
@@ -368,12 +398,16 @@ public class Event implements EventState {
         return representativeApplications;
     }
 
-    public boolean valid(User user) {
-        for (FAE f : this.faeList.getFAEList()) {
+    /**
+     * checks if the user are fae
+     * @param user
+     * @return true if the user is fae of this event
+     */
+    public boolean isFAE(User user) {
+        for (FAE f : faeList.getFAEList()) {
             if (user.getName().equals(f.getName())) {
                 return true;
             }
-
         }
         return false;
     }
