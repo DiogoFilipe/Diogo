@@ -34,7 +34,7 @@ public class DecideApplicationController {
         List<Event> eventList = er.getEventList();
         List<String> eventListString = new ArrayList<>();
         for (Event event : eventList) {
-            if (event.getFAEList().containsFAE(fae)) {
+            if (event.getFAEList().getFAEList().contains(fae)) {
                 eventListString.add(event.getTitle());
             }
         }
@@ -66,32 +66,40 @@ public class DecideApplicationController {
     }
     
     /**
+     * Returns a String containing the Application's details
      * 
-     * @return 
+     * @return String containing the Application's details
      */
     public String getApplicationDetails() {
         return a.getCompanyName() + "\n" + a.getAddress() + "\n" + a.getContact() + "\n" + a.getDescription();
     }
     
-//    /**
-//     * 
-//     * @param decision
-//     * @param justification
-//     * @param faeKnowledge
-//     * @param adequacy
-//     * @param invitationAdequacy
-//     * @param overallRecomendation 
-//     */
-//    public void setDecision(boolean decision, String justification, int faeKnowledge, int adequacy, int invitationAdequacy, int overallRecomendation) {
-//        d = new Decision(decision, justification, faeKnowledge, adequacy, invitationAdequacy, overallRecomendation);
-//    }
+    /**
+     * Sets the Decision the FAE has made
+     * 
+     * @param decision true if the application is accepted / false if the application is rejected
+     * @param justification the Decision's justification
+     * @param faeKnowledge the FAE's Knowledge about the Event's topic
+     * @param adequacy the Application's adequacy for the Event
+     * @param invitationAdequacy the invitations quantity adequacy for the Application
+     * @param overallRecomendation overall recommendation
+     */
+    public void setDecision(boolean decision, String justification, int faeKnowledge, int adequacy, int invitationAdequacy, int overallRecomendation) {
+        d = new Decision(decision, justification, faeKnowledge, adequacy, invitationAdequacy, overallRecomendation);
+    }
     
-//    public void registDecision() {
-//        
-//    }
+    /**
+     * Regists the Decision by adding it to the FAE's Decision list
+     */
+    public void registDecision() {
+        fae.getDecisionList().getDecisionList().add(d);
+    }
     
+    /**
+     * Set's the Application's state as decided
+     */
     public void setStateApplication() {
-//        a.setState(ApplicationState.State.Decided);
+        a.setState(ApplicationState.State.Decided);
     }
     
 }
