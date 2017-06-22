@@ -64,8 +64,6 @@ public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
         jTextField5.setText(controller.getApplication(event, application).getNInvitesString());
         jTextField6.setText(controller.getApplication(event, application).getProducts().toString());
         jTextField7.setText(controller.getApplication(event, application).getAreaString());
-        buttonGroup1.add(jRadioButton1);
-        buttonGroup1.add(jRadioButton2);
     }
 
     /**
@@ -232,9 +230,11 @@ public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Decision:");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jRadioButton1.setText("Accept");
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jRadioButton2.setText("Reject");
 
