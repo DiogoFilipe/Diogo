@@ -9,6 +9,7 @@ package lapr.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
+import lapr.project.model.ApplicationList;
 import lapr.project.model.AssignStands;
 import lapr.project.model.Event;
 import lapr.project.model.FairCenter;
@@ -24,6 +25,10 @@ public class AssignStandsController {
     private FairCenter fc;
     private Event e;
     private Organizer o;
+    private List<Application> applicationList;
+    private Stand s;
+    private List<Stand>standList;
+    private List<AssignStands> assignstands;
 
     private Application a;
     private AssignStands as;
@@ -34,15 +39,38 @@ public class AssignStandsController {
 
     }
 
+    /**
+     *
+     * @param a
+     */
     public void selectApplication(Application a) {
         this.a = a;
 
     }
-
+    /**
+     * 
+     * @param e
+     * @return stand list not assigned
+     */
     public List<Stand> getStands(Event e) {
 
         return this.e.getStandList().getNotAssignedStands();
     }
+    /**
+     * 
+     * @return stand list
+     */
+    public List<Stand> getStandsList(){
+        return standList ; 
+    }
+    
+    /**
+     * @return stand selected
+     */
+    public Stand getStandSelected() {
+        return s;
+    }
+     
     
     /**
      * Method that returns a events list ready for submission
@@ -53,11 +81,39 @@ public class AssignStandsController {
     }
     
     /**
+     * @return applications list
+     */
+    public List<Application> getAppicationsList() {
+        return applicationList;
+    }
+    /**
      *
      * @return event
      */
     public Event getEventSelect() {
         return e;
+    }
+    
+    /**
+     * @return user selected
+     */
+    public Application getApplicationSelected() {
+        return a;
+    }
+    
+    /**
+     * @return the assigns stands 
+     */
+    public List<AssignStands> getStandsAssigned() {
+        return e.getListAssignedStands().getStandsAssigned();
+    }
+    
+    /**
+     * 
+     * @param u 
+     */
+    public void setApplicationSelect(Application a){
+        this.a = a;
     }
     
     /**
@@ -68,26 +124,55 @@ public class AssignStandsController {
         this.e = event;    
     }
     
+    /**
+     *
+     * @param stand
+     */
+    public void setStandSelect(Stand stand) {
+        this.s = stand;    
+    }
+    
+    /**
+     *
+     * @param e
+     * @return
+     */
     public List<Application> generateApplicationsList(Event e) {
         
-        UserRegist userList = new UserRegist();
+        ApplicationList applicationList = new ApplicationList();
         
 
-        return this.usersList;
+        return this.applicationList;
     }
 
+    /**
+     *
+     * @param s
+     * @param a
+     * @return
+     */
     public AssignStands createAssignment(Stand s, Application a) {
         return e.getListAssignedStands().newStandAssignment(s, a);
     }
 
+    /**
+     *
+     * @param as
+     * @return
+     */
     public boolean validate(AssignStands as) {
         return e.getListAssignedStands().validate(as);
 
     }
 
-    public void AssignStand(boolean b, AssignStands sa) {
-        if (b == true) {
-            e.getListAssignedStands().AssignmentStandsRegist(b, sa);
+    /**
+     *
+     * @param validate
+     * @param sa
+     */
+    public void AssignStand(boolean validate, AssignStands sa) {
+        if (validate == true) {
+            e.getListAssignedStands().AssignmentStandsRegist(validate, sa);
 
         }
 
