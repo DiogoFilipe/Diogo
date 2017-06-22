@@ -55,6 +55,18 @@ public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
         this.event = event;
         this.application = application;
         controller = new DecideApplicationController(fc, u);
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(DecideApplicationUIOrganizer.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+
+        });
         initComponents();
         companyName.setText(controller.getApplication(event, application).getCompanyName());
         address.setText(controller.getApplication(event, application).getAddress());
@@ -64,6 +76,7 @@ public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
         jTextField5.setText(controller.getApplication(event, application).getNInvitesString());
         jTextField6.setText(controller.getApplication(event, application).getProducts().toString());
         jTextField7.setText(controller.getApplication(event, application).getAreaString());
+
     }
 
     /**
@@ -352,17 +365,17 @@ public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
             boolean decision;
             if (buttonSelected.equals(jRadioButton1)) {
                 decision = true;
-                controller.getApplication(event,application).setD(new Decision(decision));
+                controller.getApplication(event, application).setD(new Decision(decision));
             } else if (buttonSelected.equals(jRadioButton2)) {
                 decision = false;
-                controller.getApplication(event,application).setD(new Decision(decision));
+                controller.getApplication(event, application).setD(new Decision(decision));
             } else {
                 JOptionPane.showMessageDialog(DecideApplicationUIOrganizer.this, "Select if you accept or reject the application", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
             String justification = jTextArea1.getText();
             controller.validateString(justification, "justification");
-            controller.getApplication(event,application).getD().setJustification(justification);
-            controller.setStateApplication(event,application);
+            controller.getApplication(event, application).getD().setJustification(justification);
+            controller.setStateApplication(event, application);
         } catch (EmptySpaceException e) {
             JOptionPane.showMessageDialog(DecideApplicationUIOrganizer.this, e.getMessage());
         }
