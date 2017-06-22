@@ -12,7 +12,7 @@ public class InvalidDayException extends IllegalArgumentException implements Ser
      * Exception for invalid day
      */
     public InvalidDayException() {
-        super("Invalid day!");
+        super("Invalid day");
     }
 
     /**
@@ -20,6 +20,6 @@ public class InvalidDayException extends IllegalArgumentException implements Ser
      * @param message
      */
     public InvalidDayException(String message) {
-        super(message);
+        super("Invalid day on "+ message);
     }
 }
