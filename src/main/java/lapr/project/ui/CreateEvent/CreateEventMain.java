@@ -45,6 +45,18 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
         this.organizerListEvent = new ArrayList<>();
         this.userList = controller.getUserList();
         controller = new CreateEventController(fc);
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(CreateEventMain.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+
+        });
         initComponents();
         jComboBox1.addItem("Congress");
         jComboBox1.addItem("Exhibition");
@@ -60,19 +72,6 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
                 return userList.get(j);
             }
         };
-        this.setVisible(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(CreateEventMain.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                    dispose();
-                }
-            }
-
-        });
-
         OrganizerList.setModel(model);
         jScrollPane1.setViewportView(OrganizerList);
         AbstractListModel model1 = new javax.swing.AbstractListModel() {
@@ -90,7 +89,8 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
         ChosenOrganizerList.setModel(model1);
         jScrollPane2.setViewportView(ChosenOrganizerList);
     }
-   /**
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -110,6 +110,7 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
             java.util.logging.Logger.getLogger(CreateEventMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -397,7 +398,7 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
         userList.add(organizer);
         organizerListEvent.remove(organizer);
     }//GEN-LAST:event_RemoveOrganizerActionPerformed
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddOrganizerButton;
     private javax.swing.JButton BackButton;
