@@ -28,7 +28,7 @@ public class UserRegist implements Serializable {
     }
 
     /**
-     * 
+     *
      * @param user user
      * @return if the list don't contains the user, it adds him
      */
@@ -47,7 +47,6 @@ public class UserRegist implements Serializable {
     public List<User> getUserList() {
         return userList;
     }
-
 
     /**
      * Returns the user of the username
@@ -175,6 +174,18 @@ public class UserRegist implements Serializable {
             verify = true;
         }
         return verify;
+    }
+
+    /**
+     * 
+     * @return list of Strings with the username of all users 
+     */
+    public List<String> getUserListString() {
+        List<String> userListString = new ArrayList<>();
+        for (User u : userList) {
+            userListString.add(u.getUsername());
+        }
+        return userListString;
     }
 
 }
