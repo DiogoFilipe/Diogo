@@ -6,6 +6,7 @@
 package lapr.project.ui.DecideApplication;
 
 import javax.swing.AbstractListModel;
+import javax.swing.JOptionPane;
 import lapr.project.controller.DecideApplicationController;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
@@ -129,12 +130,16 @@ public class SelectApplicationUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String application = jList1.getSelectedValue();
-        if(controller.isOrganizer(u)||){
+        if(controller.isOrganizer(u) && controller.getApplication(event, application).getD().getDecision()!=false && controller.getApplication(event, application).getD().getDecision()!=true){
         DecideApplicationUIOrganizer decideApplicationOrganizer = new DecideApplicationUIOrganizer(fc, u, event, application);
         decideApplicationOrganizer.setVisible(true);
         dispose();
         }else if(controller.isFAE(u)){
-            
+            ApplicationEvaluationUI applicationEvaluation = new ApplicationEvaluationUI(fc,u,event,application);
+            applicationEvaluation.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(SelectApplicationUI.this, "The application his already decided", "DECIDED", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
