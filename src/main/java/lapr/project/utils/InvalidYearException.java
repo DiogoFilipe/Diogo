@@ -5,11 +5,13 @@
  */
 package lapr.project.utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Diogo
  */
-public class InvalidYearException extends IllegalArgumentException {
+public class InvalidYearException extends IllegalArgumentException implements Serializable {
 
     /**
      * Creates a new instance of <code>InvalidYearException</code> without
