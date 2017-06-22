@@ -34,19 +34,20 @@ public class ApplicationEvaluationUI extends javax.swing.JFrame {
         this.event = event;
         this.application = application;
         controller = new DecideApplicationController(fc, u);
-        initComponents();
         this.setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(ApplicationEvaluationUI.this, "Do you want to close the application?","WARNING",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(ApplicationEvaluationUI.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                     dispose();
                 }
             }
 
         });
+        initComponents();
+
     }
 
     /**
