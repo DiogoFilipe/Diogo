@@ -311,7 +311,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     }
     
     private void prepareUsersList() {
-        List<User> users = this.controller.generateUsersList(this.controller.geEventSelect());
+        List<User> users = this.controller.generateUsersList(this.controller.getEventSelect());
         modelUsers = new DefaultListModel();
         for (User u : users) {
             modelUsers.addElement(u);
@@ -322,12 +322,12 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     }
     
      private void prepareFAEList() {
-         User u = controller.getUserSelected();
-         Event e = controller.geEventSelect();
+        User u = this.controller.getUserSelected();
+        Event e = this.controller.getEventSelect();
          
-         controller.addFAE(u, e);
+        controller.addFAE(u, e);
         
-          List<FAE> faeslist = controller.getFAEList();
+        List<FAE> faeslist = this.controller.getFAEList();
 
         modelFaes = new DefaultListModel();
         for ( FAE faelist : faeslist) {
