@@ -6,8 +6,11 @@
 package lapr.project.ui.ImportFile;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.controller.ImportFileController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
@@ -37,15 +40,28 @@ public class ImportFileMainUI extends javax.swing.JFrame {
      controller = new ImportFileController(fc);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
+            String filename= fileChooser.getSelectedFile().getName();
+            String typ = filename.substring(filename.lastIndexOf("."),filename.length());
             File file = fileChooser.getSelectedFile();
+            if(typ.equals(".xml")){
+                try {
+                    if(true == controller.readXML(file)){
+                        MainWindow main = new MainWindow(fc,user);
+                        main.setVisible(true);
+                        dispose();
+                    }   } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(ImportFileMainUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+}
+            if(typ.equals(".csv")){
             if(true == controller.fileReader(file)){
             MainWindow main = new MainWindow(fc,user);
             main.setVisible(true);
             dispose();
-            } else{
-            JOptionPane.showMessageDialog(fileChooser, "FODEU");}
-        }
-    }
+            }} else{
+            }
+        
+    }}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

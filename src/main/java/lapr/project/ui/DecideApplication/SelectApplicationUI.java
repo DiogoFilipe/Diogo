@@ -5,6 +5,12 @@
  */
 package lapr.project.ui.DecideApplication;
 
+import javax.swing.AbstractListModel;
+import javax.swing.JOptionPane;
+import lapr.project.controller.DecideApplicationController;
+import lapr.project.model.FairCenter;
+import lapr.project.model.User;
+
 /**
  *
  * @author João Domingues
@@ -14,8 +20,32 @@ public class SelectApplicationUI extends javax.swing.JFrame {
     /**
      * Creates new form SelectApplicationUI
      */
-    public SelectApplicationUI() {
+    DecideApplicationController controller;
+
+    private String event;
+
+    User u;
+
+    FairCenter fc;
+
+    public SelectApplicationUI(FairCenter fc, User u, String event) {
+        this.fc = fc;
+        this.u = u;
+        this.event = event;
         initComponents();
+        AbstractListModel model = new AbstractListModel() {
+            @Override
+            public int getSize() {
+                return controller.getFAEApplicationsForDecision(event).size();
+            }
+
+            @Override
+            public Object getElementAt(int index) {
+                return controller.getFAEApplicationsForDecision(event).get(index);
+            }
+        };
+        jList1.setModel(model);
+        jScrollPane1.setViewportView(jList1);
     }
 
     /**
@@ -59,25 +89,29 @@ public class SelectApplicationUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(125, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(228, 228, 228)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -89,15 +123,24 @@ public class SelectApplicationUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        DecideApplicationMainUI decideApplicationMain = new DecideApplicationMainUI();
+        DecideApplicationMainUI decideApplicationMain = new DecideApplicationMainUI(fc, u);
         decideApplicationMain.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DecideApplicationUI decideApplication = new DecideApplicationUI();
-        decideApplication.setVisible(true);
+        String application = jList1.getSelectedValue();
+        if(controller.isOrganizer(u) && controller.getApplication(event, application).getD().getDecision()!=false && controller.getApplication(event, application).getD().getDecision()!=true){
+        DecideApplicationUIOrganizer decideApplicationOrganizer = new DecideApplicationUIOrganizer(fc, u, event, application);
+        decideApplicationOrganizer.setVisible(true);
         dispose();
+        }else if(controller.isFAE(u)){
+            ApplicationEvaluationUI applicationEvaluation = new ApplicationEvaluationUI(fc,u,event,application);
+            applicationEvaluation.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(SelectApplicationUI.this, "The application his already decided", "DECIDED", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -116,23 +159,9 @@ public class SelectApplicationUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectApplicationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectApplicationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectApplicationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SelectApplicationUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SelectApplicationUI().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

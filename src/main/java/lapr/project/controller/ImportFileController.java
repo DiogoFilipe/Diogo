@@ -6,6 +6,7 @@
 package lapr.project.controller;
 
 import java.io.File;
+import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.model.*;
 
 /**
@@ -26,5 +27,8 @@ public class ImportFileController {
 
         return ReadFile.readFile(file, fc);
     }
+    
+    public boolean readXML(File file) throws ParserConfigurationException{
+      return ReadXML.readContent(file, fc);}
 
     }

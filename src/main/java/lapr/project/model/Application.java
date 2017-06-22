@@ -111,7 +111,15 @@ public class Application implements ApplicationState,Serializable {
      */
     private State state;
 
+    /**
+     * to check if has stand
+     */
     private boolean hasStand;
+    
+    /**
+     * list of products
+     */
+    private List<String> products;
 
     /**
      * Constructor for Application
@@ -124,8 +132,9 @@ public class Application implements ApplicationState,Serializable {
      * @param decision accepted or rejected
      * @param boothArea area that needs
      * @param invites number of invites
+     * @param products list of products
      */
-    public Application(String companyName, String address, int contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites) {
+    public Application(String companyName, String address, int contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites,List<String> products) {
 
         this.companyName = companyName;
         this.address = address;
@@ -137,6 +146,7 @@ public class Application implements ApplicationState,Serializable {
         this.invites = invites;
         this.hasStand = false;
         this.state = ApplicationState.State.Created;
+        this.products=products;
     }
 
     /**
@@ -152,6 +162,7 @@ public class Application implements ApplicationState,Serializable {
         this.boothArea = BOOTHAREA_BY_OMISSION;
         this.invites = INVITES_BY_OMISSION;
         this.hasStand = false;
+        this.products= new ArrayList<>();
     }
 
     /**
@@ -175,6 +186,7 @@ public class Application implements ApplicationState,Serializable {
         this.decision = new Decision();
         this.hasStand = false;
         this.state = ApplicationState.State.Created;
+        this.products= new ArrayList<>();
     }
 
     /**
@@ -195,6 +207,7 @@ public class Application implements ApplicationState,Serializable {
         this.d = decision;
         this.hasStand = false;
         this.state = ApplicationState.State.Created;
+        this.products=new ArrayList<>();
     }
 
     /**
@@ -452,5 +465,19 @@ public class Application implements ApplicationState,Serializable {
      */
     public State getState() {
         return state;
+    }
+
+    /**
+     * @return the products
+     */
+    public List<String> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(List<String> products) {
+        this.products = products;
     }
 }

@@ -159,15 +159,15 @@ public class LogInWindow extends javax.swing.JFrame {
         String id = jTextField1.getText();
         String password = jPasswordField1.getText();
         List <User> users = controller.getUsers();
-        
+        User user;
         try{
              for (User u : users) {
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 100; i++) {
           String ciphredPassword = controller.cipherPassword(password,i);  
         
            
                 if(u.getPassword().equals(ciphredPassword)){
-                 User user = controller.getUser(u.getUsername());
+                 user = controller.getUser(u.getUsername());
                  String kw =controller.verifyEncryptionUserGetKeyword(user);
                  int shift =controller.verifyEncryptionUserGetShift(user);
                  String cipheredID = controller.cipherAttributes(id,shift, kw);
