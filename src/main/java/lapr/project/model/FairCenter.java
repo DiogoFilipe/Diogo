@@ -218,14 +218,14 @@ public class FairCenter implements Serializable {
     /**
      * @return the faeList
      */
-    public FAEList getFaeList() {
+    public FAEList getFAEList() {
         return faeList;
     }
 
     /**
      * @param faeList the faeList to set
      */
-    public void setFaeList(FAEList faeList) {
+    public void setFAEList(FAEList faeList) {
         this.faeList = faeList;
     }
 

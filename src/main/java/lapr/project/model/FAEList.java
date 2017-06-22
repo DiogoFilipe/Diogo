@@ -36,7 +36,7 @@ public class FAEList implements Serializable{
      *
      * @param FAEList
      */
-    public void setFAE(List<FAE> FAEList) {
+    public void setFAEList(List<FAE> FAEList) {
         this.FAEList = FAEList;
     }
 
