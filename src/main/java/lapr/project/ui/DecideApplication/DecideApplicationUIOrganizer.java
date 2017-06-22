@@ -362,6 +362,7 @@ public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
             String justification = jTextArea1.getText();
             controller.validateString(justification, "justification");
             controller.getApplication(event,application).getD().setJustification(justification);
+            controller.setStateApplication(event,application);
         } catch (EmptySpaceException e) {
             JOptionPane.showMessageDialog(DecideApplicationUIOrganizer.this, e.getMessage());
         }
