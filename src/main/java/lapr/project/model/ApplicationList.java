@@ -16,13 +16,13 @@ public class ApplicationList implements Serializable {
     private List<Application> applicationList;
 
     /**
-     * 
+     *
      * @param applicationList list of applications
      */
-    public ApplicationList(List<Application> applicationList){
-        this.applicationList=applicationList;
+    public ApplicationList(List<Application> applicationList) {
+        this.applicationList = applicationList;
     }
-    
+
     /**
      * empty contructor
      */
@@ -31,17 +31,17 @@ public class ApplicationList implements Serializable {
     }
 
     /**
-     * 
-     * @return list of applications 
+     *
+     * @return list of applications
      */
     public List<Application> getApplicationList() {
         return applicationList;
     }
 
-   /**
-    * 
-    * @return list of Strings with the company name of applications
-    */
+    /**
+     *
+     * @return list of Strings with the company name of applications
+     */
     public List<String> getApplicationsList() {
         List<String> applications = new ArrayList<>();
         for (Application a : applicationList) {
@@ -51,7 +51,7 @@ public class ApplicationList implements Serializable {
     }
 
     /**
-     * 
+     *
      * @param description description of the application
      * @return the application that as that description or null
      */
@@ -65,8 +65,22 @@ public class ApplicationList implements Serializable {
     }
 
     /**
-     * 
-     * @return the list of keywords of all applications of one event 
+     *
+     * @param companyName name of the company
+     * @return the application that as that company name or null
+     */
+    public Application getApplicationByCompanyName(String companyName) {
+        for (Application a : applicationList) {
+            if (a.getCompanyName().equals(companyName)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @return the list of keywords of all applications of one event
      */
     public List<Keyword> getKeywordsList() {
         List<Keyword> keywords = new ArrayList<>();
@@ -77,8 +91,9 @@ public class ApplicationList implements Serializable {
     }
 
     /**
-     * 
-     * @return the list of Applications(String with companyName) that were accepted
+     *
+     * @return the list of Applications(String with companyName) that were
+     * accepted
      */
     public List<String> getApplicationListAccepted() {
         List<String> applicationsAccepted = new ArrayList<>();
@@ -89,15 +104,16 @@ public class ApplicationList implements Serializable {
         }
         return applicationsAccepted;
     }
-    
+
     /**
-     * 
-     * @return the list of Applications(String with companyName) that were rejected 
+     *
+     * @return the list of Applications(String with companyName) that were
+     * rejected
      */
-    public List<String> getApplicationListRejected(){
+    public List<String> getApplicationListRejected() {
         List<String> applicationsRejected = new ArrayList<>();
-        for(Application a : applicationList){
-            if(a.getD().getDecision()==false){
+        for (Application a : applicationList) {
+            if (a.getD().getDecision() == false) {
                 applicationsRejected.add(a.getCompanyName());
             }
         }
