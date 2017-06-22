@@ -14,7 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import lapr.project.controller.AssignStandsController;
+import lapr.project.model.Application;
+import lapr.project.model.AssignStands;
 import lapr.project.model.Event;
+import lapr.project.model.Stand;
 
 /**
  *
@@ -35,6 +38,7 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
     }
     
     /**
+     * param  controller
      * Creates new form DefineFAEMainUI
      * param controller
      */
@@ -86,6 +90,7 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         listAssign = new javax.swing.JList<>();
         confirmStand = new javax.swing.JButton();
+        newAssignment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,12 +110,32 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
         jScrollPane3.setViewportView(listStand);
 
         confirmEvent.setText("Confirm Event");
+        confirmEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmEventActionPerformed(evt);
+            }
+        });
 
         confirmApplication.setText("ConfirmApplication");
+        confirmApplication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmApplicationActionPerformed(evt);
+            }
+        });
 
         btnReturn.setText("Return");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
 
         confirmOperation.setText("Confirm");
+        confirmOperation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmOperationActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel4.setText("Assignment List:");
@@ -118,6 +143,18 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
         jScrollPane4.setViewportView(listAssign);
 
         confirmStand.setText("Confirm Stand");
+        confirmStand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmStandActionPerformed(evt);
+            }
+        });
+
+        newAssignment.setText("New Assignment");
+        newAssignment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newAssignmentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,7 +168,9 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(76, 76, 76)
-                        .addComponent(confirmStand))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confirmStand)
+                            .addComponent(newAssignment)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(btnReturn)
@@ -159,7 +198,7 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3)
                                     .addGap(39, 39, 39))))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +231,9 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(confirmStand)))
+                                .addComponent(confirmStand)
+                                .addGap(18, 18, 18)
+                                .addComponent(newAssignment)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnReturn)
@@ -202,6 +243,60 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void confirmEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmEventActionPerformed
+        int selectedindex = listEvent.getSelectedIndex();
+        if (selectedindex != -1) {
+            listEvent.setEnabled(false);
+            confirmEvent.setEnabled(false);
+            controller.setEventSelect(controller.getEventsList().get(selectedindex));
+            prepareApplicationsList();
+        }    
+    }//GEN-LAST:event_confirmEventActionPerformed
+
+    private void confirmApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmApplicationActionPerformed
+        int selectedindex = listApplication.getSelectedIndex();
+        if (selectedindex != -1) {
+            listApplication.setEnabled(false);
+            controller.setApplicationSelect(controller.getAppicationsList().get(selectedindex));
+            this.listApplication.setEnabled(false);
+            this.confirmApplication.setEnabled(false);
+            prepareStandList();
+        }    
+    }//GEN-LAST:event_confirmApplicationActionPerformed
+
+    private void confirmStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmStandActionPerformed
+        int selectedindex = listStand.getSelectedIndex();
+        if (selectedindex != -1) {
+            listStand.setEnabled(false);
+            controller.setStandSelect(controller.getStandsList().get(selectedindex));
+            this.listStand.setEnabled(false);
+            this.confirmStand.setEnabled(false);
+            prepareAssignmentList();
+        }    
+    }//GEN-LAST:event_confirmStandActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        close();
+    }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void confirmOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmOperationActionPerformed
+        if (listAssign.getModel().getSize() > 0) {
+            JOptionPane.showMessageDialog(null, "Assign Stands successfully defined!");
+            dispose();
+            parent.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Assign Stands was not defined successfully!");
+        }
+    }//GEN-LAST:event_confirmOperationActionPerformed
+
+    private void newAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAssignmentActionPerformed
+        listApplication.setEnabled(true);
+        listStand.setEnabled(true);
+        this.confirmApplication.setEnabled(true);
+        this.confirmStand.setEnabled(true);
+        this.newAssignment.setEnabled(false);
+    }//GEN-LAST:event_newAssignmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +352,7 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
     private javax.swing.JList<String> listAssign;
     private javax.swing.JList<String> listEvent;
     private javax.swing.JList<String> listStand;
+    private javax.swing.JButton newAssignment;
     // End of variables declaration//GEN-END:variables
 
     
@@ -267,6 +363,49 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
             modelEvents.addElement(event);
         }
         this.listEvent.setModel(modelEvents);
+    }
+    
+    private void prepareApplicationsList() {
+        List<Application> applications = this.controller.generateApplicationsList(this.controller.getEventSelect());
+        modelApplications = new DefaultListModel();
+        for (Application a : applications) {
+            modelApplications.addElement(a);
+        }
+        this.listApplication.setModel(modelApplications);
+        this.listApplication.setEnabled(true);
+        this.confirmApplication.setEnabled(true);
+    }
+    
+    private void prepareStandList(){
+        List<Stand>  stands = this.controller.getStands(this.controller.getEventSelect());
+        modelStands = new DefaultListModel();
+        for (Stand s : stands) {
+            modelStands.addElement(s);
+        }
+        this.listStand.setModel(modelStands);
+        this.listStand.setEnabled(true);
+        this.confirmStand.setEnabled(true);   
+    }
+    
+    private void prepareAssignmentList(){
+        Stand stand = this.controller.getStandSelected();
+        Application a = this.controller.getApplicationSelected();
+        
+        AssignStands as = this.controller.createAssignment(stand, a);
+        
+        boolean validate = this.controller.validate(as);
+        
+        controller.AssignStand(validate, as);
+        
+        List<AssignStands> assignstands = this.controller.getStandsAssigned();
+
+        modelAssignment = new DefaultListModel();
+        for (AssignStands astands : assignstands) {
+            modelAssignment.addElement(astands);
+        }
+        this.listAssign.setModel(modelAssignment);
+        this.newAssignment.setEnabled(true);
+        this.confirmOperation.setEnabled(true);
     }
     
     private void close() {

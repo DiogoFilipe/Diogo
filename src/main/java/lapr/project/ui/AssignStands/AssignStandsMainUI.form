@@ -31,7 +31,10 @@
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="270" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="confirmStand" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="confirmStand" min="-2" max="-2" attributes="0"/>
+                          <Component id="newAssignment" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -70,7 +73,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -112,6 +115,8 @@
                               <Component id="jScrollPane3" min="-2" pref="214" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="confirmStand" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="newAssignment" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -203,21 +208,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm Event"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmEventActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="confirmApplication">
       <Properties>
         <Property name="text" type="java.lang.String" value="ConfirmApplication"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmApplicationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnReturn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Return"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReturnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="confirmOperation">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmOperationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -247,6 +264,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm Stand"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmStandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="newAssignment">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="New Assignment"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newAssignmentActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
