@@ -269,7 +269,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="DataFormatNoteLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Insert all date&apos;s in the dd/mm/yyyy format."/>
+            <Property name="text" type="java.lang.String" value="Insert all date&apos;s in the yyyy/mm/dd format."/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -303,6 +303,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&lt;- Remove"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveOrganizerActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>

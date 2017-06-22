@@ -3,25 +3,32 @@ package lapr.project.ui.CreateEvent;
 //import java.util.ArrayList;
 //import java.util.List;
 //import javax.swing.DefaultListModel;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.swing.AbstractListModel;
+import javax.swing.JOptionPane;
 import lapr.project.controller.CreateEventController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
 import lapr.project.utils.Date;
+import lapr.project.utils.EmptySpaceException;
+import lapr.project.utils.InvalidDayException;
+import lapr.project.utils.InvalidMonthException;
+import lapr.project.utils.InvalidYearException;
 
 /**
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class CreateEventMain extends javax.swing.JFrame {
-    
+public class CreateEventMain extends javax.swing.JFrame implements Serializable {
+
     private FairCenter fc;
     private User u;
     private List<String> organizerListEvent;
-    
+    private List<String> userList;
+
     CreateEventController controller;
 
     //private final DefaultListModel userModel = new DefaultListModel();
@@ -35,31 +42,32 @@ public class CreateEventMain extends javax.swing.JFrame {
         this.fc = fc;
         this.u = u;
         this.organizerListEvent = new ArrayList<>();
+        this.userList = controller.getUserList();
         controller = new CreateEventController(fc);
         initComponents();
         jComboBox1.addItem("Congress");
         jComboBox1.addItem("Exhibition");
         AbstractListModel model = new javax.swing.AbstractListModel() {
-            
+
             @Override
             public int getSize() {
-                return controller.getUserList().size();
+                return userList.size();
             }
-            
+
             @Override
             public Object getElementAt(int j) {
-                return controller.getUserList().get(j);
+                return userList.get(j);
             }
         };
         OrganizerList.setModel(model);
         jScrollPane1.setViewportView(OrganizerList);
         AbstractListModel model1 = new javax.swing.AbstractListModel() {
-            
+
             @Override
             public int getSize() {
                 return organizerListEvent.size();
             }
-            
+
             @Override
             public Object getElementAt(int j) {
                 return organizerListEvent.get(j);
@@ -152,7 +160,7 @@ public class CreateEventMain extends javax.swing.JFrame {
 
         PlaceLabel.setText("Place");
 
-        DataFormatNoteLabel.setText("Insert all date's in the dd/mm/yyyy format.");
+        DataFormatNoteLabel.setText("Insert all date's in the yyyy/mm/dd format.");
 
         jScrollPane1.setViewportView(OrganizerList);
 
@@ -164,6 +172,11 @@ public class CreateEventMain extends javax.swing.JFrame {
         });
 
         RemoveOrganizer.setText("<- Remove");
+        RemoveOrganizer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveOrganizerActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(ChosenOrganizerList);
 
@@ -296,24 +309,54 @@ public class CreateEventMain extends javax.swing.JFrame {
 
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
         String type = jComboBox1.getSelectedItem().toString();
-        String place = PlaceInputTextField.getText();
-        String submissionStartDate = StartSubDateInputTextField.getText();
-        String description = DescriptionInputTextField.getText();
-        String endDate = EndDateInputTextField.getText();
-        String startDate = StartDateInputTextField.getText();
-        String title = TitleInputTextField.getText();
-        String submissionEndDate = EndSubDateInputTextField.getText();
-        if (type.equals("Congress")) {
-            Congress e = new Congress();
-            controller.setData(type, title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, organizerListEvent);
+
+        try {
+            String place = PlaceInputTextField.getText();
+            controller.validateString(place, "place");
+            String submissionStartDate = StartSubDateInputTextField.getText();
+            controller.validateDay(submissionStartDate, "submission start date");
+            controller.validateMonth(submissionStartDate, "submission start date");
+            controller.validateYear(submissionStartDate, "submission start date");
+            String description = DescriptionInputTextField.getText();
+            controller.validateString(description, "description");
+            String endDate = EndDateInputTextField.getText();
+            controller.validateDay(endDate, "end date");
+            controller.validateMonth(endDate, "end date");
+            controller.validateYear(endDate, "end date");
+            String startDate = StartDateInputTextField.getText();
+            controller.validateDay(startDate, "start date");
+            controller.validateMonth(startDate, "start date");
+            controller.validateYear(startDate, "start date");
+            String title = TitleInputTextField.getText();
+            controller.validateString(title, "title");
+            String submissionEndDate = EndSubDateInputTextField.getText();
+            controller.validateDay(submissionEndDate, "submission end date");
+            controller.validateMonth(submissionEndDate, "submission end date");
+            controller.validateYear(submissionEndDate, "submission end date");
+            if (type.equals("Congress")) {
+                controller.setDataCongress(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, organizerListEvent);
+                JOptionPane.showMessageDialog(CreateEventMain.this, "Congress created with success", "SUCCESS", JOptionPane.OK_OPTION);
+            } else if (type.equals("Exhibition")) {
+                controller.setDataExhibition(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, organizerListEvent);
+                JOptionPane.showMessageDialog(CreateEventMain.this, "Exhibition created with success", "SUCCESS", JOptionPane.OK_OPTION);
+            }
+        } catch (EmptySpaceException | InvalidDayException | InvalidMonthException | InvalidYearException e) {
+            JOptionPane.showMessageDialog(CreateEventMain.this, e.getMessage());
         }
 
     }//GEN-LAST:event_OkButtonActionPerformed
 
     private void AddOrganizerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOrganizerButtonActionPerformed
-        String organizer = OrganizerList.getSelectedValue();
-        organizerListEvent.add(organizer);
+        String user = OrganizerList.getSelectedValue();
+        organizerListEvent.add(user);
+        userList.remove(user);
     }//GEN-LAST:event_AddOrganizerButtonActionPerformed
+
+    private void RemoveOrganizerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveOrganizerActionPerformed
+        String organizer = ChosenOrganizerList.getSelectedValue();
+        userList.add(organizer);
+        organizerListEvent.remove(organizer);
+    }//GEN-LAST:event_RemoveOrganizerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddOrganizerButton;
