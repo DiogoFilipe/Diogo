@@ -5,7 +5,6 @@
  */
 package lapr.project.ui.CreateStand;
 
-
 import lapr.project.controller.CreateStandController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
@@ -15,6 +14,9 @@ import lapr.project.ui.MainWindow;
  * @author João Domingues
  */
 public class StandDataUI extends javax.swing.JFrame {
+
+    private static final long serialVersionUID = -3347995797153728286L;
+
     private Event event;
     private User user;
     private FairCenter fc;
@@ -22,9 +24,10 @@ public class StandDataUI extends javax.swing.JFrame {
 
     /**
      * Creates new form StandDataUI
+     *
      * @param event selected event
      */
-     public StandDataUI(Event event,FairCenter fc,User user) {
+    public StandDataUI(Event event, FairCenter fc, User user) {
         this.user = user;
         this.event = event;
         this.fc = fc;
@@ -33,7 +36,6 @@ public class StandDataUI extends javax.swing.JFrame {
         textArea1.setEditable(false);
         textArea1.setText(event.toString());
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,19 +143,19 @@ public class StandDataUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        CreateStandMainUI createStandMain = new CreateStandMainUI(fc,user);
+        CreateStandMainUI createStandMain = new CreateStandMainUI(fc, user);
         createStandMain.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controller = new CreateStandController(fc,user);
+        controller = new CreateStandController(fc, user);
         Stand stand;
         String area = jTextField3.getText();
         controller.verifyArea(area);
         double ar = Double.parseDouble(area);
         stand = new Stand(ar);
-        controller.addStand(this.event,stand);
+        controller.addStand(this.event, stand);
         MainWindow main = new MainWindow();
         main.setVisible(true);
         this.dispose();
@@ -163,7 +165,6 @@ public class StandDataUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

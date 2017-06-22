@@ -11,7 +11,9 @@ import java.io.Serializable;
  *
  * @author Diogo
  */
-public class DontHavePermissionException extends IllegalArgumentException implements Serializable{
+public class DontHavePermissionException extends IllegalArgumentException implements Serializable {
+
+    private static final long serialVersionUID = 5871486141947266270L;
 
     /**
      * Creates a new instance of <code>DontHavePermissionException</code>

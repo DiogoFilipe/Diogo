@@ -11,6 +11,8 @@ package lapr.project.utils;
  */
 public class EventNotFound extends IllegalArgumentException {
 
+    private static final long serialVersionUID = -5547964310407482728L;
+
     /**
      * Creates a new instance of <code>EventoNotFound</code> without detail
      * message.

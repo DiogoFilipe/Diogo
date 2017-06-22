@@ -19,7 +19,9 @@ import lapr.project.controller.DifferenceTwoEventsAcceptanceRateController;
  * @author João Domingues
  */
 public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame {
-    
+
+    private static final long serialVersionUID = -9073160107643658401L;
+
     DifferenceTwoEventsAcceptanceRateController controller;
     DefaultListModel modelEvents1;
     DefaultListModel modelEvents2;
@@ -31,11 +33,9 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
     public DiiferenceTwoEventsAcceptanceRateMainUI() {
         initComponents();
     }
-    
+
     /**
-     * param  controller
-     * Creates new form DefineFAEMainUI
-     * param controller
+     * param controller Creates new form DefineFAEMainUI param controller
      */
     public DiiferenceTwoEventsAcceptanceRateMainUI(JFrame parent, DifferenceTwoEventsAcceptanceRateController controller) {
         this.controller = controller;
@@ -48,7 +48,7 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
         setLocationRelativeTo(null);
         pack();
         this.setVisible(true);
-        
+
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -57,8 +57,9 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
             }
 
         });
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -159,12 +160,12 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
         if (e != null & ev != null) {
             listEvents1.setEnabled(false);
             listEvents2.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "The difference of the acceptance rate from the two events is"+controller.differenceAcceptanceRate(e, ev)+"%",x, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "The difference of the acceptance rate from the two events is" + controller.differenceAcceptanceRate(e, ev) + "%", x, JOptionPane.INFORMATION_MESSAGE);
             dispose();
             parent.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "The difference of the acceptance rate from the two events was not defined successfully! Please select an event in each list");
-        }    
+        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     /**
@@ -224,7 +225,7 @@ private void prepareEventsList() {
         this.listEvents2.setModel(modelEvents2);
     }
 
-private void close() {
+    private void close() {
         String[] opYesNo = {"Yes", "No"};
         int answer = JOptionPane.showOptionDialog(this,
                 "Do you want to cancel the Difference Two Events Acceptance Rate process?",
@@ -244,8 +245,4 @@ private void close() {
         }
     }
 
-
-
-
 }
-

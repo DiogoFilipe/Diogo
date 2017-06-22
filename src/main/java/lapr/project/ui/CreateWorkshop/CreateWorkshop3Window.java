@@ -11,6 +11,8 @@ package lapr.project.ui.CreateWorkshop;
  */
 public class CreateWorkshop3Window extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 5385439265844046987L;
+
     /**
      * Creates new form CreateWorkshop3Window
      */

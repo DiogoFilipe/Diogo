@@ -20,9 +20,11 @@ import lapr.project.utils.LogInException;
  */
 public class LogInWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 19065370299251329L;
+
     private FairCenter fc;
     private LogInController controller;
-    
+
     public LogInWindow(FairCenter fc) {
         this.fc = fc;
         this.setVisible(true);
@@ -31,13 +33,13 @@ public class LogInWindow extends javax.swing.JFrame {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(LogInWindow.this, "Do you want to close the application?","WARNING",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(LogInWindow.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                     dispose();
                 }
             }
 
         });
-         initComponents();
+        initComponents();
     }
 
     /**
@@ -150,32 +152,32 @@ public class LogInWindow extends javax.swing.JFrame {
         controller = new LogInController(fc);
         String id = jTextField1.getText();
         String password = jPasswordField1.getText();
-        List <User> users = controller.getUsers();
+        List<User> users = controller.getUsers();
         User user;
-        try{
-             for (User u : users) {
-        for (int i = 0; i < 100; i++) {
-          String ciphredPassword = controller.cipherPassword(password,i);  
-        
-           
-                if(u.getPassword().equals(ciphredPassword)){
-                 user = controller.getUser(u.getUsername());
-                 String kw =controller.verifyEncryptionUserGetKeyword(user);
-                 int shift =controller.verifyEncryptionUserGetShift(user);
-                 String cipheredID = controller.cipherAttributes(id,shift, kw);
-                 
-                 if(u.getUsername().equals(cipheredID) || u.getEmail().equals(cipheredID)){
-                      MainWindow mainWindow = new MainWindow(fc,user);
-                      mainWindow.setVisible(true);
-                      dispose();
-                  
-                 }
-                }      
-            } 
+        try {
+            for (User u : users) {
+                for (int i = 0; i < 100; i++) {
+                    String ciphredPassword = controller.cipherPassword(password, i);
+
+                    if (u.getPassword().equals(ciphredPassword)) {
+                        user = controller.getUser(u.getUsername());
+                        String kw = controller.verifyEncryptionUserGetKeyword(user);
+                        int shift = controller.verifyEncryptionUserGetShift(user);
+                        String cipheredID = controller.cipherAttributes(id, shift, kw);
+
+                        if (u.getUsername().equals(cipheredID) || u.getEmail().equals(cipheredID)) {
+                            MainWindow mainWindow = new MainWindow(fc, user);
+                            mainWindow.setVisible(true);
+                            dispose();
+
+                        }
+                    }
+                }
+            }
+        } catch (LogInException e) {
+            jOptionPane1.showMessageDialog(null, "Error:", e.getMessage(), jOptionPane1.PLAIN_MESSAGE);
         }
-        }catch(LogInException e)
-        { jOptionPane1.showMessageDialog(null,"Error:",e.getMessage(),jOptionPane1.PLAIN_MESSAGE);}
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

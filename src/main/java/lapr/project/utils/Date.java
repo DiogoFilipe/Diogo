@@ -5,9 +5,13 @@ import java.util.Calendar;
 
 /**
  * Represents a date by its year, month and day
+ *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Date implements Comparable<Date>,Serializable{
+public class Date implements Comparable<Date>, Serializable {
+
+    private static final long serialVersionUID = -2633699446362124521L;
+
     /**
      * Date's year
      */
@@ -20,7 +24,7 @@ public class Date implements Comparable<Date>,Serializable{
      * Date's day
      */
     private int day;
-       
+
     /**
      * Default year
      */
@@ -33,7 +37,7 @@ public class Date implements Comparable<Date>,Serializable{
      * Default day
      */
     private static final int DEFAULT_DAY = 1;
-    
+
     /**
      * Represents the weekdays
      */
@@ -42,16 +46,53 @@ public class Date implements Comparable<Date>,Serializable{
         /**
          * Days of the week
          */
-        SUNDAY { @Override public String toString() { return "Sunday"; } },
-        MONDAY { @Override public String toString() { return "Monday"; } },
-        TUESDAY {   @Override public String toString() { return "Tuesday"; } },
-        WEDNESDAY {  @Override public String toString() { return "Wednesday"; } },
-        THURSDAY {  @Override public String toString() { return "Thursday"; } },
-        FRIDAY {   @Override public String toString() { return "Friday"; } },
-        SATURDAY {  @Override public String toString() { return "Saturday"; } };
+        SUNDAY {
+            @Override
+            public String toString() {
+                return "Sunday";
+            }
+        },
+        MONDAY {
+            @Override
+            public String toString() {
+                return "Monday";
+            }
+        },
+        TUESDAY {
+            @Override
+            public String toString() {
+                return "Tuesday";
+            }
+        },
+        WEDNESDAY {
+            @Override
+            public String toString() {
+                return "Wednesday";
+            }
+        },
+        THURSDAY {
+            @Override
+            public String toString() {
+                return "Thursday";
+            }
+        },
+        FRIDAY {
+            @Override
+            public String toString() {
+                return "Friday";
+            }
+        },
+        SATURDAY {
+            @Override
+            public String toString() {
+                return "Saturday";
+            }
+        };
 
         /**
-         * Returns the designation of a weekday of a certain index given as a parameter
+         * Returns the designation of a weekday of a certain index given as a
+         * parameter
+         *
          * @param weekdayPosition index of the weekday
          * @return the weekday's designation
          */
@@ -68,18 +109,78 @@ public class Date implements Comparable<Date>,Serializable{
         /**
          * The months of the year
          */
-        JANUARY(31) {   @Override public String toString() { return "January"; } }, 
-        FEBRUARY(28) { @Override public String toString() { return "February"; } }, 
-        MARCH(31) {     @Override public String toString() { return "March"; } },
-        APRIL(30) {     @Override public String toString() { return "April"; } }, 
-        MAY(31) {      @Override public String toString() { return "May"; } }, 
-        JUNE(30) {     @Override public String toString() { return "June"; } }, 
-        JULY(31) {     @Override public String toString() { return "July"; } }, 
-        AUGUST(31) {    @Override public String toString() { return "August"; } }, 
-        SEPTEMBER(30) {  @Override public String toString() { return "September"; } },
-        OCTOBER(31) {   @Override public String toString() { return "October"; } }, 
-        NOVEMBER(30) {  @Override public String toString() { return "November"; } }, 
-        DECEMBER(31) {  @Override public String toString() { return "December"; } };
+        JANUARY(31) {
+            @Override
+            public String toString() {
+                return "January";
+            }
+        },
+        FEBRUARY(28) {
+            @Override
+            public String toString() {
+                return "February";
+            }
+        },
+        MARCH(31) {
+            @Override
+            public String toString() {
+                return "March";
+            }
+        },
+        APRIL(30) {
+            @Override
+            public String toString() {
+                return "April";
+            }
+        },
+        MAY(31) {
+            @Override
+            public String toString() {
+                return "May";
+            }
+        },
+        JUNE(30) {
+            @Override
+            public String toString() {
+                return "June";
+            }
+        },
+        JULY(31) {
+            @Override
+            public String toString() {
+                return "July";
+            }
+        },
+        AUGUST(31) {
+            @Override
+            public String toString() {
+                return "August";
+            }
+        },
+        SEPTEMBER(30) {
+            @Override
+            public String toString() {
+                return "September";
+            }
+        },
+        OCTOBER(31) {
+            @Override
+            public String toString() {
+                return "October";
+            }
+        },
+        NOVEMBER(30) {
+            @Override
+            public String toString() {
+                return "November";
+            }
+        },
+        DECEMBER(31) {
+            @Override
+            public String toString() {
+                return "December";
+            }
+        };
 
         /**
          * Number of days of a month
@@ -88,6 +189,7 @@ public class Date implements Comparable<Date>,Serializable{
 
         /**
          * Constructs a Month with the number of days given as a parameter
+         *
          * @param numberOfDays the numer of days of the month
          */
         private Month(int numberOfDays) {
@@ -96,6 +198,7 @@ public class Date implements Comparable<Date>,Serializable{
 
         /**
          * Returns the days of the month of the year given as a parameter
+         *
          * @param year the year of the month
          * @return the number of days of the month of that year
          */
@@ -105,9 +208,10 @@ public class Date implements Comparable<Date>,Serializable{
             }
             return numberOfDays;
         }
-        
+
         /**
          * Returns the month which index is given as a parameter
+         *
          * @param monthPosition the month's index
          * @return the month of the given index
          */
@@ -116,20 +220,22 @@ public class Date implements Comparable<Date>,Serializable{
         }
 
     }
-    
+
     /**
      * Constructs an instance of Date giving it a year, a month and a day
+     *
      * @param year Date's year
      * @param month Date's month
      * @param day Date's day
      */
     public Date(int year, int month, int day) {
-        setDate(year,month,day);
+        setDate(year, month, day);
     }
-    
 
     /**
-     * Constructs an instance of Date with the same parameters of a Date given as a parameter
+     * Constructs an instance of Date with the same parameters of a Date given
+     * as a parameter
+     *
      * @param otherDate Date with the parameters to be copied
      */
     public Date(Date otherDate) {
@@ -140,6 +246,7 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Returns the year of the Date
+     *
      * @return year of the Date
      */
     public int getYear() {
@@ -148,14 +255,16 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Returns the month of the Date
+     *
      * @return month of the Date
      */
     public int getMonth() {
-        return month.ordinal()+1;
+        return month.ordinal() + 1;
     }
 
     /**
      * Returns the day of the Date
+     *
      * @return day of the Date
      */
     public int getDay() {
@@ -164,26 +273,29 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Modifies the year, month and day of a Date
+     *
      * @param year Date's year
      * @param month Date's month
      * @param day Date's day
      */
     public final void setDate(int year, int month, int day) {
         if (month < 1 || month > 12) {
-            throw new InvalidMonthException( + month + "is an invalid month");
+            throw new InvalidMonthException(+month + "is an invalid month");
         }
-        
-        if ( day < 1 || day > Month.getMonth(month).numberOfDays(year)) {
-            throw new InvalidDayException( year + "/" + month + "/" + day);
+
+        if (day < 1 || day > Month.getMonth(month).numberOfDays(year)) {
+            throw new InvalidDayException(year + "/" + month + "/" + day);
         }
-        
-        this.year=year;
-        this.month=Month.getMonth(month);
-        this.day=day;
+
+        this.year = year;
+        this.month = Month.getMonth(month);
+        this.day = day;
     }
 
     /**
-     * Returns a textual representation of a Date in the following format: day of the week, day, month, year
+     * Returns a textual representation of a Date in the following format: day
+     * of the week, day, month, year
+     *
      * @return characteristics of a Date
      */
     @Override
@@ -193,16 +305,19 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Returns the Date in the following format: yyyy/mm/dd
+     *
      * @return characteristics of a Date
      */
     public String toYearMonthDayString() {
-        return String.format("%04d/%02d/%02d", year, month.ordinal()+1, day);
+        return String.format("%04d/%02d/%02d", year, month.ordinal() + 1, day);
     }
-    
+
     /**
      * Compares with the object given as a parameter
+     *
      * @param otherObject object compared with the Date
-     * @return true if the object given is the same as the Date, false if it isn't
+     * @return true if the object given is the same as the Date, false if it
+     * isn't
      */
     @Override
     public boolean equals(Object otherObject) {
@@ -219,8 +334,10 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Compares with the object given as a parameter
+     *
      * @param otherDate object compared with the Date
-     * @return 0 if otherDate is the same as the Date, -1 if otherDate is bigger than Date, 1 if otherDate is smaller than Date
+     * @return 0 if otherDate is the same as the Date, -1 if otherDate is bigger
+     * than Date, 1 if otherDate is smaller than Date
      */
     @Override
     public int compareTo(Date otherDate) {
@@ -229,6 +346,7 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Returns the weekday of Date
+     *
      * @return weekday of Date
      */
     public String weekday() {
@@ -238,11 +356,13 @@ public class Date implements Comparable<Date>,Serializable{
         return Weekday.WeekdayDescription(daysTotal);
     }
 
-
     /**
-     * Returns true if Date is bigger than the Date given as a parameter, if it isn't, returns false
+     * Returns true if Date is bigger than the Date given as a parameter, if it
+     * isn't, returns false
+     *
      * @param otherDate the other Date used for comparison
-     * @return true if Date is bigger than the Date given as a parameter, if it isn't, returns false
+     * @return true if Date is bigger than the Date given as a parameter, if it
+     * isn't, returns false
      */
     public boolean isBigger(Date otherDate) {
         int daysTotal = countDays();
@@ -252,9 +372,12 @@ public class Date implements Comparable<Date>,Serializable{
     }
 
     /**
-     * Returns the difference in number of days between Date and the other Date given as a parameter
+     * Returns the difference in number of days between Date and the other Date
+     * given as a parameter
+     *
      * @param otherDate the other Date used for comparison
-     * @return difference in number of days between Date and the other Date given as a parameter
+     * @return difference in number of days between Date and the other Date
+     * given as a parameter
      */
     public int difference(Date otherDate) {
         int daysTotal = countDays();
@@ -264,11 +387,14 @@ public class Date implements Comparable<Date>,Serializable{
     }
 
     /**
-     * Returns the difference in number of days between the Date and the Date inserted through its parameters
+     * Returns the difference in number of days between the Date and the Date
+     * inserted through its parameters
+     *
      * @param year year of the Date used for comparison
      * @param month month of the Date used for comparison
      * @param day day of the Date used for comparison
-     * @return the difference in number of days between the Date and the Date inserted through its parameters
+     * @return the difference in number of days between the Date and the Date
+     * inserted through its parameters
      */
     public int difference(int year, int month, int day) {
         int daysTotal = countDays();
@@ -280,6 +406,7 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Returns true if the given year is a leap year, false if it isn't
+     *
      * @param year the year we want to validate
      * @return true if the given year is a leap year, false if it isn't
      */
@@ -289,6 +416,7 @@ public class Date implements Comparable<Date>,Serializable{
 
     /**
      * Returns the current date of the system
+     *
      * @return current date of the system
      */
     public static Date currentDate() {
@@ -298,14 +426,15 @@ public class Date implements Comparable<Date>,Serializable{
         int day = today.get(Calendar.DAY_OF_MONTH);
         return new Date(year, month, day);
     }
-    
+
     /**
      * Returns the date in to string
+     *
      * @param dat - date that comes as String
      * @return the date as a Date object
      */
     public static Date StringToDate(String dat) {
-        String [] date = dat.trim().split("-");
+        String[] date = dat.trim().split("-");
         if (date.length != 3) {
             throw new IllegalArgumentException("Invalid Format");
         }
@@ -314,13 +443,14 @@ public class Date implements Comparable<Date>,Serializable{
         int month = Integer.parseInt(date[1]);
         int year = Integer.parseInt(date[2]);
 
-      Date newDate = new Date(day, month, year);
-       return newDate;
+        Date newDate = new Date(day, month, year);
+        return newDate;
     }
 
     /**
      * Returns the number of days since the day 1/1/1 until the Date
-     * @return number of days since the day 1/1/1 until the Date 
+     *
+     * @return number of days since the day 1/1/1 until the Date
      */
     private int countDays() {
         int daysTotal = 0;
@@ -328,7 +458,7 @@ public class Date implements Comparable<Date>,Serializable{
         for (int i = 1; i < year; i++) {
             daysTotal += isBissextileYear(i) ? 366 : 365;
         }
-        for (int i = 1; i < month.ordinal()+1; i++) {
+        for (int i = 1; i < month.ordinal() + 1; i++) {
             daysTotal += Month.getMonth(i).numberOfDays(year);
         }
         daysTotal += day;

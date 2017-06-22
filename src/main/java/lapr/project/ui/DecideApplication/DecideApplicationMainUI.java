@@ -19,28 +19,30 @@ import lapr.project.ui.MainWindow;
  */
 public class DecideApplicationMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 8456477690171187436L;
+
     /**
      * Creates new form DecideApplicationMainUI
      */
-    private List <String> eventsList;
-    
+    private List<String> eventsList;
+
     /**
      * fair center
      */
     FairCenter fc;
-    
+
     DecideApplicationController controller;
-    
+
     /**
      * user
      */
     User u;
-    
-    public DecideApplicationMainUI(FairCenter fc,User u) {
-        this.fc=fc;
-        controller = new DecideApplicationController(fc,u);
+
+    public DecideApplicationMainUI(FairCenter fc, User u) {
+        this.fc = fc;
+        controller = new DecideApplicationController(fc, u);
         initComponents();
-        AbstractListModel model = new AbstractListModel(){
+        AbstractListModel model = new AbstractListModel() {
             @Override
             public int getSize() {
                 return controller.getFAEEventList().size();
@@ -48,8 +50,8 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
 
             @Override
             public Object getElementAt(int index) {
-               return controller.getFAEEventList().get(index);
-            }  
+                return controller.getFAEEventList().get(index);
+            }
         };
         jList2.setModel(model);
         jScrollPane1.setViewportView(jList2);
@@ -150,16 +152,16 @@ public class DecideApplicationMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String event = jList2.getSelectedValue();
-       SelectApplicationUI selectApplication = new SelectApplicationUI(fc,u,event);
-       selectApplication.setVisible(true);
-       dispose();
+        String event = jList2.getSelectedValue();
+        SelectApplicationUI selectApplication = new SelectApplicationUI(fc, u, event);
+        selectApplication.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       MainWindow mainWindow = new MainWindow(fc,u);
-       mainWindow.setVisible(true);
-       dispose();
+        MainWindow mainWindow = new MainWindow(fc, u);
+        mainWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

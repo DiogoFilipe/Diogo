@@ -23,7 +23,9 @@ import lapr.project.model.User;
  * @author João Domingues
  */
 public class DefineFAEMainUI extends javax.swing.JFrame {
-   
+
+    private static final long serialVersionUID = -2218373573308231822L;
+
     DefineFAEController controller;
     DefaultListModel modelEvents;
     DefaultListModel modelUsers;
@@ -31,8 +33,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     JFrame parent;
 
     /**
-     * Creates new form DefineFAEMainUI
-     * param controller
+     * Creates new form DefineFAEMainUI param controller
      */
     public DefineFAEMainUI(JFrame parent, DefineFAEController controller) {
         this.controller = controller;
@@ -44,8 +45,8 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         pack();
         this.setVisible(true);
-        
-         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -53,9 +54,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
             }
 
         });
-      
+
     }
-    
+
     /**
      * Creates new form ChanceApplicationMainUI
      */
@@ -228,13 +229,13 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void confirmEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmEventActionPerformed
-       int selectedindex = listEvent.getSelectedIndex();
+        int selectedindex = listEvent.getSelectedIndex();
         if (selectedindex != -1) {
             listEvent.setEnabled(false);
             confirmEvent.setEnabled(false);
             controller.setEventSelect(controller.getEventsRegist().getEventList().get(selectedindex));
             prepareUsersList();
-        }    
+        }
     }//GEN-LAST:event_confirmEventActionPerformed
 
     private void confirmUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmUserActionPerformed
@@ -245,7 +246,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
             this.listUser.setEnabled(false);
             this.confirmUser.setEnabled(false);
             prepareFAEList();
-        }    
+        }
     }//GEN-LAST:event_confirmUserActionPerformed
     /**
      * @param args the command line arguments
@@ -309,7 +310,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         }
         this.listEvent.setModel(modelEvents);
     }
-    
+
     private void prepareUsersList() {
         List<User> users = this.controller.generateUsersList(this.controller.getEventSelect());
         modelUsers = new DefaultListModel();
@@ -320,27 +321,25 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         this.listUser.setEnabled(true);
         this.confirmUser.setEnabled(true);
     }
-    
-     private void prepareFAEList() {
+
+    private void prepareFAEList() {
         User u = this.controller.getUserSelected();
         Event e = this.controller.getEventSelect();
-         
+
         controller.addFAE(u, e);
-        
+
         List<FAE> faeslist = this.controller.getFAEList();
 
         modelFaes = new DefaultListModel();
-        for ( FAE faelist : faeslist) {
+        for (FAE faelist : faeslist) {
             modelFaes.addElement(faeslist);
         }
         this.listFAE.setModel(modelFaes);
         this.btnConfirmOperation.setEnabled(true);
-      
 
-         
-     }
-    
-     private void close() {
+    }
+
+    private void close() {
         String[] opYesNo = {"Yes", "No"};
         int answer = JOptionPane.showOptionDialog(this,
                 "Do you want to cancel the Define FAE process?",
@@ -359,8 +358,5 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
 
         }
     }
-    
-
 
 }
-

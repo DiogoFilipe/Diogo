@@ -19,11 +19,14 @@ import lapr.project.ui.MainWindow;
  * @author HP
  */
 public class ExportAllDataMainUI extends javax.swing.JFrame {
+
+    private static final long serialVersionUID = -4844327210198520469L;
+
     User user;
     FairCenter fc;
-    
-   ExportDataController controller;
-    
+
+    ExportDataController controller;
+
     /**
      * Creates new form ExportAllDataMainUI
      */
@@ -33,6 +36,7 @@ public class ExportAllDataMainUI extends javax.swing.JFrame {
         this.setVisible(true);
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,19 +148,19 @@ public class ExportAllDataMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                    
-            MainWindow mainWindow = new MainWindow(fc,user);
-            mainWindow.setVisible(true);
-            dispose();
+
+        MainWindow mainWindow = new MainWindow(fc, user);
+        mainWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                                    
-            controller = new ExportDataController(fc,user);
+
+        controller = new ExportDataController(fc, user);
 
         try {
             controller.exportData();
-            MainWindow mainWindow = new MainWindow(fc,user);
+            MainWindow mainWindow = new MainWindow(fc, user);
             mainWindow.setVisible(true);
             dispose();
 
@@ -169,7 +173,6 @@ public class ExportAllDataMainUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

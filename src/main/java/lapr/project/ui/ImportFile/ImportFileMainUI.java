@@ -21,47 +21,54 @@ import lapr.project.ui.MainWindow;
  */
 public class ImportFileMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 5625877851971036403L;
+
     private ImportFileController controller;
     private FairCenter fc;
     private User user;
+
     /**
      * Creates new form ImportFileMainUI
      */
-    public ImportFileMainUI(FairCenter fc,User user) {
+    public ImportFileMainUI(FairCenter fc, User user) {
         this.user = user;
         this.fc = fc;
         initComponents();
         selectFile();
     }
-    
-    public void selectFile(){
-    JFileChooser fileChooser = new JFileChooser();
-     int returnVal = fileChooser.showOpenDialog(this);
-     controller = new ImportFileController(fc);
+
+    public void selectFile() {
+        JFileChooser fileChooser = new JFileChooser();
+        int returnVal = fileChooser.showOpenDialog(this);
+        controller = new ImportFileController(fc);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            String filename= fileChooser.getSelectedFile().getName();
-            String typ = filename.substring(filename.lastIndexOf("."),filename.length());
+            String filename = fileChooser.getSelectedFile().getName();
+            String typ = filename.substring(filename.lastIndexOf("."), filename.length());
             File file = fileChooser.getSelectedFile();
-            if(typ.equals(".xml")){
+            if (typ.equals(".xml")) {
                 try {
-                    if(true == controller.readXML(file)){
-                        MainWindow main = new MainWindow(fc,user);
+                    if (true == controller.readXML(file)) {
+                        MainWindow main = new MainWindow(fc, user);
                         main.setVisible(true);
                         dispose();
-                    }   } catch (ParserConfigurationException ex) {
+                    }
+                } catch (ParserConfigurationException ex) {
                     Logger.getLogger(ImportFileMainUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-}
-            if(typ.equals(".csv")){
-            if(true == controller.fileReader(file)){
-            MainWindow main = new MainWindow(fc,user);
-            main.setVisible(true);
-            dispose();
-            }} else{
             }
-        
-    }}
+            if (typ.equals(".csv")) {
+                if (true == controller.fileReader(file)) {
+                    MainWindow main = new MainWindow(fc, user);
+                    main.setVisible(true);
+                    dispose();
+                }
+            } else {
+            }
+
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +107,6 @@ public class ImportFileMainUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame jFrame1;

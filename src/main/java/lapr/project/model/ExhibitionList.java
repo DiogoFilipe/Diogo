@@ -14,22 +14,24 @@ import java.util.List;
  * @author Diogo
  */
 public class ExhibitionList implements Serializable {
-    
+
+    private static final long serialVersionUID = -6678728380578164280L;
+
     /**
      * list of exhibitions
      */
     private List<Exhibition> exhibitionList;
-    
+
     /**
-     * 
-     * @param exhibitionList list of exhibitions 
+     *
+     * @param exhibitionList list of exhibitions
      */
-    public ExhibitionList(List<Exhibition> exhibitionList){
-        this.exhibitionList=exhibitionList;
+    public ExhibitionList(List<Exhibition> exhibitionList) {
+        this.exhibitionList = exhibitionList;
     }
-    
-    public ExhibitionList(){
-        this.exhibitionList= new ArrayList<>();
+
+    public ExhibitionList() {
+        this.exhibitionList = new ArrayList<>();
     }
 
     /**
@@ -44,5 +46,5 @@ public class ExhibitionList implements Serializable {
      */
     public void setExhibitionList(List<Exhibition> exhibitionList) {
         this.exhibitionList = exhibitionList;
-    }    
+    }
 }

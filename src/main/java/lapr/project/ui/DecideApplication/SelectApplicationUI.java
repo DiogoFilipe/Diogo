@@ -17,6 +17,8 @@ import lapr.project.model.User;
  */
 public class SelectApplicationUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -2927792530226184270L;
+
     /**
      * Creates new form SelectApplicationUI
      */
@@ -130,15 +132,15 @@ public class SelectApplicationUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String application = jList1.getSelectedValue();
-        if(controller.isOrganizer(u) && controller.getApplication(event, application).getD().getDecision()!=false && controller.getApplication(event, application).getD().getDecision()!=true){
-        DecideApplicationUIOrganizer decideApplicationOrganizer = new DecideApplicationUIOrganizer(fc, u, event, application);
-        decideApplicationOrganizer.setVisible(true);
-        dispose();
-        }else if(controller.isFAE(u)){
-            ApplicationEvaluationUI applicationEvaluation = new ApplicationEvaluationUI(fc,u,event,application);
+        if (controller.isOrganizer(u) && controller.getApplication(event, application).getD().getDecision() != false && controller.getApplication(event, application).getD().getDecision() != true) {
+            DecideApplicationUIOrganizer decideApplicationOrganizer = new DecideApplicationUIOrganizer(fc, u, event, application);
+            decideApplicationOrganizer.setVisible(true);
+            dispose();
+        } else if (controller.isFAE(u)) {
+            ApplicationEvaluationUI applicationEvaluation = new ApplicationEvaluationUI(fc, u, event, application);
             applicationEvaluation.setVisible(true);
             dispose();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(SelectApplicationUI.this, "The application his already decided", "DECIDED", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -13,6 +13,8 @@ import lapr.project.ui.MainWindow;
  */
 public class EditApplicationMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -3910352278108992741L;
+
     /**
      * Creates new form ChanceApplicationMainUI
      */

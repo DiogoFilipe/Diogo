@@ -13,6 +13,8 @@ import lapr.project.ui.MainWindow;
  */
 public class DefineEventManagerMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 1134569474714942921L;
+
     /**
      * Creates new form DefineEventManagerMainUI
      */
@@ -132,15 +134,15 @@ public class DefineEventManagerMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       MainWindow mainWindow = new MainWindow();
-       mainWindow.setVisible(true);
-       dispose();
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       MainWindow mainWindow = new MainWindow();
-       mainWindow.setVisible(true);
-       dispose();
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

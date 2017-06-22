@@ -11,6 +11,8 @@ package lapr.project.utils;
  */
 public class ChangeApplicationException extends Exception {
 
+    private static final long serialVersionUID = 781138534268121133L;
+
     /**
      * Creates a new instance of <code>ChangeApplicationException</code> without
      * detail message.

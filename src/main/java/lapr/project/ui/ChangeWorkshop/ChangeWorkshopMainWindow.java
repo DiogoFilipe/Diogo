@@ -11,6 +11,8 @@ package lapr.project.ui.ChangeWorkshop;
  */
 public class ChangeWorkshopMainWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -2598153675701335175L;
+
     /**
      * Creates new form ChangeWorkshopMainWindow
      */

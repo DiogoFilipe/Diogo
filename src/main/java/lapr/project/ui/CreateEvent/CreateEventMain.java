@@ -25,6 +25,8 @@ import lapr.project.utils.InvalidYearException;
  */
 public class CreateEventMain extends javax.swing.JFrame implements Serializable {
 
+    private static final long serialVersionUID = 8799413810693056904L;
+
     private FairCenter fc;
     private User u;
     private List<String> organizerListEvent;

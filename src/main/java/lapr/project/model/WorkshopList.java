@@ -13,20 +13,22 @@ import java.util.List;
  *
  * @author Diogo
  */
-public class WorkshopList implements Serializable{
-    
+public class WorkshopList implements Serializable {
+
+    private static final long serialVersionUID = -8135495448757262759L;
+
     /**
      * list of workshops
-     */   
+     */
     private List<Workshop> workshopList;
-    
+
     /**
      * empty constructor
      */
-    public WorkshopList(){
-        this.workshopList=new ArrayList<>();
+    public WorkshopList() {
+        this.workshopList = new ArrayList<>();
     }
-    
+
     /**
      * @return the workshopList
      */
@@ -40,5 +42,5 @@ public class WorkshopList implements Serializable{
     public void setWorkshopList(List<Workshop> workshopList) {
         this.workshopList = workshopList;
     }
-    
+
 }

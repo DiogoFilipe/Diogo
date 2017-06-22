@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 public class InvalidYearException extends IllegalArgumentException implements Serializable {
 
+    private static final long serialVersionUID = -4014759642668561620L;
+
     /**
      * Creates a new instance of <code>InvalidYearException</code> without
      * detail message.
@@ -27,6 +29,6 @@ public class InvalidYearException extends IllegalArgumentException implements Se
      * @param msg the detail message.
      */
     public InvalidYearException(String msg) {
-        super("Invalid year on "+msg);
+        super("Invalid year on " + msg);
     }
 }

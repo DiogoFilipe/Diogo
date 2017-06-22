@@ -11,6 +11,8 @@ package lapr.project.utils;
  */
 public class CreateStandException extends Exception {
 
+    private static final long serialVersionUID = -6697689370262923749L;
+
     /**
      * Creates a new instance of <code>CreateStandException</code> without
      * detail message.

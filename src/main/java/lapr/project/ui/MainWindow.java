@@ -33,6 +33,8 @@ import lapr.project.utils.DontHavePermissionException;
  */
 public class MainWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -570279213872066293L;
+
     FairCenter fc;
     User user;
     ListApplicationsController listApplicationController;
@@ -51,7 +53,6 @@ public class MainWindow extends javax.swing.JFrame {
         listApplicationController = new ListApplicationsController(fc, user);
         initComponents();
     }
-    
 
     public MainWindow() {
 
@@ -357,7 +358,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ChangeApplicationActionPerformed
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
-        CreateStandMainUI createStand = new CreateStandMainUI(fc,user);
+        CreateStandMainUI createStand = new CreateStandMainUI(fc, user);
         createStand.setVisible(true);
         dispose();
     }//GEN-LAST:event_createStandActionPerformed
@@ -367,7 +368,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_AssignStandActionPerformed
 
     private void ExportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportAllDataActionPerformed
-        ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc,user);
+        ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, user);
         exportData.setVisible(true);
         dispose();    }//GEN-LAST:event_ExportAllDataActionPerformed
 
@@ -407,7 +408,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_Diff2FAEDeviationRatingActionPerformed
 
     private void ImportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportAllDataActionPerformed
-        ImportFileMainUI importFile = new ImportFileMainUI(fc,user);
+        ImportFileMainUI importFile = new ImportFileMainUI(fc, user);
         importFile.setVisible(true);
         dispose();
     }//GEN-LAST:event_ImportAllDataActionPerformed

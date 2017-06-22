@@ -14,25 +14,27 @@ import java.util.List;
  * @author Diogo
  */
 public class CongressList implements Serializable {
-    
+
+    private static final long serialVersionUID = -8556830658467488171L;
+
     /**
      * list of congresses
      */
     private List<Congress> congressList;
-    
+
     /**
-     * 
-     * @param congressList list of congresses 
+     *
+     * @param congressList list of congresses
      */
-    public CongressList(List<Congress> congressList){
-        this.congressList=congressList;
+    public CongressList(List<Congress> congressList) {
+        this.congressList = congressList;
     }
-    
+
     /**
      * empty constructor
      */
-    public CongressList(){
-        this.congressList= new ArrayList<>();
+    public CongressList() {
+        this.congressList = new ArrayList<>();
     }
 
     /**
@@ -48,6 +50,5 @@ public class CongressList implements Serializable {
     public void setCongressList(List<Congress> congressList) {
         this.congressList = congressList;
     }
-    
-    
+
 }

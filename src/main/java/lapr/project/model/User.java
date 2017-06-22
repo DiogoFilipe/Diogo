@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+    private static final long serialVersionUID = 4197073451398606491L;
+
     /**
      * name
      */

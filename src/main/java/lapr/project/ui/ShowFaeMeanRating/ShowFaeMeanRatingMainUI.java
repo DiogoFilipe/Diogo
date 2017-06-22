@@ -13,6 +13,8 @@ import lapr.project.ui.MainWindow;
  */
 public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -4450352461231906763L;
+
     /**
      * Creates new form ShowFaeMeanRatingMainUI
      */

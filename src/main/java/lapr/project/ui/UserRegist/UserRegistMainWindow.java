@@ -11,24 +11,24 @@ import lapr.project.model.*;
 import lapr.project.ui.LogInWindow;
 import lapr.project.utils.UserRegistException;
 
-
 /**
  *
  * @author Diogo
  */
 public class UserRegistMainWindow extends javax.swing.JFrame {
-    
+
+    private static final long serialVersionUID = 340881342630031345L;
+
     private UserRegistMainWindowController controller;
     private FairCenter fc;
-    
-    
+
     /**
      * Creates new form UserRegistMainWindow
      */
     public UserRegistMainWindow(FairCenter fc) {
         this.fc = fc;
         initComponents();
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,63 +196,62 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller = new UserRegistMainWindowController(fc); 
-        int shift = controller.gerateShift(); 
+        controller = new UserRegistMainWindowController(fc);
+        int shift = controller.gerateShift();
         String name = jTextField1.getText();
         String username = jTextField2.getText();
         String email = jTextField3.getText();
         String password = jPasswordField1.getText();
         String keyword = jTextField4.getText();
-        
-        try{
-        controller.verifyName(name);
-        }catch(UserRegistException e){
-           JOptionPane.showMessageDialog(UserRegistMainWindow.this,e.getMessage(),"Name doesn´t contain only letters",JOptionPane.INFORMATION_MESSAGE);
-           
-         }
-        try{
-        String cipheredUsername = controller.chiperAttributes(username, shift, keyword);    
-        controller.verifyUsername(cipheredUsername);
-        }catch(UserRegistException e){
-            
-          JOptionPane.showMessageDialog(this,e.getMessage(),"Username already exists",JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            controller.verifyName(name);
+        } catch (UserRegistException e) {
+            JOptionPane.showMessageDialog(UserRegistMainWindow.this, e.getMessage(), "Name doesn´t contain only letters", JOptionPane.INFORMATION_MESSAGE);
+
         }
-        try{
-        controller.verifyEmail(email);
-        }catch(UserRegistException e){
-            
-            jOptionPane1.showMessageDialog(null,e.getMessage(),"Email format incorrect or already exists",jOptionPane1.PLAIN_MESSAGE);
-            
+        try {
+            String cipheredUsername = controller.chiperAttributes(username, shift, keyword);
+            controller.verifyUsername(cipheredUsername);
+        } catch (UserRegistException e) {
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Username already exists", JOptionPane.INFORMATION_MESSAGE);
         }
-        try{
+        try {
+            controller.verifyEmail(email);
+        } catch (UserRegistException e) {
+
+            jOptionPane1.showMessageDialog(null, e.getMessage(), "Email format incorrect or already exists", jOptionPane1.PLAIN_MESSAGE);
+
+        }
+        try {
             controller.verifyPassword(password);
-        }catch(UserRegistException e){
-            
-            jOptionPane1.showMessageDialog(null,e.getMessage(),"Password must contain a number an UpperCase a LowerCase and symbol",jOptionPane1.PLAIN_MESSAGE);
+        } catch (UserRegistException e) {
+
+            jOptionPane1.showMessageDialog(null, e.getMessage(), "Password must contain a number an UpperCase a LowerCase and symbol", jOptionPane1.PLAIN_MESSAGE);
         }
-        try{
-        controller.verifyKeyword(keyword);
-        }catch(UserRegistException e){
-            
-            jOptionPane1.showMessageDialog(null,e.getMessage(),"Keyword doesn´t contain only letters",jOptionPane1.PLAIN_MESSAGE);
+        try {
+            controller.verifyKeyword(keyword);
+        } catch (UserRegistException e) {
+
+            jOptionPane1.showMessageDialog(null, e.getMessage(), "Keyword doesn´t contain only letters", jOptionPane1.PLAIN_MESSAGE);
         }
-       
+
         String cipheredName = controller.chiperAttributes(name, shift, keyword);
         String cipheredEmail = controller.chiperAttributes(email, shift, keyword);
         String cipheredUsername = controller.chiperAttributes(username, shift, keyword);
         String cipheredPassword = controller.cipherPassword(password, shift);
-        User user = new User(cipheredName, cipheredUsername, cipheredEmail,cipheredPassword);
-        Encryption encryption = new Encryption(user,keyword,shift);
+        User user = new User(cipheredName, cipheredUsername, cipheredEmail, cipheredPassword);
+        Encryption encryption = new Encryption(user, keyword, shift);
         controller.addEncryption(encryption);
         controller.addUser(user);
         LogInWindow logInWindow = new LogInWindow(fc);
         logInWindow.setVisible(true);
         dispose();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
- 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

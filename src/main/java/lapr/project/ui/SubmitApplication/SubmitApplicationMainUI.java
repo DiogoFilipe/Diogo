@@ -13,6 +13,8 @@ import lapr.project.ui.MainWindow;
  */
 public class SubmitApplicationMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -6402947732678595747L;
+
     /**
      * Creates new form SubmitApplicationMainUI
      */

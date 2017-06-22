@@ -20,6 +20,8 @@ import lapr.project.ui.MainWindow;
  */
 public class ShowEventKeywordsWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -4143626928459990477L;
+
     FairCenter fc;
     User user;
     ShowEventKeywordsController controller;
@@ -54,8 +56,8 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
             List<String> keywords = controller.getKeywordsListString(event);
             jTable1.addColumn((TableColumn) keywords);
             List<Double> freq = controller.getFrequencesList(event);
-            jTable1.addColumn((TableColumn)freq);
-            
+            jTable1.addColumn((TableColumn) freq);
+
         });
     }
 

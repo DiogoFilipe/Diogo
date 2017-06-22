@@ -20,6 +20,8 @@ import lapr.project.utils.EventNotFound;
  */
 public class ChangeApplicationMainWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -2693512371882826820L;
+
     FairCenter fc;
     User u;
     ChangeApplicationController controller;

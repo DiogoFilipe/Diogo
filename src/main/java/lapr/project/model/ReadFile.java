@@ -13,11 +13,14 @@ import java.util.Scanner;
  */
 public class ReadFile implements Serializable {
 
+    private static final long serialVersionUID = 825844789963152265L;
+
     /**
-     * Trys to read the file 
+     * Trys to read the file
+     *
      * @param fileName - name of the file with the content
      * @param fc - the fairCenter
-     * @return 
+     * @return
      */
     public static boolean readFile(File file, FairCenter fc) {
         try (Scanner scanner = new Scanner(file)) {
@@ -37,7 +40,9 @@ public class ReadFile implements Serializable {
     }
 
     /**
-     * depending on the second string of the line the data shall be treated differently
+     * depending on the second string of the line the data shall be treated
+     * differently
+     *
      * @param data - data with the content of the line
      * @param fc - the fairCenter
      */
@@ -64,45 +69,46 @@ public class ReadFile implements Serializable {
 
     /**
      * Regists the information regarding the applications and their decisions
+     *
      * @param data - data with the content of the line
      * @param event - application´s event
      * @param fairCenter - the fairCenter
      */
     private static void registEventInformation(String[] data, Event event, FairCenter fairCenter) {
         Assignment assignment;
-        List <FAE> decisionFae= new ArrayList<>();
+        List<FAE> decisionFae = new ArrayList<>();
         Application application;
         Decision decision1;
         Decision decision2;
         FAE fae1;
         FAE fae2;
 
-        List <Keyword> keywords = new ArrayList<>(data[23].split(",").length);
+        List<Keyword> keywords = new ArrayList<>(data[23].split(",").length);
         for (String keys : data[23].split(",")) {
-                keywords.add(new Keyword(keys));
-            }
-        application = returnApplication(event, data[2], data[3], data[4],keywords);
+            keywords.add(new Keyword(keys));
+        }
+        application = returnApplication(event, data[2], data[3], data[4], keywords);
 
-        decision1 = makeNewDecision(data[1],data[5], data[6], data[7], data[8], data[9]);
+        decision1 = makeNewDecision(data[1], data[5], data[6], data[7], data[8], data[9]);
         fae1 = returnFAE(data[10], data[12], data[11], data[13], event, fairCenter);
         application.setD(decision1);
-        
+
         decisionFae.add(fae1);
-      
-        decision2 = makeNewDecision(data[1],data[14], data[15], data[16], data[17], data[18]);
+
+        decision2 = makeNewDecision(data[1], data[14], data[15], data[16], data[17], data[18]);
         fae2 = returnFAE(data[19], data[21], data[20], data[22], event, fairCenter);
         application.setD(decision2);
         decisionFae.add(fae2);
-        assignment = new Assignment(decisionFae,application);
+        assignment = new Assignment(decisionFae, application);
         event.getAssignmentList().getAssignmentList().add(assignment);
-   
 
         event.getApplicationList().getApplicationList().add(application);
     }
-    
+
     /**
      * Returns the event with the title
-     * @param title -  title of the event
+     *
+     * @param title - title of the event
      * @param fairCenter - the fairCenter
      * @return the matching event or the created event
      */
@@ -110,41 +116,45 @@ public class ReadFile implements Serializable {
         Event e;
         if (fairCenter.getEventRegist().getEvent(title) == null) {
             e = new Exhibition(title);
-            List<User> organizerList = new ArrayList<>();    
-            for(User u : organizerList){
-               Organizer o = new Organizer(u);
-            e.getOrganizerList().addOrganizer(o);}
+            List<User> organizerList = new ArrayList<>();
+            for (User u : organizerList) {
+                Organizer o = new Organizer(u);
+                e.getOrganizerList().addOrganizer(o);
+            }
             fairCenter.getEventRegist().getEventList().add(e);
         } else {
             e = fairCenter.getEventRegist().getEvent(title);
         }
-        
+
         return e;
     }
 
     /**
-     * Returns the application with the same description. If it doesn´t exist creates a new one 
+     * Returns the application with the same description. If it doesn´t exist
+     * creates a new one
+     *
      * @param event - event that has the application
      * @param description - applications's description
      * @param area - applications´s pretended area
      * @param ninvites - applications's invites
      * @return the matching application or the created one
      */
-    private static Application returnApplication(Event event, String description, String area, String ninvites,List <Keyword> keywords) {
+    private static Application returnApplication(Event event, String description, String area, String ninvites, List<Keyword> keywords) {
         Application application = event.getApplicationList().getApplication(description);
 
         if (application == null) {
             double boothArea = Double.parseDouble(area);
             int invites = Integer.parseInt(ninvites);
-            application = new Application(invites,boothArea,description,keywords);
-            
-        } 
-            return application;
-        
+            application = new Application(invites, boothArea, description, keywords);
+
+        }
+        return application;
+
     }
 
-     /**
+    /**
      * Returns the decision made over an application
+     *
      * @param decision - decision made over the application
      * @param justification - decision´s justification
      * @param faeKnowledge - faeKnowledge parameter
@@ -153,25 +163,27 @@ public class ReadFile implements Serializable {
      * @param recommendation - application´s recommendation
      * @return decision
      */
-    private static Decision makeNewDecision(String decision,String justification, String faeKnowledge, String adequacy, String invitationAdequacy, String recommendation) {
+    private static Decision makeNewDecision(String decision, String justification, String faeKnowledge, String adequacy, String invitationAdequacy, String recommendation) {
         boolean dec = false;
-        if("true".equalsIgnoreCase(decision)){
-        dec = true;
-        }else{
-            if("false".equalsIgnoreCase(decision)){
+        if ("true".equalsIgnoreCase(decision)) {
+            dec = true;
+        } else {
+            if ("false".equalsIgnoreCase(decision)) {
                 dec = false;
-        }}
-            
+            }
+        }
+
         int faeKnowledgeInt = Integer.parseInt(faeKnowledge);
         int adequacyInt = Integer.parseInt(adequacy);
         int invitationAdequacyInt = Integer.parseInt(invitationAdequacy);
         int recommendationInt = Integer.parseInt(recommendation);
 
-        return new Decision(dec, justification,faeKnowledgeInt,adequacyInt,invitationAdequacyInt,recommendationInt);
+        return new Decision(dec, justification, faeKnowledgeInt, adequacyInt, invitationAdequacyInt, recommendationInt);
     }
 
     /**
      * Returns the fae with the same username, if it doesn't exist return fae
+     *
      * @param name - name of the fae
      * @param email - email of the fae
      * @param username - username of the fae
@@ -183,35 +195,35 @@ public class ReadFile implements Serializable {
     private static FAE returnFAE(String name, String email, String username, String password, Event event, FairCenter fairCenter) {
         User user = fairCenter.getUserRegist().getUser(username);
 
-        
         FAE f = null;
-       
+
         if (user == null) {
-            user = new User(name,username,email ,password);
+            user = new User(name, username, email, password);
             fairCenter.getUserRegist().getUserList().add(user);
-            f = new FAE(name,username,email,password);
+            f = new FAE(name, username, email, password);
             event.getFAEList().getFAEList().add(f);
             return f;
         } else {
             if (event.isFAE(user)) {
                 return event.getFAEList().getFAE(username);
             } else {
-                f = new FAE(name,username,email,password);
+                f = new FAE(name, username, email, password);
                 event.getFAEList().getFAEList().add(f);
                 return f;
             }
         }
     }
 
-  /**
-   * Regists stand in the event
-   * @param area - area of the stand
-   * @param event - event that contains the stands
-   */
+    /**
+     * Regists stand in the event
+     *
+     * @param area - area of the stand
+     * @param event - event that contains the stands
+     */
     private static void registStand(String area, Event event) {
         double areaFloat = Double.parseDouble(area);
 
-         Stand s = new Stand(areaFloat);
+        Stand s = new Stand(areaFloat);
 
         event.getStandList().getStandList().add(s);
     }

@@ -13,8 +13,10 @@ import java.util.List;
  *
  * @author HP
  */
-public class DecisionList implements Serializable{
-    
+public class DecisionList implements Serializable {
+
+    private static final long serialVersionUID = 3799417066092788149L;
+
     /**
      * list of decisions
      */
@@ -40,6 +42,5 @@ public class DecisionList implements Serializable{
     public void setDecisionList(List<Decision> decisionList) {
         this.decisionList = decisionList;
     }
-  
 
 }

@@ -7,7 +7,9 @@ import java.util.Random;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Encryption implements Serializable{
+public class Encryption implements Serializable {
+
+    private static final long serialVersionUID = 1003084396534706974L;
 
     /**
      * keyword
@@ -358,12 +360,12 @@ public class Encryption implements Serializable{
         return !(keyword.length() > 7 || keyword.length() < 5);
     }
 
-   /**
-    * 
-    * @param user user
-    * @param fc fair center
-    * @return the keyword of the user
-    */
+    /**
+     *
+     * @param user user
+     * @param fc fair center
+     * @return the keyword of the user
+     */
     public static String verifyEncryptionUserGetKeyword(User user, FairCenter fc) {
         String kw = "";
         for (Encryption e : fc.getEncryptionList().getEncryptionsList()) {
@@ -375,7 +377,7 @@ public class Encryption implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param user user
      * @param fc fair center
      * @return the user shift number

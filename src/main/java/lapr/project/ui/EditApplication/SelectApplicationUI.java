@@ -11,6 +11,8 @@ package lapr.project.ui.EditApplication;
  */
 public class SelectApplicationUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -6795309635546907378L;
+
     /**
      * Creates new form SelectApplicationUI
      */
@@ -149,7 +151,7 @@ public class SelectApplicationUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       EditApplicationUI editApplication = new EditApplicationUI();
+        EditApplicationUI editApplication = new EditApplicationUI();
         editApplication.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

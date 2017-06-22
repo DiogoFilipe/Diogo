@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class FairCenter implements Serializable {
 
+    private static final long serialVersionUID = -4103137155152392812L;
+
     /**
      * class that has the list of events
      */

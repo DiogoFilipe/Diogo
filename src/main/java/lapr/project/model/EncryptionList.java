@@ -8,7 +8,9 @@ import java.util.List;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class EncryptionList implements Serializable{
+public class EncryptionList implements Serializable {
+
+    private static final long serialVersionUID = 6699410915832403729L;
 
     /**
      * list of encryptions
@@ -30,7 +32,6 @@ public class EncryptionList implements Serializable{
     public List<Encryption> getEncryptionsList() {
         return encryptionsList;
     }
-
 
     /**
      * Defines the Encryptions List
@@ -55,12 +56,12 @@ public class EncryptionList implements Serializable{
         }
         return -1;
     }
-    
+
     /**
-     * 
+     *
      * @param user user
      * @return the keyword of the user
-     */   
+     */
     public String verifyEncryptionUserGetKeyword(User user) {
         String kw = "";
         for (Encryption e : encryptionsList) {
@@ -72,13 +73,13 @@ public class EncryptionList implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param user user
-     * @return the shift used by this user 
+     * @return the shift used by this user
      */
     public int verifyEncryptionUserGetShift(User user) {
         int shift = 0;
-        for (Encryption e :encryptionsList) {
+        for (Encryption e : encryptionsList) {
             if (e.getUser().equals(user)) {
                 shift = e.getShift();
             }

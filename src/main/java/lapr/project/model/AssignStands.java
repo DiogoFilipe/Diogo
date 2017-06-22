@@ -11,20 +11,22 @@ import java.io.Serializable;
  *
  * @author João Domingues
  */
-public class AssignStands implements Serializable{
+public class AssignStands implements Serializable {
+
+    private static final long serialVersionUID = 6635481718930766894L;
 
     /**
      * stand
      */
     private Stand stand;
-    
+
     /**
      * application
      */
     private Application application;
 
     /**
-     * 
+     *
      * @param stand stand that will be assigned
      * @param application application that will have the stand
      */

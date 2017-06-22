@@ -11,6 +11,8 @@ package lapr.project.ui.EditApplication;
  */
 public class EditApplicationUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -5192540791111993946L;
+
     /**
      * Creates new form EditApplicationUI
      */

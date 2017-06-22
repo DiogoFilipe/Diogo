@@ -13,13 +13,15 @@ import java.util.List;
  *
  * @author João Domingues
  */
-public class StandRegist implements Serializable{
-    
+public class StandRegist implements Serializable {
+
+    private static final long serialVersionUID = -8860813692088906903L;
+
     /**
      * list of stands
      */
     private List<Stand> StandList;
-    
+
     /**
      * assignment list stand
      */
@@ -32,7 +34,6 @@ public class StandRegist implements Serializable{
         StandList = new ArrayList<>();
     }
 
-
     /**
      *
      * @return list of stands
@@ -40,10 +41,10 @@ public class StandRegist implements Serializable{
     public List<Stand> getStandList() {
         return StandList;
     }
-    
+
     /**
-     * 
-     * @return all the information 
+     *
+     * @return all the information
      */
     @Override
     public String toString() {
@@ -55,16 +56,16 @@ public class StandRegist implements Serializable{
     }
 
     /**
-     * 
-     * @return List of stands that are not assigned 
+     *
+     * @return List of stands that are not assigned
      */
     public List<Stand> getNotAssignedStands() {
         List<Stand> standsNotAssigned = new ArrayList<>();
         int flag = 0;
         for (Stand s : getStandList()) {
-            for (AssignStands as : getAls().getStandsAssigned()){
+            for (AssignStands as : getAls().getStandsAssigned()) {
 
-                if (as.getStand()==s) {
+                if (as.getStand() == s) {
                     flag = 1;
                 }
 

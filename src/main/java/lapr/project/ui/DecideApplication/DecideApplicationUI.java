@@ -11,6 +11,8 @@ package lapr.project.ui.DecideApplication;
  */
 public class DecideApplicationUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 1882788331973395422L;
+
     /**
      * Creates new form DecideApplicationUI
      */
@@ -172,15 +174,15 @@ public class DecideApplicationUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-       ApplicationEvaluationUI applicationEvaluation = new ApplicationEvaluationUI();
-       applicationEvaluation.setVisible(true);
-       dispose();
+        ApplicationEvaluationUI applicationEvaluation = new ApplicationEvaluationUI();
+        applicationEvaluation.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       SelectApplicationUI selectApplication = new SelectApplicationUI();
-       selectApplication.setVisible(true);
-       dispose();
+        SelectApplicationUI selectApplication = new SelectApplicationUI();
+        selectApplication.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

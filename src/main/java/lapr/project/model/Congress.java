@@ -15,6 +15,8 @@ import lapr.project.utils.Date;
  */
 public class Congress extends Event implements Serializable {
 
+    private static final long serialVersionUID = 1429434983808557212L;
+
     /**
      * list of workshops
      */

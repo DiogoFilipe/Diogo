@@ -8,7 +8,9 @@ import java.util.List;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class FAEList implements Serializable{
+public class FAEList implements Serializable {
+
+    private static final long serialVersionUID = 5888244207240801590L;
 
     /**
      * list of faes

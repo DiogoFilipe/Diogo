@@ -13,6 +13,8 @@ import lapr.project.ui.MainWindow;
  */
 public class ShowEventAcceptanceRateMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -6298717456289239844L;
+
     /**
      * Creates new form ShowEventAcceptanceRateMainUI
      */

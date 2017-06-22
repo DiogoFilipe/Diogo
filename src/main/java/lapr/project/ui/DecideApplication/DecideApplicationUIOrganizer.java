@@ -19,6 +19,8 @@ import lapr.project.utils.EmptySpaceException;
  */
 public class DecideApplicationUIOrganizer extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -1741222124566537291L;
+
     /**
      * user
      */

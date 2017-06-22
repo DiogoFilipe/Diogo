@@ -19,7 +19,9 @@ import java.util.List;
  *
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
-public class Application implements ApplicationState,Serializable {
+public class Application implements ApplicationState, Serializable {
+
+    private static final long serialVersionUID = 374711346216985830L;
 
     /**
      * name of the root
@@ -115,7 +117,7 @@ public class Application implements ApplicationState,Serializable {
      * to check if has stand
      */
     private boolean hasStand;
-    
+
     /**
      * list of products
      */
@@ -134,7 +136,7 @@ public class Application implements ApplicationState,Serializable {
      * @param invites number of invites
      * @param products list of products
      */
-    public Application(String companyName, String address, int contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites,List<String> products) {
+    public Application(String companyName, String address, int contact, String description, List<Keyword> keywordList, Decision decision, double boothArea, int invites, List<String> products) {
 
         this.companyName = companyName;
         this.address = address;
@@ -146,7 +148,7 @@ public class Application implements ApplicationState,Serializable {
         this.invites = invites;
         this.hasStand = false;
         this.state = ApplicationState.State.Created;
-        this.products=products;
+        this.products = products;
     }
 
     /**
@@ -162,16 +164,16 @@ public class Application implements ApplicationState,Serializable {
         this.boothArea = BOOTHAREA_BY_OMISSION;
         this.invites = INVITES_BY_OMISSION;
         this.hasStand = false;
-        this.products= new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     /**
-     * 
+     *
      * @param companyName name of the company
      * @param address address of the company
      * @param contact contact of the company
      * @param description description of the company
-     * @param boothArea area needed 
+     * @param boothArea area needed
      * @param invites number of invites
      * @param keywordList keywords
      */
@@ -186,15 +188,15 @@ public class Application implements ApplicationState,Serializable {
         this.decision = new Decision();
         this.hasStand = false;
         this.state = ApplicationState.State.Created;
-        this.products= new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     /**
-     * 
+     *
      * @param invites number of invites
      * @param boothArea area needed
      * @param description description of the application
-     * @param keys  keywords
+     * @param keys keywords
      */
     public Application(int invites, double boothArea, String description, List<Keyword> keys) {
         this.invites = invites;
@@ -207,7 +209,7 @@ public class Application implements ApplicationState,Serializable {
         this.d = decision;
         this.hasStand = false;
         this.state = ApplicationState.State.Created;
-        this.products=new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     /**
@@ -420,7 +422,7 @@ public class Application implements ApplicationState,Serializable {
     public void setD(Decision d) {
         this.d = d;
     }
-    
+
     public void setState(State state) {
         this.state = state;
     }
@@ -480,16 +482,16 @@ public class Application implements ApplicationState,Serializable {
     public void setProducts(List<String> products) {
         this.products = products;
     }
-    
-    public String getContactString(){
+
+    public String getContactString() {
         return Integer.toString(contact);
-        }
-    
-    public String getNInvitesString(){
-        return Integer.toString(invites);  
     }
-    
-    public String getAreaString(){
+
+    public String getNInvitesString() {
+        return Integer.toString(invites);
+    }
+
+    public String getAreaString() {
         return Double.toString(boothArea);
     }
 }

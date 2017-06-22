@@ -10,9 +10,9 @@ package lapr.project.model;
  * @author 1160590_1160795_1160844_1161241_1162109
  */
 public interface EventState {
-    
-    public enum State{
-        Initial, Created , FAESet , OpenForApplications , ClosedForApplications , AssignedApplications , ApplicationsBeingDecided , EventReady 
+
+    public enum State {
+        Initial, Created, FAESet, OpenForApplications, ClosedForApplications, AssignedApplications, ApplicationsBeingDecided, EventReady
     }
-    
+
 }

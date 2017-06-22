@@ -11,26 +11,28 @@ import java.io.Serializable;
  *
  * @author Diogo
  */
-public class Workshop implements Serializable{
-    
+public class Workshop implements Serializable {
+
+    private static final long serialVersionUID = 7318532172506398740L;
+
     /**
      * title of the workshop
      */
     private String title;
-    
+
     /**
      * description of the workshop
      */
     private String description;
-    
+
     /**
-     * 
+     *
      * @param title title of the workshop
      * @param description description of the workshop
      */
-    public Workshop(String title,String description){
-      this.title=title;
-      this.description=description;
+    public Workshop(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     /**
@@ -59,5 +61,5 @@ public class Workshop implements Serializable{
      */
     public void setDescription(String description) {
         this.description = description;
-    } 
+    }
 }

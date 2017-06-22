@@ -19,6 +19,8 @@ import lapr.project.ui.MainWindow;
  */
 public class ListApplicationsMainWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -3030861969072821057L;
+
     FairCenter fc;
     User u;
     ListApplicationsController controller;
@@ -186,7 +188,7 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
             public void run() {
                 new ListApplicationsMainWindow().setVisible(true);
             }
-            });
+        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

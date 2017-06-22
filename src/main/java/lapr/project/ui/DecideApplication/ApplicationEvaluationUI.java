@@ -20,6 +20,8 @@ import lapr.project.utils.EmptySpaceException;
  */
 public class ApplicationEvaluationUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = -5364171222486706297L;
+
     private String application;
     private String event;
 
