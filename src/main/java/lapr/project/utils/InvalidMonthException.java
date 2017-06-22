@@ -20,6 +20,6 @@ public class InvalidMonthException extends IllegalArgumentException implements S
      * @param message
      */
     public InvalidMonthException(String message) {
-        super(message);
+        super("Invalid month on"+message);
     }
 }
