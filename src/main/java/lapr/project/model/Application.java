@@ -480,4 +480,16 @@ public class Application implements ApplicationState,Serializable {
     public void setProducts(List<String> products) {
         this.products = products;
     }
+    
+    public String getContactString(){
+        return Integer.toString(contact);
+        }
+    
+    public String getNInvitesString(){
+        return Integer.toString(invites);  
+    }
+    
+    public String getAreaString(){
+        return Double.toString(boothArea);
+    }
 }

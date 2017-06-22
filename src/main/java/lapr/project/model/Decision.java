@@ -95,6 +95,10 @@ public class Decision implements Serializable {
         this.invitationAdequacy = invitationAdequacy;
         this.overallRecommendation = overallRecommendation;
     }
+    
+    public Decision(boolean decision){
+        this.decision=decision;
+    }
 
     /**
      *

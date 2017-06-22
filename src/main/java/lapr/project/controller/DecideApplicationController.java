@@ -3,6 +3,7 @@ package lapr.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.*;
+import lapr.project.utils.EmptySpaceException;
 
 /**
  *
@@ -21,7 +22,6 @@ public class DecideApplicationController {
         this.fc = fc;
         this.er = fc.getEventRegist();
         this.ur = fc.getUserRegist();
-        this.a = new Application();
         this.user = user;
     }
 
@@ -68,12 +68,17 @@ public class DecideApplicationController {
     /**
      * Returns a String containing the Application's details
      *
+     * @param eventTitle
      * @param companyName
      * @return String containing the Application's details
      */
-    public String getApplicationDetails(String companyName) {
-
+    public String getApplicationDetails(String eventTitle, String companyName) {
+        Application a = getApplication(eventTitle, companyName);
         return a.getCompanyName() + "\n" + a.getAddress() + "\n" + a.getContact() + "\n" + a.getDescription();
+    }
+
+    public Application getApplication(String eventTitle, String companyName) {
+        return fc.getEventRegist().getEvent(eventTitle).getApplicationList().getApplicationByCompanyName(companyName);
     }
 
     /**
@@ -92,18 +97,16 @@ public class DecideApplicationController {
         d = new Decision(decision, justification, faeKnowledge, adequacy, invitationAdequacy, overallRecomendation);
     }
 
-    /**
-     * Regists the Decision by adding it to the FAE's Decision list
-     */
-    public void registDecision() {
-        ((FAE) user).getDecisionList().getDecisionList().add(d);
+    public void setDescription(String description){
+        d.setJustification(description);
     }
-
     /**
      * Set's the Application's state as decided
+     * @param event
+     * @param a
      */
-    public void setStateApplication() {
-        a.setState(ApplicationState.State.Decided);
+    public void setStateApplication(String event,String a) {
+        fc.getEventRegist().getEvent(event).getApplicationList().getApplicationByCompanyName(a).setState(ApplicationState.State.Decided);
     }
 
     public boolean isOrganizer(User u) {
@@ -112,5 +115,17 @@ public class DecideApplicationController {
 
     public boolean isFAE(User u) {
         return fc.getFAEList().getFAEList().contains((FAE) u);
+    }
+
+    public void validateString(String s, String m) {
+        if (s.trim().equals(" ") || s.equals("")) {
+            throw new EmptySpaceException(m);
+        }
+    }
+    
+    public void validateNumber(int n,String m){
+        if(n<0 || n>5 || Integer.toString(n).equals("") || Integer.toString(n).trim().equals(" ")){
+            throw new EmptySpaceException(m);
+        }
     }
 }
