@@ -49,7 +49,7 @@ public class TestIfEventAcceptanceRateIsOver50Controller {
     
     public double[] getCriticalValues() {
         double[] criticalValues = new double[getEventList().size()];
-        for (int i = 0; i < criticalValues.length - 1; i = i+2) {
+        for (int i = 0; i < criticalValues.length - 2; i = i+2) {
             criticalValues[i] = CRITICAL_VALUE_95;
             criticalValues[i+1] = CRITICAL_VALUE_99;
         }
@@ -58,7 +58,7 @@ public class TestIfEventAcceptanceRateIsOver50Controller {
     
     public int[] getSignificanceLevels() {
         int[] significanceLevels = new int[getEventList().size()];
-        for (int i = 0; i < significanceLevels.length - 1; i = i+2) {
+        for (int i = 0; i < significanceLevels.length - 2; i = i+2) {
             significanceLevels[i] = 95;
             significanceLevels[i] = 99;
         }
@@ -80,7 +80,7 @@ public class TestIfEventAcceptanceRateIsOver50Controller {
             double p0 = 0.5;
             double p = (double) count / applicationNumber;
             double observedValue = (double) (p - p0) / Math.sqrt((0.5*(1-0.5))/applicationNumber);
-            for (int i = 0; i < observedValues.length - 1; i = i+2) {
+            for (int i = 0; i < observedValues.length - 2; i = i+2) {
                 observedValues[i] = observedValue;
                 observedValues[i+1] = observedValue;
             }

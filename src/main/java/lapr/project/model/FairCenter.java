@@ -17,6 +17,16 @@ public class FairCenter implements Serializable {
     private EventRegist eventRegist;
 
     /**
+     * list of exhibitions
+     */
+    private ExhibitionList exhibitionList;
+
+    /**
+     * list of congresses
+     */
+    private CongressList congressList;
+
+    /**
      * class that has the list of users
      */
     private UserRegist userRegist;
@@ -55,6 +65,8 @@ public class FairCenter implements Serializable {
         standRegist = new StandRegist();
         organizerList = new OrganizerList();
         encryptionList = new EncryptionList();
+        exhibitionList = new ExhibitionList();
+        congressList = new CongressList();
     }
 
     /**
@@ -229,5 +241,33 @@ public class FairCenter implements Serializable {
      */
     public void setEventManagerList(EventManagerList eventManagerList) {
         this.eventManagerList = eventManagerList;
+    }
+
+    /**
+     * @return the exhibitionList
+     */
+    public ExhibitionList getExhibitionList() {
+        return exhibitionList;
+    }
+
+    /**
+     * @param exhibitionList the exhibitionList to set
+     */
+    public void setExhibitionList(ExhibitionList exhibitionList) {
+        this.exhibitionList = exhibitionList;
+    }
+
+    /**
+     * @return the congressList
+     */
+    public CongressList getCongressList() {
+        return congressList;
+    }
+
+    /**
+     * @param congressList the congressList to set
+     */
+    public void setCongressList(CongressList congressList) {
+        this.congressList = congressList;
     }
 }

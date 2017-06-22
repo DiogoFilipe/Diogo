@@ -3,6 +3,11 @@ package lapr.project.ui.CreateEvent;
 //import java.util.ArrayList;
 //import java.util.List;
 //import javax.swing.DefaultListModel;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import javax.swing.AbstractListModel;
+import lapr.project.controller.CreateEventController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
 import lapr.project.utils.Date;
@@ -12,25 +17,56 @@ import lapr.project.utils.Date;
  * @author 1160590_1160795_1160844_1161241_1162109
  */
 public class CreateEventMain extends javax.swing.JFrame {
-
+    
     private FairCenter fc;
     private User u;
-    private UserRegist ur;
-    private Event event;
+    private List<String> organizerListEvent;
+    
+    CreateEventController controller;
 
     //private final DefaultListModel userModel = new DefaultListModel();
-
     /**
      * Creates new form CreateEventMain
+     *
+     * @param fc
+     * @param u
      */
     public CreateEventMain(FairCenter fc, User u) {
         this.fc = fc;
         this.u = u;
-        this.ur = fc.getUserRegist();
-        
+        this.organizerListEvent = new ArrayList<>();
+        controller = new CreateEventController(fc);
         initComponents();
         jComboBox1.addItem("Congress");
         jComboBox1.addItem("Exhibition");
+        AbstractListModel model = new javax.swing.AbstractListModel() {
+            
+            @Override
+            public int getSize() {
+                return controller.getUserList().size();
+            }
+            
+            @Override
+            public Object getElementAt(int j) {
+                return controller.getUserList().get(j);
+            }
+        };
+        OrganizerList.setModel(model);
+        jScrollPane1.setViewportView(OrganizerList);
+        AbstractListModel model1 = new javax.swing.AbstractListModel() {
+            
+            @Override
+            public int getSize() {
+                return organizerListEvent.size();
+            }
+            
+            @Override
+            public Object getElementAt(int j) {
+                return organizerListEvent.get(j);
+            }
+        };
+        ChosenOrganizerList.setModel(model1);
+        jScrollPane2.setViewportView(ChosenOrganizerList);
     }
 
     /**
@@ -87,53 +123,18 @@ public class CreateEventMain extends javax.swing.JFrame {
         TypeLabel.setText("Type");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Congress", "Exhibition" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         TitleLabel.setText("Title");
-
-        TitleInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TitleInputTextFieldActionPerformed(evt);
-            }
-        });
 
         DescriptionLabel.setText("Description");
 
         StartDateLabel.setText("Start Date");
 
-        StartDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartDateInputTextFieldActionPerformed(evt);
-            }
-        });
-
         EndDateLabel.setText("End Date");
-
-        EndDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EndDateInputTextFieldActionPerformed(evt);
-            }
-        });
 
         StartSubDateLabel.setText("Start Submission Date");
 
-        StartSubDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartSubDateInputTextFieldActionPerformed(evt);
-            }
-        });
-
         EndSubDateLabel.setText("End Submission Date ");
-
-        EndSubDateInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EndSubDateInputTextFieldActionPerformed(evt);
-            }
-        });
 
         OkButton.setText("Create");
         OkButton.addActionListener(new java.awt.event.ActionListener() {
@@ -149,25 +150,18 @@ public class CreateEventMain extends javax.swing.JFrame {
             }
         });
 
-        DescriptionInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DescriptionInputTextFieldActionPerformed(evt);
-            }
-        });
-
         PlaceLabel.setText("Place");
-
-        PlaceInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaceInputTextFieldActionPerformed(evt);
-            }
-        });
 
         DataFormatNoteLabel.setText("Insert all date's in the dd/mm/yyyy format.");
 
         jScrollPane1.setViewportView(OrganizerList);
 
         AddOrganizerButton.setText("Add ->");
+        AddOrganizerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddOrganizerButtonActionPerformed(evt);
+            }
+        });
 
         RemoveOrganizer.setText("<- Remove");
 
@@ -182,44 +176,39 @@ public class CreateEventMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DescriptionLabel)
+                    .addComponent(TitleLabel)
+                    .addComponent(TypeLabel)
+                    .addComponent(PlaceLabel)
+                    .addComponent(DataFormatNoteLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DescriptionLabel)
-                            .addComponent(TitleLabel)
-                            .addComponent(TypeLabel)
-                            .addComponent(PlaceLabel))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(EndSubDateLabel)
+                            .addComponent(StartSubDateLabel)
+                            .addComponent(EndDateLabel)
+                            .addComponent(StartDateLabel))
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DataFormatNoteLabel)
+                            .addComponent(StartDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EndDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StartSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EndSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PlaceInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DescriptionInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TitleInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EndSubDateLabel)
-                                    .addComponent(StartSubDateLabel)
-                                    .addComponent(EndDateLabel)
-                                    .addComponent(StartDateLabel))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(StartDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(EndDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(StartSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(EndSubDateInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PlaceInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DescriptionInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TitleInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(50, 50, 50)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(RemoveOrganizer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(AddOrganizerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(OrganizerNoteLabel))))
-                        .addGap(30, 30, Short.MAX_VALUE))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(RemoveOrganizer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(AddOrganizerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(OrganizerNoteLabel))))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(BackButton)
@@ -273,7 +262,7 @@ public class CreateEventMain extends javax.swing.JFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(RemoveOrganizer))))
                     .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
                 .addGap(18, 18, 18)
                 .addComponent(DataFormatNoteLabel)
                 .addGap(18, 18, 18)
@@ -299,47 +288,32 @@ public class CreateEventMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void EndSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndSubDateInputTextFieldActionPerformed
-        String submissionEndDate = EndSubDateInputTextField.getText();
-    }//GEN-LAST:event_EndSubDateInputTextFieldActionPerformed
-
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         MainWindow mainWindow = new MainWindow(fc, u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void TitleInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TitleInputTextFieldActionPerformed
-        String title = TitleInputTextField.getText();
-    }//GEN-LAST:event_TitleInputTextFieldActionPerformed
-
-    private void StartDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartDateInputTextFieldActionPerformed
-        String startDate = StartDateInputTextField.getText();
-    }//GEN-LAST:event_StartDateInputTextFieldActionPerformed
-
-    private void EndDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateInputTextFieldActionPerformed
-        String endDate = EndDateInputTextField.getText();
-    }//GEN-LAST:event_EndDateInputTextFieldActionPerformed
-
-    private void DescriptionInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescriptionInputTextFieldActionPerformed
-        String description = DescriptionInputTextField.getText();
-    }//GEN-LAST:event_DescriptionInputTextFieldActionPerformed
-
-    private void StartSubDateInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartSubDateInputTextFieldActionPerformed
-        String submissionStartDate = StartSubDateInputTextField.getText();
-    }//GEN-LAST:event_StartSubDateInputTextFieldActionPerformed
-
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
+        String type = jComboBox1.getSelectedItem().toString();
+        String place = PlaceInputTextField.getText();
+        String submissionStartDate = StartSubDateInputTextField.getText();
+        String description = DescriptionInputTextField.getText();
+        String endDate = EndDateInputTextField.getText();
+        String startDate = StartDateInputTextField.getText();
+        String title = TitleInputTextField.getText();
+        String submissionEndDate = EndSubDateInputTextField.getText();
+        if (type.equals("Congress")) {
+            Congress e = new Congress();
+            controller.setData(type, title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, organizerListEvent);
+        }
 
     }//GEN-LAST:event_OkButtonActionPerformed
 
-    private void PlaceInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceInputTextFieldActionPerformed
-        String place = PlaceInputTextField.getText();
-    }//GEN-LAST:event_PlaceInputTextFieldActionPerformed
+    private void AddOrganizerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOrganizerButtonActionPerformed
+        String organizer = OrganizerList.getSelectedValue();
+        organizerListEvent.add(organizer);
+    }//GEN-LAST:event_AddOrganizerButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddOrganizerButton;
