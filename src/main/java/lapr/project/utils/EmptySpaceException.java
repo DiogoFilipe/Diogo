@@ -5,11 +5,13 @@
  */
 package lapr.project.utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Diogo
  */
-public class EmptySpaceException extends IllegalArgumentException {
+public class EmptySpaceException extends IllegalArgumentException implements Serializable {
 
     /**
      * Creates a new instance of <code>EmptySpaceException</code> without detail
