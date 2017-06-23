@@ -50,5 +50,14 @@ public class EventManagerList implements Serializable {
     public void setEventManagerList(List<EventManager> eventManagerList) {
         this.eventManagerList = eventManagerList;
     }
+    
+    public boolean isEventManager(User u){
+        for(EventManager e: eventManagerList){
+            if(u.getUsername().equals(e.getUsername())){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
