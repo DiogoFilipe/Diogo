@@ -195,7 +195,7 @@ public class LogInWindow extends javax.swing.JFrame {
                 }
             
         } catch (LogInException e) {
-            JOptionPane.showMessageDialog(null, "Error:", e.getMessage(), JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.PLAIN_MESSAGE);
         }
 
                            
