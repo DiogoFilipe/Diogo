@@ -18,6 +18,9 @@ import lapr.project.ui.EventGlobalAcceptanceRate.EventAcceptanceRateMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
 import lapr.project.ui.ImportFile.ImportFileMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
+import lapr.project.ui.ShowEventKeywords.ShowEventKeywordsWindow;
+import lapr.project.ui.ShowFaeMeanRating.ShowFaeMeanRatingMainUI;
+import lapr.project.ui.ShowGlobalAcceptanceRate.ShowGlobalAcceptanceRateWindow;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 import lapr.project.utils.DontHavePermissionException;
 
@@ -84,9 +87,9 @@ public class MainWindow extends javax.swing.JFrame {
         eventSubmissionKeywords = new javax.swing.JButton();
         eventAcceptanceRate = new javax.swing.JButton();
         standsInformation = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        globalRate = new javax.swing.JButton();
+        Acceptance50 = new javax.swing.JButton();
+        FAEMeanRating = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,15 +199,30 @@ public class MainWindow extends javax.swing.JFrame {
 
         standsInformation.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         standsInformation.setText("Event Stands Information");
+        standsInformation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                standsInformationActionPerformed(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton1.setText("Global Acceptance Rate");
+        globalRate.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        globalRate.setText("Global Acceptance Rate");
+        globalRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                globalRateActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setText("Acceptance Rate >50%?");
+        Acceptance50.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        Acceptance50.setText("Acceptance Rate >50%?");
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton3.setText("FAE mean rating");
+        FAEMeanRating.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        FAEMeanRating.setText("FAE mean rating");
+        FAEMeanRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FAEMeanRatingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,15 +258,15 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(listApplications)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(FAEMeanRating))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(createStand)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(globalRate))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(assignStand)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(Acceptance50)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -277,15 +295,15 @@ public class MainWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createStand)
-                    .addComponent(jButton1))
+                    .addComponent(globalRate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignStand)
-                    .addComponent(jButton2))
+                    .addComponent(Acceptance50))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listApplications)
-                    .addComponent(jButton3))
+                    .addComponent(FAEMeanRating))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
@@ -411,23 +429,58 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_importEventDataActionPerformed
 
     private void eventSubmissionKeywordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSubmissionKeywordsActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            ShowEventKeywordsWindow eventKeywords = new ShowEventKeywordsWindow(fc, u);
+            eventKeywords.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
 
-            
-        
+
     }//GEN-LAST:event_eventSubmissionKeywordsActionPerformed
 
     private void eventAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventAcceptanceRateActionPerformed
-        try{
+        try {
             fc.getEventManagerList().isEventManager(u);
-            EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc,u);
+            EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc, u);
             eventAcceptanceRate.setVisible(true);
             dispose();
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_eventAcceptanceRateActionPerformed
 
+    private void standsInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standsInformationActionPerformed
+
+    }//GEN-LAST:event_standsInformationActionPerformed
+
+    private void globalRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRateActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            ShowGlobalAcceptanceRateWindow globalRate = new ShowGlobalAcceptanceRateWindow(fc, u);
+            globalRate.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
+    }//GEN-LAST:event_globalRateActionPerformed
+
+    private void FAEMeanRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAEMeanRatingActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            ShowFaeMeanRatingMainUI FAEMeanRating = new ShowFaeMeanRatingMainUI(fc, u);
+            FAEMeanRating.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
+    }//GEN-LAST:event_FAEMeanRatingActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Acceptance50;
+    private javax.swing.JButton FAEMeanRating;
     private javax.swing.JButton assignStand;
     private javax.swing.JButton changeApplication;
     private javax.swing.JButton createEvent;
@@ -437,10 +490,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton eventAcceptanceRate;
     private javax.swing.JButton eventSubmissionKeywords;
     private javax.swing.JButton exportAllData;
+    private javax.swing.JButton globalRate;
     private javax.swing.JButton importEventData;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton listApplications;
     private javax.swing.JButton logOut;
     private javax.swing.JButton standsInformation;
