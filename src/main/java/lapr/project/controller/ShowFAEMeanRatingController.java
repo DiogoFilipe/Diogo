@@ -26,7 +26,7 @@ public class ShowFAEMeanRatingController {
      * @return names of the FAEs that have already made decisions
      */
     public List<String> getFAEList() {
-        this.faeList = fc.getFAEList().getFAEList();
+        this.faeList = fc.getFaeList().getFAEList();
         List<String> faeListString = new ArrayList<>();
         for (FAE fae : faeList) {
             if (!fae.getDecisionList().getDecisionList().isEmpty()) {

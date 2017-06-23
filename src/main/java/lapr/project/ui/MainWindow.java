@@ -8,6 +8,7 @@ package lapr.project.ui;
 import javax.swing.JOptionPane;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
+import lapr.project.ui.AcceptanceRate50.AcceptanceRateOver50;
 import lapr.project.ui.AssignStands.AssignStandsMainUI;
 import lapr.project.ui.ChangeApplication.ChangeApplicationMainWindow;
 import lapr.project.ui.CreateEvent.CreateEventMain;
@@ -38,7 +39,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * fair center
      */
-    FairCenter fc;
+    private FairCenter fc;
 
     /**
      * user
@@ -215,6 +216,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         Acceptance50.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Acceptance50.setText("Acceptance Rate >50%?");
+        Acceptance50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Acceptance50ActionPerformed(evt);
+            }
+        });
 
         FAEMeanRating.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         FAEMeanRating.setText("FAE mean rating");
@@ -477,6 +483,17 @@ public class MainWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_FAEMeanRatingActionPerformed
+
+    private void Acceptance50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acceptance50ActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            AcceptanceRateOver50 acceptanceRate50 = new AcceptanceRateOver50(fc, u);
+            acceptanceRate50.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
+    }//GEN-LAST:event_Acceptance50ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Acceptance50;

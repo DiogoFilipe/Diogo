@@ -65,6 +65,9 @@ public class FairCenter implements Serializable {
      */
     private RepresentativeList representativeList;
 
+    
+    private List<String> applicationsAccepted;
+    private List<String> applicationsRejected;
     /**
      * Constructor
      */
@@ -115,14 +118,6 @@ public class FairCenter implements Serializable {
         return eventRegist.getEventList();
     }
 
-    /**
-     *
-     * @param e event
-     * @return a string with the title of this event
-     */
-    public Event getEvent(Event e) {
-        return eventRegist.getEvent(e.getTitle());
-    }
 
     /**
      * Allows you to add a new user to the user regist
@@ -199,7 +194,7 @@ public class FairCenter implements Serializable {
      * are accepted
      */
     public List<String> getApplicationListAccepted() {
-        List<String> applicationsAccepted = new ArrayList<>();
+       applicationsAccepted = new ArrayList<>();
         for (Event e : eventRegist.getEventList()) {
             for (Application a : eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()) {
                 if (a.getD().getDecision() == true) {
@@ -216,7 +211,7 @@ public class FairCenter implements Serializable {
      * are rejected
      */
     public List<String> getApplicationListRejected() {
-        List<String> applicationsRejected = new ArrayList<>();
+        applicationsRejected = new ArrayList<>();
         for (Event e : eventRegist.getEventList()) {
             for (Application a : eventRegist.getEvent(e.getTitle()).getApplicationList().getApplicationList()) {
                 if (a.getD().getDecision() == false) {
@@ -227,19 +222,7 @@ public class FairCenter implements Serializable {
         return applicationsRejected;
     }
 
-    /**
-     * @return the faeList
-     */
-    public FAEList getFAEList() {
-        return getFaeList();
-    }
-
-    /**
-     * @param faeList the faeList to set
-     */
-    public void setFAEList(FAEList faeList) {
-        this.setFaeList(faeList);
-    }
+    
 
     /**
      * @return the eventManagerList

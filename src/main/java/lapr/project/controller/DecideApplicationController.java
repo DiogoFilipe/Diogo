@@ -164,7 +164,7 @@ public class DecideApplicationController {
      * @return true if the user is a fae
      */
     public boolean isFAE(User u) {
-        return fc.getFAEList().getFAEList().contains((FAE) u);
+        return fc.getFaeList().getFAEList().contains((FAE) u);
     }
 
     /**
