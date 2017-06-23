@@ -6,6 +6,7 @@
 package lapr.project.ui.ChangeApplication;
 
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import lapr.project.controller.ChangeApplicationController;
@@ -19,21 +20,27 @@ import lapr.project.utils.EventNotFound;
  * @author Diogo
  */
 public class ChangeApplicationMainWindow extends javax.swing.JFrame {
+    
+    private static final long serialVersionUID = 117232L;
 
     /**
      * fair center
      */
     private FairCenter fc;
-    
+
     /**
      * user
      */
     private User u;
-    
+
     /**
      * controller
      */
     ChangeApplicationController controller;
+    
+    private DefaultListModel<String> model;
+    
+    private DefaultListModel<String> model1;
 
     /**
      * Creates new form ChangeApplicationMainWindow
@@ -58,41 +65,26 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
             }
         });
         initComponents();
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return controller.getListEvents().size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return controller.getListEvents().get(j);
-            }
-        };
+        model = new DefaultListModel<>();        
+        for (String e : controller.getListEvents()) {
+            model.addElement(e);
+        }
         EventList.setModel(model);
         jScrollPane1.setViewportView(EventList);
         EventList.addListSelectionListener((ListSelectionEvent e) -> {
             String event = EventList.getSelectedValue();
             if (event != null) {
-                AbstractListModel model1 = new javax.swing.AbstractListModel() {
-                    @Override
-                    public int getSize() {
-                        return controller.getListApplicationsRepresentative(event).size();
-                    }
-
-                    @Override
-                    public Object getElementAt(int index) {
-                        return controller.getListApplicationsRepresentative(event).get(index);
-                    }
-                };
+                model1 = new DefaultListModel<>();                
+                for (String a : controller.getListApplicationsRepresentative(event)) {
+                    model1.addElement(a);
+                }
                 ListApplications.setModel(model1);
                 ApplicationsList.setViewportView(ListApplications);
             };
-
+            
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -205,8 +197,8 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String event = EventList.getSelectedValue();
@@ -217,8 +209,8 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String event = EventList.getSelectedValue();
@@ -226,7 +218,7 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
         try {
             controller.deleteApplication(event, application);
             JOptionPane.showMessageDialog(ChangeApplicationMainWindow.this, "Application removed with success");
-            MainWindow main = new MainWindow(fc,u);
+            MainWindow main = new MainWindow(fc, u);
             main.setVisible(true);
             dispose();
         } catch (EventNotFound e) {
@@ -235,8 +227,8 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         MainWindow mainWindow = new MainWindow(fc, u);
