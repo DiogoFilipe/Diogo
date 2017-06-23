@@ -1,198 +1,406 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package lapr.project.model;
 
-import lapr.project.utils.StringUtil;
+import java.util.List;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import static org.junit.Assert.*;
 import org.w3c.dom.Node;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
-
 /**
- * Class to demonstrate a Candidatura simple example.
  *
- * @author Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
+ * @author João Domingues
  */
 public class ApplicationTest {
+    
+    protected Application a;
+    protected List<Keyword> klist;
+    protected List<String> products;
+    protected Decision d;
+    
+    public ApplicationTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+        a = new Application("tap1", "aeroportosacarneiro", 987654321,"somos uma empresa", klist, d, 385.5, 20,products);
+    }
+    
+    @After
+    public void tearDown() {
+    }
 
-	/**
-	 * StringUtil variable to access utils for Strings.
-	 */
-	private StringUtil stringUtil = new StringUtil();
+    /**
+     * Test of getCompanyName method, of class Application.
+     */
+    @Test
+    public void testGetCompanyName() {
+        System.out.println("getCompanyName");
+        String expResult = "tap1";
+        String result = a.getCompanyName();
+        assertEquals(expResult, result);
+        
+    }
 
-	/**
-	 * Get OS independent line break.
-	 *
-	 * @return OS independent line break "%n".
-	 */
-	private String getLineBreak() {
-		if (stringUtil == null) {
-			stringUtil = new StringUtil();
-		}
-		return stringUtil.getLineBreak();
-	}
+    /**
+     * Test of getAddress method, of class Application.
+     */
+    @Test
+    public void testGetAddress() {
+        System.out.println("getAddress");
+        String expResult = "aeroportosacarneiro";
+        String result = a.getAddress();
+        assertEquals(expResult, result);
+        
+    }
 
-	@Test
-	public void ensureAddKeywordIsWorking() throws Exception {
-		List<Keyword> expectedKeywordList = new ArrayList<>();
-		expectedKeywordList.add(new Keyword("Doors"));
+    /**
+     * Test of getContact method, of class Application.
+     */
+    @Test
+    public void testGetContact() {
+        System.out.println("getContact");
+        int expResult = 987654321;
+        int result = a.getContact();
+        assertEquals(expResult, result);
+        
+    }
 
-		Application candidatura = new Application("MyCandidatura", new ArrayList<>());
-		candidatura.addKeyword(new Keyword("Doors"));
+    /**
+     * Test of getDescription method, of class Application.
+     */
+    @Test
+    public void testGetDescription() {
+        System.out.println("getDescription");
+        String expResult = "somos uma empresa";
+        String result = a.getDescription();
+        assertEquals(expResult, result);
+        
+    }
 
-		List<Keyword> resultList = candidatura.getKeywordList();
+    /**
+     * Test of addKeyword method, of class Application.
+     */
+    @Test
+    public void testAddKeyword() {
+        System.out.println("addKeyword");
+        Keyword word1 = new Keyword("conhecimento");
+        a.addKeyword(word1);
+        List<Keyword> result = a.getKeywordList();
+        assertEquals(a.getKeywordList(), result);
+        
+    }
 
-		assertArrayEquals(expectedKeywordList.toArray(), resultList.toArray());
+    /**
+     * Test of getKeywordList method, of class Application.
+     */
+    @Test
+    public void testGetKeywordList() {
+        System.out.println("getKeywordsList");
+        List<Keyword> result = a.getKeywordList();
+        assertEquals(a.getKeywordList(), result);
+        
+    }
 
-	}
+    /**
+     * Test of HasStand method, of class Application.
+     */
+    @Test
+    public void testHasStand() {
+        System.out.println("HasStand");
+        boolean expResult = false;
+        boolean result = a.HasStand();
+        assertEquals(expResult, result);
+        
+    }
 
-	@Test
-	public void ensureXMLElementExportToStringIsValid() throws Exception {
-		String expected = "<application>" + getLineBreak() +
-				"<description>MyApplication</description>" + getLineBreak() +
-				"<keywords>" + getLineBreak() +
-				"<keyword>" + getLineBreak() +
-				"<value>Doors</value>" + getLineBreak() +
-				"</keyword>" + getLineBreak() +
-				"<keyword>" + getLineBreak() +
-				"<value>Windows</value>" + getLineBreak() +
-				"</keyword>" + getLineBreak() +
-				"</keywords>" + getLineBreak() +
-				"</application>" + getLineBreak();
+    /**
+     * Test of setHasStand method, of class Application.
+     */
+    @Test
+    public void testSetHasStand() {
+        System.out.println("setHasStand");
+        boolean hasStand = true;
+        a.setHasStand(hasStand);
+        boolean expResult = true;
+        boolean result = a.HasStand();
+        assertEquals(expResult, result);
+        
+    }
 
-		List<Keyword> keywordList = new ArrayList<>();
-		keywordList.add(new Keyword("Doors"));
-		keywordList.add(new Keyword("Windows"));
-		Application application = new Application("MyApplication", keywordList);
-		String result = application.exportContentToString();
-		assertEquals(expected, result);
-	}
+    /**
+     * Test of exportContentToXMLNode method, of class Application.
+     */
+    @Test
+    public void testExportContentToXMLNode() throws Exception {
+        System.out.println("exportContentToXMLNode");
+        Node result = a.exportContentToXMLNode();
+        assertEquals(a.exportContentToXMLNode(), result);
+        
+    }
 
-	@Test
-	public void ensureImportFromXMLElementNodeIsValid() throws Exception {
-		List<Keyword> keywordList = new ArrayList<>();
-		keywordList.add(new Keyword("Doors"));
-		keywordList.add(new Keyword("Windows"));
+    /**
+     * Test of hashCode method, of class Application.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        int result = a.hashCode();
+        assertEquals(a.hashCode(), result);
+       
+    }
 
-		Application expected = new Application("MyApplication", keywordList);
+    /**
+     * Test of equals method, of class Application.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        Object o = null;
+        Application instance = new Application();
+        boolean expResult = false;
+        boolean result = instance.equals(o);
+        assertEquals(expResult, result);
+        
+    }
 
-		DocumentBuilderFactory factory =
-				DocumentBuilderFactory.newInstance();
+    /**
+     * Test of getInvites method, of class Application.
+     */
+    @Test
+    public void testGetInvites() {
+        System.out.println("getInvites");
+        Application instance = new Application();
+        int expResult = 0;
+        int result = instance.getInvites();
+        assertEquals(expResult, result);
+        
+    }
 
-		//Create document builder
-		DocumentBuilder builder = factory.newDocumentBuilder();
+    /**
+     * Test of setInvites method, of class Application.
+     */
+    @Test
+    public void testSetInvites() {
+        System.out.println("setInvites");
+        int invites = 0;
+        Application instance = new Application();
+        instance.setInvites(invites);
+        
+    }
 
-		//Obtain a new document
-		Document document = builder.newDocument();
+    /**
+     * Test of getBoothArea method, of class Application.
+     */
+    @Test
+    public void testGetBoothArea() {
+        System.out.println("getBoothArea");
+        Application instance = new Application();
+        double expResult = 0.0;
+        double result = instance.getBoothArea();
+        assertEquals(expResult, result, 0.0);
+        
+    }
 
-		//Create root element
-		Element elementCandidatura = document.createElement("application");
+    /**
+     * Test of setBoothArea method, of class Application.
+     */
+    @Test
+    public void testSetBoothArea() {
+        System.out.println("setBoothArea");
+        double boothArea = 0.0;
+        Application instance = new Application();
+        instance.setBoothArea(boothArea);
+        
+    }
 
-		//Create a sub-element
-		Element elementDescription = document.createElement("description");
+    /**
+     * Test of getD method, of class Application.
+     */
+    @Test
+    public void testGetD() {
+        System.out.println("getD");
+        Application instance = new Application();
+        Decision expResult = null;
+        Decision result = instance.getD();
+        assertEquals(expResult, result);
+        
+    }
 
-		//Set the sub-element value
-		elementDescription.setTextContent("MyApplication");
+    /**
+     * Test of setD method, of class Application.
+     */
+    @Test
+    public void testSetD() {
+        System.out.println("setD");
+        Decision d = null;
+        Application instance = new Application();
+        instance.setD(d);
+        
+    }
 
-		//Add sub-element to root element
-		elementCandidatura.appendChild(elementDescription);
+    /**
+     * Test of setState method, of class Application.
+     */
+    @Test
+    public void testSetState() {
+        System.out.println("setState");
+        ApplicationState.State state = null;
+        Application instance = new Application();
+        instance.setState(state);
+        
+    }
 
-		//Create a sub-element
-		Element elementKeywords = document.createElement("keywords");
+    /**
+     * Test of setCompanyName method, of class Application.
+     */
+    @Test
+    public void testSetCompanyName() {
+        System.out.println("setCompanyName");
+        String companyName = "";
+        Application instance = new Application();
+        instance.setCompanyName(companyName);
+        
+    }
 
-		//iterate over keywords
-		for (Keyword keyword : keywordList) {
-			Node keywordNode = keyword.exportContentToXMLNode();
-			elementKeywords.appendChild(document.importNode(keywordNode, true));
-		}
+    /**
+     * Test of setAddress method, of class Application.
+     */
+    @Test
+    public void testSetAddress() {
+        System.out.println("setAddress");
+        String address = "";
+        Application instance = new Application();
+        instance.setAddress(address);
+       
+    }
 
-		elementCandidatura.appendChild(elementKeywords);
+    /**
+     * Test of setContact method, of class Application.
+     */
+    @Test
+    public void testSetContact() {
+        System.out.println("setContact");
+        int contact = 0;
+        Application instance = new Application();
+        instance.setContact(contact);
+        
+    }
 
-		//Add root element to document
-		document.appendChild(elementCandidatura);
+    /**
+     * Test of setKeywordList method, of class Application.
+     */
+    @Test
+    public void testSetKeywordList() {
+        System.out.println("setKeywordList");
+        List<Keyword> keywordList = null;
+        Application instance = new Application();
+        instance.setKeywordList(keywordList);
+       
+    }
 
-		Application result = new Application();
-		result = result.importContentFromXMLNode(elementCandidatura);
+    /**
+     * Test of setDescription method, of class Application.
+     */
+    @Test
+    public void testSetDescription() {
+        System.out.println("setDescription");
+        String description = "";
+        Application instance = new Application();
+        instance.setDescription(description);
+        
+    }
 
-		assertEquals(expected, result);
-	}
+    /**
+     * Test of getState method, of class Application.
+     */
+    @Test
+    public void testGetState() {
+        System.out.println("getState");
+        Application instance = new Application();
+        ApplicationState.State expResult = null;
+        ApplicationState.State result = instance.getState();
+        assertEquals(expResult, result);
+        
+    }
 
-	@Test
-	public void ensureSameContentObjectsAreEqual() {
-		String description = "MyCandidatura";
+    /**
+     * Test of getProducts method, of class Application.
+     */
+    @Test
+    public void testGetProducts() {
+        System.out.println("getProducts");
+        Application instance = new Application();
+        List<String> expResult = null;
+        List<String> result = instance.getProducts();
+        assertEquals(expResult, result);
+       
+    }
 
-		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(new Keyword("Doors"));
-		keywords.add(new Keyword("Windows"));
+    /**
+     * Test of setProducts method, of class Application.
+     */
+    @Test
+    public void testSetProducts() {
+        System.out.println("setProducts");
+        List<String> products = null;
+        Application instance = new Application();
+        instance.setProducts(products);
+        
+    }
 
-		Application expected = new Application(description, keywords);
-		Application result = new Application(description, keywords);
+    /**
+     * Test of getContactString method, of class Application.
+     */
+    @Test
+    public void testGetContactString() {
+        System.out.println("getContactString");
+        Application instance = new Application();
+        String expResult = "";
+        String result = instance.getContactString();
+        assertEquals(expResult, result);
+        
+    }
 
-		assertEquals(expected, result);
-	}
+    /**
+     * Test of getNInvitesString method, of class Application.
+     */
+    @Test
+    public void testGetNInvitesString() {
+        System.out.println("getNInvitesString");
+        Application instance = new Application();
+        String expResult = "";
+        String result = instance.getNInvitesString();
+        assertEquals(expResult, result);
+       
+    }
 
-	@Test
-	public void ensureSameObjectIsEqual() {
-		String description = "MyCandidatura";
-
-		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(new Keyword("Doors"));
-		keywords.add(new Keyword("Windows"));
-
-		Application expected = new Application(description, keywords);
-
-		assertEquals(expected, expected);
-	}
-
-	@Test
-	public void ensureDifferentObjectsAreNotEqual() {
-		String description = "MyCandidatura";
-
-		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(new Keyword("Doors"));
-		keywords.add(new Keyword("Windows"));
-
-		Application expected = new Application(description, keywords);
-
-		Object result = new Object();
-		assertNotEquals(expected, result);
-	}
-
-	@Test
-	public void ensureDifferentDescriptionMakeObjectsNotEqual() {
-		String description1 = "MyCandidatura1";
-		String description2 = "MyCandidatura2";
-
-		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(new Keyword("Doors"));
-		keywords.add(new Keyword("Windows"));
-
-		Application expected = new Application(description1, keywords);
-		Application result = new Application(description2, keywords);
-
-		assertNotEquals(expected, result);
-	}
-
-	@Test
-	public void ensureHashCodeIsCorrect() {
-		String description = "MyCandidatura";
-
-		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(new Keyword("Doors"));
-		keywords.add(new Keyword("Windows"));
-
-		Application application = new Application(description, keywords);
-
-		int expected = 461375881;
-		int result = application.hashCode();
-		assertEquals(expected, result);
-
-	}
-
-
+    /**
+     * Test of getAreaString method, of class Application.
+     */
+    @Test
+    public void testGetAreaString() {
+        System.out.println("getAreaString");
+        Application instance = new Application();
+        String expResult = "";
+        String result = instance.getAreaString();
+        assertEquals(expResult, result);
+       
+    }
+    
 }
