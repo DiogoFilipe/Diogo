@@ -66,11 +66,14 @@ public class CreateStandMainUI extends javax.swing.JFrame {
      */
     public void createList() {
         int i = 0;
+        int shift = fc.getFcEncryption().getShift();
         controller = new CreateStandController(fc, u);
         List<Event> events = controller.getEventList();
-        final String[] titles = new String[events.size()];
+        String[] titles = new String[events.size()];
+        final String [] decypheredTitles = new String[events.size()];
         for (Event event : events) {
             titles[i] = event.getTitle();
+            decypheredTitles [i] = controller.decypherTitle(titles[i], shift);
             i++;
         }
 
@@ -78,12 +81,12 @@ public class CreateStandMainUI extends javax.swing.JFrame {
 
             @Override
             public int getSize() {
-                return titles.length;
+                return decypheredTitles.length;
             }
 
             @Override
             public Object getElementAt(int j) {
-                return titles[j];
+                return decypheredTitles[j];
             }
         };
         jList2.setModel(model);
