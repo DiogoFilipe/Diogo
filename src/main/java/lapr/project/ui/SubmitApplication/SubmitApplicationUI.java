@@ -38,23 +38,25 @@ public class SubmitApplicationUI extends javax.swing.JFrame {
      * event title
      */
     private String e;
-    
+
     /**
      * controller
      */
     SubmitApplicationController controller;
 
-  /**
-   * 
-   * @param fc fair center
-   * @param u user 
-   * @param e event title
-   */
+    private static final long serialVersionUID = 1484191964L;
+
+    /**
+     *
+     * @param fc fair center
+     * @param u user
+     * @param e event title
+     */
     public SubmitApplicationUI(FairCenter fc, User u, String e) {
-        this.fc=fc;
-        this.u=u;
-        this.e=e;
-        controller= new SubmitApplicationController(fc,u);
+        this.fc = fc;
+        this.u = u;
+        this.e = e;
+        controller = new SubmitApplicationController(fc, u);
         this.setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -259,18 +261,18 @@ public class SubmitApplicationUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SubmitApplicationMainUI submitApplicationMain = new SubmitApplicationMainUI(fc,u);
+        SubmitApplicationMainUI submitApplicationMain = new SubmitApplicationMainUI(fc, u);
         submitApplicationMain.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
@@ -304,13 +306,13 @@ public class SubmitApplicationUI extends javax.swing.JFrame {
             }
             Application changedApplication = controller.createApplication(companyName, address, contact, description, area, invites, keywordsList);
             changedApplication.setState(ApplicationState.State.Created);
-            controller.getApplicationsListOfTheEvent(e).add(changedApplication);          
+            controller.getApplicationsListOfTheEvent(e).add(changedApplication);
             JOptionPane.showMessageDialog(SubmitApplicationUI.this, "Application submited with success");
-            MainWindow main= new MainWindow(fc,u);
+            MainWindow main = new MainWindow(fc, u);
             main.setVisible(true);
             dispose();
-        }catch(EmptySpaceException e){
-            JOptionPane.showMessageDialog(SubmitApplicationUI.this,e.getMessage());
+        } catch (EmptySpaceException e) {
+            JOptionPane.showMessageDialog(SubmitApplicationUI.this, e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
