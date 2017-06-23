@@ -11,6 +11,7 @@ import lapr.project.model.User;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 
 /**
  *
@@ -195,7 +196,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void submitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitApplicationActionPerformed
        try{
            fc.isRepresentative(u);
-           
+           SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc,u);
+           submitApplication.setVisible(true);
+           dispose();
        }catch(Exception e){
            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
        }
