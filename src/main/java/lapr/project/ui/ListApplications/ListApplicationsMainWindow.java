@@ -22,8 +22,8 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
 
     private static final long serialVersionUID = -3030861969072821057L;
 
-    FairCenter fc;
-    User u;
+    private FairCenter fc;
+    private User u;
     ListApplicationsController controller;
     private DefaultListModel<String> model;
     private DefaultListModel<String> model1;
@@ -42,7 +42,7 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         initComponents();
 
         model = new DefaultListModel<>();
-        for(String o:controller.getOrganizerEventsList(u)){
+        for (String o : controller.getOrganizerEventsList(u)) {
             model.addElement(o);
         }
         jList3.setModel(model);
@@ -50,8 +50,8 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         jList3.addListSelectionListener((ListSelectionEvent e) -> {
             String event = jList3.getSelectedValue();
             if (event != null) {
-                model1 = new DefaultListModel<>(); 
-                for(String x: controller.getApplicationsList(event)){
+                model1 = new DefaultListModel<>();
+                for (String x : controller.getApplicationsList(event)) {
                     model.addElement(x);
                 }
                 jList2.setModel(model1);
@@ -61,6 +61,7 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         });
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
