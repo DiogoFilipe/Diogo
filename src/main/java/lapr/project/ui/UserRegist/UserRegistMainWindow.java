@@ -240,7 +240,7 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
         String cipheredName = controller.chiperAttributes(name, shift, keyword);
         String cipheredEmail = controller.chiperAttributes(email, shift, keyword);
         String cipheredUsername = controller.chiperAttributes(username, shift, keyword);
-        String cipheredPassword = controller.cipherPassword(password, shift);
+        String cipheredPassword = controller.cipherWithShift(password, shift);
         User user = new User(cipheredName, cipheredUsername, cipheredEmail, cipheredPassword);
         Encryption encryption = new Encryption(user, keyword, shift);
         controller.addEncryption(encryption);

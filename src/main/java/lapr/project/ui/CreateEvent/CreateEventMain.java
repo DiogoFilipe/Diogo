@@ -351,35 +351,43 @@ public class CreateEventMain extends javax.swing.JFrame {
      */
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
         String type = jComboBox1.getSelectedItem().toString();
-
+        int shift = fc.getFcEncryption().getShift();
         try {
             String place = PlaceInputTextField.getText();
+            String plc = controller.cipherWithShift(place, shift);
             controller.validateString(place, "place");
             String submissionStartDate = StartSubDateInputTextField.getText();
+            String ssDate =  controller.cipherWithShift(submissionStartDate, shift);
             controller.validateDay(submissionStartDate, "submission start date");
             controller.validateMonth(submissionStartDate, "submission start date");
             controller.validateYear(submissionStartDate, "submission start date");
             String description = jTextArea1.getText();
+            String descript = controller.cipherWithShift(description, shift);
             controller.validateString(description, "description");
             String endDate = EndDateInputTextField.getText();
+            String eDate = controller.cipherWithShift(endDate, shift);
             controller.validateDay(endDate, "end date");
             controller.validateMonth(endDate, "end date");
             controller.validateYear(endDate, "end date");
             String startDate = StartDateInputTextField.getText();
+            String sDate = controller.cipherWithShift(startDate, shift);
             controller.validateDay(startDate, "start date");
             controller.validateMonth(startDate, "start date");
             controller.validateYear(startDate, "start date");
             String title = TitleInputTextField.getText();
+            String ttl = controller.cipherWithShift(title, shift);
             controller.validateString(title, "title");
             String submissionEndDate = EndSubDateInputTextField.getText();
+            String seDate = controller.cipherWithShift(submissionEndDate, shift);
             controller.validateDay(submissionEndDate, "submission end date");
             controller.validateMonth(submissionEndDate, "submission end date");
             controller.validateYear(submissionEndDate, "submission end date");
             if (type.equals("Congress")) {
-                controller.setDataCongress(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, organizerListEvent);
+                
+                controller.setDataCongress(ttl, descript, plc, sDate, eDate, ssDate, seDate, organizerListEvent);
                 JOptionPane.showMessageDialog(CreateEventMain.this, "Congress created with success", "SUCCESS", JOptionPane.OK_OPTION);
             } else if (type.equals("Exhibition")) {
-                controller.setDataExhibition(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, organizerListEvent);
+                controller.setDataExhibition(ttl, descript, plc, sDate, eDate, ssDate, seDate, organizerListEvent);
                 JOptionPane.showMessageDialog(CreateEventMain.this, "Exhibition created with success", "SUCCESS", JOptionPane.OK_OPTION);
             }
         } catch (EmptySpaceException | InvalidDayException | InvalidMonthException | InvalidYearException e) {
@@ -388,6 +396,7 @@ public class CreateEventMain extends javax.swing.JFrame {
         MainWindow main = new MainWindow(fc, u);
         main.setVisible(true);
         dispose();
+                                            
     }//GEN-LAST:event_OkButtonActionPerformed
 
     /**

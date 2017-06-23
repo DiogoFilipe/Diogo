@@ -157,34 +157,44 @@ public class LogInWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                                          
         controller = new LogInController(fc);
         String id = jTextField1.getText();
         String password = jPasswordField1.getText();
         List<User> users = controller.getUsers();
-        User user;
+        String cipheredID = null;
+        int shift = fc.getFcEncryption().getShift();
+        User user = null;
         try {
             for (User u : users) {
-                for (int i = 0; i < 100; i++) {
-                    String ciphredPassword = controller.cipherPassword(password, i);
+                for (int i = 0; i < 20; i++) {
+                    String ciphredPassword = controller.cipherWithShift(password, i);
 
                     if (u.getPassword().equals(ciphredPassword)) {
                         user = controller.getUser(u.getUsername());
-                        String kw = controller.verifyEncryptionUserGetKeyword(user);
-                        int shift = controller.verifyEncryptionUserGetShift(user);
-                        String cipheredID = controller.cipherAttributes(id, shift, kw);
-
+                        String kw = controller.verifyEncryptionUserGetKeyword(user);                        
+                        int shft = controller.verifyEncryptionUserGetShift(user);
+                        if(kw.equals("")){
+                        cipheredID = controller.cipherWithShift(id, shift);
+                        }else{
+                        cipheredID = controller.cipherAttributes(id, shft, kw);
+                    }
+                    
                         if (u.getUsername().equals(cipheredID) || u.getEmail().equals(cipheredID)) {
                             MainWindow mainWindow = new MainWindow(fc, user);
                             mainWindow.setVisible(true);
                             dispose();
-
-                        }
+                            
+                        }}
+                        
                     }
                 }
-            }
+            
         } catch (LogInException e) {
             jOptionPane1.showMessageDialog(null, "Error:", e.getMessage(), jOptionPane1.PLAIN_MESSAGE);
         }
+
+                           
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
