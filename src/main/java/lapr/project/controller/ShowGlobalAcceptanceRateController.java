@@ -14,27 +14,26 @@ import lapr.project.model.User;
  * @author Diogo
  */
 public class ShowGlobalAcceptanceRateController {
-    
+
     FairCenter fc;
     User u;
-    
-    public ShowGlobalAcceptanceRateController(FairCenter fc,User u){
-        this.fc=fc;
-        this.u=u;
+
+    public ShowGlobalAcceptanceRateController(FairCenter fc, User u) {
+        this.fc = fc;
+        this.u = u;
     }
-    
-    public List<String> getListApplicationsRejected(){
+
+    public List<String> getListApplicationsRejected() {
         return fc.getApplicationListRejected();
     }
-    
-    public List<String> getListApplicationsAccepted(){
+
+    public List<String> getListApplicationsAccepted() {
         return fc.getApplicationListAccepted();
     }
-    
-    public double getAcceptanceRating(){
+
+    public double getAcceptanceRating() {
         int accepted = getListApplicationsAccepted().size();
         int rejected = getListApplicationsRejected().size();
-        double rating = (accepted/(rejected+accepted))*100;
-        return rating;
+        return (double) (accepted / (rejected + accepted)) * 100;
     }
 }
