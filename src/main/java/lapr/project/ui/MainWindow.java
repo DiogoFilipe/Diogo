@@ -325,137 +325,96 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutActionPerformed
 
     private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
-        try {
-            fc.getEventManagerList().isEventManager(u);
+
             CreateEventMain createEvent = new CreateEventMain(fc, u);
             createEvent.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_createEventActionPerformed
 
     private void defineFAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defineFAEActionPerformed
-        try {
-            fc.getOrganizerList().isOrganizer(u);
+
             DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
             defineFAE.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_defineFAEActionPerformed
 
     private void decideApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decideApplicationActionPerformed
-        try {
-            fc.isFAEOrOrganizer(u);
+
             DecideApplicationMainUI decideApplication = new DecideApplicationMainUI(fc, u);
             decideApplication.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_decideApplicationActionPerformed
 
     private void submitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitApplicationActionPerformed
-        try {
-            fc.getRepresentativeList().isRepresentative(u);
+
             SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc, u);
             submitApplication.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_submitApplicationActionPerformed
 
     private void changeApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeApplicationActionPerformed
-        try {
-            fc.getRepresentativeList().isRepresentative(u);
+
             ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc, u);
             changeApplication.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_changeApplicationActionPerformed
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
-        try {
-            fc.getOrganizerList().isOrganizer(u);
+
             CreateStandMainUI createStand = new CreateStandMainUI(fc, u);
             createStand.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_createStandActionPerformed
 
     private void assignStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignStandActionPerformed
-        try {
-            fc.getOrganizerList().isOrganizer(u);
+
             AssignStandsMainUI assignStand = new AssignStandsMainUI(fc, u);
             assignStand.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_assignStandActionPerformed
 
     private void listApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listApplicationsActionPerformed
-        try {
-            fc.getOrganizerList().isOrganizer(u);
+
             ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc, u);
             listApplications.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
+
     }//GEN-LAST:event_listApplicationsActionPerformed
 
     private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
-        try {
-            fc.getOrganizerList().isOrganizer(u);
+
             ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, u);
             exportData.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_exportAllDataActionPerformed
 
     private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
-        try {
-            fc.getOrganizerList().isOrganizer(u);
+
             ImportFileMainUI importMain = new ImportFileMainUI(fc, u);
             importMain.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_importEventDataActionPerformed
 
     private void eventSubmissionKeywordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSubmissionKeywordsActionPerformed
-        try {
-            fc.getEventManagerList().isEventManager(u);
+
             ShowEventKeywordsWindow eventKeywords = new ShowEventKeywordsWindow(fc, u);
             eventKeywords.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
 
 
     }//GEN-LAST:event_eventSubmissionKeywordsActionPerformed
 
     private void eventAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventAcceptanceRateActionPerformed
-        try {
-            fc.getEventManagerList().isEventManager(u);
+
             EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc, u);
             eventAcceptanceRate.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_eventAcceptanceRateActionPerformed
 
     private void standsInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standsInformationActionPerformed
@@ -463,36 +422,24 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_standsInformationActionPerformed
 
     private void globalRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRateActionPerformed
-        try {
-            fc.getEventManagerList().isEventManager(u);
+
             ShowGlobalAcceptanceRateWindow globalRate = new ShowGlobalAcceptanceRateWindow(fc, u);
             globalRate.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_globalRateActionPerformed
 
     private void FAEMeanRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAEMeanRatingActionPerformed
-        try {
-            fc.getEventManagerList().isEventManager(u);
+
             ShowFaeMeanRatingMainUI FAEMeanRating = new ShowFaeMeanRatingMainUI(fc, u);
             FAEMeanRating.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_FAEMeanRatingActionPerformed
 
     private void Acceptance50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acceptance50ActionPerformed
-        try {
-            fc.getEventManagerList().isEventManager(u);
+
             AcceptanceRateOver50 acceptanceRate50 = new AcceptanceRateOver50(fc, u);
             acceptanceRate50.setVisible(true);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
-        }
     }//GEN-LAST:event_Acceptance50ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
