@@ -20,7 +20,6 @@ public class DontHavePermissionException extends IllegalArgumentException implem
      * without detail message.
      */
     public DontHavePermissionException() {
-        super("You don't have permissions to acess this topic.");
     }
 
     /**
@@ -30,6 +29,6 @@ public class DontHavePermissionException extends IllegalArgumentException implem
      * @param msg the detail message.
      */
     public DontHavePermissionException(String msg) {
-        super(msg);
+        super("You don't have permissions to acess this topic.");
     }
 }

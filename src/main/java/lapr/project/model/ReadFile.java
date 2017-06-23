@@ -51,8 +51,9 @@ public class ReadFile implements Serializable {
 
         switch (data[1].toLowerCase()) {
             case "true":
-                e = returnEvent(data[0], fc);
+                e = returnEvent(data[0], fc);              
                 registEventInformation(data, e, fc);
+                
                 break;
             case "false":
                 e = returnEvent(data[0], fc);
@@ -117,7 +118,7 @@ public class ReadFile implements Serializable {
      * @return the matching event or the created event
      */
     private static Event returnEvent(String title, FairCenter fc) {
-        Event e;
+        Event e = null;
        int shift = fc.getFcEncryption().getShift();
                 
         
@@ -129,11 +130,12 @@ public class ReadFile implements Serializable {
                 Organizer o = new Organizer(u);
             e.getOrganizerList().addOrganizer(o);}
             fc.getEventRegist().getEventList().add(e);
-        } else {
-            e = fc.getEventRegist().getEvent(cipheredTitle);
-        }
-
-        return e;
+       
+        } 
+           
+        
+       return e; 
+        
     }
 
     /**

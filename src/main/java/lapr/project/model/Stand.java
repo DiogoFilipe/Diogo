@@ -89,13 +89,17 @@ public class Stand implements Serializable {
     /**
      *
      * @param area area of the stand
-     * @return verify if the area(String) has only digits
+     * @return verify if the area(String) has only digits or 1 ; or 1 .
      */
     public static boolean verifyArea(String area) {
-
-        for (int i = 0; i < area.length(); i++) {
-            if (!Character.isDigit(area.charAt(i))) {
-                return false;
+        int cont = 0;
+        String[] c = area.split("");
+        for (String c1 : c) {
+            if (!c1.equals(";") || !c1.equals(".")) {
+                cont++;
+                if (c1.contains("[a-zA-Z+]") || cont == 2) {
+                    return false;
+                }
             }
         }
         return true;
