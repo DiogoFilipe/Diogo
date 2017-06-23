@@ -5,6 +5,8 @@
  */
 package lapr.project.ui.ShowFaeMeanRating;
 
+import lapr.project.model.FairCenter;
+import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
 
 /**
@@ -13,12 +15,22 @@ import lapr.project.ui.MainWindow;
  */
 public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = -4450352461231906763L;
+    /**
+     * serie version
+     */
+    private static final long serialVersionUID = 18888837L;
+    
+    private FairCenter fc;
+    
+    private User u;
 
     /**
      * Creates new form ShowFaeMeanRatingMainUI
+     *
+     * @param fc
+     * @param u
      */
-    public ShowFaeMeanRatingMainUI() {
+    public ShowFaeMeanRatingMainUI(FairCenter fc, User u) {
         initComponents();
     }
 
@@ -84,8 +96,8 @@ public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(119, 119, 119))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,8 +105,8 @@ public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
                 .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -105,45 +117,10 @@ public class ShowFaeMeanRatingMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MainWindow mainWindow = new MainWindow();
+        MainWindow mainWindow = new MainWindow(fc, u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShowFaeMeanRatingMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ShowFaeMeanRatingMainUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
