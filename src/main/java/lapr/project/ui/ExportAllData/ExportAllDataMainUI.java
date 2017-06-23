@@ -22,8 +22,8 @@ public class ExportAllDataMainUI extends javax.swing.JFrame {
 
     private static final long serialVersionUID = -4844327210198520469L;
 
-    User user;
-    FairCenter fc;
+    private User user;
+    private FairCenter fc;
 
     ExportDataController controller;
 
