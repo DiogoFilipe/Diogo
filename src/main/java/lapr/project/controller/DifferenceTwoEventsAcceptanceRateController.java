@@ -38,7 +38,7 @@ public class DifferenceTwoEventsAcceptanceRateController {
     public double acceptanceRate(String e){
         List<String> accepted = getApplicationsDecided(e);
         List<String> rejected = getApplicationsRejected(e);
-        return (accepted.size()/(rejected.size()+accepted.size()))*100;
+        return (double) (accepted.size()/(rejected.size()+accepted.size()))*100;
     }
     
     public double differenceAcceptanceRate(String e, String evt){

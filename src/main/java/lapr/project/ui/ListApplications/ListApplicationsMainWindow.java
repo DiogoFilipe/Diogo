@@ -98,6 +98,7 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
             }
         });
 
+        jList3.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(jList3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

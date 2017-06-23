@@ -167,10 +167,7 @@ public class AssignStandsController {
      * @return list of applications of the event
      */
     public List<Application> generateApplicationsList(Event e) {
-
-        ApplicationList applicationList = new ApplicationList();
-
-        return applicationList.getApplicationList();
+        return new ApplicationList().getApplicationList();
     }
 
     /**

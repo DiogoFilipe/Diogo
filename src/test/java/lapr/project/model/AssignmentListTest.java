@@ -18,24 +18,25 @@ import static org.junit.Assert.*;
  * @author João Domingues
  */
 public class AssignmentListTest {
+
     protected AssignmentList al;
-    
+
     public AssignmentListTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         al = new AssignmentList();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,7 +49,7 @@ public class AssignmentListTest {
         System.out.println("getAssignmentList");
         List<Assignment> result = al.getAssignmentList();
         assertEquals(al.getAssignmentList(), result);
-       
+
     }
-    
+
 }

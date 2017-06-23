@@ -59,5 +59,4 @@ public class EventManagerList implements Serializable {
         }
         return false;
     }
-
 }

@@ -337,7 +337,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void defineFAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defineFAEActionPerformed
         try {
-            fc.getFAEList().isFAE(u);
+            fc.getOrganizerList().isOrganizer(u);
             DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
             defineFAE.setVisible(true);
             dispose();
