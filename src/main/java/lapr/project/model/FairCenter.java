@@ -47,6 +47,8 @@ public class FairCenter implements Serializable {
      * class that has the list of encryptions
      */
     private EncryptionList encryptionList;
+    
+    private Encryption fcEncryption;
 
     /**
      * class that has the list of fae
@@ -69,6 +71,7 @@ public class FairCenter implements Serializable {
         encryptionList = new EncryptionList();
         exhibitionList = new ExhibitionList();
         congressList = new CongressList();
+        fcEncryption = new Encryption(Encryption.gerateShift());
     }
 
     /**
@@ -78,6 +81,12 @@ public class FairCenter implements Serializable {
         return userRegist;
     }
 
+    public Encryption getFcEncryption() {
+        return fcEncryption;
+    }
+
+  
+    
     /**
      *
      * @return the list of encryptions

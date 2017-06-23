@@ -1,8 +1,7 @@
 package lapr.project.ui;
 
 import java.io.IOException;
-import lapr.project.model.ReadExportFairCenter;
-import lapr.project.model.FairCenter;
+import lapr.project.model.*;
 import lapr.project.model.Organizer;
 
 /**
@@ -13,7 +12,7 @@ class Main {
     /**
      * Private constructor to hide implicit public one.
      */
-    private Main() {
+	private Main(){
 
     }
 
@@ -23,8 +22,9 @@ class Main {
     public static void main(String[] args) throws IOException {
         FairCenter fc;
         fc = ReadExportFairCenter.loadFairCenter(new FairCenter());
-        if (fc == null) {
-            fc = new FairCenter();
+                if(fc == null){
+                fc = new FairCenter();
+                          
         }
         LogInWindow logInWindow = new LogInWindow(fc);
         logInWindow.setVisible(true);

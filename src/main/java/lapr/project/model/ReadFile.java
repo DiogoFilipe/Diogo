@@ -74,7 +74,7 @@ public class ReadFile implements Serializable {
      * @param event - application´s event
      * @param fairCenter - the fairCenter
      */
-    private static void registEventInformation(String[] data, Event event, FairCenter fairCenter) {
+    private static void registEventInformation(String[] data, Event event, FairCenter fc) {
         Assignment assignment;
         List<FAE> decisionFae = new ArrayList<>();
         Application application;
@@ -82,25 +82,29 @@ public class ReadFile implements Serializable {
         Decision decision2;
         FAE fae1;
         FAE fae2;
+       int shift = fc.getFcEncryption().getShift();
+        
 
         List<Keyword> keywords = new ArrayList<>(data[23].split(",").length);
         for (String keys : data[23].split(",")) {
-            keywords.add(new Keyword(keys));
+                String ks = Encryption.cipherWithShift(keys, shift);
+                keywords.add(new Keyword(ks));
         }
-        application = returnApplication(event, data[2], data[3], data[4], keywords);
+        application = returnApplication(fc,event, data[2], data[3], data[4],keywords);
 
-        decision1 = makeNewDecision(data[1], data[5], data[6], data[7], data[8], data[9]);
-        fae1 = returnFAE(data[10], data[12], data[11], data[13], event, fairCenter);
+        decision1 = makeNewDecision(fc,data[1],data[5], data[6], data[7], data[8], data[9]);
+        fae1 = returnFAE(data[10], data[12], data[11], data[13], event, fc);
         application.setD(decision1);
 
         decisionFae.add(fae1);
 
-        decision2 = makeNewDecision(data[1], data[14], data[15], data[16], data[17], data[18]);
-        fae2 = returnFAE(data[19], data[21], data[20], data[22], event, fairCenter);
+        decision2 = makeNewDecision(fc,data[1],data[14], data[15], data[16], data[17], data[18]);
+        fae2 = returnFAE(data[19], data[21], data[20], data[22], event, fc);
         application.setD(decision2);
         decisionFae.add(fae2);
-        assignment = new Assignment(decisionFae, application);
+        assignment = new Assignment(decisionFae,application);
         event.getAssignmentList().getAssignmentList().add(assignment);
+
 
         event.getApplicationList().getApplicationList().add(application);
     }
@@ -112,40 +116,47 @@ public class ReadFile implements Serializable {
      * @param fairCenter - the fairCenter
      * @return the matching event or the created event
      */
-    private static Event returnEvent(String title, FairCenter fairCenter) {
+    private static Event returnEvent(String title, FairCenter fc) {
         Event e;
-        if (fairCenter.getEventRegist().getEvent(title) == null) {
-            e = new Exhibition(title);
+       int shift = fc.getFcEncryption().getShift();
+                
+        
+        String cipheredTitle = Encryption.cipherWithShift(title, shift);
+        if (fc.getEventRegist().getEvent(cipheredTitle) == null) {
+            e = new Exhibition(cipheredTitle);
             List<User> organizerList = new ArrayList<>();
-            for (User u : organizerList) {
+            for(User u : organizerList){
                 Organizer o = new Organizer(u);
-                e.getOrganizerList().addOrganizer(o);
-            }
-            fairCenter.getEventRegist().getEventList().add(e);
+            e.getOrganizerList().addOrganizer(o);}
+            fc.getEventRegist().getEventList().add(e);
         } else {
-            e = fairCenter.getEventRegist().getEvent(title);
+            e = fc.getEventRegist().getEvent(cipheredTitle);
         }
 
         return e;
     }
 
     /**
-     * Returns the application with the same description. If it doesn´t exist
-     * creates a new one
-     *
+     * Returns the application with the same description. If it doesn´t exist creates a new one 
      * @param event - event that has the application
      * @param description - applications's description
      * @param area - applications´s pretended area
      * @param ninvites - applications's invites
      * @return the matching application or the created one
      */
-    private static Application returnApplication(Event event, String description, String area, String ninvites, List<Keyword> keywords) {
-        Application application = event.getApplicationList().getApplication(description);
+    private static Application returnApplication(FairCenter fc,Event event, String description, String area, String ninvites,List <Keyword> keywords) {
+        int shift = fc.getFcEncryption().getShift();
+        
+        String descript = Encryption.cipherWithShift(description, shift);
+        
+        
+        
+        Application application = event.getApplicationList().getApplication(descript);
 
         if (application == null) {
             double boothArea = Double.parseDouble(area);
             int invites = Integer.parseInt(ninvites);
-            application = new Application(invites, boothArea, description, keywords);
+            application = new Application(invites,boothArea,description,keywords);
 
         }
         return application;
@@ -163,22 +174,25 @@ public class ReadFile implements Serializable {
      * @param recommendation - application´s recommendation
      * @return decision
      */
-    private static Decision makeNewDecision(String decision, String justification, String faeKnowledge, String adequacy, String invitationAdequacy, String recommendation) {
+    private static Decision makeNewDecision(FairCenter fc,String decision,String justification, String faeKnowledge, String adequacy, String invitationAdequacy, String recommendation) {
         boolean dec = false;
-        if ("true".equalsIgnoreCase(decision)) {
+        if("true".equalsIgnoreCase(decision)){
             dec = true;
-        } else {
-            if ("false".equalsIgnoreCase(decision)) {
+        }else{
+            if("false".equalsIgnoreCase(decision)){
                 dec = false;
-            }
-        }
+        }}
+        
+       int shift = fc.getFcEncryption().getShift();
 
+        String justific = Encryption.cipherWithShift(justification, shift);
+            
         int faeKnowledgeInt = Integer.parseInt(faeKnowledge);
         int adequacyInt = Integer.parseInt(adequacy);
         int invitationAdequacyInt = Integer.parseInt(invitationAdequacy);
         int recommendationInt = Integer.parseInt(recommendation);
 
-        return new Decision(dec, justification, faeKnowledgeInt, adequacyInt, invitationAdequacyInt, recommendationInt);
+        return new Decision(dec, justific,faeKnowledgeInt,adequacyInt,invitationAdequacyInt,recommendationInt);
     }
 
     /**
@@ -192,22 +206,38 @@ public class ReadFile implements Serializable {
      * @param fairCenter - the fairCenter
      * @return the fae
      */
-    private static FAE returnFAE(String name, String email, String username, String password, Event event, FairCenter fairCenter) {
-        User user = fairCenter.getUserRegist().getUser(username);
+    private static FAE returnFAE(String name, String email, String username, String password, Event event, FairCenter fc) {
+       User user = null;
+        for (User u : fc.getUserRegist().getUserList()) {
+            for (int i = 0; i < 11; i++) {
+               if(u.getName().equals(Encryption.cipherWithShift(name, i))){
+                 user = fc.getUserRegist().getUser(u.getName());              
+               }              
+            } 
+        }
 
-        FAE f = null;
 
+        FAE f;
+        
+            int shift = Encryption.gerateShift();      
+            String nam = Encryption.cipherWithShift(name, shift);
+            String mail = Encryption.cipherWithShift(email, shift);
+            String usernam = Encryption.cipherWithShift(username, shift);
+            String pass = Encryption.cipherWithShift(password, shift);
+       
         if (user == null) {
-            user = new User(name, username, email, password);
-            fairCenter.getUserRegist().getUserList().add(user);
-            f = new FAE(name, username, email, password);
+            user = new User(nam,usernam,mail ,pass);
+            fc.getUserRegist().getUserList().add(user);
+            f = new FAE(nam,usernam,mail,pass);
+            Encryption encryption = new Encryption(user,shift);
+            fc.getEncryptionList().getEncryptionsList().add(encryption);
             event.getFAEList().getFAEList().add(f);
             return f;
         } else {
             if (event.isFAE(user)) {
-                return event.getFAEList().getFAE(username);
+                return event.getFAEList().getFAE(usernam);
             } else {
-                f = new FAE(name, username, email, password);
+                f = new FAE(nam,usernam,mail,pass);
                 event.getFAEList().getFAEList().add(f);
                 return f;
             }

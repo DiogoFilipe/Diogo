@@ -45,6 +45,20 @@ public class Encryption implements Serializable {
 
     }
 
+    public Encryption(User user, int shift) {
+        this.user = user;
+        this.shift = shift;
+    }
+    
+    
+    
+    public Encryption(int shift){
+    this.shift = shift;
+    }
+
+
+    
+    
     /**
      * returns the encryption's shift
      *
@@ -306,7 +320,7 @@ public class Encryption implements Serializable {
      * @param shift - number of deslocations
      * @return - returns the encripted password
      */
-    public static String cipherPassword(String password, int shift) {
+    public static String cipherWithShift(String password, int shift) {
         String encripted = "";
         int pass = password.length();
         for (int i = 0; i < pass; i++) {
