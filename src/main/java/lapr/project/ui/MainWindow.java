@@ -65,7 +65,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     }
 
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,6 +80,7 @@ public class MainWindow extends javax.swing.JFrame {
         listApplications = new javax.swing.JButton();
         exportAllData = new javax.swing.JButton();
         importEventData = new javax.swing.JButton();
+        eventSubmissionKeywords = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,6 +172,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        eventSubmissionKeywords.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        eventSubmissionKeywords.setText("Event Submission Keywords");
+        eventSubmissionKeywords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventSubmissionKeywordsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,7 +197,6 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(exportAllData))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(decideApplication)
                             .addComponent(submitApplication)
                             .addComponent(changeApplication)
                             .addComponent(createStand)
@@ -199,7 +206,11 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(defineFAE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(importEventData)))
+                        .addComponent(importEventData))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(decideApplication)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eventSubmissionKeywords)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -214,7 +225,9 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(defineFAE)
                     .addComponent(importEventData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(decideApplication)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(decideApplication)
+                    .addComponent(eventSubmissionKeywords))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -245,7 +258,7 @@ public class MainWindow extends javax.swing.JFrame {
             CreateEventMain createEvent = new CreateEventMain(fc, u);
             createEvent.setVisible(true);
             dispose();
-        } catch (DontHavePermissionException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_createEventActionPerformed
@@ -256,96 +269,104 @@ public class MainWindow extends javax.swing.JFrame {
             DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
             defineFAE.setVisible(true);
             dispose();
-        } catch (DontHavePermissionException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_defineFAEActionPerformed
 
     private void decideApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decideApplicationActionPerformed
-        try{
+        try {
             fc.isFAEOrOrganizer(u);
-            DecideApplicationMainUI decideApplication = new DecideApplicationMainUI(fc,u);
+            DecideApplicationMainUI decideApplication = new DecideApplicationMainUI(fc, u);
             decideApplication.setVisible(true);
             dispose();
-        }catch(DontHavePermissionException e){
-            JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_decideApplicationActionPerformed
 
     private void submitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitApplicationActionPerformed
-       try{
-           fc.isRepresentative(u);
-           SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc,u);
-           submitApplication.setVisible(true);
-           dispose();
-       }catch(DontHavePermissionException e){
-           JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
-       }
+        try {
+            fc.isRepresentative(u);
+            SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc, u);
+            submitApplication.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
     }//GEN-LAST:event_submitApplicationActionPerformed
 
     private void changeApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeApplicationActionPerformed
-        try{
+        try {
             fc.isRepresentative(u);
-            ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc,u);
+            ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc, u);
             changeApplication.setVisible(true);
             dispose();
-        }catch(DontHavePermissionException e){
-            JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_changeApplicationActionPerformed
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
-       try{
-           fc.isOrganizer(u);
-           CreateStandMainUI createStand = new CreateStandMainUI(fc,u);
-           createStand.setVisible(true);
-           dispose();
-       }catch(DontHavePermissionException e){
-           JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
-       }
+        try {
+            fc.isOrganizer(u);
+            CreateStandMainUI createStand = new CreateStandMainUI(fc, u);
+            createStand.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
     }//GEN-LAST:event_createStandActionPerformed
 
     private void assignStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignStandActionPerformed
-        try{
+        try {
             fc.isOrganizer(u);
-            AssignStandsMainUI assignStand = new AssignStandsMainUI(fc,u);
+            AssignStandsMainUI assignStand = new AssignStandsMainUI(fc, u);
             assignStand.setVisible(true);
             dispose();
-        }catch(DontHavePermissionException e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_assignStandActionPerformed
 
     private void listApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listApplicationsActionPerformed
-       try{
-           fc.isOrganizer(u);
-           ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc,u);
-           listApplications.setVisible(true);
-           dispose();
-       }catch(DontHavePermissionException e){
-           JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
-       }
+        try {
+            fc.isOrganizer(u);
+            ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc, u);
+            listApplications.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
     }//GEN-LAST:event_listApplicationsActionPerformed
 
     private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
-      try{
-      fc.isOrganizer(u);
-      ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc,u);
-      exportData.setVisible(true);
-      dispose();
-      }catch(DontHavePermissionException e){
-      JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());}
+        try {
+            fc.isOrganizer(u);
+            ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, u);
+            exportData.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
     }//GEN-LAST:event_exportAllDataActionPerformed
 
     private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
-           try{ 
-        fc.isOrganizer(u);
-        ImportFileMainUI importMain = new ImportFileMainUI(fc,u);
-        importMain.setVisible(true);
-        dispose();
-      }catch(DontHavePermissionException e){
-      JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());}
+        try {
+            fc.isOrganizer(u);
+            ImportFileMainUI importMain = new ImportFileMainUI(fc, u);
+            importMain.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
     }//GEN-LAST:event_importEventDataActionPerformed
+
+    private void eventSubmissionKeywordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSubmissionKeywordsActionPerformed
+
+            
+ 
+    }//GEN-LAST:event_eventSubmissionKeywordsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignStand;
@@ -354,6 +375,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton createStand;
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
+    private javax.swing.JButton eventSubmissionKeywords;
     private javax.swing.JButton exportAllData;
     private javax.swing.JButton importEventData;
     private javax.swing.JButton listApplications;
