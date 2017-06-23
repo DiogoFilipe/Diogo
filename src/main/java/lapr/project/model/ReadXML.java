@@ -97,6 +97,8 @@ public class ReadXML implements Serializable{
                          String ml =  Encryption.cipherWithShift(mail, shift);
                          String unm = Encryption.cipherWithShift(usernam, shift);
                          String pss = Encryption.cipherWithShift(pass, shift);
+                         User us = new User(nm,unm,ml,pss);
+                         fc.getUserRegist().getUserList().add(us);
                          FAE fa = new FAE(nm,unm,ml,pss);
                         ev.getFAEList().getFAEList().add(fa);
                         ev.setState(EventState.State.FAESet);
@@ -194,15 +196,8 @@ public class ReadXML implements Serializable{
                  accepted = true;}
                  Decision dc = new Decision(accepted,jstf,fk,aq,ia,rm);
                         ap.setD(dc);
-                        ap.setState(ApplicationState.State.Decided);
-
-                
-                    }
-
-                
-                 
-                         
-                
+                        ap.setState(ApplicationState.State.Decided);        
+                    }             
                 }
                  Application applic = ev.getApplicationList().getApplication(dsc);
                  Assignment faeDecision = new Assignment(assigned,applic);

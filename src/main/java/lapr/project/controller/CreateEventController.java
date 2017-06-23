@@ -157,5 +157,16 @@ public class CreateEventController {
             throw new InvalidDayException(m);
         }
     }
+    
+     public String cipherWithShift(String original, int shift) {
+        String ciphered = Encryption.cipherWithShift(original, shift);
+        return ciphered;
+    }
+
+
+    public String chiperAttributes(String attribute, int shift, String keyword) {
+        String cipheredAttribute = Encryption.cipherAttribute(keyword, attribute, shift);
+        return cipheredAttribute;
+    }
 
 }

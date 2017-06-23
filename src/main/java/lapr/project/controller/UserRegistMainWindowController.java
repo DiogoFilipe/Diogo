@@ -48,7 +48,7 @@ public class UserRegistMainWindowController {
 
     }
 
-    public String cipherPassword(String password, int shift) {
+    public String cipherWithShift(String password, int shift) {
         String cipheredPassword = Encryption.cipherWithShift(password, shift);
         return cipheredPassword;
     }
