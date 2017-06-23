@@ -34,11 +34,11 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="standardDeviation" min="-2" pref="68" max="-2" attributes="0"/>
+              <Component id="d" min="-2" pref="68" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="mean" min="-2" pref="61" max="-2" attributes="0"/>
+              <Component id="m" min="-2" pref="61" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
@@ -64,10 +64,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="mean" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="m" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="standardDeviation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="d" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="mean">
+    <Component class="javax.swing.JTextField" name="m">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -127,7 +127,7 @@
         <Property name="text" type="java.lang.String" value="Mean deviation"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="standardDeviation">
+    <Component class="javax.swing.JTextField" name="d">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
