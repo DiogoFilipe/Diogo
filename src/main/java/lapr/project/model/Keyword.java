@@ -92,27 +92,6 @@ public class Keyword implements Serializable {
         return node;
     }
 
-//    @Override
-    public Keyword importContentFromXMLNode(Node node) throws ParserConfigurationException {
-        DocumentBuilderFactory factory
-                = DocumentBuilderFactory.newInstance();
-        //Create document builder
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        //Obtain a new document
-        Document document = builder.newDocument();
-
-        document.appendChild(document.importNode(node, true));
-
-        NodeList elementsKeyword = document.getElementsByTagName(VALUE_ELEMENT_NAME);
-
-        Node elementKeyword = elementsKeyword.item(0);
-
-        //Get value
-        this.setValue(elementKeyword.getFirstChild().getNodeValue());
-
-        return this;
-    }
 
     /**
      *
