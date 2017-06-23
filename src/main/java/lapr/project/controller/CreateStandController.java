@@ -73,4 +73,8 @@ public class CreateStandController {
     public Event getEvent(String title) {
         return fc.getEvent(title);
     }
+    
+    public String decypherTitle(String original ,int shift){
+        return Encryption.decipherPassword(null, shift);
+    }
 }

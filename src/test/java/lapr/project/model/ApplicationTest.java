@@ -23,7 +23,7 @@ public class ApplicationTest {
     protected Application a;
     protected List<Keyword> klist;
     protected List<String> products;
-    protected Decision d;
+    protected Decision dec;
     
     public ApplicationTest() {
     }
@@ -38,7 +38,7 @@ public class ApplicationTest {
     
     @Before
     public void setUp() {
-        a = new Application("tap1", "aeroportosacarneiro", 987654321,"somos uma empresa", klist, d, 385.5, 20,products);
+        a = new Application("tap1", "aeroportosacarneiro", 987654321,"somos uma empresa", klist, dec, 385.5, 20,products);
     }
     
     @After
@@ -171,10 +171,9 @@ public class ApplicationTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object o = null;
-        Application instance = new Application();
+        Object o = a;
         boolean expResult = false;
-        boolean result = instance.equals(o);
+        boolean result = a.equals(o);
         assertEquals(expResult, result);
         
     }
@@ -185,9 +184,8 @@ public class ApplicationTest {
     @Test
     public void testGetInvites() {
         System.out.println("getInvites");
-        Application instance = new Application();
-        int expResult = 0;
-        int result = instance.getInvites();
+        int expResult = 20;
+        int result = a.getInvites();
         assertEquals(expResult, result);
         
     }
@@ -198,9 +196,10 @@ public class ApplicationTest {
     @Test
     public void testSetInvites() {
         System.out.println("setInvites");
-        int invites = 0;
-        Application instance = new Application();
-        instance.setInvites(invites);
+        int invites = 36;
+        a.setInvites(invites);
+        int result = a.getInvites();
+        assertEquals(result, invites);
         
     }
 
@@ -210,10 +209,9 @@ public class ApplicationTest {
     @Test
     public void testGetBoothArea() {
         System.out.println("getBoothArea");
-        Application instance = new Application();
-        double expResult = 0.0;
-        double result = instance.getBoothArea();
-        assertEquals(expResult, result, 0.0);
+        double expResult = 385.5;
+        double result = a.getBoothArea();
+        assertEquals(expResult, result, 385.5);
         
     }
 
@@ -223,9 +221,10 @@ public class ApplicationTest {
     @Test
     public void testSetBoothArea() {
         System.out.println("setBoothArea");
-        double boothArea = 0.0;
-        Application instance = new Application();
-        instance.setBoothArea(boothArea);
+        double expResult = 35.5;
+        a.setBoothArea(expResult);
+        double result = a.getBoothArea();
+        assertEquals(expResult, result, 35.5);
         
     }
 
@@ -235,10 +234,8 @@ public class ApplicationTest {
     @Test
     public void testGetD() {
         System.out.println("getD");
-        Application instance = new Application();
-        Decision expResult = null;
-        Decision result = instance.getD();
-        assertEquals(expResult, result);
+        Decision result = a.getD();
+        assertEquals(dec, result);
         
     }
 
@@ -248,9 +245,10 @@ public class ApplicationTest {
     @Test
     public void testSetD() {
         System.out.println("setD");
-        Decision d = null;
-        Application instance = new Application();
-        instance.setD(d);
+        Decision de = dec;
+        a.setD(de);
+        Decision result = a.getD();
+        assertEquals(result, de);
         
     }
 
@@ -260,9 +258,10 @@ public class ApplicationTest {
     @Test
     public void testSetState() {
         System.out.println("setState");
-        ApplicationState.State state = null;
-        Application instance = new Application();
-        instance.setState(state);
+        ApplicationState.State state = ApplicationState.State.Assigned;
+        a.setState(state);
+        ApplicationState.State result = a.getState();
+        assertEquals(result, state);
         
     }
 
@@ -272,9 +271,10 @@ public class ApplicationTest {
     @Test
     public void testSetCompanyName() {
         System.out.println("setCompanyName");
-        String companyName = "";
-        Application instance = new Application();
-        instance.setCompanyName(companyName);
+        String companyName = "ryanair";
+        a.setCompanyName(companyName);
+        String result = a.getCompanyName();
+        assertEquals(result, companyName);
         
     }
 
@@ -284,10 +284,10 @@ public class ApplicationTest {
     @Test
     public void testSetAddress() {
         System.out.println("setAddress");
-        String address = "";
-        Application instance = new Application();
-        instance.setAddress(address);
-       
+        String address = "aeroportoisep2016";
+        a.setAddress(address);
+        String result = a.getAddress();
+        assertEquals(result, address);
     }
 
     /**
@@ -296,10 +296,10 @@ public class ApplicationTest {
     @Test
     public void testSetContact() {
         System.out.println("setContact");
-        int contact = 0;
-        Application instance = new Application();
-        instance.setContact(contact);
-        
+        int contact = 123456789;
+        a.setContact(contact);
+        int result = a.getContact();
+        assertEquals(result, contact);
     }
 
     /**
@@ -308,9 +308,11 @@ public class ApplicationTest {
     @Test
     public void testSetKeywordList() {
         System.out.println("setKeywordList");
-        List<Keyword> keywordList = null;
-        Application instance = new Application();
-        instance.setKeywordList(keywordList);
+         List<Keyword> keywordList = a.getKeywordList();
+         a.setKeywordList(keywordList);
+         List<Keyword> result = keywordList;
+         assertEquals(result, keywordList);
+         
        
     }
 
@@ -320,9 +322,10 @@ public class ApplicationTest {
     @Test
     public void testSetDescription() {
         System.out.println("setDescription");
-        String description = "";
-        Application instance = new Application();
-        instance.setDescription(description);
+        String description = "confianca";
+        a.setDescription(description);
+        String result = a.getDescription();
+        assertEquals(result, description);
         
     }
 
@@ -332,9 +335,8 @@ public class ApplicationTest {
     @Test
     public void testGetState() {
         System.out.println("getState");
-        Application instance = new Application();
-        ApplicationState.State expResult = null;
-        ApplicationState.State result = instance.getState();
+        ApplicationState.State expResult = a.getState();
+        ApplicationState.State result = a.getState();
         assertEquals(expResult, result);
         
     }
@@ -345,9 +347,8 @@ public class ApplicationTest {
     @Test
     public void testGetProducts() {
         System.out.println("getProducts");
-        Application instance = new Application();
-        List<String> expResult = null;
-        List<String> result = instance.getProducts();
+        List<String> expResult = a.getProducts();
+        List<String> result = a.getProducts();
         assertEquals(expResult, result);
        
     }
@@ -358,9 +359,11 @@ public class ApplicationTest {
     @Test
     public void testSetProducts() {
         System.out.println("setProducts");
-        List<String> products = null;
-        Application instance = new Application();
-        instance.setProducts(products);
+        List<String> products = a.getProducts();
+        a.setProducts(products);
+        List<String> result = a.getProducts();
+        assertEquals(products, result);
+        
         
     }
 
@@ -370,9 +373,8 @@ public class ApplicationTest {
     @Test
     public void testGetContactString() {
         System.out.println("getContactString");
-        Application instance = new Application();
-        String expResult = "";
-        String result = instance.getContactString();
+        String expResult = a.getContactString();
+        String result = a.getContactString();
         assertEquals(expResult, result);
         
     }
@@ -383,9 +385,8 @@ public class ApplicationTest {
     @Test
     public void testGetNInvitesString() {
         System.out.println("getNInvitesString");
-        Application instance = new Application();
-        String expResult = "";
-        String result = instance.getNInvitesString();
+        String expResult = a.getNInvitesString();
+        String result = a.getNInvitesString();
         assertEquals(expResult, result);
        
     }
@@ -396,9 +397,8 @@ public class ApplicationTest {
     @Test
     public void testGetAreaString() {
         System.out.println("getAreaString");
-        Application instance = new Application();
-        String expResult = "";
-        String result = instance.getAreaString();
+        String expResult = a.getAreaString();
+        String result = a.getAreaString();
         assertEquals(expResult, result);
        
     }
