@@ -24,6 +24,7 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form UserRegistMainWindow
+     * @param fc fair center
      */
     public UserRegistMainWindow(FairCenter fc) {
         this.fc = fc;
@@ -221,20 +222,20 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
             controller.verifyEmail(email);
         } catch (UserRegistException e) {
 
-            jOptionPane1.showMessageDialog(null, e.getMessage(), "Email format incorrect or already exists", jOptionPane1.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Email format incorrect or already exists", JOptionPane.PLAIN_MESSAGE);
 
         }
         try {
             controller.verifyPassword(password);
         } catch (UserRegistException e) {
 
-            jOptionPane1.showMessageDialog(null, e.getMessage(), "Password must contain a number an UpperCase a LowerCase and symbol", jOptionPane1.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Password must contain a number an UpperCase a LowerCase and symbol", JOptionPane.PLAIN_MESSAGE);
         }
         try {
             controller.verifyKeyword(keyword);
         } catch (UserRegistException e) {
 
-            jOptionPane1.showMessageDialog(null, e.getMessage(), "Keyword doesn´t contain only letters", jOptionPane1.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Keyword doesn´t contain only letters", JOptionPane.PLAIN_MESSAGE);
         }
 
         String cipheredName = controller.chiperAttributes(name, shift, keyword);
