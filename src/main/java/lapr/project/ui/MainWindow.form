@@ -38,7 +38,6 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="submitApplication" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="changeApplication" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="createStand" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="assignStand" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -55,6 +54,11 @@
                       <Component id="decideApplication" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="eventSubmissionKeywords" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="submitApplication" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="eventAcceptanceRate" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -80,7 +84,10 @@
                   <Component id="eventSubmissionKeywords" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="submitApplication" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="submitApplication" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="eventAcceptanceRate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="changeApplication" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -227,6 +234,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventSubmissionKeywordsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="eventAcceptanceRate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Event Acceptance Rate"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventAcceptanceRateActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
