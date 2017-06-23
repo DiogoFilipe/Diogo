@@ -225,6 +225,10 @@ public class ChangeApplicationMainWindow extends javax.swing.JFrame {
         String application = ListApplications.getSelectedValue();
         try {
             controller.deleteApplication(event, application);
+            JOptionPane.showMessageDialog(ChangeApplicationMainWindow.this, "Application removed with success");
+            MainWindow main = new MainWindow(fc,u);
+            main.setVisible(true);
+            dispose();
         } catch (EventNotFound e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Application not found", JOptionPane.INFORMATION_MESSAGE);
         }
