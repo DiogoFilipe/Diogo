@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
 import lapr.project.ui.CreateEvent.CreateEventMain;
+import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 
 /**
  *
@@ -40,6 +41,18 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow(FairCenter fc, User u) {
         this.fc = fc;
         this.u = u;
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(MainWindow.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+
+        });
         initComponents();
 
     }
@@ -55,6 +68,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         logOut = new javax.swing.JButton();
         createEvent = new javax.swing.JButton();
+        defineFAE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +88,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        defineFAE.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        defineFAE.setText("Define FAE");
+        defineFAE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                defineFAEActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,7 +107,10 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(logOut))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(createEvent)))
+                        .addComponent(createEvent))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(defineFAE)))
                 .addContainerGap(434, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,7 +118,9 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(createEvent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(defineFAE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -108,18 +135,30 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutActionPerformed
 
     private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
-        try{
+        try {
             fc.getEventManagerList().isEventManager(u);
-            CreateEventMain createEvent = new CreateEventMain(fc,u);
+            CreateEventMain createEvent = new CreateEventMain(fc, u);
             createEvent.setVisible(true);
-            dispose();    
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_createEventActionPerformed
 
+    private void defineFAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defineFAEActionPerformed
+        try {
+            fc.getFAEList().isFAE(u);
+            DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
+            defineFAE.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
+    }//GEN-LAST:event_defineFAEActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createEvent;
+    private javax.swing.JButton defineFAE;
     private javax.swing.JButton logOut;
     // End of variables declaration//GEN-END:variables
 }
