@@ -6,9 +6,11 @@
  */
 package lapr.project.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,12 +21,11 @@ import static org.junit.Assert.*;
  * @author João Domingues
  */
 public class AssignmentListStandTest {
-    protected AssignmentListStand als;
-    protected AssignStands as;
-    protected Stand s;
+    protected AssignmentListStand las;
+    protected List<AssignStands> sal;
+    protected AssignStands sa;
     protected Application a;
-    public AssignmentListStandTest() {
-    }
+    protected Stand s;
     
     @BeforeClass
     public static void setUpClass() {
@@ -36,8 +37,13 @@ public class AssignmentListStandTest {
     
     @Before
     public void setUp() {
-        als = new AssignmentListStand();
-        as = new AssignStands(s, a);
+        las = new AssignmentListStand();
+        sal = new ArrayList<>();
+        las.setStandsAssigned(sal);
+        a = new Application();
+        s = new Stand(3);
+        sa = new AssignStands(s, a);
+        sal.add(sa);
     }
     
     @After
@@ -50,8 +56,8 @@ public class AssignmentListStandTest {
     @Test
     public void testGetStandsAssigned() {
         System.out.println("getStandsAssigned");
-        List<AssignStands> result = als.getStandsAssigned();
-        assertEquals(als.getStandsAssigned(), result);
+        List<AssignStands> result = las.getStandsAssigned();
+        assertEquals(las.getStandsAssigned(), result);
         
     }
 
@@ -61,8 +67,8 @@ public class AssignmentListStandTest {
     @Test
     public void testSetStandsAssigned() {
         System.out.println("setStandsAssigned");
-        List<AssignStands> standsAssigned = als.getStandsAssigned();
-        als.setStandsAssigned(standsAssigned);
+        List<AssignStands> standsAssigned = las.getStandsAssigned();
+        las.setStandsAssigned(standsAssigned);
         List<AssignStands> result = standsAssigned;
         assertEquals(standsAssigned, result);
        
@@ -74,13 +80,12 @@ public class AssignmentListStandTest {
     @Test
     public void testValidate() {
         System.out.println("validate");
-        AssignStands s = null;
-        AssignmentListStand instance = new AssignmentListStand();
+        AssignStands s = sa;
+        AssignmentListStand instance = las;
         boolean expResult = false;
         boolean result = instance.validate(s);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -88,15 +93,15 @@ public class AssignmentListStandTest {
      */
     @Test
     public void testNewStandAssignment() {
-        System.out.println("newStandAssignment");
-        Stand s = null;
-        Application a = null;
-        AssignmentListStand instance = new AssignmentListStand();
-        AssignStands expResult = null;
-        AssignStands result = instance.newStandAssignment(s, a);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+         System.out.println("newStandAssignment");
+        Stand st = s;
+        Application ap = a;
+        AssignmentListStand instance = las;
+        AssignmentListStand otherInstance = las;
+        AssignStands expResult = otherInstance.newStandAssignment(st, ap);
+        AssignStands result = instance.newStandAssignment(st, ap);
+        Assert.assertFalse(expResult.equals(result));
+       
     }
 
     /**
@@ -104,13 +109,11 @@ public class AssignmentListStandTest {
      */
     @Test
     public void testAssignmentStandsRegist() {
-        System.out.println("AssignmentStandsRegist");
-        Boolean b = null;
-        AssignStands as = null;
-        AssignmentListStand instance = new AssignmentListStand();
-        instance.AssignmentStandsRegist(b, as);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+         System.out.println("RegisterStandAssignment");
+        Boolean b = true;
+        AssignmentListStand instance = las;
+        instance.AssignmentStandsRegist(b, sa);
+        
     }
 
     /**
@@ -118,14 +121,10 @@ public class AssignmentListStandTest {
      */
     @Test
     public void testGetStandApplication() {
-        System.out.println("getStandApplication");
-        Application a = null;
-        AssignmentListStand instance = new AssignmentListStand();
-        Stand expResult = null;
-        Stand result = instance.getStandApplication(a);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("getApplicationStand");
+        AssignmentListStand instance = las;
+        Stand nullResult = instance.getStandApplication(a);
+        Stand expResultNull = s;
+        assertEquals(expResultNull,nullResult);
     }
-    
 }
