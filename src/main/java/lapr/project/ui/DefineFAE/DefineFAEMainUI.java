@@ -281,7 +281,6 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         int selectedindex = listUser.getSelectedIndex();
         if (selectedindex != -1) {
             listUser.setEnabled(false);
-            controller.setUserSelect(controller.getUsersList().get(selectedindex));
             this.listUser.setEnabled(false);
             this.confirmUser.setEnabled(false);
             prepareFAEList();
@@ -335,18 +334,27 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
      * add users(fae) to the JList
      */
     private void prepareFAEList() {
-        User u = this.controller.getUserSelected();
+        int selectedindex = listUser.getSelectedIndex();
+        User us = new User();
+        String username = modelUsers.getElementAt(selectedindex);
+        
+        for (User user : fc.getUserRegist().getUserList()) {
+            if(user.getName().equals(username)){
+                us = user;
+            }
+            
+        }
         Event e = this.controller.getEventSelect();
 
-        controller.addFAE(u, e);
-
-        List<FAE> faeslist = this.controller.getFAEList();
-
+        
+        FAE fae = new FAE(us);
+        e.getFAEList().getFAEList().add(fae);
+         
         modelFaes = new DefaultListModel<>();
-        for (FAE faelist : faeslist) {
-            modelFaes.addElement(faelist.getUsername());
-        }
+      
+        modelFaes.addElement(us.getUsername());
         this.listFAE.setModel(modelFaes);
+        this.listFAE.setEnabled(true);
         this.btnConfirmOperation.setEnabled(true);
 
     }

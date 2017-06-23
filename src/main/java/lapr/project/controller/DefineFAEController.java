@@ -114,17 +114,14 @@ public class DefineFAEController {
         this.u = u;
     }
     
-    public void addFAE(User u, Event event) {
+    public FAE addFAE(User u, Event event) {
         FAE newFae = new FAE(u);
-        this.fae = newFae;
-        FAElist.getFAEList().add(fae);
+        event.getFAEList().getFAEList().add(fae);
+        return newFae;
     }
     
     public List<User> generateUsersList(Event e) {
-        
-        UserRegist userList = new UserRegist();
-        
 
-        return this.usersList;
+        return fc.getUserRegist().getUserList();
     }
 }
