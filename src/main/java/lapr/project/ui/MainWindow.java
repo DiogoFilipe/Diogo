@@ -92,6 +92,7 @@ public class MainWindow extends javax.swing.JFrame {
         globalRate = new javax.swing.JButton();
         Acceptance50 = new javax.swing.JButton();
         FAEMeanRating = new javax.swing.JButton();
+        differenceTwoEvents = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -231,49 +232,57 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        differenceTwoEvents.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        differenceTwoEvents.setText("Difference two events acceptance Rate");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 447, Short.MAX_VALUE)
-                .addComponent(logOut)
-                .addGap(392, 392, 392))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(332, 332, 332)
+                .addComponent(logOut)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(createEvent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exportAllData))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(defineFAE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(importEventData))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(decideApplication)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eventSubmissionKeywords))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(changeApplication)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eventAcceptanceRate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(submitApplication)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(standsInformation))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(listApplications)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(FAEMeanRating))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(createStand)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(globalRate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(assignStand)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Acceptance50)))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(createEvent)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(exportAllData))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(defineFAE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(importEventData))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(decideApplication)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                                .addComponent(eventSubmissionKeywords))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(changeApplication)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eventAcceptanceRate))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(listApplications)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(FAEMeanRating))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(createStand)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(globalRate))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(assignStand)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Acceptance50))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(submitApplication)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(standsInformation))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(differenceTwoEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -311,7 +320,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listApplications)
                     .addComponent(FAEMeanRating))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(differenceTwoEvents)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -452,6 +463,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton createStand;
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
+    private javax.swing.JButton differenceTwoEvents;
     private javax.swing.JButton eventAcceptanceRate;
     private javax.swing.JButton eventSubmissionKeywords;
     private javax.swing.JButton exportAllData;
