@@ -5,8 +5,10 @@
  */
 package lapr.project.ui;
 
+import javax.swing.JOptionPane;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
+import lapr.project.ui.CreateEvent.CreateEventMain;
 
 /**
  *
@@ -52,6 +54,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         logOut = new javax.swing.JButton();
+        createEvent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,19 +66,34 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        createEvent.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        createEvent.setText("Create Event");
+        createEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createEventActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(405, 405, 405)
-                .addComponent(logOut)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(405, 405, 405)
+                        .addComponent(logOut))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(createEvent)))
                 .addContainerGap(434, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(562, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
+                .addComponent(createEvent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -89,7 +107,19 @@ public class MainWindow extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_logOutActionPerformed
 
+    private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
+        try{
+            fc.getEventManagerList().isEventManager(u);
+            CreateEventMain createEvent = new CreateEventMain(fc,u);
+            createEvent.setVisible(true);
+            dispose();    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
+        }
+    }//GEN-LAST:event_createEventActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createEvent;
     private javax.swing.JButton logOut;
     // End of variables declaration//GEN-END:variables
 }
