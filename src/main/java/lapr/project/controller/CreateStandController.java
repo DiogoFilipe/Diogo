@@ -54,7 +54,7 @@ public class CreateStandController {
      * @return list of events 
      */
     public List<Event> getEventList() {
-        return fc.getEventList();
+        return fc.getEventRegist().getEventList();
     }
 
     /**
@@ -75,6 +75,6 @@ public class CreateStandController {
     }
     
     public String decypherTitle(String original ,int shift){
-        return Encryption.decipherPassword(null, shift);
+        return Encryption.decipherPassword(original, shift);
     }
 }
