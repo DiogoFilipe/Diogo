@@ -59,6 +59,11 @@ public class FairCenter implements Serializable {
      * class that has the list of event managers
      */
     private EventManagerList eventManagerList;
+    
+    /**
+     * list of representatives
+     */
+    private RepresentativeList representativeList;
 
     /**
      * Constructor
@@ -72,6 +77,7 @@ public class FairCenter implements Serializable {
         exhibitionList = new ExhibitionList();
         congressList = new CongressList();
         fcEncryption = new Encryption(Encryption.gerateShift());
+        representativeList = new RepresentativeList();
     }
 
     /**
@@ -186,10 +192,6 @@ public class FairCenter implements Serializable {
         this.standRegist = standRegist;
     }
 
-    public File getSelectedFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      *
      * @return list of Strings with the company name of the applications that
@@ -228,14 +230,14 @@ public class FairCenter implements Serializable {
      * @return the faeList
      */
     public FAEList getFAEList() {
-        return faeList;
+        return getFaeList();
     }
 
     /**
      * @param faeList the faeList to set
      */
     public void setFAEList(FAEList faeList) {
-        this.faeList = faeList;
+        this.setFaeList(faeList);
     }
 
     /**
@@ -291,11 +293,39 @@ public class FairCenter implements Serializable {
                 return true;
             }
         }
-        for (FAE fae : faeList.getFAEList()) {
+        for (FAE fae : getFaeList().getFAEList()) {
             if (fae.getUsername().equals(u.getUsername())) {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * @return the faeList
+     */
+    public FAEList getFaeList() {
+        return faeList;
+    }
+
+    /**
+     * @param faeList the faeList to set
+     */
+    public void setFaeList(FAEList faeList) {
+        this.faeList = faeList;
+    }
+
+    /**
+     * @return the representativeList
+     */
+    public RepresentativeList getRepresentativeList() {
+        return representativeList;
+    }
+
+    /**
+     * @param representativeList the representativeList to set
+     */
+    public void setRepresentativeList(RepresentativeList representativeList) {
+        this.representativeList = representativeList;
     }
 }
