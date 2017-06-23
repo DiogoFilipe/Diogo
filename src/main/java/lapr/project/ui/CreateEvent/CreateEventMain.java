@@ -3,6 +3,7 @@ package lapr.project.ui.CreateEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import lapr.project.controller.CreateEventController;
@@ -48,6 +49,16 @@ public class CreateEventMain extends javax.swing.JFrame {
      * controller
      */
     CreateEventController controller;
+    
+    /**
+     * model to users list
+     */
+    private DefaultListModel<String> model;
+    
+    /**
+     * model to organizers list
+     */
+    private  DefaultListModel<String> model1;
 
     /**
      * Creates new form CreateEventMain
@@ -76,32 +87,13 @@ public class CreateEventMain extends javax.swing.JFrame {
         initComponents();
         jComboBox1.addItem("Congress");
         jComboBox1.addItem("Exhibition");
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return userList.size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return userList.get(j);
-            }
-        };
+        model = new DefaultListModel<>(); 
+        for(String x : controller.getUserList()){
+            model.addElement(x);
+        }
         OrganizerList.setModel(model);
         jScrollPane1.setViewportView(OrganizerList);
-        AbstractListModel model1 = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return organizerListEvent.size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return organizerListEvent.get(j);
-            }
-        };
+        model1 = new DefaultListModel<>(); 
         ChosenOrganizerList.setModel(model1);
         jScrollPane2.setViewportView(ChosenOrganizerList);
     }
@@ -405,8 +397,8 @@ public class CreateEventMain extends javax.swing.JFrame {
      */
     private void AddOrganizerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOrganizerButtonActionPerformed
         String user = OrganizerList.getSelectedValue();
-        organizerListEvent.add(user);
-        userList.remove(user);
+        model1.addElement(user);
+        model.removeElement(user);
     }//GEN-LAST:event_AddOrganizerButtonActionPerformed
 
     /**
