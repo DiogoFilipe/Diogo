@@ -54,7 +54,6 @@ public class MainWindow extends javax.swing.JFrame {
                     dispose();
                 }
             }
-
         });
         initComponents();
 
@@ -71,6 +70,7 @@ public class MainWindow extends javax.swing.JFrame {
         decideApplication = new javax.swing.JButton();
         submitApplication = new javax.swing.JButton();
         changeApplication = new javax.swing.JButton();
+        createStand = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +122,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        createStand.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        createStand.setText("Create Stand");
+        createStand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createStandActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,7 +153,10 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(submitApplication))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(changeApplication)))
+                        .addComponent(changeApplication))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(createStand)))
                 .addContainerGap(434, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,7 +172,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(submitApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(changeApplication)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(createStand)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -230,9 +243,18 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_changeApplicationActionPerformed
 
+    private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
+       try{
+           fc.isOrganizer(u);
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+       }
+    }//GEN-LAST:event_createStandActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton changeApplication;
     private javax.swing.JButton createEvent;
+    private javax.swing.JButton createStand;
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
     private javax.swing.JButton logOut;
