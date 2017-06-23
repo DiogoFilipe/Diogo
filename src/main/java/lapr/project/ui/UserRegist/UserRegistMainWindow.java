@@ -202,7 +202,12 @@ public class UserRegistMainWindow extends javax.swing.JFrame {
         String name = jTextField1.getText();
         String username = jTextField2.getText();
         String email = jTextField3.getText();
-        String password = jPasswordField1.toString();
+        char [] pss = jPasswordField1.getPassword();
+          String password = "";
+        for (char c : pss) {
+         password += c;            
+        }
+        
         String keyword = jTextField4.getText();
 
         try {

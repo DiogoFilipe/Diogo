@@ -160,7 +160,11 @@ public class LogInWindow extends javax.swing.JFrame {
                                           
         controller = new LogInController(fc);
         String id = jTextField1.getText();
-        String password = jPasswordField1.toString();
+         char [] pss = jPasswordField1.getPassword();
+         String password = "";
+        for (char c : pss) {
+         password += c;            
+        }
         List<User> users = controller.getUsers();
         String cipheredID = null;
         int shift = fc.getFcEncryption().getShift();
