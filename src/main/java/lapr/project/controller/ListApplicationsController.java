@@ -1,6 +1,8 @@
 package lapr.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import lapr.project.model.Application;
 import lapr.project.model.FairCenter;
 import lapr.project.model.Organizer;
 import lapr.project.model.User;
@@ -38,7 +40,13 @@ public class ListApplicationsController {
      * @param e the event
      * @return the list of applications
      */
-    public List<String> getApplicationsList(String e){
-        return fc.getEvent(e).getApplicationList().getApplicationsList();
+    public List<String> getApplicationsList(String e,String state){
+        List<String> applicationByState= new ArrayList<>();
+        for(Application a: fc.getEvent(e).getApplicationList().getApplicationList()){
+            if(a.getState().equals(state)){
+             applicationByState.add(a.getCompanyName());
+            }
+        }
+        return applicationByState;
     }    
 }
