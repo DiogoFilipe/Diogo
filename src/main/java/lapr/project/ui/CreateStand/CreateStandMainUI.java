@@ -50,7 +50,9 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         this.fc = fc;
         this.u = u;
         controller = new CreateStandController(fc, u);
+        initComponents();
         this.setVisible(true);
+        createList();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -61,8 +63,8 @@ public class CreateStandMainUI extends javax.swing.JFrame {
                 }
             }
         });
-        createList();
-        initComponents();
+       
+       
         
     }
 
@@ -71,22 +73,19 @@ public class CreateStandMainUI extends javax.swing.JFrame {
      */
     public void createList() {
         int i = 0;
-        int shift = fc.getFcEncryption().getShift();
         controller = new CreateStandController(fc, u);
         List<Event> events = controller.getEventList();
         String[] titles = new String[events.size()];
-        final String[] decypheredTitles = new String[events.size()];
         for (Event event : events) {
             titles[i] = event.getTitle();
-            decypheredTitles[i] = controller.decypherTitle(titles[i], shift);
-            i++;
         }
         
         model = new DefaultListModel<>();
-        for (String d : decypheredTitles) {
+        for (String d : titles) {
             model.addElement(d);
         }
         jList1.setModel(model);
+        jList1.setEnabled(true);
         jScrollPane2.setViewportView(jList1);
     }
     
@@ -164,7 +163,8 @@ public class CreateStandMainUI extends javax.swing.JFrame {
      * @param evt click
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String event = jList1.getSelectedValue();
+        String ev = jList1.getSelectedValue();
+        Event event = fc.getEvent(ev);
         StandDataUI standData = new StandDataUI(event, fc, u);
         standData.setVisible(true);
         dispose();

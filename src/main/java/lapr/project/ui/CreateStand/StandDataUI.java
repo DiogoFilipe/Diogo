@@ -18,7 +18,7 @@ public class StandDataUI extends javax.swing.JFrame {
     /**
      * event title
      */
-    private String event;
+    private Event event;
 
     /**
      * user
@@ -42,7 +42,7 @@ public class StandDataUI extends javax.swing.JFrame {
      * @param fc
      * @param user
      */
-    public StandDataUI(String event, FairCenter fc, User user) {
+    public StandDataUI(Event event, FairCenter fc, User user) {
         this.user = user;
         this.event = event;
         this.fc = fc;
@@ -152,10 +152,9 @@ public class StandDataUI extends javax.swing.JFrame {
         try {
             Stand stand;
             String areaString = jTextField3.getText();
-            controller.verifyArea(areaString);
             double area = Double.parseDouble(areaString);
             stand = new Stand(area);
-            controller.addStand(fc.getEvent(event), stand);
+            event.getStandList().getStandList().add(stand);
             JOptionPane.showMessageDialog(StandDataUI.this, "Stand created with success");
             MainWindow main = new MainWindow(fc, user);
             main.setVisible(true);

@@ -134,7 +134,7 @@ public class FairCenter implements Serializable {
      * @return the event with this title, or null
      */
     public Event getEvent(String title) {
-        for (Event event : eventRegist.getEventList()) {
+        for (Event event : this.eventRegist.getEventList()) {
             if (event.getTitle().equals(title)) {
                 return event;
             }

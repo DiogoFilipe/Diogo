@@ -59,7 +59,7 @@ public class DecideApplicationController {
      * @return list of Events the logged in User belongs to as an FAE
      */
     public List<String> getFAEEventList() {
-        List<Event> eventList = er.getEventList();
+        List<Event> eventList = fc.getEventList();
         List<String> eventListString = new ArrayList<>();
         for (Event event : eventList) {
             if (event.getFAEList().getFAEList().contains((FAE) user)) {
