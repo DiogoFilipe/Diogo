@@ -6,14 +6,12 @@
  */
 package lapr.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationList;
 import lapr.project.model.AssignStands;
 import lapr.project.model.Event;
 import lapr.project.model.FairCenter;
-import lapr.project.model.Organizer;
 import lapr.project.model.Stand;
 import lapr.project.model.User;
 
@@ -34,11 +32,6 @@ public class AssignStandsController {
     private Event e;
 
     /**
-     * user
-     */
-    private User u;
-
-    /**
      * list applications
      */
     private List<Application> applicationList;
@@ -52,11 +45,6 @@ public class AssignStandsController {
      * list of stands
      */
     private List<Stand> standList;
-
-    /**
-     * list assigns
-     */
-    private List<AssignStands> assignstands;
 
     /**
      * application
@@ -75,8 +63,6 @@ public class AssignStandsController {
      */
     public AssignStandsController(FairCenter fc, User u) {
         this.fc = fc;
-        this.u = u;
-
     }
 
     /**
@@ -103,7 +89,7 @@ public class AssignStandsController {
      * @return stand list
      */
     public List<Stand> getStandsList() {
-        return standList;
+        return fc.getStandRegist().getStandList();
     }
 
     /**
@@ -184,7 +170,7 @@ public class AssignStandsController {
 
         ApplicationList applicationList = new ApplicationList();
 
-        return this.applicationList;
+        return applicationList.getApplicationList();
     }
 
     /**
@@ -217,7 +203,6 @@ public class AssignStandsController {
             e.getListAssignedStands().AssignmentStandsRegist(validate, sa);
 
         }
-
     }
 
 }
