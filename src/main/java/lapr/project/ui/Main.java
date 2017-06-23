@@ -23,6 +23,7 @@ class Main {
         FairCenter fc;
         fc = ReadExportFairCenter.loadFairCenter(new FairCenter());
                 if(fc == null){
+                    
                 fc = new FairCenter();
                 int shift1 = Encryption.gerateShift();
                 int shift2 = Encryption.gerateShift();
