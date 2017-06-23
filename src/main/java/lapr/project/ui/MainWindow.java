@@ -8,11 +8,14 @@ package lapr.project.ui;
 import javax.swing.JOptionPane;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
+import lapr.project.ui.AssignStands.AssignStandsMainUI;
 import lapr.project.ui.ChangeApplication.ChangeApplicationMainWindow;
 import lapr.project.ui.CreateEvent.CreateEventMain;
+import lapr.project.ui.CreateStand.CreateStandMainUI;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
+import lapr.project.utils.DontHavePermissionException;
 
 /**
  *
@@ -71,6 +74,7 @@ public class MainWindow extends javax.swing.JFrame {
         submitApplication = new javax.swing.JButton();
         changeApplication = new javax.swing.JButton();
         createStand = new javax.swing.JButton();
+        assignStand = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,15 +134,20 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        assignStand.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        assignStand.setText("Assign Stand ");
+        assignStand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignStandActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(405, 405, 405)
-                        .addComponent(logOut))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(createEvent))
@@ -156,8 +165,15 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(changeApplication))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(createStand)))
-                .addContainerGap(434, Short.MAX_VALUE))
+                        .addComponent(createStand))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(assignStand)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 447, Short.MAX_VALUE)
+                .addComponent(logOut)
+                .addGap(392, 392, 392))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +190,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(changeApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(createStand)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(assignStand)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -194,7 +212,7 @@ public class MainWindow extends javax.swing.JFrame {
             CreateEventMain createEvent = new CreateEventMain(fc, u);
             createEvent.setVisible(true);
             dispose();
-        } catch (Exception e) {
+        } catch (DontHavePermissionException e) {
             JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_createEventActionPerformed
@@ -205,7 +223,7 @@ public class MainWindow extends javax.swing.JFrame {
             DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
             defineFAE.setVisible(true);
             dispose();
-        } catch (Exception e) {
+        } catch (DontHavePermissionException e) {
             JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
         }
     }//GEN-LAST:event_defineFAEActionPerformed
@@ -216,7 +234,7 @@ public class MainWindow extends javax.swing.JFrame {
             DecideApplicationMainUI decideApplication = new DecideApplicationMainUI(fc,u);
             decideApplication.setVisible(true);
             dispose();
-        }catch(Exception e){
+        }catch(DontHavePermissionException e){
             JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
         }
     }//GEN-LAST:event_decideApplicationActionPerformed
@@ -227,7 +245,7 @@ public class MainWindow extends javax.swing.JFrame {
            SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc,u);
            submitApplication.setVisible(true);
            dispose();
-       }catch(Exception e){
+       }catch(DontHavePermissionException e){
            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
        }
     }//GEN-LAST:event_submitApplicationActionPerformed
@@ -238,7 +256,7 @@ public class MainWindow extends javax.swing.JFrame {
             ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc,u);
             changeApplication.setVisible(true);
             dispose();
-        }catch(Exception e){
+        }catch(DontHavePermissionException e){
             JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
         }
     }//GEN-LAST:event_changeApplicationActionPerformed
@@ -246,12 +264,27 @@ public class MainWindow extends javax.swing.JFrame {
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
        try{
            fc.isOrganizer(u);
-       }catch(Exception e){
+           CreateStandMainUI createStand = new CreateStandMainUI(fc,u);
+           createStand.setVisible(true);
+           dispose();
+       }catch(DontHavePermissionException e){
            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
        }
     }//GEN-LAST:event_createStandActionPerformed
 
+    private void assignStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignStandActionPerformed
+        try{
+            fc.isOrganizer(u);
+            AssignStandsMainUI assignStand = new AssignStandsMainUI(fc,u);
+            assignStand.setVisible(true);
+            dispose();
+        }catch(DontHavePermissionException e){
+            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+        }
+    }//GEN-LAST:event_assignStandActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assignStand;
     private javax.swing.JButton changeApplication;
     private javax.swing.JButton createEvent;
     private javax.swing.JButton createStand;
