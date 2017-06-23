@@ -112,7 +112,7 @@ public class CreateEventMain extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         TypeLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         TitleLabel = new javax.swing.JLabel();
         TitleInputTextField = new javax.swing.JTextField();
         DescriptionLabel = new javax.swing.JLabel();
@@ -130,11 +130,11 @@ public class CreateEventMain extends javax.swing.JFrame {
         PlaceInputTextField = new javax.swing.JTextField();
         DataFormatNoteLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        OrganizerList = new javax.swing.JList<String>();
+        OrganizerList = new javax.swing.JList<>();
         AddOrganizerButton = new javax.swing.JButton();
         RemoveOrganizer = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        ChosenOrganizerList = new javax.swing.JList<String>();
+        ChosenOrganizerList = new javax.swing.JList<>();
         OrganizerNoteLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -153,8 +153,6 @@ public class CreateEventMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         TypeLabel.setText("Type");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Congress", "Exhibition" }));
 
         TitleLabel.setText("Title");
 
