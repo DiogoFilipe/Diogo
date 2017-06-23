@@ -1,11 +1,6 @@
 package lapr.project.ui.CreateEvent;
 
-//import java.util.ArrayList;
-//import java.util.List;
-//import javax.swing.DefaultListModel;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.swing.AbstractListModel;
 import javax.swing.JOptionPane;
@@ -13,7 +8,6 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import lapr.project.controller.CreateEventController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
-import lapr.project.utils.Date;
 import lapr.project.utils.EmptySpaceException;
 import lapr.project.utils.InvalidDayException;
 import lapr.project.utils.InvalidMonthException;
@@ -23,7 +17,7 @@ import lapr.project.utils.InvalidYearException;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class CreateEventMain extends javax.swing.JFrame implements Serializable {
+public class CreateEventMain extends javax.swing.JFrame {
 
     /**
      * serial version
