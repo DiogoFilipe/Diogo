@@ -19,6 +19,10 @@ import static org.junit.Assert.*;
  */
 public class ApplicationListTest {
     
+    protected List<Application> applicationList;
+    protected List<Application> ap;
+    protected ApplicationList al;
+    
     public ApplicationListTest() {
     }
     
@@ -32,7 +36,7 @@ public class ApplicationListTest {
     
     @Before
     public void setUp() {
-        
+       al= new ApplicationList(applicationList);
         
     }
     
@@ -46,12 +50,9 @@ public class ApplicationListTest {
     @Test
     public void testGetApplicationList() {
         System.out.println("getApplicationList");
-        ApplicationList instance = new ApplicationList();
-        List<Application> expResult = null;
-        List<Application> result = instance.getApplicationList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Application> result = al.getApplicationList();
+        assertEquals(al.getApplicationList(), result);
+        
     }
 
     /**
@@ -60,12 +61,9 @@ public class ApplicationListTest {
     @Test
     public void testGetApplicationsList() {
         System.out.println("getApplicationsList");
-        ApplicationList instance = new ApplicationList();
-        List<String> expResult = null;
-        List<String> result = instance.getApplicationsList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<String> result = al.getApplicationsList();
+        assertEquals(al.getApplicationsList(), result);
+       
     }
 
     /**
@@ -75,12 +73,9 @@ public class ApplicationListTest {
     public void testGetApplication() {
         System.out.println("getApplication");
         String description = "";
-        ApplicationList instance = new ApplicationList();
-        Application expResult = null;
-        Application result = instance.getApplication(description);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Application result = al.getApplication(description);
+        assertEquals(al.getApplication(description), result);
+        
     }
 
     /**
@@ -90,12 +85,9 @@ public class ApplicationListTest {
     public void testGetApplicationByCompanyName() {
         System.out.println("getApplicationByCompanyName");
         String companyName = "";
-        ApplicationList instance = new ApplicationList();
-        Application expResult = null;
-        Application result = instance.getApplicationByCompanyName(companyName);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Application result = al.getApplicationByCompanyName(companyName);
+        assertEquals(al.getApplicationByCompanyName(companyName), result);
+        
     }
 
     /**
@@ -104,12 +96,9 @@ public class ApplicationListTest {
     @Test
     public void testGetKeywordsList() {
         System.out.println("getKeywordsList");
-        ApplicationList instance = new ApplicationList();
-        List<Keyword> expResult = null;
-        List<Keyword> result = instance.getKeywordsList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Keyword> result = al.getKeywordsList();
+        assertEquals(al.getKeywordsList(), result);
+        
     }
 
     /**
@@ -118,12 +107,8 @@ public class ApplicationListTest {
     @Test
     public void testGetApplicationListAccepted() {
         System.out.println("getApplicationListAccepted");
-        ApplicationList instance = new ApplicationList();
-        List<String> expResult = null;
-        List<String> result = instance.getApplicationListAccepted();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<String> result = al.getApplicationListAccepted();
+        assertEquals(al.getApplicationListAccepted(), result);
     }
 
     /**
@@ -132,12 +117,9 @@ public class ApplicationListTest {
     @Test
     public void testGetApplicationListRejected() {
         System.out.println("getApplicationListRejected");
-        ApplicationList instance = new ApplicationList();
-        List<String> expResult = null;
-        List<String> result = instance.getApplicationListRejected();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<String> result = al.getApplicationListRejected();
+        assertEquals(al.getApplicationListRejected(), result);
+        
     }
 
     /**
@@ -146,11 +128,9 @@ public class ApplicationListTest {
     @Test
     public void testSetApplicationList() {
         System.out.println("setApplicationList");
-        List<Application> applicationList = null;
-        ApplicationList instance = new ApplicationList();
-        instance.setApplicationList(applicationList);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        al.setApplicationList(ap);
+        assertEquals(this.al.getApplicationList(),ap);
+       
     }
     
 }
