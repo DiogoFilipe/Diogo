@@ -10,8 +10,8 @@ import lapr.project.utils.*;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class CreateEventController{
-      
+public class CreateEventController {
+
     /**
      * fair center
      */
@@ -112,7 +112,7 @@ public class CreateEventController{
     }
 
     /**
-     * 
+     *
      * @param s string given
      * @param m parameter on it fails
      */
@@ -121,41 +121,41 @@ public class CreateEventController{
             throw new EmptySpaceException(m);
         }
     }
-    
-/**
- * 
- * @param s string given with the date
- * @param m parameter that can fail
- */
+
+    /**
+     *
+     * @param s string given with the date
+     * @param m parameter that can fail
+     */
     public void validateYear(String s, String m) {
         String[] date = s.split("/");
         if (date[0].length() != 4 || date[0].contains("[a-zA-Z+]")) {
             throw new InvalidYearException(m);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param s string given with the date
      * @param m parameter that can fail
      */
     public void validateMonth(String s, String m) {
         String[] date = s.split("/");
-        if (date[1].length() != 2 || date[1].contains("[a-zA-Z+]")|| Integer.parseInt(date[1])<0 ||Integer.parseInt(date[1])>12) {
+        if (date[1].length() != 2 || date[1].contains("[a-zA-Z+]") || Integer.parseInt(date[1]) < 0 || Integer.parseInt(date[1]) > 12) {
             throw new InvalidMonthException(m);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param s string given with the date
      * @param m parameter that can fail
      */
     public void validateDay(String s, String m) {
         String[] date = s.split("/");
-        if (date[2].length() != 2 || date[2].contains("[a-zA-Z+]")|| Integer.parseInt(date[2])<0 ||Integer.parseInt(date[2])>31) {
+        if (date[2].length() != 2 || date[2].contains("[a-zA-Z+]") || Integer.parseInt(date[2]) < 0 || Integer.parseInt(date[2]) > 31) {
             throw new InvalidDayException(m);
         }
     }
-    
+
 }
