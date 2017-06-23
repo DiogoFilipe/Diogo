@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import lapr.project.controller.ChangeApplicationController;
 import lapr.project.model.Application;
+import lapr.project.model.ApplicationState;
 import lapr.project.model.FairCenter;
 import lapr.project.model.Keyword;
 import lapr.project.model.User;
@@ -302,8 +303,10 @@ public class ChangeApplicationSecondWindow extends javax.swing.JFrame {
                 keywordsList.add(new Keyword(e));
             }
             Application changedApplication = controller.createApplication(companyName, address, contact, description, area, invites, keywordsList);
+            changedApplication.setState(ApplicationState.State.Created);
             controller.deleteApplication(eventTitle, applicationTitle);
             controller.getApplicationsListOfTheEvent(eventTitle).add(changedApplication);
+            
             JOptionPane.showMessageDialog(ChangeApplicationSecondWindow.this, "Application changed with success");
             MainWindow main= new MainWindow(fc,user);
             main.setVisible(true);
