@@ -37,8 +37,7 @@ public class KeywordTest {
     
     @Before
     public void setUp() {
-        
-        Keyword kw= new Keyword("isep");
+         kw = new Keyword("isep");
     }
     
     @After
