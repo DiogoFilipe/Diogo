@@ -2,7 +2,6 @@ package lapr.project.ui.CreateEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;

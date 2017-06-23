@@ -1,8 +1,7 @@
 package lapr.project.controller;
 
 import java.util.List;
-import lapr.project.model.FairCenter;
-import lapr.project.model.User;
+import lapr.project.model.*;
 
 /**
  *

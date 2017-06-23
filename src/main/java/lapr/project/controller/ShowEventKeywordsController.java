@@ -7,12 +7,7 @@ package lapr.project.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import lapr.project.model.Application;
-import lapr.project.model.FairCenter;
-import lapr.project.model.FrequencyKeyword;
-import lapr.project.model.Keyword;
-import lapr.project.model.Organizer;
-import lapr.project.model.User;
+import lapr.project.model.*;
 
 /**
  *

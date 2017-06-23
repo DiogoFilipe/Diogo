@@ -6,11 +6,7 @@
 package lapr.project.controller;
 
 import java.util.List;
-import lapr.project.model.Application;
-import lapr.project.model.FairCenter;
-import lapr.project.model.Keyword;
-import lapr.project.model.Representative;
-import lapr.project.model.User;
+import lapr.project.model.*;
 import lapr.project.utils.EmptySpaceException;
 
 /**

@@ -7,13 +7,7 @@
 package lapr.project.controller;
 
 import java.util.List;
-import lapr.project.model.Application;
-import lapr.project.model.ApplicationList;
-import lapr.project.model.AssignStands;
-import lapr.project.model.Event;
-import lapr.project.model.FairCenter;
-import lapr.project.model.Stand;
-import lapr.project.model.User;
+import lapr.project.model.*;
 
 /**
  *

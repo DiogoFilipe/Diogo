@@ -6,15 +6,7 @@
 package lapr.project.controller;
 
 import java.util.List;
-import lapr.project.model.Event;
-import lapr.project.model.EventRegist;
-import lapr.project.model.FAE;
-import lapr.project.model.FAEList;
-import lapr.project.model.FairCenter;
-import lapr.project.model.Organizer;
-import lapr.project.model.OrganizerList;
-import lapr.project.model.User;
-import lapr.project.model.UserRegist;
+import lapr.project.model.*;
 
 /**
  *
