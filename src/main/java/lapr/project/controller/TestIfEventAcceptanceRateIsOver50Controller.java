@@ -79,7 +79,7 @@ public class TestIfEventAcceptanceRateIsOver50Controller {
             }
             double p0 = 0.5;
             double p = (double) count / applicationNumber;
-            double observedValue = (double) (p - p0) / Math.sqrt((0.5*(1-0.5))/applicationNumber);
+            double observedValue = (p - p0) / Math.sqrt((0.5*(1-0.5))/applicationNumber);
             for (int i = 0; i < observedValues.length - 2; i = i+2) {
                 observedValues[i] = observedValue;
                 observedValues[i+1] = observedValue;

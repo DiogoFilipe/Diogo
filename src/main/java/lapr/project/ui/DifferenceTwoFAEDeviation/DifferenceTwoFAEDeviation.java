@@ -6,6 +6,7 @@
 package lapr.project.ui.DifferenceTwoFAEDeviation;
 
 import lapr.project.model.FairCenter;
+import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
 
 /**
@@ -17,12 +18,16 @@ public class DifferenceTwoFAEDeviation extends javax.swing.JFrame {
     private static final long serialVersionUID = 2547664324626659753L;
 
     FairCenter fc;
+     User u;
 
     /**
      * Creates new form DifferenceTwoFAEDeviation
+     * @param fc
+     * @param u
      */
-    public DifferenceTwoFAEDeviation() {
+    public DifferenceTwoFAEDeviation(FairCenter fc,User u) {
         initComponents();
+        this.u = u;
     }
 
     /**
@@ -146,45 +151,10 @@ public class DifferenceTwoFAEDeviation extends javax.swing.JFrame {
     }//GEN-LAST:event_textField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc);
+        MainWindow mainWindow = new MainWindow(fc,u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DifferenceTwoFAEDeviation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DifferenceTwoFAEDeviation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DifferenceTwoFAEDeviation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DifferenceTwoFAEDeviation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DifferenceTwoFAEDeviation().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

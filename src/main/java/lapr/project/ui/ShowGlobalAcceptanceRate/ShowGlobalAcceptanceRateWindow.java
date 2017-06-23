@@ -5,6 +5,7 @@
  */
 package lapr.project.ui.ShowGlobalAcceptanceRate;
 
+import javax.swing.JOptionPane;
 import lapr.project.controller.ShowGlobalAcceptanceRateController;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
@@ -18,8 +19,8 @@ public class ShowGlobalAcceptanceRateWindow extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 98357176351306328L;
 
-    FairCenter fc;
-    User u;
+    private FairCenter fc;
+    private User u;
     ShowGlobalAcceptanceRateController controller;
 
     /**
@@ -32,6 +33,17 @@ public class ShowGlobalAcceptanceRateWindow extends javax.swing.JFrame {
         this.fc = fc;
         this.u = u;
         controller = new ShowGlobalAcceptanceRateController(fc, u);
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(ShowGlobalAcceptanceRateWindow.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
         initComponents();
         jTextField1.setText("" + controller.getAcceptanceRating());
     }
@@ -99,27 +111,6 @@ public class ShowGlobalAcceptanceRateWindow extends javax.swing.JFrame {
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShowGlobalAcceptanceRateWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

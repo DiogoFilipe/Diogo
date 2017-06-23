@@ -6,6 +6,7 @@
 package lapr.project.ui.AcceptanceRate50;
 
 import lapr.project.model.FairCenter;
+import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
 
 /**
@@ -17,11 +18,14 @@ public class AcceptanceRateOver50 extends javax.swing.JFrame {
     private static final long serialVersionUID = 1560004350952810929L;
 
     FairCenter fc;
+    User u;
 
     /**
      * Creates new form AcceptanceRateOver50
+     * @param fc
+     * @param u
      */
-    public AcceptanceRateOver50() {
+    public AcceptanceRateOver50(FairCenter fc,User u) {
         initComponents();
     }
 
@@ -133,45 +137,10 @@ public class AcceptanceRateOver50 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc);
+        MainWindow mainWindow = new MainWindow(fc,u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AcceptanceRateOver50.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AcceptanceRateOver50.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AcceptanceRateOver50.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AcceptanceRateOver50.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AcceptanceRateOver50().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;

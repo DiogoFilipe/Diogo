@@ -160,7 +160,11 @@ public class LogInWindow extends javax.swing.JFrame {
                                           
         controller = new LogInController(fc);
         String id = jTextField1.getText();
-        String password = jPasswordField1.getText();
+         char [] pss = jPasswordField1.getPassword();
+         String password = "";
+        for (char c : pss) {
+         password += c;            
+        }
         List<User> users = controller.getUsers();
         String cipheredID = null;
         int shift = fc.getFcEncryption().getShift();
@@ -191,7 +195,7 @@ public class LogInWindow extends javax.swing.JFrame {
                 }
             
         } catch (LogInException e) {
-            jOptionPane1.showMessageDialog(null, "Error:", e.getMessage(), jOptionPane1.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.PLAIN_MESSAGE);
         }
 
                            

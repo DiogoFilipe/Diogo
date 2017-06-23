@@ -8,10 +8,12 @@ package lapr.project.ui.DifferenceTwoEventsAcceptanceRate;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
+import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import javax.swing.event.ListDataListener;
 import lapr.project.controller.DifferenceTwoEventsAcceptanceRateController;
 
 /**
@@ -20,11 +22,12 @@ import lapr.project.controller.DifferenceTwoEventsAcceptanceRateController;
  */
 public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = -9073160107643658401L;
+    private static final long serialVersionUID = 9073160107643658401L;
 
     DifferenceTwoEventsAcceptanceRateController controller;
-    DefaultListModel modelEvents1;
-    DefaultListModel modelEvents2;
+    DefaultListModel <String> model;
+    DefaultListModel<String> modelEvents1;
+    DefaultListModel<String> modelEvents2;
     JFrame parent;
 
     /**
@@ -41,7 +44,7 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
         this.controller = controller;
         this.parent = parent;
         initComponents();
-        ListModel model = new DefaultListModel();
+       model = new DefaultListModel<>();
         this.listEvents1.setModel(model);
         this.listEvents2.setModel(model);
         prepareEventsList();
@@ -168,41 +171,6 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DiiferenceTwoEventsAcceptanceRateMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DiiferenceTwoEventsAcceptanceRateMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DiiferenceTwoEventsAcceptanceRateMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DiiferenceTwoEventsAcceptanceRateMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DiiferenceTwoEventsAcceptanceRateMainUI().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnReturn;
@@ -215,8 +183,8 @@ public class DiiferenceTwoEventsAcceptanceRateMainUI extends javax.swing.JFrame 
     // End of variables declaration//GEN-END:variables
 private void prepareEventsList() {
         List<String> events = this.controller.getEventList();
-        modelEvents1 = new DefaultListModel();
-        modelEvents2 = new DefaultListModel();
+        DefaultListModel<String> modelEvents1 = new DefaultListModel<>();
+        DefaultListModel<String> modelEvents2 = new DefaultListModel<>();
         for (String event : events) {
             modelEvents1.addElement(event);
             modelEvents2.addElement(event);

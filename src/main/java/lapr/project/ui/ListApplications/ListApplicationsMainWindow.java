@@ -6,6 +6,7 @@
 package lapr.project.ui.ListApplications;
 
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.event.ListSelectionEvent;
 import lapr.project.controller.ListApplicationsController;
 import lapr.project.model.FairCenter;
@@ -24,6 +25,8 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
     FairCenter fc;
     User u;
     ListApplicationsController controller;
+    private DefaultListModel<String> model;
+    private DefaultListModel<String> model1;
 
     /**
      * Creates new form ListApplicationsMainWindow
@@ -38,35 +41,19 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
 
         initComponents();
 
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return controller.getOrganizerEventsList(u).size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return controller.getOrganizerEventsList(u).get(j);
-            }
-        };
+        model = new DefaultListModel<>();
+        for(String o:controller.getOrganizerEventsList(u)){
+            model.addElement(o);
+        }
         jList3.setModel(model);
         jScrollPane1.setViewportView(jList3);
         jList3.addListSelectionListener((ListSelectionEvent e) -> {
             String event = jList3.getSelectedValue();
             if (event != null) {
-                AbstractListModel model1 = new javax.swing.AbstractListModel() {
-                    @Override
-                    public int getSize() {
-                        return controller.getApplicationsList(event).size();
-                    }
-
-                    @Override
-                    public Object getElementAt(int index) {
-                        return controller.getApplicationsList(event).get(index);
-                    }
-
-                };
+                model1 = new DefaultListModel<>(); 
+                for(String x: controller.getApplicationsList(event)){
+                    model.addElement(x);
+                }
                 jList2.setModel(model1);
                 jScrollPane3.setViewportView(jList2);
 
@@ -74,11 +61,6 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         });
 
     }
-
-    public ListApplicationsMainWindow() {
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,35 +143,6 @@ public class ListApplicationsMainWindow extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    @SuppressWarnings("empty-statement")
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListApplicationsMainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new ListApplicationsMainWindow().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

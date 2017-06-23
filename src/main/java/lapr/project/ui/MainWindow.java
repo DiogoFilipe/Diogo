@@ -14,9 +14,13 @@ import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.CreateStand.CreateStandMainUI;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.EventGlobalAcceptanceRate.EventAcceptanceRateMainUI;
 import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
 import lapr.project.ui.ImportFile.ImportFileMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
+import lapr.project.ui.ShowEventKeywords.ShowEventKeywordsWindow;
+import lapr.project.ui.ShowFaeMeanRating.ShowFaeMeanRatingMainUI;
+import lapr.project.ui.ShowGlobalAcceptanceRate.ShowGlobalAcceptanceRateWindow;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 import lapr.project.utils.DontHavePermissionException;
 
@@ -81,6 +85,11 @@ public class MainWindow extends javax.swing.JFrame {
         exportAllData = new javax.swing.JButton();
         importEventData = new javax.swing.JButton();
         eventSubmissionKeywords = new javax.swing.JButton();
+        eventAcceptanceRate = new javax.swing.JButton();
+        standsInformation = new javax.swing.JButton();
+        globalRate = new javax.swing.JButton();
+        Acceptance50 = new javax.swing.JButton();
+        FAEMeanRating = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,6 +189,41 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        eventAcceptanceRate.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        eventAcceptanceRate.setText("Event Acceptance Rate");
+        eventAcceptanceRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventAcceptanceRateActionPerformed(evt);
+            }
+        });
+
+        standsInformation.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        standsInformation.setText("Event Stands Information");
+        standsInformation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                standsInformationActionPerformed(evt);
+            }
+        });
+
+        globalRate.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        globalRate.setText("Global Acceptance Rate");
+        globalRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                globalRateActionPerformed(evt);
+            }
+        });
+
+        Acceptance50.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        Acceptance50.setText("Acceptance Rate >50%?");
+
+        FAEMeanRating.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        FAEMeanRating.setText("FAE mean rating");
+        FAEMeanRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FAEMeanRatingActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,21 +240,33 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exportAllData))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(submitApplication)
-                            .addComponent(changeApplication)
-                            .addComponent(createStand)
-                            .addComponent(assignStand)
-                            .addComponent(listApplications))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(defineFAE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(importEventData))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(decideApplication)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eventSubmissionKeywords)))
+                        .addComponent(eventSubmissionKeywords))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(changeApplication)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eventAcceptanceRate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(submitApplication)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(standsInformation))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(listApplications)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FAEMeanRating))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(createStand)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(globalRate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(assignStand)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Acceptance50)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -229,15 +285,25 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(decideApplication)
                     .addComponent(eventSubmissionKeywords))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(submitApplication)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitApplication)
+                    .addComponent(standsInformation))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(changeApplication)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(changeApplication)
+                    .addComponent(eventAcceptanceRate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createStand)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createStand)
+                    .addComponent(globalRate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(assignStand)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(assignStand)
+                    .addComponent(Acceptance50))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(listApplications)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listApplications)
+                    .addComponent(FAEMeanRating))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
@@ -259,7 +325,7 @@ public class MainWindow extends javax.swing.JFrame {
             createEvent.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_createEventActionPerformed
 
@@ -270,7 +336,7 @@ public class MainWindow extends javax.swing.JFrame {
             defineFAE.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_defineFAEActionPerformed
 
@@ -281,105 +347,154 @@ public class MainWindow extends javax.swing.JFrame {
             decideApplication.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_decideApplicationActionPerformed
 
     private void submitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitApplicationActionPerformed
         try {
-            fc.isRepresentative(u);
+            fc.getRepresentativeList().isRepresentative(u);
             SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc, u);
             submitApplication.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_submitApplicationActionPerformed
 
     private void changeApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeApplicationActionPerformed
         try {
-            fc.isRepresentative(u);
+            fc.getRepresentativeList().isRepresentative(u);
             ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc, u);
             changeApplication.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_changeApplicationActionPerformed
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             CreateStandMainUI createStand = new CreateStandMainUI(fc, u);
             createStand.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_createStandActionPerformed
 
     private void assignStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignStandActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             AssignStandsMainUI assignStand = new AssignStandsMainUI(fc, u);
             assignStand.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_assignStandActionPerformed
 
     private void listApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listApplicationsActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc, u);
             listApplications.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_listApplicationsActionPerformed
 
     private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, u);
             exportData.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_exportAllDataActionPerformed
 
     private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             ImportFileMainUI importMain = new ImportFileMainUI(fc, u);
             importMain.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
         }
     }//GEN-LAST:event_importEventDataActionPerformed
 
     private void eventSubmissionKeywordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSubmissionKeywordsActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            ShowEventKeywordsWindow eventKeywords = new ShowEventKeywordsWindow(fc, u);
+            eventKeywords.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
 
-            
- 
+
     }//GEN-LAST:event_eventSubmissionKeywordsActionPerformed
 
+    private void eventAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventAcceptanceRateActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc, u);
+            eventAcceptanceRate.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
+    }//GEN-LAST:event_eventAcceptanceRateActionPerformed
+
+    private void standsInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standsInformationActionPerformed
+
+    }//GEN-LAST:event_standsInformationActionPerformed
+
+    private void globalRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRateActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            ShowGlobalAcceptanceRateWindow globalRate = new ShowGlobalAcceptanceRateWindow(fc, u);
+            globalRate.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
+    }//GEN-LAST:event_globalRateActionPerformed
+
+    private void FAEMeanRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAEMeanRatingActionPerformed
+        try {
+            fc.getEventManagerList().isEventManager(u);
+            ShowFaeMeanRatingMainUI FAEMeanRating = new ShowFaeMeanRatingMainUI(fc, u);
+            FAEMeanRating.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.this, "You don't have permission to access this topic");
+        }
+    }//GEN-LAST:event_FAEMeanRatingActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Acceptance50;
+    private javax.swing.JButton FAEMeanRating;
     private javax.swing.JButton assignStand;
     private javax.swing.JButton changeApplication;
     private javax.swing.JButton createEvent;
     private javax.swing.JButton createStand;
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
+    private javax.swing.JButton eventAcceptanceRate;
     private javax.swing.JButton eventSubmissionKeywords;
     private javax.swing.JButton exportAllData;
+    private javax.swing.JButton globalRate;
     private javax.swing.JButton importEventData;
     private javax.swing.JButton listApplications;
     private javax.swing.JButton logOut;
+    private javax.swing.JButton standsInformation;
     private javax.swing.JButton submitApplication;
     // End of variables declaration//GEN-END:variables
 }

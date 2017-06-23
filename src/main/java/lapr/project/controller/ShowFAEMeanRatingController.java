@@ -11,16 +11,18 @@ import lapr.project.model.*;
  */
 public class ShowFAEMeanRatingController {
 
-    FairCenter fc;
-    List<FAE> faeList;
+    private FairCenter fc;
+    private User u;
+    private List<FAE> faeList;
 
-    public ShowFAEMeanRatingController(FairCenter fc) {
+    public ShowFAEMeanRatingController(FairCenter fc, User u) {
         this.fc = fc;
+        this.u = u;
     }
 
     /**
      * Returns the names of the FAEs that have already made decisions
-     * 
+     *
      * @return names of the FAEs that have already made decisions
      */
     public List<String> getFAEList() {
@@ -36,7 +38,7 @@ public class ShowFAEMeanRatingController {
 
     /**
      * Returns the FAE's mean rating
-     * 
+     *
      * @param faeName the FAE's name
      * @return the FAE's mean rating
      */

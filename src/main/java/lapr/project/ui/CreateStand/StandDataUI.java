@@ -12,6 +12,8 @@ import lapr.project.utils.EmptySpaceException;
  * @author João Domingues
  */
 public class StandDataUI extends javax.swing.JFrame {
+    
+    private static final long serialVersionUID = 121759339L;
 
     /**
      * event title

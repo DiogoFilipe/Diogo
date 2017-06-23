@@ -328,46 +328,4 @@ public class FairCenter implements Serializable {
     public void setRepresentativeList(RepresentativeList representativeList) {
         this.representativeList = representativeList;
     }
-
-    /**
-     *
-     * @param u user
-     * @return true if the user is a representative
-     */
-    public boolean isRepresentative(User u) {
-        for (Representative r : representativeList.getRepresentativeList()) {
-            if (r.getUsername().equals(u.getUsername())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     *
-     * @param u user
-     * @return true if the user is an organizer
-     */
-    public boolean isOrganizer(User u) {
-        for (Organizer o : organizerList.getOrganizerList()) {
-            if (o.getUsername().equals(u.getUsername())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * 
-     * @param u user
-     * @return true if the user is an event manager
-     */
-    public boolean isEventManager(User u) {
-        for (EventManager em : eventManagerList.getEventManagerList()) {
-            if (em.getUsername().equals(u.getUsername())) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

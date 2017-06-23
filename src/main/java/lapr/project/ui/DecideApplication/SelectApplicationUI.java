@@ -6,6 +6,7 @@
 package lapr.project.ui.DecideApplication;
 
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import lapr.project.controller.DecideApplicationController;
 import lapr.project.model.FairCenter;
@@ -16,6 +17,8 @@ import lapr.project.model.User;
  * @author João Domingues
  */
 public class SelectApplicationUI extends javax.swing.JFrame {
+    
+    private static final long serialVersionUID = 1164263L;
 
     /**
      * controller
@@ -36,9 +39,11 @@ public class SelectApplicationUI extends javax.swing.JFrame {
      * fair center
      */
     private FairCenter fc;
+    
+    private DefaultListModel<String> model;
 
     /**
-     *  
+     *
      * @param fc fair center
      * @param u user
      * @param event event title
@@ -59,21 +64,14 @@ public class SelectApplicationUI extends javax.swing.JFrame {
             }
         });
         initComponents();
-        AbstractListModel model = new AbstractListModel() {
-            @Override
-            public int getSize() {
-                return controller.getFAEApplicationsForDecision(event).size();
-            }
-
-            @Override
-            public Object getElementAt(int index) {
-                return controller.getFAEApplicationsForDecision(event).get(index);
-            }
-        };
+        model = new DefaultListModel<>();
+        for (String e : controller.getFAEApplicationsForDecision(event)) {
+            model.addElement(e);
+        }
         jList1.setModel(model);
         jScrollPane1.setViewportView(jList1);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -144,8 +142,8 @@ public class SelectApplicationUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DecideApplicationMainUI decideApplicationMain = new DecideApplicationMainUI(fc, u);
@@ -154,8 +152,8 @@ public class SelectApplicationUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String application = jList1.getSelectedValue();

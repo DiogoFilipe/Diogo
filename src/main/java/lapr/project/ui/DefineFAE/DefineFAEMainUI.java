@@ -21,6 +21,8 @@ import lapr.project.ui.MainWindow;
  * @author João Domingues
  */
 public class DefineFAEMainUI extends javax.swing.JFrame {
+    
+    private static final long serialVersionUID = 12175969L;
 
     /**
      * controller
@@ -30,17 +32,17 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     /**
      * model to jList with events
      */
-    private DefaultListModel modelEvents;
+    private DefaultListModel<String> modelEvents;
     
     /**
      * model to jList with users
      */
-    private DefaultListModel modelUsers;
+    private DefaultListModel<String> modelUsers;
     
     /**
      * model to jLst with fae
      */
-    private DefaultListModel modelFaes;
+    private DefaultListModel<String> modelFaes;
 
     /**
      * fair center
@@ -51,6 +53,8 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
      * user
      */
     private User u;
+    
+    private DefaultListModel<String> model;
 
     /**
      * Creates new form DefineFAEMainUI param controller
@@ -75,8 +79,8 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
 
         });
         initComponents();
-        ListModel model = new DefaultListModel();
-        this.listEvent.setModel(model);
+        model = new DefaultListModel<>();
+        listEvent.setModel(model);
         prepareEventsList();
     }
 
@@ -296,9 +300,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<Event> listEvent;
-    private javax.swing.JList<FAE> listFAE;
-    private javax.swing.JList<User> listUser;
+    private javax.swing.JList<String> listEvent;
+    private javax.swing.JList<String> listFAE;
+    private javax.swing.JList<String> listUser;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -306,9 +310,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
      */
     private void prepareEventsList() {
         List<Event> events = this.controller.getEventsRegist().getEventList();
-        modelEvents = new DefaultListModel();
+        modelEvents = new DefaultListModel<>();
         for (Event event : events) {
-            modelEvents.addElement(event);
+            modelEvents.addElement(event.getTitle());
         }
         this.listEvent.setModel(modelEvents);
     }
@@ -318,9 +322,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
      */
     private void prepareUsersList() {
         List<User> users = this.controller.generateUsersList(this.controller.getEventSelect());
-        modelUsers = new DefaultListModel();
+        modelUsers = new DefaultListModel<>();
         for (User u : users) {
-            modelUsers.addElement(u);
+            modelUsers.addElement(u.getUsername());
         }
         this.listUser.setModel(modelUsers);
         this.listUser.setEnabled(true);
@@ -338,9 +342,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
 
         List<FAE> faeslist = this.controller.getFAEList();
 
-        modelFaes = new DefaultListModel();
+        modelFaes = new DefaultListModel<>();
         for (FAE faelist : faeslist) {
-            modelFaes.addElement(faelist);
+            modelFaes.addElement(faelist.getUsername());
         }
         this.listFAE.setModel(modelFaes);
         this.btnConfirmOperation.setEnabled(true);
