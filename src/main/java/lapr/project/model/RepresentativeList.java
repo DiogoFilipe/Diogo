@@ -46,4 +46,17 @@ public class RepresentativeList implements Serializable {
         this.representativeList = representativeList;
     }
 
+      /**
+     *
+     * @param u user
+     * @return true if the user is a representative
+     */
+    public boolean isRepresentative(User u) {
+        for (Representative r : representativeList) {
+            if (r.getUsername().equals(u.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
