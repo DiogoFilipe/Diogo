@@ -78,4 +78,18 @@ public class OrganizerList implements Serializable {
         }
         return null;
     }
+
+    /**
+     *
+     * @param u user
+     * @return true if the user is an organizer
+     */
+    public boolean isOrganizer(User u) {
+        for (Organizer o : organizerList) {
+            if (o.getUsername().equals(u.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
