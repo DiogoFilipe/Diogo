@@ -45,22 +45,22 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
     /**
      * model to the jList of events
      */
-    private DefaultListModel modelEvents;
+    private DefaultListModel<String> modelEvents;
 
     /**
      * model to the jList of the applications
      */
-    private DefaultListModel modelApplications;
+    private DefaultListModel<String> modelApplications;
     
     /**
      * model to the jList of the stands
      */
-    private DefaultListModel modelStands;
+    private DefaultListModel<String> modelStands;
     
     /**
      * model to the jList of the assignments
      */
-    private DefaultListModel modelAssignment;
+    private DefaultListModel<String> modelAssignment;
 
     /**
      * param controller Creates new form DefineFAEMainUI param controller
@@ -82,7 +82,7 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
             }
         });
         initComponents();
-        ListModel model = new DefaultListModel();
+        DefaultListModel<String> model = new DefaultListModel<>();
         this.listEvent.setModel(model);
         prepareEventsList();
         pack();
