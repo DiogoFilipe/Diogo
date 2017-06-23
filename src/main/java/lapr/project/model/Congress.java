@@ -26,6 +26,11 @@ public class Congress extends Event implements Serializable {
         super(title, description, place, startDate, endDate, submissionStartDate, submissionEndDate, faeList, applicationList, assignmentList, organizerList, standList, assignmnentListStand);
         this.workshopList = workshopList;
     }
+    
+     public Congress(String title,String description,String place,Date startDate,Date endDate, Date submissionStartDate,Date submissionEndDate){
+     super(title,description,place,startDate,endDate,submissionStartDate,submissionEndDate);
+     
+     }
 
     /**
      *

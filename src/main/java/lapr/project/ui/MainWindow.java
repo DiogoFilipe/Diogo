@@ -326,8 +326,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutActionPerformed
 
     private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
-        CreateEventMain createEvent = new CreateEventMain(fc, u);
-        createEvent.setVisible(true);
+        CreateEventMain event = new CreateEventMain(fc, u);
+        event.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_createEventActionPerformed

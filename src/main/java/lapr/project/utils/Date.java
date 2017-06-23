@@ -444,16 +444,16 @@ public class Date implements Comparable<Date>, Serializable {
      * @return the date as a Date object
      */
     public static Date StringToDate(String dat) {
-        String[] date = dat.trim().split("-");
+        String[] date = dat.trim().split("/");
         if (date.length != 3) {
             throw new IllegalArgumentException("Invalid Format");
         }
 
-        int day = Integer.parseInt(date[0]);
+        int day = Integer.parseInt(date[2]);
         int month = Integer.parseInt(date[1]);
-        int year = Integer.parseInt(date[2]);
+        int year = Integer.parseInt(date[0]);
 
-        Date newDate = new Date(day, month, year);
+        Date newDate = new Date(year, month, day);
         return newDate;
     }
 

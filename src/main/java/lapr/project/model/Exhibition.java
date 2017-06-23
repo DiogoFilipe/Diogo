@@ -27,6 +27,11 @@ public class Exhibition extends Event implements Serializable, EventState {
         this.exhibitionState = EventState.State.FAESet;
     }
 
+    
+     public Exhibition(String title,String description,String place,Date startDate,Date endDate, Date submissionStartDate,Date submissionEndDate){
+     super(title,description,place,startDate,endDate,submissionStartDate,submissionEndDate);
+     
+     }
     /**
      *
      * @param title title of the exhibition

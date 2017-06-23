@@ -208,6 +208,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TitleInputTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TitleInputTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="DescriptionLabel">
           <Properties>
@@ -220,6 +223,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="StartDateInputTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartDateInputTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="EndDateLabel">
           <Properties>
@@ -227,6 +233,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="EndDateInputTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDateInputTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="StartSubDateLabel">
           <Properties>
@@ -234,6 +243,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="StartSubDateInputTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartSubDateInputTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="EndSubDateLabel">
           <Properties>
@@ -241,6 +253,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="EndSubDateInputTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndSubDateInputTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="OkButton">
           <Properties>

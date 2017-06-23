@@ -101,7 +101,17 @@ public class Event implements EventState, Serializable {
         this.place = PLACE_BY_OMISSION;
         this.description = DESCRIPTION_BY_OMISSION;
     }
-
+ 
+    public Event(String title,String description,String place,Date startDate,Date endDate, Date submissionStartDate,Date submissionEndDate){
+    this.title=title;
+    this.description = description;
+    this.place = place;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.submissionStartDate = submissionStartDate;
+    this.submissionEndDate = submissionEndDate;
+    }
+     
     public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmentListStand) {
         this.title = title;
         this.description = description;
