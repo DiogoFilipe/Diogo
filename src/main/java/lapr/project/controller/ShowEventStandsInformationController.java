@@ -16,9 +16,14 @@ public class ShowEventStandsInformationController {
     Event e;
     List<Stand> standList;
 
+    /**
+     * user
+     */
+    private User u;
+
     public ShowEventStandsInformationController(FairCenter fc, User user) {
         this.fc = fc;
-        this.organizer = new Organizer(user);
+        this.u = user;
     }
 
     /**
@@ -29,7 +34,7 @@ public class ShowEventStandsInformationController {
      * Organizer of
      */
     public List<String> getOrganizerEventList() {
-        return er.getOrganizerEventList(organizer);
+        return fc.getEventRegist().getOrganizerEventList((Organizer)u);
     }
 
     /**
@@ -78,8 +83,8 @@ public class ShowEventStandsInformationController {
      * Returns an array of integers that represent the absolute frequencies of
      * each class of the frequency distribution table
      *
-     * @return array of integers that represent the absolute frequencies of
-     * each class of the frequency distribution table
+     * @return array of integers that represent the absolute frequencies of each
+     * class of the frequency distribution table
      */
     public int[] absoluteFrequency() {
         int cont = 0;
@@ -103,9 +108,9 @@ public class ShowEventStandsInformationController {
     /**
      * Returns an array of doubles that represent the relative frequencies of
      * each class of the frequency distribution table
-     * 
-     * @return array of doubles that represent the relative frequencies of
-     * each class of the frequency distribution table
+     *
+     * @return array of doubles that represent the relative frequencies of each
+     * class of the frequency distribution table
      */
     public double[] relativeFrequency() {
         double[] relativeFrequency = new double[(int) Math.ceil(1 + 3.322 * Math.log(standList.size()))];
@@ -118,7 +123,7 @@ public class ShowEventStandsInformationController {
 
     /**
      * Returns the average area of the Event's Stand list
-     * 
+     *
      * @return average area of the Event's Stand list
      */
     public double calcAverageArea() {
@@ -131,7 +136,7 @@ public class ShowEventStandsInformationController {
 
     /**
      * Returns the mean deviation of the Event's Stand list
-     * 
+     *
      * @return mean deviation of the Event's Stand list
      */
     public double calcMeanDeviation() {
