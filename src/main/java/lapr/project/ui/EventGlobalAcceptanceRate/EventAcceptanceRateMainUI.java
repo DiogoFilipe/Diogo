@@ -28,6 +28,9 @@ public class EventAcceptanceRateMainUI extends javax.swing.JFrame {
      */
     private EventAcceptanceRateController controller;
 
+    /**
+     * model
+     */
     private DefaultListModel<String> model;
 
     /**
