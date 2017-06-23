@@ -26,6 +26,11 @@ import lapr.project.ui.MainWindow;
  * @author João Domingues
  */
 public class AssignStandsMainUI extends javax.swing.JFrame {
+    
+    /**
+     * serial
+     */
+    private static final long serialVersionUID = 18372931L;
 
     /**
      * controller
@@ -367,9 +372,9 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
      */
     private void prepareEventsList() {
         List<Event> events = this.controller.getEventsList();
-        modelEvents = new DefaultListModel();
+        modelEvents = new DefaultListModel<>();
         for (Event event : events) {
-            modelEvents.addElement(event);
+            modelEvents.addElement(event.getTitle());
         }
         this.listEvent.setModel(modelEvents);
     }
@@ -379,9 +384,9 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
      */
     private void prepareApplicationsList() {
         List<Application> applications = this.controller.generateApplicationsList(this.controller.getEventSelect());
-        modelApplications = new DefaultListModel();
+        modelApplications = new DefaultListModel<>();
         for (Application a : applications) {
-            modelApplications.addElement(a);
+            modelApplications.addElement(a.getCompanyName());
         }
         this.listApplication.setModel(modelApplications);
         this.listApplication.setEnabled(true);
@@ -393,9 +398,9 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
      */
     private void prepareStandList() {
         List<Stand> stands = this.controller.getStands(this.controller.getEventSelect());
-        modelStands = new DefaultListModel();
+        modelStands = new DefaultListModel<>();
         for (Stand s : stands) {
-            modelStands.addElement(s);
+            modelStands.addElement(s.getID());
         }
         this.listStand.setModel(modelStands);
         this.listStand.setEnabled(true);
@@ -417,9 +422,9 @@ public class AssignStandsMainUI extends javax.swing.JFrame {
 
         List<AssignStands> assignstands = this.controller.getStandsAssigned();
 
-        modelAssignment = new DefaultListModel();
+        modelAssignment = new DefaultListModel<>();
         for (AssignStands astands : assignstands) {
-            modelAssignment.addElement(astands);
+            modelAssignment.addElement(astands.toString());
         }
         this.listAssign.setModel(modelAssignment);
         this.newAssignment.setEnabled(true);
