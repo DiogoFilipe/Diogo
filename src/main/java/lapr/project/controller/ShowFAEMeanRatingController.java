@@ -1,6 +1,7 @@
 package lapr.project.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import lapr.project.model.*;
 
@@ -50,7 +51,7 @@ public class ShowFAEMeanRatingController {
                     double average = (double) sum / 4;
                     aux += average;
                 }
-                ratingAverage = (double) aux / decisionList.size();
+                ratingAverage = aux / decisionList.size();
             }
         }
         return ratingAverage;
