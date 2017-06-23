@@ -47,7 +47,7 @@ public class FairCenter implements Serializable {
      * class that has the list of encryptions
      */
     private EncryptionList encryptionList;
-    
+
     private Encryption fcEncryption;
 
     /**
@@ -85,8 +85,6 @@ public class FairCenter implements Serializable {
         return fcEncryption;
     }
 
-  
-    
     /**
      *
      * @return the list of encryptions
@@ -280,5 +278,24 @@ public class FairCenter implements Serializable {
      */
     public void setCongressList(CongressList congressList) {
         this.congressList = congressList;
+    }
+
+   /**
+    * 
+    * @param u user
+    * @return true if the user is an organizer or fae
+    */
+    public boolean isFAEOrOrganizer(User u) {
+        for (Organizer o : organizerList.getOrganizerList()) {
+            if (o.getUsername().equals(u.getUsername())) {
+                return true;
+            }
+        }
+        for (FAE fae : faeList.getFAEList()) {
+            if (fae.getUsername().equals(u.getUsername())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
