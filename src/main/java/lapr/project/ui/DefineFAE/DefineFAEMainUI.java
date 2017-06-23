@@ -340,7 +340,7 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
 
         modelFaes = new DefaultListModel();
         for (FAE faelist : faeslist) {
-            modelFaes.addElement(faeslist);
+            modelFaes.addElement(faelist);
         }
         this.listFAE.setModel(modelFaes);
         this.btnConfirmOperation.setEnabled(true);

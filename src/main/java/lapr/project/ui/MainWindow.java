@@ -14,6 +14,8 @@ import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.CreateStand.CreateStandMainUI;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
+import lapr.project.ui.ImportFile.ImportFileMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 import lapr.project.utils.DontHavePermissionException;
@@ -78,7 +80,6 @@ public class MainWindow extends javax.swing.JFrame {
         assignStand = new javax.swing.JButton();
         listApplications = new javax.swing.JButton();
         exportAllData = new javax.swing.JButton();
-        importAllData = new javax.swing.JButton();
         importEventData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -163,14 +164,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        importAllData.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        importAllData.setText("Import All Data To File");
-        importAllData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importAllDataActionPerformed(evt);
-            }
-        });
-
         importEventData.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         importEventData.setText("Import Event Data");
         importEventData.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +184,12 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(createEvent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exportAllData))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(decideApplication)
                             .addComponent(submitApplication)
                             .addComponent(changeApplication)
                             .addComponent(createStand)
@@ -199,15 +197,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(listApplications))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(createEvent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exportAllData))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(defineFAE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(importAllData))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(decideApplication)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(importEventData)))
                 .addContainerGap())
@@ -222,11 +212,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(defineFAE)
-                    .addComponent(importAllData))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(decideApplication)
                     .addComponent(importEventData))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(decideApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -340,15 +328,23 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_listApplicationsActionPerformed
 
     private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
-        // TODO add your handling code here:
+      try{
+      fc.isOrganizer(u);
+      ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc,u);
+      exportData.setVisible(true);
+      dispose();
+      }catch(DontHavePermissionException e){
+      JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());}
     }//GEN-LAST:event_exportAllDataActionPerformed
 
-    private void importAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importAllDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importAllDataActionPerformed
-
     private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
-        // TODO add your handling code here:
+           try{ 
+        fc.isOrganizer(u);
+        ImportFileMainUI importMain = new ImportFileMainUI(fc,u);
+        importMain.setVisible(true);
+        dispose();
+      }catch(DontHavePermissionException e){
+      JOptionPane.showMessageDialog(MainWindow.this, e.getMessage());}
     }//GEN-LAST:event_importEventDataActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -359,7 +355,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
     private javax.swing.JButton exportAllData;
-    private javax.swing.JButton importAllData;
     private javax.swing.JButton importEventData;
     private javax.swing.JButton listApplications;
     private javax.swing.JButton logOut;
