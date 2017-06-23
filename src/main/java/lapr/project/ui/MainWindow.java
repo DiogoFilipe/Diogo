@@ -14,6 +14,7 @@ import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.CreateStand.CreateStandMainUI;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
+import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
 import lapr.project.utils.DontHavePermissionException;
 
@@ -75,6 +76,10 @@ public class MainWindow extends javax.swing.JFrame {
         changeApplication = new javax.swing.JButton();
         createStand = new javax.swing.JButton();
         assignStand = new javax.swing.JButton();
+        listApplications = new javax.swing.JButton();
+        exportAllData = new javax.swing.JButton();
+        importAllData = new javax.swing.JButton();
+        importEventData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,48 +147,86 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        listApplications.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        listApplications.setText("List Applications");
+        listApplications.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listApplicationsActionPerformed(evt);
+            }
+        });
+
+        exportAllData.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        exportAllData.setText("Export All Data To File");
+        exportAllData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportAllDataActionPerformed(evt);
+            }
+        });
+
+        importAllData.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        importAllData.setText("Import All Data To File");
+        importAllData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importAllDataActionPerformed(evt);
+            }
+        });
+
+        importEventData.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        importEventData.setText("Import Event Data");
+        importEventData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importEventDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(createEvent))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(defineFAE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(decideApplication))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(submitApplication))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(changeApplication))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(createStand))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(assignStand)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 447, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addGap(392, 392, 392))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(submitApplication)
+                            .addComponent(changeApplication)
+                            .addComponent(createStand)
+                            .addComponent(assignStand)
+                            .addComponent(listApplications))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(createEvent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exportAllData))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(defineFAE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(importAllData))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(decideApplication)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(importEventData)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(createEvent)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createEvent)
+                    .addComponent(exportAllData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(defineFAE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(defineFAE)
+                    .addComponent(importAllData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(decideApplication)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(decideApplication)
+                    .addComponent(importEventData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -192,7 +235,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(createStand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(assignStand)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(listApplications)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -283,6 +328,29 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_assignStandActionPerformed
 
+    private void listApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listApplicationsActionPerformed
+       try{
+           fc.isOrganizer(u);
+           ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc,u);
+           listApplications.setVisible(true);
+           dispose();
+       }catch(DontHavePermissionException e){
+           JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
+       }
+    }//GEN-LAST:event_listApplicationsActionPerformed
+
+    private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exportAllDataActionPerformed
+
+    private void importAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importAllDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_importAllDataActionPerformed
+
+    private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_importEventDataActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignStand;
     private javax.swing.JButton changeApplication;
@@ -290,6 +358,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton createStand;
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
+    private javax.swing.JButton exportAllData;
+    private javax.swing.JButton importAllData;
+    private javax.swing.JButton importEventData;
+    private javax.swing.JButton listApplications;
     private javax.swing.JButton logOut;
     private javax.swing.JButton submitApplication;
     // End of variables declaration//GEN-END:variables
