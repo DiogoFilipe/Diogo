@@ -20,6 +20,7 @@ import lapr.project.ui.ExportAllData.ExportAllDataMainUI;
 import lapr.project.ui.ImportFile.ImportFileMainUI;
 import lapr.project.ui.ListApplications.ListApplicationsMainWindow;
 import lapr.project.ui.ShowEventKeywords.ShowEventKeywordsWindow;
+import lapr.project.ui.ShowEventStandsInformation.ShowEventStandsInformationUI;
 import lapr.project.ui.ShowFaeMeanRating.ShowFaeMeanRatingMainUI;
 import lapr.project.ui.ShowGlobalAcceptanceRate.ShowGlobalAcceptanceRateWindow;
 import lapr.project.ui.SubmitApplication.SubmitApplicationMainUI;
@@ -325,121 +326,121 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutActionPerformed
 
     private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
-
-            CreateEventMain createEvent = new CreateEventMain(fc, u);
-            createEvent.setVisible(true);
-            dispose();
+        CreateEventMain createEvent = new CreateEventMain(fc, u);
+        createEvent.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_createEventActionPerformed
 
     private void defineFAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defineFAEActionPerformed
 
-            DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
-            defineFAE.setVisible(true);
-            dispose();
+        DefineFAEMainUI defineFAE = new DefineFAEMainUI(fc, u);
+        defineFAE.setVisible(true);
+        dispose();
     }//GEN-LAST:event_defineFAEActionPerformed
 
     private void decideApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decideApplicationActionPerformed
 
-            DecideApplicationMainUI decideApplication = new DecideApplicationMainUI(fc, u);
-            decideApplication.setVisible(true);
-            dispose();
+        DecideApplicationMainUI decideApplication = new DecideApplicationMainUI(fc, u);
+        decideApplication.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_decideApplicationActionPerformed
 
     private void submitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitApplicationActionPerformed
 
-            SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc, u);
-            submitApplication.setVisible(true);
-            dispose();
+        SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc, u);
+        submitApplication.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_submitApplicationActionPerformed
 
     private void changeApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeApplicationActionPerformed
 
-            ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc, u);
-            changeApplication.setVisible(true);
-            dispose();
+        ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc, u);
+        changeApplication.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_changeApplicationActionPerformed
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
-
-            CreateStandMainUI createStand = new CreateStandMainUI(fc, u);
-            createStand.setVisible(true);
-            dispose();
+        CreateStandMainUI createStand = new CreateStandMainUI(fc, u);
+        createStand.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_createStandActionPerformed
 
     private void assignStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignStandActionPerformed
 
-            AssignStandsMainUI assignStand = new AssignStandsMainUI(fc, u);
-            assignStand.setVisible(true);
-            dispose();
+        AssignStandsMainUI assignStand = new AssignStandsMainUI(fc, u);
+        assignStand.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_assignStandActionPerformed
 
     private void listApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listApplicationsActionPerformed
 
-            ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc, u);
-            listApplications.setVisible(true);
-            dispose();
+        ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc, u);
+        listApplications.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_listApplicationsActionPerformed
 
     private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
 
-            ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, u);
-            exportData.setVisible(true);
-            dispose();
+        ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, u);
+        exportData.setVisible(true);
+        dispose();
     }//GEN-LAST:event_exportAllDataActionPerformed
 
     private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
 
-            ImportFileMainUI importMain = new ImportFileMainUI(fc, u);
-            importMain.setVisible(true);
-            dispose();
+        ImportFileMainUI importMain = new ImportFileMainUI(fc, u);
+        importMain.setVisible(true);
+        dispose();
     }//GEN-LAST:event_importEventDataActionPerformed
 
     private void eventSubmissionKeywordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSubmissionKeywordsActionPerformed
 
-            ShowEventKeywordsWindow eventKeywords = new ShowEventKeywordsWindow(fc, u);
-            eventKeywords.setVisible(true);
-            dispose();
+        ShowEventKeywordsWindow eventKeywords = new ShowEventKeywordsWindow(fc, u);
+        eventKeywords.setVisible(true);
+        dispose();
 
 
     }//GEN-LAST:event_eventSubmissionKeywordsActionPerformed
 
     private void eventAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventAcceptanceRateActionPerformed
 
-            EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc, u);
-            eventAcceptanceRate.setVisible(true);
-            dispose();
+        EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc, u);
+        eventAcceptanceRate.setVisible(true);
+        dispose();
     }//GEN-LAST:event_eventAcceptanceRateActionPerformed
 
     private void standsInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standsInformationActionPerformed
-
+        ShowEventStandsInformationUI showStands = new ShowEventStandsInformationUI(fc, u);
+        showStands.setVisible(true);
+        dispose();
     }//GEN-LAST:event_standsInformationActionPerformed
 
     private void globalRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRateActionPerformed
 
-            ShowGlobalAcceptanceRateWindow globalRate = new ShowGlobalAcceptanceRateWindow(fc, u);
-            globalRate.setVisible(true);
-            dispose();
+        ShowGlobalAcceptanceRateWindow globalRate = new ShowGlobalAcceptanceRateWindow(fc, u);
+        globalRate.setVisible(true);
+        dispose();
     }//GEN-LAST:event_globalRateActionPerformed
 
     private void FAEMeanRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAEMeanRatingActionPerformed
 
-            ShowFaeMeanRatingMainUI FAEMeanRating = new ShowFaeMeanRatingMainUI(fc, u);
-            FAEMeanRating.setVisible(true);
-            dispose();
+        ShowFaeMeanRatingMainUI FAEMeanRating = new ShowFaeMeanRatingMainUI(fc, u);
+        FAEMeanRating.setVisible(true);
+        dispose();
     }//GEN-LAST:event_FAEMeanRatingActionPerformed
 
     private void Acceptance50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acceptance50ActionPerformed
 
-            AcceptanceRateOver50 acceptanceRate50 = new AcceptanceRateOver50(fc, u);
-            acceptanceRate50.setVisible(true);
-            dispose();
+        AcceptanceRateOver50 acceptanceRate50 = new AcceptanceRateOver50(fc, u);
+        acceptanceRate50.setVisible(true);
+        dispose();
     }//GEN-LAST:event_Acceptance50ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
