@@ -13,6 +13,8 @@ import lapr.project.utils.Date;
  */
 public class EventRegist implements Serializable {
 
+    private static final long serialVersionUID = 5502707148977002393L;
+
     /**
      * Event list
      */
@@ -42,7 +44,7 @@ public class EventRegist implements Serializable {
     }
 
     /**
-     * 
+     *
      * @param fae a fae
      * @return list of strings with event title of this fae
      */
@@ -55,7 +57,6 @@ public class EventRegist implements Serializable {
         }
         return FAEEventsList;
     }
- 
 
     /**
      * Lets get the Events List ready for submission
@@ -69,7 +70,6 @@ public class EventRegist implements Serializable {
 //        });
 //        return ReadyEvents;
 //    }
-
     /**
      * Gets the list of events
      *
@@ -87,19 +87,19 @@ public class EventRegist implements Serializable {
      * Event already created with the given title
      */
     public boolean validateEvent(String title) {
-        for(Event e:eventList){
-            if(e.getTitle().equals(title)){
+        for (Event e : eventList) {
+            if (e.getTitle().equals(title)) {
                 return true;
             }
         }
         return false;
     }
-    
-   /**
-    * 
-    * @param title title of the event
-    * @return return the event that has this title
-    */
+
+    /**
+     *
+     * @param title title of the event
+     * @return return the event that has this title
+     */
     public Event getEvent(String title) {
         for (Event event : eventList) {
             if (event.getTitle().equals(title)) {
@@ -108,14 +108,14 @@ public class EventRegist implements Serializable {
         }
         return null;
     }
-    
-   /**
-    * 
-    * @return list of strings with event title 
-    */
-    public List<String> getEventListString(){
-        List<String> eventListString=new ArrayList<>();
-        for(Event e: eventList){
+
+    /**
+     *
+     * @return list of strings with event title
+     */
+    public List<String> getEventListString() {
+        List<String> eventListString = new ArrayList<>();
+        for (Event e : eventList) {
             eventListString.add(e.getTitle());
         }
         return eventListString;

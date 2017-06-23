@@ -18,6 +18,8 @@ import lapr.project.ui.MainWindow;
  */
 public class EventAcceptanceRateMainUI extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 1380484152028664082L;
+
     FairCenter fc;
     User u;
     EventAcceptanceRateController controller;
@@ -46,7 +48,7 @@ public class EventAcceptanceRateMainUI extends javax.swing.JFrame {
             }
         };
         jList1.setModel(model);
-        jScrollPane2.setViewportView(jList1);        
+        jScrollPane2.setViewportView(jList1);
     }
 
     /**
@@ -124,15 +126,15 @@ public class EventAcceptanceRateMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc,u);
+        MainWindow mainWindow = new MainWindow(fc, u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String event = jList1.getSelectedValue();
-              JOptionPane.showMessageDialog(null, "The acceptance rate of this event is"+controller.acceptanceRate(event), event, JOptionPane.INFORMATION_MESSAGE);
-       
+        JOptionPane.showMessageDialog(null, "The acceptance rate of this event is" + controller.acceptanceRate(event), event, JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

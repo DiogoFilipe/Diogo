@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class Stand implements Serializable {
 
+    private static final long serialVersionUID = -2847492789357454392L;
+
     /**
      * name of the stand
      */
@@ -85,7 +87,7 @@ public class Stand implements Serializable {
     }
 
     /**
-     * 
+     *
      * @param area area of the stand
      * @return verify if the area(String) has only digits
      */

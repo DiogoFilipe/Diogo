@@ -19,6 +19,8 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class Keyword implements Serializable {
 
+    private static final long serialVersionUID = -6149514296117538317L;
+
     /**
      * root element name
      */
@@ -112,29 +114,21 @@ public class Keyword implements Serializable {
         return this;
     }
 
-   /**
-    * 
-    @Override
-    public int hashCode() {
-        return getValue().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Keyword)) {
-            return false;
-        }
-
-        Keyword that = (Keyword) o;
-
-        return getValue().equals(that.getValue());
-
-    }
-
     /**
+     *
+     * @Override public int hashCode() { return getValue().hashCode(); }
+     *
+     * @Override public boolean equals(Object o) { if (this == o) { return true;
+     * } if (!(o instanceof Keyword)) { return false; }
+     *
+     * Keyword that = (Keyword) o;
+     *
+     * return getValue().equals(that.getValue());
+     *
+     * }
+     *
+     * /
+     **
      * @param value the value to set
      */
     public void setValue(String value) {

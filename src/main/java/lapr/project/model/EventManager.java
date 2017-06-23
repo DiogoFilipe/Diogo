@@ -11,40 +11,42 @@ import java.io.Serializable;
  *
  * @author Diogo
  */
-public class EventManager extends User implements Serializable{
-    
+public class EventManager extends User implements Serializable {
+
+    private static final long serialVersionUID = 4855709928214393972L;
+
     /**
-     * 
+     *
      * @param name name of the event manager
      * @param username name in the platform
      * @param email his email
      * @param password password
      */
-    public EventManager(String name,String username,String email,String password){
-        super(name,username,email,password);
+    public EventManager(String name, String username, String email, String password) {
+        super(name, username, email, password);
     }
 
     /**
-     * 
-     * @return his email 
+     *
+     * @return his email
      */
     @Override
     public String getEmail() {
         return super.getEmail();
     }
 
-   /**
-    * 
-    * @return his name 
-    */
+    /**
+     *
+     * @return his name
+     */
     @Override
     public String getName() {
         return super.getName();
     }
 
     /**
-     * 
-     * @return his password 
+     *
+     * @return his password
      */
     @Override
     public String getPassword() {
@@ -52,7 +54,7 @@ public class EventManager extends User implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param user user
      * @param username name on the platform
      * @return if the user has is
@@ -63,8 +65,8 @@ public class EventManager extends User implements Serializable{
     }
 
     /**
-     * 
-     * @return his name on paltform 
+     *
+     * @return his name on paltform
      */
     @Override
     public String getUsername() {
@@ -72,8 +74,8 @@ public class EventManager extends User implements Serializable{
     }
 
     /**
-     * 
-     * @param name set a new name 
+     *
+     * @param name set a new name
      */
     @Override
     public void setName(String name) {
@@ -81,7 +83,7 @@ public class EventManager extends User implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param email set a new email
      */
     @Override
@@ -90,7 +92,7 @@ public class EventManager extends User implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param password set a new password
      */
     @Override
@@ -99,29 +101,27 @@ public class EventManager extends User implements Serializable{
     }
 
     /**
-     * 
-     * @param username set new username 
+     *
+     * @param username set new username
      */
     @Override
     public void setUsername(String username) {
         super.setUsername(username);
     }
 
-   /**
-    * empty constructor
-    */
+    /**
+     * empty constructor
+     */
     public EventManager() {
     }
 
     /**
-     * 
-     * @return all the data of the event manager 
+     *
+     * @return all the data of the event manager
      */
     @Override
     public String toString() {
         return super.toString();
     }
 
-    
-    
 }

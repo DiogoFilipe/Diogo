@@ -5,62 +5,79 @@
  */
 package lapr.project.ui.DefineFAE;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import lapr.project.controller.DefineFAEController;
 import lapr.project.model.Event;
 import lapr.project.model.FAE;
-import lapr.project.model.FAEList;
+import lapr.project.model.FairCenter;
 import lapr.project.model.User;
+import lapr.project.ui.MainWindow;
 
 /**
  *
  * @author João Domingues
  */
 public class DefineFAEMainUI extends javax.swing.JFrame {
-   
-    DefineFAEController controller;
-    DefaultListModel modelEvents;
-    DefaultListModel modelUsers;
-    DefaultListModel modelFaes;
-    JFrame parent;
 
     /**
-     * Creates new form DefineFAEMainUI
-     * param controller
+     * controller
      */
-    public DefineFAEMainUI(JFrame parent, DefineFAEController controller) {
-        this.controller = controller;
-        this.parent = parent;
+    DefineFAEController controller;
+    
+    /**
+     * model to jList with events
+     */
+    private DefaultListModel modelEvents;
+    
+    /**
+     * model to jList with users
+     */
+    private DefaultListModel modelUsers;
+    
+    /**
+     * model to jLst with fae
+     */
+    private DefaultListModel modelFaes;
+
+    /**
+     * fair center
+     */
+    private FairCenter fc;
+    
+    /**
+     * user
+     */
+    private User u;
+
+    /**
+     * Creates new form DefineFAEMainUI param controller
+     *
+     * @param fc fair center
+     * @param u user
+     */
+    public DefineFAEMainUI(FairCenter fc, User u) {
+        this.fc = fc;
+        this.u = u;
+        controller = new DefineFAEController(fc, u);
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(DefineFAEMainUI.this, "Do you want to close the application?", "WARNING", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+
+        });
         initComponents();
         ListModel model = new DefaultListModel();
         this.listEvent.setModel(model);
         prepareEventsList();
-        setLocationRelativeTo(null);
-        pack();
-        this.setVisible(true);
-        
-         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                close();
-            }
-
-        });
-      
-    }
-    
-    /**
-     * Creates new form ChanceApplicationMainUI
-     */
-    private DefineFAEMainUI() {
-        initComponents();
     }
 
     /**
@@ -213,30 +230,49 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt click 
+     */
     private void btnConfirmOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmOperationActionPerformed
         if (listFAE.getModel().getSize() > 0) {
             JOptionPane.showMessageDialog(null, "FAE successfully defined!");
+            MainWindow main = new MainWindow(fc, u);
+            main.setVisible(true);
             dispose();
-            parent.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "FAE was not defined successfully!");
         }
     }//GEN-LAST:event_btnConfirmOperationActionPerformed
 
+    /**
+     * 
+     * @param evt click 
+     */
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        close();
+        MainWindow main = new MainWindow(fc,u);
+        main.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
 
+    /**
+     * 
+     * @param evt click 
+     */
     private void confirmEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmEventActionPerformed
-       int selectedindex = listEvent.getSelectedIndex();
+        int selectedindex = listEvent.getSelectedIndex();
         if (selectedindex != -1) {
             listEvent.setEnabled(false);
             confirmEvent.setEnabled(false);
             controller.setEventSelect(controller.getEventsRegist().getEventList().get(selectedindex));
             prepareUsersList();
-        }    
+        }
     }//GEN-LAST:event_confirmEventActionPerformed
 
+    /**
+     * 
+     * @param evt click
+     */
     private void confirmUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmUserActionPerformed
         int selectedindex = listUser.getSelectedIndex();
         if (selectedindex != -1) {
@@ -245,45 +281,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
             this.listUser.setEnabled(false);
             this.confirmUser.setEnabled(false);
             prepareFAEList();
-        }    
-    }//GEN-LAST:event_confirmUserActionPerformed
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DefineFAEMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DefineFAEMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DefineFAEMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DefineFAEMainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_confirmUserActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DefineFAEMainUI().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmOperation;
     private javax.swing.JButton btnReturn;
@@ -301,6 +301,9 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
     private javax.swing.JList<User> listUser;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * add events to the jList
+     */
     private void prepareEventsList() {
         List<Event> events = this.controller.getEventsRegist().getEventList();
         modelEvents = new DefaultListModel();
@@ -309,7 +312,10 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         }
         this.listEvent.setModel(modelEvents);
     }
-    
+
+    /**
+     * add users to the jList
+     */
     private void prepareUsersList() {
         List<User> users = this.controller.generateUsersList(this.controller.getEventSelect());
         modelUsers = new DefaultListModel();
@@ -320,47 +326,24 @@ public class DefineFAEMainUI extends javax.swing.JFrame {
         this.listUser.setEnabled(true);
         this.confirmUser.setEnabled(true);
     }
-    
-     private void prepareFAEList() {
+
+    /**
+     * add users(fae) to the JList
+     */
+    private void prepareFAEList() {
         User u = this.controller.getUserSelected();
         Event e = this.controller.getEventSelect();
-         
+
         controller.addFAE(u, e);
-        
+
         List<FAE> faeslist = this.controller.getFAEList();
 
         modelFaes = new DefaultListModel();
-        for ( FAE faelist : faeslist) {
+        for (FAE faelist : faeslist) {
             modelFaes.addElement(faeslist);
         }
         this.listFAE.setModel(modelFaes);
         this.btnConfirmOperation.setEnabled(true);
-      
 
-         
-     }
-    
-     private void close() {
-        String[] opYesNo = {"Yes", "No"};
-        int answer = JOptionPane.showOptionDialog(this,
-                "Do you want to cancel the Define FAE process?",
-                "Application of Lapr",
-                0,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                opYesNo,
-                opYesNo[1]);
-
-        final int Yes = 0;
-        if (answer == Yes) {
-            dispose();
-            parent.setVisible(true);
-        } else {
-
-        }
     }
-    
-
-
 }
-

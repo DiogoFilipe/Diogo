@@ -8,15 +8,16 @@ package lapr.project.ui.AcceptanceRate50;
 import lapr.project.model.FairCenter;
 import lapr.project.ui.MainWindow;
 
-
 /**
  *
  * @author Diogo
  */
 public class AcceptanceRateOver50 extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 1560004350952810929L;
+
     FairCenter fc;
-    
+
     /**
      * Creates new form AcceptanceRateOver50
      */

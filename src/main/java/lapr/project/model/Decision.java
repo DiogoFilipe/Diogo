@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class Decision implements Serializable {
 
+    private static final long serialVersionUID = 3331286982930341601L;
+
     /**
      * decision
      */
@@ -84,10 +86,11 @@ public class Decision implements Serializable {
 
     /**
      * constructor for fae's decision
+     *
      * @param faeKnowledge faeKnowledge
      * @param adequacy
      * @param invitationAdequacy
-     * @param overallRecommendation 
+     * @param overallRecommendation
      */
     public Decision(int faeKnowledge, int adequacy, int invitationAdequacy, int overallRecommendation) {
         this.faeKnowledge = faeKnowledge;
@@ -95,9 +98,9 @@ public class Decision implements Serializable {
         this.invitationAdequacy = invitationAdequacy;
         this.overallRecommendation = overallRecommendation;
     }
-    
-    public Decision(boolean decision){
-        this.decision=decision;
+
+    public Decision(boolean decision) {
+        this.decision = decision;
     }
 
     /**

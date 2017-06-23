@@ -13,7 +13,9 @@ import java.util.List;
  *
  * @author João Domingues
  */
-public class AssignmentListStand implements Serializable{
+public class AssignmentListStand implements Serializable {
+
+    private static final long serialVersionUID = 1544492312553701763L;
 
     /**
      * list of stands assigned
@@ -43,7 +45,7 @@ public class AssignmentListStand implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param s the assign stands list
      * @return true if the stand isn't assigned
      */
@@ -55,9 +57,9 @@ public class AssignmentListStand implements Serializable{
         }
         return true;
     }
-    
+
     /**
-     * 
+     *
      * @param s the stand and a the application
      * @return new assign stand
      */
@@ -66,7 +68,7 @@ public class AssignmentListStand implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param b boolean
      * @param as assign Stands
      */
@@ -79,7 +81,7 @@ public class AssignmentListStand implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param a application
      * @return the stand of the application
      */

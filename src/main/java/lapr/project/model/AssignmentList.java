@@ -13,7 +13,9 @@ import java.util.List;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class AssignmentList implements Serializable{
+public class AssignmentList implements Serializable {
+
+    private static final long serialVersionUID = 5032916887098413592L;
 
     /**
      * list of assignments

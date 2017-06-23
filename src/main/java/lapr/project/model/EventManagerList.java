@@ -13,26 +13,28 @@ import java.util.List;
  *
  * @author Diogo
  */
-public class EventManagerList implements Serializable{
+public class EventManagerList implements Serializable {
+
+    private static final long serialVersionUID = 8430690430524498702L;
 
     /**
      * list of event managers
      */
     private List<EventManager> eventManagerList;
-    
+
     /**
-     * 
+     *
      * @param eventManagerList list of event managers
      */
-    public EventManagerList(List<EventManager> eventManagerList){
-        this.eventManagerList=eventManagerList;
+    public EventManagerList(List<EventManager> eventManagerList) {
+        this.eventManagerList = eventManagerList;
     }
-    
+
     /**
      * empty constructor
      */
-    public EventManagerList(){
-        this.eventManagerList= new ArrayList<>();
+    public EventManagerList() {
+        this.eventManagerList = new ArrayList<>();
     }
 
     /**
@@ -47,6 +49,15 @@ public class EventManagerList implements Serializable{
      */
     public void setEventManagerList(List<EventManager> eventManagerList) {
         this.eventManagerList = eventManagerList;
+    }
+    
+    public boolean isEventManager(User u){
+        for(EventManager e: eventManagerList){
+            if(u.getUsername().equals(e.getUsername())){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

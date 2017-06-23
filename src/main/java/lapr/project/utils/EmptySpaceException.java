@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 public class EmptySpaceException extends IllegalArgumentException implements Serializable {
 
+    private static final long serialVersionUID = -3081496165200225683L;
+
     /**
      * Creates a new instance of <code>EmptySpaceException</code> without detail
      * message.
@@ -27,6 +29,6 @@ public class EmptySpaceException extends IllegalArgumentException implements Ser
      * @param msg the detail message.
      */
     public EmptySpaceException(String msg) {
-        super("Empty information on parameter "+msg);
+        super("Empty information on parameter " + msg);
     }
 }

@@ -8,18 +8,20 @@ import java.util.List;
  *
  * @author Diogo
  */
-public class FrequencyKeyword implements Serializable{
+public class FrequencyKeyword implements Serializable {
+
+    private static final long serialVersionUID = 1984238808121345987L;
 
     /**
      * title of the event
      */
     private String e;
-    
+
     /**
      * list of keywords
      */
     private List<Keyword> keywords;
-    
+
     /**
      * fair center
      */
@@ -59,7 +61,7 @@ public class FrequencyKeyword implements Serializable{
     }
 
     /**
-     * 
+     *
      * @param e event title
      * @return a list of doubles with the frequencie of every keyword
      */
@@ -74,7 +76,7 @@ public class FrequencyKeyword implements Serializable{
                 }
                 tot++;
             }
-            double freq=(cont / tot) * 100;
+            double freq = (cont / tot) * 100;
             frequencies.add(freq);
         }
         return frequencies;

@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class OrganizerList implements Serializable {
 
+    private static final long serialVersionUID = -885585687637408380L;
+
     /**
      * list of organizers
      */

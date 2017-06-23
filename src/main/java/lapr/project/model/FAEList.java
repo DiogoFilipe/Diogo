@@ -8,7 +8,12 @@ import java.util.List;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class FAEList implements Serializable{
+public class FAEList implements Serializable {
+
+    /**
+     * servial version
+     */
+    private static final long serialVersionUID = 5888244207240801590L;
 
     /**
      * list of faes
@@ -40,6 +45,11 @@ public class FAEList implements Serializable{
         this.FAEList = FAEList;
     }
 
+    /**
+     *
+     * @param username username given
+     * @return the fae with that username
+     */
     public FAE getFAE(String username) {
         for (FAE f : FAEList) {
             if (f.getUsername().equals(username)) {
@@ -49,4 +59,17 @@ public class FAEList implements Serializable{
         return null;
     }
 
+    /**
+     *
+     * @param u user
+     * @return true if the user is a fae
+     */
+    public boolean isFAE(User u) {
+        for (FAE fae : FAEList) {
+            if (u.getUsername().equals(fae.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

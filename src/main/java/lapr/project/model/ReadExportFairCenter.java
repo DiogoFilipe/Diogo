@@ -29,10 +29,12 @@ import java.util.logging.Logger;
  * @author HP
  */
 public class ReadExportFairCenter implements Serializable {
-    
- public static final String NOME_FICHEIRO_TEXTO = "FairCenter.bin";
- 
-  public static void saveFairCenter(FairCenter fc) throws IOException {
+
+    private static final long serialVersionUID = 9071125064403666354L;
+
+    public static final String NOME_FICHEIRO_TEXTO = "FairCenter.bin";
+
+    public static void saveFairCenter(FairCenter fc) throws IOException {
         ObjectOutputStream outputStream = null;
         try {
             outputStream = new ObjectOutputStream(new FileOutputStream(NOME_FICHEIRO_TEXTO));
@@ -54,7 +56,7 @@ public class ReadExportFairCenter implements Serializable {
     }
 
     public static FairCenter loadFairCenter(FairCenter fc) throws IOException {
-        try {          
+        try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(NOME_FICHEIRO_TEXTO));
             try {
                 fc = (FairCenter) in.readObject();
@@ -68,11 +70,5 @@ public class ReadExportFairCenter implements Serializable {
         }
         return fc;
     }
-       
-    
-     
+
 }
-          
-          
-
-

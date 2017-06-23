@@ -13,16 +13,18 @@ import java.io.Serializable;
  */
 public class FAE extends User implements Serializable {
 
+    private static final long serialVersionUID = 5218751268829969735L;
+
     /**
      * experiência profissional em organização de eventos
      */
     private int professionalExperience;
-    
+
     /**
      * user
      */
     private User user;
-    
+
     /**
      * decision of the fae
      */
@@ -45,7 +47,7 @@ public class FAE extends User implements Serializable {
     }
 
     /**
-     * 
+     *
      * @param name name of fae
      * @param username name in platform of fae
      * @param email email of the fae
@@ -53,7 +55,7 @@ public class FAE extends User implements Serializable {
      */
     public FAE(String name, String username, String email, String password) {
         super(name, username, email, password);
-        this.decisionList=new DecisionList();
+        this.decisionList = new DecisionList();
     }
 
     /**
@@ -62,7 +64,7 @@ public class FAE extends User implements Serializable {
      */
     public FAE(User u) {
         this.user = u;
-        this.decisionList=new DecisionList();
+        this.decisionList = new DecisionList();
     }
 
     /**
@@ -70,7 +72,7 @@ public class FAE extends User implements Serializable {
      */
     public FAE() {
         super();
-        this.decisionList=new DecisionList();
+        this.decisionList = new DecisionList();
     }
 
     /**

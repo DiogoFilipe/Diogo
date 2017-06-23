@@ -8,28 +8,30 @@ import java.io.Serializable;
  */
 public class Organizer extends User implements Serializable {
 
+    private static final long serialVersionUID = 1159486127798150279L;
+
     /**
      * user
      */
     private User user;
-    
+
     /**
-     * 
+     *
      * @param name name of the organizer
      * @param username username of the organizer
      * @param email email of the organizer
-     * @param password  password of the organizer
+     * @param password password of the organizer
      */
     public Organizer(String name, String username, String email, String password) {
         super(name, username, email, password);
     }
-    
+
     /**
-     * 
-     * @param u an user 
+     *
+     * @param u an user
      */
-    public Organizer(User u){
-        this.user=u;
+    public Organizer(User u) {
+        this.user = u;
     }
 
     /**

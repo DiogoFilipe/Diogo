@@ -8,16 +8,16 @@ package lapr.project.ui.DifferenceTwoFAEDeviation;
 import lapr.project.model.FairCenter;
 import lapr.project.ui.MainWindow;
 
-
-
 /**
  *
  * @author Diogo
  */
 public class DifferenceTwoFAEDeviation extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 2547664324626659753L;
+
     FairCenter fc;
-    
+
     /**
      * Creates new form DifferenceTwoFAEDeviation
      */

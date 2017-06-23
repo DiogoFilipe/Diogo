@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class UserRegist implements Serializable {
 
+    private static final long serialVersionUID = 6536391906887041144L;
+
     /**
      * list of users
      */
@@ -177,8 +179,8 @@ public class UserRegist implements Serializable {
     }
 
     /**
-     * 
-     * @return list of Strings with the username of all users 
+     *
+     * @return list of Strings with the username of all users
      */
     public List<String> getUserListString() {
         List<String> userListString = new ArrayList<>();

@@ -1,11 +1,6 @@
 package lapr.project.ui.CreateEvent;
 
-//import java.util.ArrayList;
-//import java.util.List;
-//import javax.swing.DefaultListModel;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.swing.AbstractListModel;
 import javax.swing.JOptionPane;
@@ -13,7 +8,6 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import lapr.project.controller.CreateEventController;
 import lapr.project.model.*;
 import lapr.project.ui.MainWindow;
-import lapr.project.utils.Date;
 import lapr.project.utils.EmptySpaceException;
 import lapr.project.utils.InvalidDayException;
 import lapr.project.utils.InvalidMonthException;
@@ -23,21 +17,43 @@ import lapr.project.utils.InvalidYearException;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class CreateEventMain extends javax.swing.JFrame implements Serializable {
+public class CreateEventMain extends javax.swing.JFrame {
 
+    /**
+     * serial version
+     */
+    private static final long serialVersionUID = 8799413810693056904L;
+
+    /**
+     * fair center
+     */
     private FairCenter fc;
+    
+    /**
+     * user
+     */
     private User u;
+    
+    /**
+     * list of organizers of the event
+     */
     private List<String> organizerListEvent;
+    
+    /**
+     * list of users
+     */
     private List<String> userList;
 
+    /**
+     * controller
+     */
     CreateEventController controller;
 
-    //private final DefaultListModel userModel = new DefaultListModel();
     /**
      * Creates new form CreateEventMain
      *
-     * @param fc
-     * @param u
+     * @param fc fair center
+     * @param u user
      */
     public CreateEventMain(FairCenter fc, User u) {
         this.fc = fc;
@@ -89,28 +105,7 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
         ChosenOrganizerList.setModel(model1);
         jScrollPane2.setViewportView(ChosenOrganizerList);
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateEventMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -340,12 +335,20 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt click 
+     */
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         MainWindow mainWindow = new MainWindow(fc, u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
+    /**
+     * 
+     * @param evt click 
+     */
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
         String type = jComboBox1.getSelectedItem().toString();
 
@@ -387,12 +390,20 @@ public class CreateEventMain extends javax.swing.JFrame implements Serializable 
         dispose();
     }//GEN-LAST:event_OkButtonActionPerformed
 
+    /**
+     * 
+     * @param evt click
+     */
     private void AddOrganizerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOrganizerButtonActionPerformed
         String user = OrganizerList.getSelectedValue();
         organizerListEvent.add(user);
         userList.remove(user);
     }//GEN-LAST:event_AddOrganizerButtonActionPerformed
 
+    /**
+     * 
+     * @param evt click 
+     */
     private void RemoveOrganizerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveOrganizerActionPerformed
         String organizer = ChosenOrganizerList.getSelectedValue();
         userList.add(organizer);

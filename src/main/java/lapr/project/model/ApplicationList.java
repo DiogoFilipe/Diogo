@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class ApplicationList implements Serializable {
 
+    private static final long serialVersionUID = -2748814113286275044L;
+
     /**
      * list of applications
      */

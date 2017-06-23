@@ -16,21 +16,24 @@ import lapr.project.ui.MainWindow;
  */
 public class ShowGlobalAcceptanceRateWindow extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 98357176351306328L;
+
     FairCenter fc;
     User u;
     ShowGlobalAcceptanceRateController controller;
-    
+
     /**
      * Creates new form ShowGlobalAcceptanceRateWindow
+     *
      * @param fc
      * @param u
      */
-    public ShowGlobalAcceptanceRateWindow(FairCenter fc,User u) {
-        this.fc=fc;
-        this.u=u;
-        controller = new ShowGlobalAcceptanceRateController(fc,u);
+    public ShowGlobalAcceptanceRateWindow(FairCenter fc, User u) {
+        this.fc = fc;
+        this.u = u;
+        controller = new ShowGlobalAcceptanceRateController(fc, u);
         initComponents();
-        jTextField1.setText(""+controller.getAcceptanceRating());
+        jTextField1.setText("" + controller.getAcceptanceRating());
     }
 
     /**
@@ -92,7 +95,7 @@ public class ShowGlobalAcceptanceRateWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainWindow main = new MainWindow (fc,u);
+        MainWindow main = new MainWindow(fc, u);
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

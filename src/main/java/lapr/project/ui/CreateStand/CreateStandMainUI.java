@@ -11,12 +11,15 @@ import lapr.project.controller.CreateStandController;
 import lapr.project.model.*;
 import lapr.project.model.User;
 import lapr.project.ui.MainWindow;
+
 /**
  *
  * @author João Domingues
  */
 public class CreateStandMainUI extends javax.swing.JFrame {
-    
+
+    private static final long serialVersionUID = -6381078247980856627L;
+
     CreateStandController controller;
     private FairCenter fc;
     private User user;
@@ -24,26 +27,26 @@ public class CreateStandMainUI extends javax.swing.JFrame {
     /**
      * Creates new form CreateStandMainUI
      */
-    public CreateStandMainUI(FairCenter fc,User user) {
+    public CreateStandMainUI(FairCenter fc, User user) {
         this.fc = fc;
         this.user = user;
         initComponents();
         this.setVisible(true);
         createList();
-      
+
     }
-    
-    public void createList(){
-        
-     int i=0;
-        controller = new CreateStandController(fc,user);
+
+    public void createList() {
+
+        int i = 0;
+        controller = new CreateStandController(fc, user);
         List<Event> events = controller.getEventList();
-        final String [] titles = new String[events.size()];
-        for(Event event : events){
+        final String[] titles = new String[events.size()];
+        for (Event event : events) {
             titles[i] = event.getTitle();
-        i++;
+            i++;
         }
-             
+
         AbstractListModel model = new javax.swing.AbstractListModel() {
 
             @Override
@@ -58,7 +61,7 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         };
         jList2.setModel(model);
         jScrollPane1.setViewportView(jList2);
-       }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,19 +136,19 @@ public class CreateStandMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+
         String title = null;
 
-    int[] selectedIx = jList2.getSelectedIndices();      
+        int[] selectedIx = jList2.getSelectedIndices();
 
-    for (int j = 0; j < selectedIx.length; j++) {
-        title = (String) jList2.getModel().getElementAt(selectedIx[j]);
-    }
-    Event event = controller.getEvent(title);
-    StandDataUI standData = new StandDataUI(event,fc,user);
-    standData.setVisible(true);
-    this.dispose();
-       
+        for (int j = 0; j < selectedIx.length; j++) {
+            title = (String) jList2.getModel().getElementAt(selectedIx[j]);
+        }
+        Event event = controller.getEvent(title);
+        StandDataUI standData = new StandDataUI(event, fc, user);
+        standData.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -9,73 +9,75 @@ import lapr.project.utils.Date;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class Event implements EventState,Serializable{
+public class Event implements EventState, Serializable {
+
+    private static final long serialVersionUID = -284198138063507889L;
 
     /**
      * title of the event
      */
     private String title;
-    
+
     /**
      * description
      */
     private String description;
-    
+
     /**
      * place of the event
      */
     private String place;
-    
+
     /**
      * event's start date
      */
     private Date startDate;
-    
+
     /**
      * event's end date
      */
     private Date endDate;
-    
+
     /**
      * application's submission start date
      */
     private Date submissionStartDate;
-    
+
     /**
      * application's submission end date
      */
     private Date submissionEndDate;
-    
+
     /**
      * event state
      */
     private State state;
-    
+
     /**
      * list of faes
      */
     private FAEList faeList;
- 
+
     /**
      * list of applications
      */
     private ApplicationList applicationList;
-    
+
     /**
      * list of assignments
      */
     private AssignmentList assignmentList;
-    
+
     /**
      * list of organizers
      */
     private OrganizerList organizerList;
-    
+
     /**
      * list of stands
      */
     private StandRegist standList;
-    
+
     /**
      * list os stands assignments
      */
@@ -85,7 +87,7 @@ public class Event implements EventState,Serializable{
      * description by omission
      */
     private final String DESCRIPTION_BY_OMISSION = "No description";
-    
+
     /**
      * place by omission
      */
@@ -96,8 +98,8 @@ public class Event implements EventState,Serializable{
      */
     public Event() {
         this.state = EventState.State.Created;
-        this.place=PLACE_BY_OMISSION;
-        this.description=DESCRIPTION_BY_OMISSION;
+        this.place = PLACE_BY_OMISSION;
+        this.description = DESCRIPTION_BY_OMISSION;
     }
 
     public Event(String title, String description, String place, Date startDate, Date endDate, Date submissionStartDate, Date submissionEndDate, FAEList faeList, ApplicationList applicationList, AssignmentList assignmentList, OrganizerList organizerList, StandRegist standList, AssignmentListStand assignmentListStand) {
@@ -120,7 +122,7 @@ public class Event implements EventState,Serializable{
     public Event(String title) {
         this.title = title;
         this.description = DESCRIPTION_BY_OMISSION;
-        this.place=PLACE_BY_OMISSION;
+        this.place = PLACE_BY_OMISSION;
         this.assignmentList = new AssignmentList();
         this.faeList = new FAEList();
         this.applicationList = new ApplicationList();
@@ -247,14 +249,14 @@ public class Event implements EventState,Serializable{
     public StandRegist getStandList() {
         return standList;
     }
-    
+
     /**
      * @return the listAssignedStands
      */
     public AssignmentListStand getListAssignedStands() {
         return assignmentListStand;
     }
-    
+
     /**
      * @param assignmentListStand list of stands assigned
      */
@@ -401,6 +403,7 @@ public class Event implements EventState,Serializable{
 
     /**
      * checks if the user are fae
+     *
      * @param user
      * @return true if the user is fae of this event
      */
@@ -412,14 +415,14 @@ public class Event implements EventState,Serializable{
         }
         return false;
     }
-    
-        /**
-     * 
+
+    /**
+     *
      * @return list of Strings with the organizers username
      */
-    public List<String> getOrganizerListString(){
+    public List<String> getOrganizerListString() {
         List<String> organizerListString = new ArrayList<>();
-        for(Organizer o: organizerList.getOrganizerList()){
+        for (Organizer o : organizerList.getOrganizerList()) {
             organizerListString.add(o.getUsername());
         }
         return organizerListString;
