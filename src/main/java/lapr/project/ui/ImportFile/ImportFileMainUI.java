@@ -63,8 +63,7 @@ public class ImportFileMainUI extends javax.swing.JFrame {
                     main.setVisible(true);
                     dispose();
                 }
-            } else {
-            }
+            } 
 
         }
     }

@@ -56,6 +56,7 @@ public class ReadExportFairCenter implements Serializable {
     }
 
     public static FairCenter loadFairCenter(FairCenter fc) throws IOException {
+        fc = null;
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(NOME_FICHEIRO_TEXTO));
             try {

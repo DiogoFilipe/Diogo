@@ -75,6 +75,7 @@ public class FairCenter implements Serializable {
         organizerList = new OrganizerList();
         encryptionList = new EncryptionList();
         exhibitionList = new ExhibitionList();
+        eventManagerList = new EventManagerList();
         congressList = new CongressList();
         fcEncryption = new Encryption(Encryption.gerateShift());
         representativeList = new RepresentativeList();

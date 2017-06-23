@@ -165,10 +165,10 @@ public class LogInWindow extends javax.swing.JFrame {
         for (char c : pss) {
          password += c;            
         }
-        List<User> users = controller.getUsers();
-        String cipheredID = null;
+        List<User> users = fc.getUserRegist().getUserList();
+        String cipheredID = "";
         int shift = fc.getFcEncryption().getShift();
-        User user = null;
+        User user = new User();
         try {
             for (User u : users) {
                 for (int i = 0; i < 20; i++) {
@@ -178,9 +178,13 @@ public class LogInWindow extends javax.swing.JFrame {
                         user = controller.getUser(u.getUsername());
                         String kw = controller.verifyEncryptionUserGetKeyword(user);                        
                         int shft = controller.verifyEncryptionUserGetShift(user);
-                        if(kw.equals("")){
+                        if(kw == null & shft==0){
                         cipheredID = controller.cipherWithShift(id, shift);
-                        }else{
+                        }
+                            if(kw == null & shft !=0){
+                            cipheredID = controller.cipherWithShift(id, shft);
+                            }
+                        if(kw != null & shft !=0){
                         cipheredID = controller.cipherAttributes(id, shft, kw);
                     }
                     

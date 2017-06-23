@@ -65,7 +65,7 @@ public class UserRegistMainWindowController {
      * @return userList with the new user
      */
     public boolean addUser(User user) {
-        return fc.getUserRegist().registUser(user);
+        return fc.getUserRegist().getUserList().add(user);
     }
 
     /**

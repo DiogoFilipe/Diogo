@@ -119,9 +119,12 @@ public class Encryption implements Serializable {
      * @return shift
      */
     public static int gerateShift() {
-        int shift = (int) (Math.random() * 10);
+        int shift;
+            do{
+         shift = (int) (Math.random() * 10);
         return shift;
-    }
+    }while(shift<=0 || shift>20);
+            }
 
     /**
      * Encripts the atribute of the user
