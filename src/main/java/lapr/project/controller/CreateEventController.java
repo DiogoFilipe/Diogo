@@ -10,10 +10,8 @@ import lapr.project.utils.*;
  *
  * @author 1160590_1160795_1160844_1161241_1162109
  */
-public class CreateEventController implements Serializable{
-
-        
-            
+public class CreateEventController{
+      
     /**
      * fair center
      */
@@ -113,12 +111,22 @@ public class CreateEventController implements Serializable{
         }
     }
 
+    /**
+     * 
+     * @param s string given
+     * @param m parameter on it fails
+     */
     public void validateString(String s, String m) {
         if (s.trim().equals(" ") || s.equals("")) {
             throw new EmptySpaceException(m);
         }
     }
-
+    
+/**
+ * 
+ * @param s string given with the date
+ * @param m parameter that can fail
+ */
     public void validateYear(String s, String m) {
         String[] date = s.split("/");
         if (date[0].length() != 4 || date[0].contains("[a-zA-Z+]")) {
@@ -126,6 +134,11 @@ public class CreateEventController implements Serializable{
         }
     }
     
+    /**
+     * 
+     * @param s string given with the date
+     * @param m parameter that can fail
+     */
     public void validateMonth(String s, String m) {
         String[] date = s.split("/");
         if (date[1].length() != 2 || date[1].contains("[a-zA-Z+]")|| Integer.parseInt(date[1])<0 ||Integer.parseInt(date[1])>12) {
@@ -133,6 +146,11 @@ public class CreateEventController implements Serializable{
         }
     }
     
+    /**
+     * 
+     * @param s string given with the date
+     * @param m parameter that can fail
+     */
     public void validateDay(String s, String m) {
         String[] date = s.split("/");
         if (date[2].length() != 2 || date[2].contains("[a-zA-Z+]")|| Integer.parseInt(date[2])<0 ||Integer.parseInt(date[2])>31) {
