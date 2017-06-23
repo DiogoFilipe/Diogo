@@ -6,6 +6,7 @@
 package lapr.project.ui.SubmitApplication;
 
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import lapr.project.controller.SubmitApplicationController;
 import lapr.project.model.FairCenter;
@@ -17,13 +18,14 @@ import lapr.project.ui.MainWindow;
  * @author HP
  */
 public class SubmitApplicationMainUI extends javax.swing.JFrame {
-
+    
+    private static final long serialVersionUID = 1217511969L;
 
     /**
      * fair center
      */
     private FairCenter fc;
-    
+
     /**
      * user
      */
@@ -31,15 +33,17 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
     
     SubmitApplicationController controller;
     
+    private DefaultListModel<String> model;
+
     /**
-     * 
+     *
      * @param fc fair center
      * @param u user
      */
-    public SubmitApplicationMainUI(FairCenter fc,User u) {
-        this.fc=fc;
-        this.u=u;
-        controller = new SubmitApplicationController(fc,u);
+    public SubmitApplicationMainUI(FairCenter fc, User u) {
+        this.fc = fc;
+        this.u = u;
+        controller = new SubmitApplicationController(fc, u);
         this.setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -52,34 +56,25 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
             }
         });
         initComponents();
-         AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return controller.getListEventsOpenForApplications().size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return controller.getListEventsOpenForApplications().get(j);
-            }
-        };
-        jList1.setModel(model);
-        jScrollPane1.setViewportView(jList1);
+        model = new DefaultListModel<>();
+        for (String a : controller.getListEventsOpenForApplications()) {
+            model.addElement(a);
+        }
+        jList2.setModel(model);
+        jScrollPane2.setViewportView(jList2);
     }
-
- 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -105,11 +100,6 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setToolTipText("");
-        jScrollPane1.setViewportView(jList1);
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("SELECT AN EVENT");
 
@@ -127,6 +117,8 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setViewportView(jList2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,22 +130,20 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(29, 29, 29))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(228, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)))
-                .addGap(215, 215, 215))
+                .addContainerGap(227, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(228, 228, 228))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -166,22 +156,22 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MainWindow mainWindow = new MainWindow(fc,u);
+        MainWindow mainWindow = new MainWindow(fc, u);
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * 
-     * @param evt click 
+     *
+     * @param evt click
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String event= jList1.getSelectedValue().toString();
-        SubmitApplicationUI submitApplication = new SubmitApplicationUI(fc,u,event);
+        String event = jList2.getSelectedValue();
+        SubmitApplicationUI submitApplication = new SubmitApplicationUI(fc, u, event);
         submitApplication.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -191,8 +181,8 @@ public class SubmitApplicationMainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

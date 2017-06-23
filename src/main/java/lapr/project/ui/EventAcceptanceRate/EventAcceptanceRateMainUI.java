@@ -6,6 +6,7 @@
 package lapr.project.ui.EventAcceptanceRate;
 
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import lapr.project.controller.EventAcceptanceRateController;
 import lapr.project.model.FairCenter;
@@ -23,6 +24,7 @@ public class EventAcceptanceRateMainUI extends javax.swing.JFrame {
     FairCenter fc;
     User u;
     EventAcceptanceRateController controller;
+    private DefaultListModel<String> model;
 
     /**
      * Creates new form ShowGlobalAcceptanceRateMainUI
@@ -35,18 +37,10 @@ public class EventAcceptanceRateMainUI extends javax.swing.JFrame {
         this.u = u;
         controller = new EventAcceptanceRateController(fc, u);
         initComponents();
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return controller.getEventList().size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return controller.getEventList().get(j);
-            }
-        };
+        model = new DefaultListModel<>();
+        for(String e:controller.getEventList()){
+            model.addElement(e);
+        }
         jList1.setModel(model);
         jScrollPane2.setViewportView(jList1);
     }

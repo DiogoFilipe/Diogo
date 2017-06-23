@@ -23,6 +23,8 @@ import lapr.project.utils.EmptySpaceException;
  * @author Diogo
  */
 public class ChangeApplicationSecondWindow extends javax.swing.JFrame {
+       
+    private static final long serialVersionUID = 1123221L;
 
     /**
      * fair center

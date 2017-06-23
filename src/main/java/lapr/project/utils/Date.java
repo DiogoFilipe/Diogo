@@ -2,6 +2,7 @@ package lapr.project.utils;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Represents a date by its year, month and day
@@ -330,6 +331,15 @@ public class Date implements Comparable<Date>, Serializable {
         Date otherDate = (Date) otherObject;
         return year == otherDate.year && month.equals(otherDate.month)
                 && day == otherDate.day;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.year;
+        hash = 53 * hash + Objects.hashCode(this.month);
+        hash = 53 * hash + this.day;
+        return hash;
     }
 
     /**

@@ -7,6 +7,7 @@ package lapr.project.ui.CreateStand;
 
 import java.util.List;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import lapr.project.controller.CreateStandController;
@@ -19,11 +20,15 @@ import lapr.project.ui.MainWindow;
  * @author João Domingues
  */
 public class CreateStandMainUI extends javax.swing.JFrame {
+    
+    private static final long serialVersionUID = 117362L;
 
     /**
      * controller
      */
     CreateStandController controller;
+    
+    private DefaultListModel<String> model;
 
     /**
      * fair center
@@ -56,9 +61,9 @@ public class CreateStandMainUI extends javax.swing.JFrame {
                 }
             }
         });
-        initComponents();
         createList();
-
+        initComponents();
+        
     }
 
     /**
@@ -70,45 +75,35 @@ public class CreateStandMainUI extends javax.swing.JFrame {
         controller = new CreateStandController(fc, u);
         List<Event> events = controller.getEventList();
         String[] titles = new String[events.size()];
-        final String [] decypheredTitles = new String[events.size()];
+        final String[] decypheredTitles = new String[events.size()];
         for (Event event : events) {
             titles[i] = event.getTitle();
-            decypheredTitles [i] = controller.decypherTitle(titles[i], shift);
+            decypheredTitles[i] = controller.decypherTitle(titles[i], shift);
             i++;
         }
-
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return decypheredTitles.length;
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return decypheredTitles[j];
-            }
-        };
-        jList2.setModel(model);
-        jScrollPane1.setViewportView(jList2);
+        
+        model = new DefaultListModel<>();
+        for (String d : decypheredTitles) {
+            model.addElement(d);
+        }
+        jList1.setModel(model);
+        jScrollPane2.setViewportView(jList1);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Select an Event");
-
-        jScrollPane1.setViewportView(jList2);
 
         jButton1.setText("Confirm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +119,9 @@ public class CreateStandMainUI extends javax.swing.JFrame {
             }
         });
 
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(jList1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,13 +133,14 @@ public class CreateStandMainUI extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(110, 110, 110)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +148,8 @@ public class CreateStandMainUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -165,7 +164,7 @@ public class CreateStandMainUI extends javax.swing.JFrame {
      * @param evt click
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String event = jList2.getSelectedValue().toString();
+        String event = jList1.getSelectedValue();
         StandDataUI standData = new StandDataUI(event, fc, u);
         standData.setVisible(true);
         dispose();
@@ -187,8 +186,8 @@ public class CreateStandMainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private static javax.swing.JList jList2;
-    private static javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
 }

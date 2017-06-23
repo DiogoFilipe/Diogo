@@ -7,6 +7,8 @@ package lapr.project.ui.ShowEventKeywords;
 
 import java.util.List;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableColumn;
 import lapr.project.controller.ShowEventKeywordsController;
@@ -25,6 +27,8 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
     FairCenter fc;
     User user;
     ShowEventKeywordsController controller;
+    
+    private DefaultListModel<String> model;
 
     /**
      * Creates new form ShowEventKeywordsWindow
@@ -36,19 +40,22 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
         this.fc = fc;
         this.user = user;
         controller = new ShowEventKeywordsController(fc, user);
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(ShowEventKeywordsWindow.this, "Do you want to exit?", "ALERT", JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
         initComponents();
-        AbstractListModel model = new javax.swing.AbstractListModel() {
-
-            @Override
-            public int getSize() {
-                return controller.getEventListOrganizer(user).size();
-            }
-
-            @Override
-            public Object getElementAt(int j) {
-                return controller.getEventListOrganizer(user).get(j);
-            }
-        };
+         model = new DefaultListModel<>();
+         for(String o:controller.getEventListOrganizer(user)){
+             model.addElement(o);
+         }
         jList1.setModel(model);
         jScrollPane1.setViewportView(jList1);
         jList1.addListSelectionListener((ListSelectionEvent e) -> {
@@ -188,27 +195,6 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
         mainWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShowEventKeywordsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
