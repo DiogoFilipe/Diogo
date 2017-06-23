@@ -24,8 +24,8 @@ public class ShowEventKeywordsWindow extends javax.swing.JFrame {
 
     private static final long serialVersionUID = -4143626928459990477L;
 
-    FairCenter fc;
-    User user;
+    private FairCenter fc;
+    private User user;
     ShowEventKeywordsController controller;
     
     private DefaultListModel<String> model;
