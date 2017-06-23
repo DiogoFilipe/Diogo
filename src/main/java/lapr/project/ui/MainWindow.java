@@ -83,6 +83,10 @@ public class MainWindow extends javax.swing.JFrame {
         importEventData = new javax.swing.JButton();
         eventSubmissionKeywords = new javax.swing.JButton();
         eventAcceptanceRate = new javax.swing.JButton();
+        standsInformation = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,6 +194,18 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        standsInformation.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        standsInformation.setText("Event Stands Information");
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton1.setText("Global Acceptance Rate");
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton2.setText("Acceptance Rate >50%?");
+
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton3.setText("FAE mean rating");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,13 +222,6 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exportAllData))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(changeApplication)
-                            .addComponent(createStand)
-                            .addComponent(assignStand)
-                            .addComponent(listApplications))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(defineFAE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(importEventData))
@@ -221,9 +230,25 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(eventSubmissionKeywords))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(changeApplication)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eventAcceptanceRate))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(submitApplication)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eventAcceptanceRate)))
+                        .addComponent(standsInformation))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(listApplications)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(createStand)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(assignStand)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -244,15 +269,23 @@ public class MainWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitApplication)
+                    .addComponent(standsInformation))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(changeApplication)
                     .addComponent(eventAcceptanceRate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(changeApplication)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createStand)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createStand)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(assignStand)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(assignStand)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(listApplications)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listApplications)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
@@ -302,7 +335,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void submitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitApplicationActionPerformed
         try {
-            fc.isRepresentative(u);
+            fc.getRepresentativeList().isRepresentative(u);
             SubmitApplicationMainUI submitApplication = new SubmitApplicationMainUI(fc, u);
             submitApplication.setVisible(true);
             dispose();
@@ -313,7 +346,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void changeApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeApplicationActionPerformed
         try {
-            fc.isRepresentative(u);
+            fc.getRepresentativeList().isRepresentative(u);
             ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc, u);
             changeApplication.setVisible(true);
             dispose();
@@ -324,7 +357,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void createStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStandActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             CreateStandMainUI createStand = new CreateStandMainUI(fc, u);
             createStand.setVisible(true);
             dispose();
@@ -335,7 +368,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void assignStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignStandActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             AssignStandsMainUI assignStand = new AssignStandsMainUI(fc, u);
             assignStand.setVisible(true);
             dispose();
@@ -346,7 +379,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void listApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listApplicationsActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             ListApplicationsMainWindow listApplications = new ListApplicationsMainWindow(fc, u);
             listApplications.setVisible(true);
             dispose();
@@ -357,7 +390,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void exportAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAllDataActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             ExportAllDataMainUI exportData = new ExportAllDataMainUI(fc, u);
             exportData.setVisible(true);
             dispose();
@@ -368,7 +401,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void importEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importEventDataActionPerformed
         try {
-            fc.isOrganizer(u);
+            fc.getOrganizerList().isOrganizer(u);
             ImportFileMainUI importMain = new ImportFileMainUI(fc, u);
             importMain.setVisible(true);
             dispose();
@@ -385,7 +418,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void eventAcceptanceRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventAcceptanceRateActionPerformed
         try{
-            fc.isEventManager(u);
+            fc.getEventManagerList().isEventManager(u);
             EventAcceptanceRateMainUI eventAcceptanceRate = new EventAcceptanceRateMainUI(fc,u);
             eventAcceptanceRate.setVisible(true);
             dispose();
@@ -405,8 +438,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton eventSubmissionKeywords;
     private javax.swing.JButton exportAllData;
     private javax.swing.JButton importEventData;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton listApplications;
     private javax.swing.JButton logOut;
+    private javax.swing.JButton standsInformation;
     private javax.swing.JButton submitApplication;
     // End of variables declaration//GEN-END:variables
 }
