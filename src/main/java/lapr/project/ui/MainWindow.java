@@ -8,6 +8,7 @@ package lapr.project.ui;
 import javax.swing.JOptionPane;
 import lapr.project.model.FairCenter;
 import lapr.project.model.User;
+import lapr.project.ui.ChangeApplication.ChangeApplicationMainWindow;
 import lapr.project.ui.CreateEvent.CreateEventMain;
 import lapr.project.ui.DecideApplication.DecideApplicationMainUI;
 import lapr.project.ui.DefineFAE.DefineFAEMainUI;
@@ -69,6 +70,7 @@ public class MainWindow extends javax.swing.JFrame {
         defineFAE = new javax.swing.JButton();
         decideApplication = new javax.swing.JButton();
         submitApplication = new javax.swing.JButton();
+        changeApplication = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +114,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        changeApplication.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        changeApplication.setText("Change Application");
+        changeApplication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeApplicationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +142,10 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(decideApplication))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(submitApplication)))
+                        .addComponent(submitApplication))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(changeApplication)))
                 .addContainerGap(434, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -146,7 +159,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(decideApplication)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitApplication)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(changeApplication)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addComponent(logOut)
                 .addContainerGap())
         );
@@ -204,7 +219,19 @@ public class MainWindow extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_submitApplicationActionPerformed
 
+    private void changeApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeApplicationActionPerformed
+        try{
+            fc.isRepresentative(u);
+            ChangeApplicationMainWindow changeApplication = new ChangeApplicationMainWindow(fc,u);
+            changeApplication.setVisible(true);
+            dispose();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(MainWindow.this,e.getMessage());
+        }
+    }//GEN-LAST:event_changeApplicationActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton changeApplication;
     private javax.swing.JButton createEvent;
     private javax.swing.JButton decideApplication;
     private javax.swing.JButton defineFAE;
